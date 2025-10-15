@@ -1,0 +1,2 @@
+# ScrapFrontier
+Second Gotot game
