@@ -2,39 +2,37 @@
 
 [ext_resource type="Script" uid="uid://ceng1u112aqg0" path="res://menu/options.gd" id="1_61pji"]
 
-[node name="Options" type="Node"]
-script = ExtResource("1_61pji")
-
-[node name="Control" type="Control" parent="."]
+[node name="Options" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_61pji")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 100.0
 offset_top = 100.0
-offset_right = 140.0
-offset_bottom = 140.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 271.0
+offset_bottom = 194.0
 alignment = 1
 
-[node name="OptionsGridContainer" type="GridContainer" parent="Control/VBoxContainer"]
+[node name="OptionsGridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="FullscreenLabel" type="Label" parent="Control/VBoxContainer/OptionsGridContainer"]
+[node name="FullscreenLabel" type="Label" parent="VBoxContainer/OptionsGridContainer"]
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="FullscreenCheckButton" type="CheckButton" parent="Control/VBoxContainer/OptionsGridContainer"]
+[node name="FullscreenCheckButton" type="CheckButton" parent="VBoxContainer/OptionsGridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="WindowFactorLabel" type="Label" parent="Control/VBoxContainer/OptionsGridContainer"]
+[node name="WindowFactorLabel" type="Label" parent="VBoxContainer/OptionsGridContainer"]
 layout_mode = 2
 text = "Window Factor"
 
-[node name="WindowFactorOptionButton" type="OptionButton" parent="Control/VBoxContainer/OptionsGridContainer"]
+[node name="WindowFactorOptionButton" type="OptionButton" parent="VBoxContainer/OptionsGridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 selected = 0
 item_count = 6
@@ -51,19 +49,19 @@ popup/item_4/id = 4
 popup/item_5/text = "×6"
 popup/item_5/id = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 alignment = 2
 
-[node name="CreditsButton" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="CreditsButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Credits"
 
-[node name="BackButton" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Back"
 
-[connection signal="toggled" from="Control/VBoxContainer/OptionsGridContainer/FullscreenCheckButton" to="." method="_on_fullscreen_check_button_toggled"]
-[connection signal="item_selected" from="Control/VBoxContainer/OptionsGridContainer/WindowFactorOptionButton" to="." method="_on_window_factor_option_button_item_selected"]
-[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="toggled" from="VBoxContainer/OptionsGridContainer/FullscreenCheckButton" to="." method="_on_fullscreen_check_button_toggled"]
+[connection signal="item_selected" from="VBoxContainer/OptionsGridContainer/WindowFactorOptionButton" to="." method="_on_window_factor_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

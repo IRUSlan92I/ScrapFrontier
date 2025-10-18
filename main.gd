@@ -24,7 +24,13 @@ func _continue_game() -> void:
     
 
 func _new_game() -> void:
-    print("new_game")
+    if _current_scene != null:
+        _current_scene.queue_free()
+    
+    var scene : Node = load("res://game/game.tscn").instantiate()
+    add_child(scene)
+    scene.show_main_menu.connect(_show_main_menu)
+    _current_scene = scene
     
 
 func _quit() -> void:

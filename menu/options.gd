@@ -3,8 +3,8 @@ extends Node
 signal show_credits
 signal show_main_menu
 
-@onready var fullscreen_check := $Control/VBoxContainer/OptionsGridContainer/FullscreenCheckButton
-@onready var window_factor := $Control/VBoxContainer/OptionsGridContainer/WindowFactorOptionButton
+@onready var fullscreen_check := $%FullscreenCheckButton
+@onready var window_factor := $%WindowFactorOptionButton
 
 
 func _ready() -> void:
