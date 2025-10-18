@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3q3g2647qc27"]
+
+[ext_resource type="Script" uid="uid://dclkpithyykju" path="res://menu/credits.gd" id="1_wp78b"]
+
+[node name="Credits" type="Node"]
+script = ExtResource("1_wp78b")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 140.0
+offset_bottom = 140.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="ProgrammingLabel" type="Label" parent="Control/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Programming:"
+horizontal_alignment = 2
+
+[node name="ProgrammersLabel" type="Label" parent="Control/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Ruslan Ignatov"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="MainMenuButton" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

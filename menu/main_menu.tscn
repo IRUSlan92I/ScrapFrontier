@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxlccevt52y70"]
+
+[ext_resource type="Script" uid="uid://dixdfabe2vfsj" path="res://menu/main_menu.gd" id="1_chmv6"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_chmv6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 179.0
+offset_bottom = 236.0
+
+[node name="ContinueButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Continue"
+
+[node name="StartButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Control/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
