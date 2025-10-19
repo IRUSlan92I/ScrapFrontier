@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bclo2wl8ibrcg"]
+[gd_scene load_steps=5 format=3 uid="uid://bclo2wl8ibrcg"]
 
 [ext_resource type="Script" uid="uid://npqs2m5g5bd6" path="res://menu/pause_menu.gd" id="1_inj1j"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_inj1j"]
+action = &"ui_cancel"
+
+[sub_resource type="InputEventAction" id="InputEventAction_vy7sn"]
+action = &"pause"
+
+[sub_resource type="Shortcut" id="Shortcut_lgp46"]
+events = [SubResource("InputEventAction_inj1j"), SubResource("InputEventAction_vy7sn")]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -15,10 +24,13 @@ offset_right = 196.0
 offset_bottom = 166.0
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+shortcut = SubResource("Shortcut_lgp46")
 text = "Continue"
 
 [node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Main Menu"
 

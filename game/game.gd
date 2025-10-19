@@ -3,43 +3,44 @@ extends Node
 signal show_main_menu
 
 
-var _current_scene: Node
-var _current_passage: Node
+var _pause_menu: PauseMenu
+var _current_passage: Passage
 
-
-func _process(_delta: float) -> void:
-    if Input.is_action_pressed("pause"):
-        _show_pause_menu()
-
-
+var _show_pause_menu: bool = false
 
 
 func _ready() -> void:
-    _show_passage()
+    _current_passage = load("res://game/passage.tscn").instantiate()
+    add_child(_current_passage)
+    
+    
+func _input(event: InputEvent) -> void:
+    if event.is_action_pressed("pause") and not _current_passage.is_paused():
+        _pause_game()
 
 
-func _show_passage() -> void:
-    if _current_scene != null:
-        _current_scene.queue_free()
+func _process(_delta: float) -> void:
+    if _show_pause_menu:
+        _pause_menu = load("res://menu/pause_menu.tscn").instantiate()
+        add_child(_pause_menu)
+        _pause_menu.continue_game.connect(_unpause_game)
+        _pause_menu.show_main_menu.connect(_show_main_menu)
+        _show_pause_menu = false
+
+
+func _pause_game() -> void:
+    _current_passage.set_paused(true)
+    _current_passage.visible = false
         
-    if _current_passage == null:
-        _current_passage = load("res://game/passage.tscn").instantiate()
-        add_child(_current_passage)
-    else:
-        _current_passage.visible = true
+    _show_pause_menu = true
     
-    
-func _show_pause_menu() -> void:
-    if _current_scene != null:
-        _current_scene.queue_free()
-    if _current_passage != null:
-        _current_passage.visible = false
-    
-    var scene : Node = load("res://menu/pause_menu.tscn").instantiate()
-    add_child(scene)
-    scene.continue_game.connect(_show_passage)
-    scene.show_main_menu.connect(_show_main_menu)
-    _current_scene = scene
+
+
+func _unpause_game() -> void:
+    _current_passage.set_paused(false)
+    _current_passage.visible = true
+        
+    _pause_menu.queue_free()
     
 
 func _show_main_menu() -> void:

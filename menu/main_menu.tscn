@@ -15,19 +15,23 @@ offset_right = 179.0
 offset_bottom = 236.0
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 text = "Continue"
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Start"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
 

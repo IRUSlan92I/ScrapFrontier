@@ -3,22 +3,30 @@ extends Node
 signal show_credits
 signal show_main_menu
 
-@onready var fullscreen_check := $%FullscreenCheckButton
-@onready var window_factor := $%WindowFactorOptionButton
-
 
 func _ready() -> void:
     _load_current_settings()
+    _init_focus()
+    _setup_neighbors()
+    
+
+func _init_focus() -> void:
+    $%FullscreenCheckButton.grab_focus()
+
+
+func _setup_neighbors() -> void:
+    $%CreditsButton.focus_neighbor_left = $%BackButton.get_path()
+    $%BackButton.focus_neighbor_right = $%CreditsButton.get_path()
 
 
 func _load_current_settings() -> void:
-    fullscreen_check.button_pressed = SettingsManager.fullscreen()
-    window_factor.selected = SettingsManager.window_factor()
+    $%FullscreenCheckButton.button_pressed = SettingsManager.fullscreen()
+    $%WindowFactorOptionButton.selected = SettingsManager.window_factor()
     _update_window_factor_disabled()
 
 
 func _update_window_factor_disabled() -> void:
-    window_factor.disabled = SettingsManager.fullscreen()
+    $%WindowFactorOptionButton.disabled = SettingsManager.fullscreen()
 
 
 func _on_fullscreen_check_button_toggled(toggled: bool) -> void:
