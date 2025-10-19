@@ -9,8 +9,24 @@ const SETTING_WINDOW_FACTOR = "window_factor"
 
 var _config: ConfigFile
 
+
 var _fullscreen := false
+var fullscreen : bool:
+    get:
+        return _fullscreen
+    set(value):
+        _fullscreen = value
+        _apply_video_settings()
+        _save_settings()
+        
 var _window_factor := 0
+var window_factor : int:
+    get:
+        return _window_factor
+    set(value):
+        _window_factor = value
+        _apply_video_settings()
+        _save_settings()
 
 
 func _ready() -> void:
@@ -86,23 +102,3 @@ func _ensure_window_on_screen() -> void:
     
     if new_x != window_position.x or new_y != window_position.y:
         DisplayServer.window_set_position(Vector2i(new_x, new_y))
-
-
-func set_fullscreen(value: bool) -> void:
-    _fullscreen = value
-    _apply_video_settings()
-    _save_settings()
-
-
-func fullscreen() -> bool:
-    return _fullscreen
-    
-
-func set_window_factor(value: int) -> void:
-    _window_factor = value
-    _apply_window_scale()
-    _save_settings()
-    
-    
-func window_factor() -> int:
-    return _window_factor

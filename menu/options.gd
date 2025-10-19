@@ -20,23 +20,23 @@ func _setup_neighbors() -> void:
 
 
 func _load_current_settings() -> void:
-    $%FullscreenCheckButton.button_pressed = SettingsManager.fullscreen()
-    $%WindowFactorOptionButton.selected = SettingsManager.window_factor()
+    $%FullscreenCheckButton.button_pressed = SettingsManager.fullscreen
+    $%WindowFactorOptionButton.selected = SettingsManager.window_factor
     _update_window_factor_disabled()
 
 
 func _update_window_factor_disabled() -> void:
-    $%WindowFactorOptionButton.disabled = SettingsManager.fullscreen()
+    $%WindowFactorOptionButton.disabled = SettingsManager.fullscreen
 
 
 func _on_fullscreen_check_button_toggled(toggled: bool) -> void:
-    SettingsManager.set_fullscreen(toggled)
+    SettingsManager.fullscreen = toggled
     _update_window_factor_disabled()
 
 
 func _on_window_factor_option_button_item_selected(index: int) -> void:
-    if !SettingsManager.fullscreen():
-        SettingsManager.set_window_factor(index)
+    if not SettingsManager.fullscreen:
+        SettingsManager.window_factor = index
 
 
 func _on_credits_button_pressed() -> void:
