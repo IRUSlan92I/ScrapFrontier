@@ -1,10 +1,19 @@
-extends Node2D
+extends Node
 
+
+var position : Vector2:
+	set(value):
+		$Ship.position = value
+	get:
+		return $Ship.position
+		
 
 func _process(delta: float) -> void:
-	var speed := 100
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var velocity := input_direction * speed
-	position += velocity * delta
-	var screen_size := get_viewport_rect().size
-	position = position.clamp(Vector2.ZERO, screen_size)
+	print(input_direction)
+	
+	if input_direction.is_zero_approx():
+		$Ship.decelerate($Ship.deceleration * delta)
+	else:
+		var acceleration : Vector2 = input_direction * $Ship.acceleration * delta
+		$Ship.accelerate(acceleration)
