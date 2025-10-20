@@ -2,8 +2,8 @@ extends Node
 
 signal show_main_menu
 
-var _pause_menu: PauseMenu
-var _current_passage: Passage
+var _pause_menu: Node
+var _current_passage: Node
 
 
 func _ready() -> void:
@@ -12,7 +12,7 @@ func _ready() -> void:
     
     
 func _input(event: InputEvent) -> void:
-    if event.is_action_pressed("pause") and not get_tree().paused:
+    if event.is_action_pressed("pause"):
         _pause_game()
 
 
@@ -25,14 +25,11 @@ func _create_pause_menu() -> void:
 
 func _pause_game() -> void:
     get_tree().paused = true
-    _current_passage.visible = false
     _create_pause_menu.call_deferred()
     
 
 func _unpause_game() -> void:
     get_tree().paused = false
-    _current_passage.visible = true
-    
     _pause_menu.queue_free()
     
 

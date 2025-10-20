@@ -1,5 +1,3 @@
-class_name PauseMenu
-
 extends Node
 
 signal continue_game
