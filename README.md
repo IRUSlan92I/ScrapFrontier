@@ -1,2 +1,2 @@
 # ScrapFrontier
-Second Gotot game
+Second Godot game
