@@ -15,13 +15,27 @@ extends CharacterBody2D
 @export var deceleration : int
 @export var max_speed : int
 
-#var _velocity : Vector2
+@onready var weapons : Array:
+	set(value):
+		pass
+	get:
+		return weapons
 
 
 func _ready() -> void:
 	var texture := PlaceholderTexture2D.new()
 	texture.size = size
 	$Sprite2D.texture = texture
+	
+	var weapons_by_offset := {
+		8: preload("res://game/entities/weapon.tscn").instantiate(),
+		-8: preload("res://game/entities/weapon.tscn").instantiate(),
+	}
+	for offset : int in weapons_by_offset:
+		var weapon : Node2D = weapons_by_offset[offset]
+		weapon.position = Vector2(0, offset)
+		add_child(weapon)
+		weapons.append(weapon)
 
 
 func _physics_process(_delta: float) -> void:
@@ -29,7 +43,6 @@ func _physics_process(_delta: float) -> void:
 	if was_collided:
 		var normal := get_wall_normal()
 		velocity -= normal.abs() * velocity
-	print(was_collided, get_wall_normal(), velocity)
 
 
 func accelerate(direction: Vector2, delta: float) -> void:
@@ -50,3 +63,8 @@ func _get_new_speed(accel: float, decel: float, current_speed: float) -> float:
 		return current_speed + (decel if current_speed < 0 else -decel)
 	else:
 		return current_speed + accel
+
+
+func shoot(weapon: Node) -> void:
+	if weapon in weapons:
+		weapon.shoot()
