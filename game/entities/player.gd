@@ -10,9 +10,4 @@ var position : Vector2:
 
 func _process(delta: float) -> void:
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	
-	if input_direction.is_zero_approx():
-		$Ship.decelerate($Ship.deceleration * delta)
-	else:
-		var acceleration : Vector2 = input_direction * $Ship.acceleration * delta
-		$Ship.accelerate(acceleration)
+	$Ship.accelerate(input_direction, delta)

@@ -25,20 +25,25 @@ func _process(delta: float) -> void:
 	position += _velocity * delta
 
 
-func accelerate(value: Vector2) -> void:
-	_velocity += value
-	_velocity = _velocity.clamp(Vector2(-max_speed, -max_speed), Vector2(max_speed, max_speed))
+func accelerate(direction: Vector2, delta: float) -> void:
+	var accel : Vector2 = direction * acceleration * delta
+	var decel : float = deceleration * delta
+	
+	_velocity.x = _get_new_speed(accel.x, decel, _velocity.x)
+	_velocity.y = _get_new_speed(accel.y, decel, _velocity.y)
+
+	if _velocity.length() > max_speed:
+		_velocity = _velocity.normalized() * max_speed
 
 
-func decelerate(value: float) -> void:
-	var current_speed := _velocity.length()
-	
-	if current_speed <= 0:
-		_velocity = Vector2.ZERO
-		return
-	
-	var new_speed := current_speed - value
-	if new_speed < 0:
-		new_speed = 0
-	
-	_velocity = _velocity.normalized() * new_speed
+func _get_new_speed(accel: float, decel: float, current_speed: float) -> float:
+	if is_zero_approx(accel):
+		if absf(current_speed) < decel:
+			return 0.0
+		else:
+			if current_speed < 0:
+				return current_speed + decel
+			else:
+				return current_speed - decel
+	else:
+		return current_speed + accel
