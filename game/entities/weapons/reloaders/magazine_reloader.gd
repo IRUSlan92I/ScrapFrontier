@@ -1,23 +1,33 @@
 extends AbstractReloader
 
 
-@export var magazine_size : int
-@export var reload_time : int
+@export var magazine_size : int:
+	set(value):
+		magazine_size = value
+		_calculate_bullets_in_magazine()
 
 
-@onready var _bullets_in_magazine : int = magazine_size if magazine_size > 0 else -1
-@onready var _reload_time_tenth : float = reload_time / 10.0
+@export var reload_time : int:
+	set(value):
+		reload_time = value
+		_calculate_reload_time_tenth()
 
 
+var _bullets_in_magazine : int
+var _reload_time_tenth : float
 var _cooldown : float
+
+
+func _ready() -> void:
+	_calculate_bullets_in_magazine()
+	_calculate_reload_time_tenth()
 
 
 func _process(delta: float) -> void:
 	if _cooldown > 0:
 		_cooldown -= delta
-	
-	if _bullets_in_magazine == 0 and _cooldown <= 0:
-		_bullets_in_magazine = magazine_size
+		if _cooldown <= 0:
+			_bullets_in_magazine = magazine_size
 
 
 func can_shoot() -> bool:
@@ -29,5 +39,19 @@ func shoot() -> void:
 		_bullets_in_magazine -= 1
 	
 	if _bullets_in_magazine == 0:
-		var random_delay := random.randf_range(-_reload_time_tenth, _reload_time_tenth)
-		_cooldown = reload_time + random_delay
+		reload()
+
+
+func reload() -> void:
+	if _cooldown > 0 or _bullets_in_magazine == magazine_size: return
+	print("reload")
+	var random_delay := _random.randf_range(-_reload_time_tenth, _reload_time_tenth)
+	_cooldown = reload_time + random_delay
+
+
+func _calculate_bullets_in_magazine() -> void:
+	_bullets_in_magazine = magazine_size
+
+
+func _calculate_reload_time_tenth() -> void:
+	_reload_time_tenth = reload_time / 10.0

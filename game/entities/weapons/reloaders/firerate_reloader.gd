@@ -1,14 +1,19 @@
 extends AbstractReloader
 
 
-@export var firerate : int
+@export var firerate : int:
+	set(value):
+		firerate = value
+		_calculate_delay()
 
 
-@onready var _delay : float = 60.0 / firerate
-@onready var _delay_tenth : float = _delay / 10
-
-
+var _delay : float
+var _delay_tenth : float
 var _cooldown : float
+
+
+func _ready() -> void:
+	_calculate_delay()
 
 
 func _process(delta: float) -> void:
@@ -21,5 +26,14 @@ func can_shoot() -> bool:
 
 
 func shoot() -> void:
-	var random_delay := random.randf_range(-_delay_tenth, _delay_tenth)
+	var random_delay := _random.randf_range(-_delay_tenth, _delay_tenth)
 	_cooldown = _delay + random_delay
+
+
+func reload() -> void:
+	pass
+
+
+func _calculate_delay() -> void:
+	_delay = 60.0 / firerate
+	_delay_tenth = _delay / 10

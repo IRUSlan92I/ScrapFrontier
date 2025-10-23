@@ -72,3 +72,8 @@ func _get_new_speed(accel: float, decel: float, current_speed: float) -> float:
 func shoot(weapon: Node) -> void:
 	if weapon in weapons:
 		weapon.shoot()
+
+
+func reload(weapon: Node) -> void:
+	if weapon in weapons:
+		weapon.reload()

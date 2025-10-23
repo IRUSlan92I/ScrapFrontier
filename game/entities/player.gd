@@ -13,7 +13,15 @@ func _process(delta: float) -> void:
 	$Ship.accelerate(input_direction, delta)
 	
 	var weapons : Array = $Ship.weapons
-	var weapon_actions := { 0: "shoot_weapon_1", 1: "shoot_weapon_2" }
+	var weapon_actions := {
+		0: ["shoot_weapon_1", "reload_weapon_1"],
+		1: ["shoot_weapon_2", "reload_weapon_2"]
+	}
 	for index : int in weapon_actions:
-		if Input.is_action_pressed(weapon_actions[index], true) and weapons.size() > index:
+		if index >= weapons.size(): break
+		
+		if Input.is_action_pressed(weapon_actions[index][0], true):
 			$Ship.shoot(weapons[index])
+		
+		if Input.is_action_pressed(weapon_actions[index][1], true):
+			$Ship.reload(weapons[index])
