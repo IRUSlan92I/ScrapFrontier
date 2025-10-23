@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+
+const Weapon = preload("res://game/entities/weapon.tscn")
+
+
 @export var size : Vector2:
 	set(value):
 		size = value
@@ -28,8 +32,8 @@ func _ready() -> void:
 	$Sprite2D.texture = texture
 	
 	var weapons_by_offset := {
-		8: preload("res://game/entities/weapon.tscn").instantiate(),
-		-8: preload("res://game/entities/weapon.tscn").instantiate(),
+		8: Weapon.instantiate(),
+		-8: Weapon.instantiate(),
 	}
 	for offset : int in weapons_by_offset:
 		var weapon : Node2D = weapons_by_offset[offset]

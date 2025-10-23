@@ -35,6 +35,7 @@ text = "Fullscreen"
 [node name="FullscreenCheckButton" type="CheckButton" parent="VBoxContainer/OptionsGridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 
 [node name="WindowFactorLabel" type="Label" parent="VBoxContainer/OptionsGridContainer"]
 unique_name_in_owner = true
@@ -44,6 +45,7 @@ text = "Window Factor"
 [node name="WindowFactorOptionButton" type="OptionButton" parent="VBoxContainer/OptionsGridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 selected = 0
 item_count = 6
 popup/item_0/text = "×1"
@@ -66,12 +68,14 @@ alignment = 2
 [node name="CreditsButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("2_1tdpy")
 text = "Credits"
 
 [node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("2_1tdpy")
 shortcut = SubResource("Shortcut_1tdpy")
 text = "Back"

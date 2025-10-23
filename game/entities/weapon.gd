@@ -15,12 +15,14 @@ extends Node2D
 @export var cooling_down_rate : int
 @export var explosion_size : int
 
+
 @onready var _firerate_delay : float = 60.0 / firerate
 @onready var _firerate_delay_tenth : float = _firerate_delay / 10
 
 @onready var _bullets_in_magazine : int = magazine_size if magazine_size > 0 else -1
 
 @onready var _reload_time_tenth : float = reload_time / 10.0
+
 
 var _firerate_cooldown : float
 var _reload_cooldown : float

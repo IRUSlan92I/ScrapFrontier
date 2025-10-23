@@ -29,6 +29,7 @@ offset_bottom = 166.0
 [node name="ContinueButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("2_vy7sn")
 shortcut = SubResource("Shortcut_lgp46")
 text = "CONTINUE"
@@ -36,6 +37,7 @@ text = "CONTINUE"
 [node name="MainMenuButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("2_vy7sn")
 text = "MAIN MENU"
 

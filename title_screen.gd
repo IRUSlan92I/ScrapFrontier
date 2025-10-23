@@ -1,8 +1,15 @@
 extends Node
 
+
+const MainMenu = preload("res://menu/main_menu.tscn")
+const Options = preload("res://menu/options.tscn")
+const Credits = preload("res://menu/credits.tscn")
+
+
 signal continue_game
 signal new_game
 signal quit_game
+
 
 var _current_scene: Node
 
@@ -15,7 +22,7 @@ func _show_main_menu() -> void:
 	if _current_scene != null:
 		_current_scene.queue_free()
 	
-	var scene : Node = load("res://menu/main_menu.tscn").instantiate()
+	var scene := MainMenu.instantiate()
 	add_child(scene)
 	scene.continue_game.connect(_continue_game)
 	scene.new_game.connect(_new_game)
@@ -40,7 +47,7 @@ func _show_options() -> void:
 	if _current_scene != null:
 		_current_scene.queue_free()
 	
-	var scene : Node = load("res://menu/options.tscn").instantiate()
+	var scene := Options.instantiate()
 	add_child(scene)
 	scene.show_main_menu.connect(_show_main_menu)
 	scene.show_credits.connect(_show_credits)
@@ -51,7 +58,7 @@ func _show_credits() -> void:
 	if _current_scene != null:
 		_current_scene.queue_free()
 	
-	var scene : Node = load("res://menu/credits.tscn").instantiate()
+	var scene := Credits.instantiate()
 	add_child(scene)
 	scene.show_main_menu.connect(_show_main_menu)
 	_current_scene = scene

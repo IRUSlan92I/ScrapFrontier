@@ -1,9 +1,11 @@
 extends Node
 
+
 signal continue_game
 signal new_game
 signal quit_game
 signal show_options
+
 
 func _ready() -> void:
 	_init_focus()
