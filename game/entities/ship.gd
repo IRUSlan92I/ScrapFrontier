@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const Weapon = preload("res://game/entities/weapon.tscn")
+const Weapon = preload("res://game/entities/weapons/weapon.tscn")
 
 
 @export var size : Vector2:
