@@ -16,3 +16,7 @@ func shoot() -> void
 
 @abstract
 func reload() -> void
+
+
+@abstract
+func get_process_percent() -> int

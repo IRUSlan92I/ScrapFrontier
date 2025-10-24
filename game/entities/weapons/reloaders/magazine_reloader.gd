@@ -15,7 +15,7 @@ extends AbstractReloader
 
 var _bullets_in_magazine : int
 var _reload_time_tenth : float
-var _cooldown : float
+var _countdown : float
 
 
 func _ready() -> void:
@@ -24,9 +24,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if _cooldown > 0:
-		_cooldown -= delta
-		if _cooldown <= 0:
+	if _countdown > 0:
+		_countdown -= delta
+		if _countdown <= 0:
 			_bullets_in_magazine = magazine_size
 
 
@@ -43,10 +43,13 @@ func shoot() -> void:
 
 
 func reload() -> void:
-	if _cooldown > 0 or _bullets_in_magazine == magazine_size: return
-	print("reload")
+	if _countdown > 0 or _bullets_in_magazine == magazine_size: return
 	var random_delay := _random.randf_range(-_reload_time_tenth, _reload_time_tenth)
-	_cooldown = reload_time + random_delay
+	_countdown = reload_time + random_delay
+
+
+func get_process_percent() -> int:
+	return 100 - int(_countdown * 100 / reload_time)
 
 
 func _calculate_bullets_in_magazine() -> void:

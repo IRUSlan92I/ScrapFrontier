@@ -34,6 +34,10 @@ func reload() -> void:
 	pass
 
 
+func get_process_percent() -> int:
+	return 100 - int(_cooldown * 100 / _delay)
+
+
 func _calculate_delay() -> void:
 	_delay = 60.0 / firerate
 	_delay_tenth = _delay / 10

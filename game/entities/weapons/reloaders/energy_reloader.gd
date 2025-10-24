@@ -52,6 +52,10 @@ func reload() -> void:
 	pass
 
 
+func get_process_percent() -> int:
+	return 100 - int(_heat * 100 / heat_capacity)
+
+
 func _calculate_critical_heat() -> void:
 	_critical_heat = heat_capacity - heat_per_shot
 
