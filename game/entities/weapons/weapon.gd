@@ -2,12 +2,9 @@ extends Node2D
 
 
 @export var damage : int
-@export var explosion_size : int
-@export var bullet_velocity : int
-@export var bullet_acceleration : int
 @export var bullet_per_shot : int
 @export var sector_angle : int
-@export var distance : int
+@export var Projectile : AbstractProjectile
 @export var reloaders : Array[AbstractReloader]
 
 
@@ -30,7 +27,6 @@ func _init() -> void:
 	#energy_reloader.cooling_down_rate = 1000
 	#reloaders.append(energy_reloader)
 	#add_child(energy_reloader)
-
 
 
 func _ready() -> void:

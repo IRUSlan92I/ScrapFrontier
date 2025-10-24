@@ -32,7 +32,7 @@ func _ready() -> void:
 	_calculate_cool()
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if _heat > 0:
 		_heat -= _cool_per_sec * delta
 		if _heat < 0:

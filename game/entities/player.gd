@@ -8,7 +8,7 @@ var position : Vector2:
 		return $Ship.position
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	$Ship.accelerate(input_direction, delta)
 	
