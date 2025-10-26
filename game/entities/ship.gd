@@ -19,7 +19,7 @@ const Weapon = preload("res://game/entities/weapons/weapon.tscn")
 @export var deceleration : int
 @export var max_speed : int
 
-@onready var weapons : Array:
+@onready var weapons : Array[Weapon]:
 	set(value):
 		pass
 	get:
