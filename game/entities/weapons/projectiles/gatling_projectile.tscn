@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnoiv8hdgossf"]
+
+[ext_resource type="Script" uid="uid://ctmjb3nkxrepu" path="res://game/entities/weapons/projectiles/projectile.gd" id="1_2ltai"]
+
+[node name="GatlingProjectile" type="CharacterBody2D"]
+script = ExtResource("1_2ltai")
+damage = 6
+speed = 600
+direction = Vector2(1, 0)
+metadata/_custom_type_script = "uid://ctmjb3nkxrepu"
