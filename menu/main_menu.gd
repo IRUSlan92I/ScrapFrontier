@@ -7,13 +7,16 @@ signal quit_game
 signal show_options
 
 
+@onready var continue_button := $%ContinueButton
+
+
 func _ready() -> void:
 	_init_focus()
 	_setup_neighbors()
 
 
 func _init_focus() -> void:
-	if $%ContinueButton.disabled:
+	if continue_button.disabled:
 		$%StartButton.grab_focus()
 	else:
 		$%ContinueButton.grab_focus()

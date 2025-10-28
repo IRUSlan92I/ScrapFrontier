@@ -5,8 +5,11 @@ extends Node2D
 @export var damage : int
 @export var bullet_per_shot : int
 @export var sector_angle : int
-@export var Projectile : AbstractProjectile
+#@export var Projectile : AbstractProjectile
 @export var reloaders : Array[AbstractReloader]
+
+
+@onready var sprite := $Sprite2D
 
 
 func _init() -> void:
@@ -33,7 +36,7 @@ func _init() -> void:
 func _ready() -> void:
 	var texture := PlaceholderTexture2D.new()
 	texture.size = Vector2(10, 7)
-	$Sprite2D.texture = texture
+	sprite.texture = texture
 
 
 func shoot() -> void:

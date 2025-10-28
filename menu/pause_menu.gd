@@ -1,6 +1,10 @@
 extends Node
 
 
+@onready var continue_button := $%ContinueButton
+@onready var main_menu_button := $%MainMenuButton
+
+
 signal continue_game
 signal show_main_menu
 
@@ -11,12 +15,12 @@ func _ready() -> void:
 
 
 func _init_focus() -> void:
-	$%ContinueButton.grab_focus()
+	continue_button.grab_focus()
 
 
 func _setup_neighbors() -> void:
-	$%ContinueButton.focus_neighbor_top = $%MainMenuButton.get_path()
-	$%MainMenuButton.focus_neighbor_bottom = $%ContinueButton.get_path()
+	continue_button.focus_neighbor_top = main_menu_button.get_path()
+	main_menu_button.focus_neighbor_bottom = continue_button.get_path()
 
 
 func _on_continue_button_pressed() -> void:

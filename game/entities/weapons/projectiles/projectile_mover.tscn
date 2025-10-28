@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bohp8yx6cldgc"]
+
+[ext_resource type="Script" uid="uid://ctmjb3nkxrepu" path="res://game/entities/weapons/projectiles/projectile_mover.gd" id="1_4tgfk"]
+
+[node name="ProjectileMover" type="Node"]
+script = ExtResource("1_4tgfk")

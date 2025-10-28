@@ -1,17 +1,18 @@
 extends CharacterBody2D
 
 
-const Weapon = preload("res://game/entities/weapons/weapon.tscn")
+@onready var sprite := $Sprite2D
+@onready var colision := $CollisionShape2D
 
 
 @export var size : Vector2:
 	set(value):
 		size = value
-		if $Sprite2D.texture:
-			$Sprite2D.texture.size = value
-		$CollisionShape2D.shape.radius = 0.9 * minf(size.x, size.y)/2
-		$CollisionShape2D.shape.height = 0.9 * maxf(size.x, size.y)
-		$CollisionShape2D.rotation = 0.0 if size.x < size.y else PI/2
+		if sprite.texture:
+			sprite.texture.size = value
+		colision.shape.radius = 0.9 * minf(size.x, size.y)/2
+		colision.shape.height = 0.9 * maxf(size.x, size.y)
+		colision.rotation = 0.0 if size.x < size.y else PI/2
 	get:
 		return size
 
@@ -29,11 +30,12 @@ const Weapon = preload("res://game/entities/weapons/weapon.tscn")
 func _ready() -> void:
 	var texture := PlaceholderTexture2D.new()
 	texture.size = size
-	$Sprite2D.texture = texture
+	sprite.texture = texture
 	
+	const WEAPON = preload("res://game/entities/weapons/weapon.tscn")
 	var weapons_by_offset := {
-		8: Weapon.instantiate(),
-		-8: Weapon.instantiate(),
+		8: WEAPON.instantiate(),
+		-8: WEAPON.instantiate(),
 	}
 	for offset : int in weapons_by_offset:
 		var weapon : Node2D = weapons_by_offset[offset]

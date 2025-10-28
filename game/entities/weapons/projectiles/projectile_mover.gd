@@ -1,7 +1,7 @@
-class_name ProjectileMover
 extends Node
 
 
+signal velocity_updated(new_velocity: Vector2)
 signal destroyed
 
 
@@ -19,7 +19,11 @@ var velocity : Vector2:
 	get:
 		return _velocity
 
-var _velocity : Vector2
+var _velocity : Vector2:
+	set(value):
+		_velocity = value
+		velocity_updated.emit(_velocity)
+
 var _traveled_distance: float
 var _livetime: float
 
