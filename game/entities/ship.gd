@@ -8,11 +8,12 @@ extends CharacterBody2D
 @export var size : Vector2:
 	set(value):
 		size = value
-		if sprite.texture:
+		if sprite and sprite.texture:
 			sprite.texture.size = value
-		colision.shape.radius = 0.9 * minf(size.x, size.y)/2
-		colision.shape.height = 0.9 * maxf(size.x, size.y)
-		colision.rotation = 0.0 if size.x < size.y else PI/2
+		if colision:
+			colision.shape.radius = 0.9 * minf(size.x, size.y)/2
+			colision.shape.height = 0.9 * maxf(size.x, size.y)
+			colision.rotation = 0.0 if size.x < size.y else PI/2
 	get:
 		return size
 

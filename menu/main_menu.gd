@@ -8,6 +8,8 @@ signal show_options
 
 
 @onready var continue_button := $%ContinueButton
+@onready var start_button := $%StartButton
+@onready var quit_button := $%QuitButton
 
 
 func _ready() -> void:
@@ -17,20 +19,20 @@ func _ready() -> void:
 
 func _init_focus() -> void:
 	if continue_button.disabled:
-		$%StartButton.grab_focus()
+		start_button.grab_focus()
 	else:
-		$%ContinueButton.grab_focus()
+		continue_button.grab_focus()
 
 
 func _setup_neighbors() -> void:
-	if $%ContinueButton.disabled:
-		$%ContinueButton.focus_neighbor_top = ""
-		$%StartButton.focus_neighbor_top = $%QuitButton.get_path()
-		$%QuitButton.focus_neighbor_bottom = $%StartButton.get_path()
+	if continue_button.disabled:
+		continue_button.focus_neighbor_top = ""
+		start_button.focus_neighbor_top = quit_button.get_path()
+		quit_button.focus_neighbor_bottom = start_button.get_path()
 	else:
-		$%ContinueButton.focus_neighbor_top = $%QuitButton.get_path()
-		$%StartButton.focus_neighbor_top = ""
-		$%QuitButton.focus_neighbor_bottom = $%ContinueButton.get_path()
+		continue_button.focus_neighbor_top = quit_button.get_path()
+		start_button.focus_neighbor_top = ""
+		quit_button.focus_neighbor_bottom = continue_button.get_path()
 
 
 func _on_continue_button_pressed() -> void:

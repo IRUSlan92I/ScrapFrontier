@@ -36,12 +36,12 @@ func _update_window_factor_disabled() -> void:
 	window_factor_button.disabled = SettingsManager.fullscreen
 
 
-func _on_fullscreen_button_toggled(toggled: bool) -> void:
+func _on_fullscreen_check_button_toggled(toggled: bool) -> void:
 	SettingsManager.fullscreen = toggled
 	_update_window_factor_disabled()
 
 
-func _on_window_factor_button_item_selected(index: int) -> void:
+func _on_window_factor_option_button_item_selected(index: int) -> void:
 	if not SettingsManager.fullscreen:
 		SettingsManager.window_factor = index
 
