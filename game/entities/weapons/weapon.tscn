@@ -4,5 +4,9 @@
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_4oq3a")
+belonging = null
+damage = null
+bullet_per_shot = null
+sector_angle = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

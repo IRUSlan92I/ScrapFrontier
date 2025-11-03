@@ -7,7 +7,3 @@ func _ready() -> void:
 	$Sprite2D.texture = texture
 	
 	super._ready()
-
-
-func _physics_process(delta: float) -> void:
-	move(delta)

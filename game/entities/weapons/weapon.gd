@@ -2,6 +2,11 @@ class_name Weapon
 extends Node2D
 
 
+enum Belonging { PLAYER, ENEMY }
+
+
+@export var belonging: Belonging
+
 @export var damage : int
 @export var bullet_per_shot : int
 @export var sector_angle : int
@@ -41,10 +46,17 @@ func _ready() -> void:
 
 func shoot() -> void:
 	if not _can_shoot(): return
-	print("shot")
 	
 	var projectile := preload("res://game/entities/weapons/projectiles/gatling_projectile.tscn").instantiate()
-	projectile.direction = Vector2.RIGHT
+	
+	match belonging:
+		Belonging.PLAYER:
+			projectile.direction = Vector2.RIGHT
+			projectile.collide_enemies = true
+		Belonging.ENEMY:
+			projectile.direction = Vector2.LEFT
+			projectile.collide_player = true
+	
 	add_child(projectile)
 	
 	for reloader in reloaders:
