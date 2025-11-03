@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnoiv8hdgossf"]
+[gd_scene load_steps=3 format=3 uid="uid://cnoiv8hdgossf"]
 
 [ext_resource type="Script" uid="uid://rtsf1n0djorp" path="res://game/entities/weapons/projectiles/gatling_projectile.gd" id="1_xq7oi"]
-[ext_resource type="PackedScene" uid="uid://bohp8yx6cldgc" path="res://game/entities/weapons/projectiles/projectile_mover.tscn" id="2_jnl7n"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5a440"]
-radius = 4.0
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xq7oi"]
+size = Vector2(4, 4)
 
 [node name="GatlingProjectile" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_xq7oi")
+damage = 6
+speed = 600
 metadata/_custom_type_script = "uid://ctmjb3nkxrepu"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_xq7oi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_5a440")
-
-[node name="ProjectileMover" parent="." instance=ExtResource("2_jnl7n")]

@@ -23,8 +23,8 @@ func _physics_process(delta: float) -> void:
 	for index : int in weapon_actions:
 		if index >= weapons.size(): break
 		
-		if Input.is_action_pressed(weapon_actions[index][0], true):
+		if Input.is_action_pressed(weapon_actions[index][0]):
 			ship.shoot(weapons[index])
 		
-		if Input.is_action_pressed(weapon_actions[index][1], true):
+		if Input.is_action_pressed(weapon_actions[index][1]):
 			ship.reload(weapons[index])

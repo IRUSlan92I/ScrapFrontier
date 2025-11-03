@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 
 
 func can_shoot() -> bool:
-	return _bullets_in_magazine > 0
+	return _countdown <= 0
 
 
 func shoot() -> void:
@@ -46,6 +46,7 @@ func reload() -> void:
 	if _countdown > 0 or _bullets_in_magazine == magazine_size: return
 	var random_delay := _random.randf_range(-_reload_time_tenth, _reload_time_tenth)
 	_countdown = reload_time + random_delay
+	print("reload")
 
 
 func get_process_percent() -> int:

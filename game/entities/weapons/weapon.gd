@@ -20,8 +20,8 @@ func _init() -> void:
 	add_child(firerate_reloader)
 	
 	var magazine_reloader := preload("res://game/entities/weapons/reloaders/magazine_reloader.gd").new()
-	magazine_reloader.magazine_size = 5
-	magazine_reloader.reload_time = 3
+	magazine_reloader.magazine_size = 300
+	magazine_reloader.reload_time = 2
 	reloaders.append(magazine_reloader)
 	add_child(magazine_reloader)
 	
@@ -42,6 +42,11 @@ func _ready() -> void:
 func shoot() -> void:
 	if not _can_shoot(): return
 	print("shot")
+	
+	var projectile := preload("res://game/entities/weapons/projectiles/gatling_projectile.tscn").instantiate()
+	projectile.direction = Vector2.RIGHT
+	add_child(projectile)
+	
 	for reloader in reloaders:
 		reloader.shoot()
 
