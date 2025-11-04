@@ -11,7 +11,7 @@ collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_hycpq")
 damage = 45
-speed = 300
+speed = 900
 metadata/_custom_type_script = "uid://ctmjb3nkxrepu"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

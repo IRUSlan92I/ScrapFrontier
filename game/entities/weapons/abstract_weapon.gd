@@ -40,7 +40,8 @@ func shoot() -> void:
 			projectile.direction = Vector2.LEFT
 			projectile.collide_player = true
 	
-	add_child(projectile)
+	projectile.global_position = global_position
+	get_tree().current_scene.add_child(projectile)
 	
 	for reloader in _reloaders:
 		reloader.shoot()
