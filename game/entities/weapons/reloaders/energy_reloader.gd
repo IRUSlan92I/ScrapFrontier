@@ -1,4 +1,5 @@
 extends AbstractReloader
+class_name EnergyReloader
 
 
 @export var heat_per_shot : int:
@@ -32,7 +33,7 @@ func _ready() -> void:
 	_calculate_cool()
 
 
-func _physics_process(delta: float) -> void:
+func process(delta: float) -> void:
 	if _heat > 0:
 		_heat -= _cool_per_sec * delta
 		if _heat < 0:

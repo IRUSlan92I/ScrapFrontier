@@ -1,9 +1,13 @@
 @abstract
+extends Resource
 class_name AbstractReloader
-extends Node
 
 
 var _random := RandomNumberGenerator.new()
+
+
+@abstract
+func process(delta: float) -> void
 
 
 @abstract

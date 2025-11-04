@@ -1,4 +1,5 @@
 extends AbstractReloader
+class_name FirerateReloader
 
 
 @export var firerate : int:
@@ -16,7 +17,7 @@ func _ready() -> void:
 	_calculate_delay()
 
 
-func _physics_process(delta: float) -> void:
+func process(delta: float) -> void:
 	if _cooldown > 0:
 		_cooldown -= delta
 

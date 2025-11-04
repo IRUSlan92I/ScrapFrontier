@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	ship.accelerate(input_direction, delta)
 	
-	var weapons : Array[Weapon] = ship.weapons
+	var weapons : Array[AbstractWeapon] = ship.weapons
 	var weapon_actions := {
 		0: ["shoot_weapon_1", "reload_weapon_1"],
 		1: ["shoot_weapon_2", "reload_weapon_2"]

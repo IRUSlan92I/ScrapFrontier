@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpd6qm3e3wbjx"]
+
+[ext_resource type="Script" uid="uid://n3h1e3pj02g0" path="res://game/entities/weapons/railgun/railgun_projectile.gd" id="1_hycpq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hycpq"]
+radius = 2.0
+
+[node name="RailgunProjectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_hycpq")
+damage = 45
+speed = 300
+metadata/_custom_type_script = "uid://ctmjb3nkxrepu"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hycpq")

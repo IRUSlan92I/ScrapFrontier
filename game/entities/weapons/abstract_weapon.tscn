@@ -1,0 +1,23 @@
+[gd_scene load_steps=8 format=3 uid="uid://1o2ta17yc5bp"]
+
+[ext_resource type="Script" uid="uid://dpqxs8hlql2o0" path="res://game/entities/weapons/abstract_weapon.gd" id="1_x30ps"]
+[ext_resource type="PackedScene" uid="uid://cnoiv8hdgossf" path="res://game/entities/weapons/gatling_gun/gatling_projectile.tscn" id="2_7kmqt"]
+[ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/entities/weapons/reloaders/abstract_reloader.gd" id="3_x30ps"]
+[ext_resource type="Script" uid="uid://d2gfhnlbqxsoq" path="res://game/entities/weapons/reloaders/magazine_reloader.gd" id="4_7kmqt"]
+[ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/entities/weapons/reloaders/firerate_reloader.gd" id="5_jj42u"]
+
+[sub_resource type="Resource" id="Resource_xi513"]
+script = ExtResource("4_7kmqt")
+magazine_size = 5
+reload_time = 2
+metadata/_custom_type_script = "uid://d2gfhnlbqxsoq"
+
+[sub_resource type="Resource" id="Resource_kq1js"]
+script = ExtResource("5_jj42u")
+firerate = 120
+metadata/_custom_type_script = "uid://b255rb32vc6co"
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_x30ps")
+Projectile = ExtResource("2_7kmqt")
+reloaders = Array[ExtResource("3_x30ps")]([SubResource("Resource_xi513"), SubResource("Resource_kq1js")])

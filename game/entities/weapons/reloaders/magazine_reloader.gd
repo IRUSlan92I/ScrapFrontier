@@ -1,4 +1,5 @@
 extends AbstractReloader
+class_name MagazineReloader
 
 
 @export var magazine_size : int:
@@ -23,7 +24,7 @@ func _ready() -> void:
 	_calculate_reload_time_tenth()
 
 
-func _physics_process(delta: float) -> void:
+func process(delta: float) -> void:
 	if _countdown > 0:
 		_countdown -= delta
 		if _countdown <= 0:

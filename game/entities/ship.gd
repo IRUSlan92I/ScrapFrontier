@@ -21,7 +21,7 @@ extends CharacterBody2D
 @export var deceleration : int
 @export var max_speed : int
 
-@onready var weapons : Array[Weapon]:
+@onready var weapons : Array[AbstractWeapon]:
 	set(value):
 		pass
 	get:
@@ -33,10 +33,11 @@ func _ready() -> void:
 	texture.size = size
 	sprite.texture = texture
 	
-	const WEAPON = preload("res://game/entities/weapons/weapon.tscn")
+	const GATLING = preload("res://game/entities/weapons/gatling_gun/gatling_gun.tscn")
+	const RAILGUN = preload("res://game/entities/weapons/railgun/railgun.tscn")
 	var weapons_by_offset := {
-		8: WEAPON.instantiate(),
-		-8: WEAPON.instantiate(),
+		8: GATLING.instantiate(),
+		-8: RAILGUN.instantiate(),
 	}
 	for offset : int in weapons_by_offset:
 		var weapon : Node2D = weapons_by_offset[offset]
