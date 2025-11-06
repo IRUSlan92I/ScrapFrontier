@@ -17,10 +17,10 @@ const INITIAL_DELAY = 1.0
 
 
 var _target_delay : float
-var _current_delay : float
+var _current_delay : float = INITIAL_DELAY
 var _delay_decrement : float
 var _cooldown : float
-var _last_delta : float = 1
+var _last_delta : float
 
 
 func _ready() -> void:
