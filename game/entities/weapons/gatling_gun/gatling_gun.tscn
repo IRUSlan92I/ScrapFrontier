@@ -3,13 +3,14 @@
 [ext_resource type="Script" uid="uid://c1bsvmj7xhnxe" path="res://game/entities/weapons/gatling_gun/gatling_gun.gd" id="1_irb3o"]
 [ext_resource type="PackedScene" uid="uid://cnoiv8hdgossf" path="res://game/entities/weapons/gatling_gun/gatling_projectile.tscn" id="2_kifyy"]
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/entities/weapons/reloaders/abstract_reloader.gd" id="3_lpe3m"]
-[ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/entities/weapons/reloaders/firerate_reloader.gd" id="4_uk8wm"]
+[ext_resource type="Script" uid="uid://oslebeau3f4b" path="res://game/entities/weapons/reloaders/gatling_reloader.gd" id="4_irb3o"]
 [ext_resource type="Script" uid="uid://d2gfhnlbqxsoq" path="res://game/entities/weapons/reloaders/magazine_reloader.gd" id="5_376q2"]
 
-[sub_resource type="Resource" id="Resource_83oj5"]
-script = ExtResource("4_uk8wm")
+[sub_resource type="Resource" id="Resource_kifyy"]
+script = ExtResource("4_irb3o")
 firerate = 600
-metadata/_custom_type_script = "uid://b255rb32vc6co"
+spin_out_time = 3
+metadata/_custom_type_script = "uid://oslebeau3f4b"
 
 [sub_resource type="Resource" id="Resource_6px3v"]
 script = ExtResource("5_376q2")
@@ -20,7 +21,7 @@ metadata/_custom_type_script = "uid://d2gfhnlbqxsoq"
 [node name="GatlingGun" type="Node2D"]
 script = ExtResource("1_irb3o")
 Projectile = ExtResource("2_kifyy")
-reloaders = Array[ExtResource("3_lpe3m")]([SubResource("Resource_83oj5"), SubResource("Resource_6px3v")])
+reloaders = Array[ExtResource("3_lpe3m")]([SubResource("Resource_kifyy"), SubResource("Resource_6px3v")])
 metadata/_custom_type_script = "uid://dpqxs8hlql2o0"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
