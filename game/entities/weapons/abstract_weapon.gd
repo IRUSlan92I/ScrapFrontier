@@ -7,9 +7,8 @@ enum Belonging { PLAYER, ENEMY }
 
 @export var belonging: Belonging
 
-@export var damage : int
-@export var bullet_per_shot : int
-@export var sector_angle : int
+@export var bullet_per_shot : int = 1
+@export var sector_angle : int = 0
 @export var Projectile : PackedScene
 @export var reloaders : Array[AbstractReloader]
 
@@ -30,7 +29,17 @@ func _physics_process(delta: float) -> void:
 func shoot() -> void:
 	if not _can_shoot(): return
 	
+	for i in range(bullet_per_shot):
+		var projectile := _create_projectile()
+		get_tree().current_scene.add_child(projectile)
+	
+	for reloader in _reloaders:
+		reloader.shoot()
+
+
+func _create_projectile() -> Node:
 	var projectile := Projectile.instantiate()
+	projectile.global_position = global_position
 	
 	match belonging:
 		Belonging.PLAYER:
@@ -40,11 +49,12 @@ func shoot() -> void:
 			projectile.direction = Vector2.LEFT
 			projectile.collide_player = true
 	
-	projectile.global_position = global_position
-	get_tree().current_scene.add_child(projectile)
+	if sector_angle > 0:
+		var sector_rad := deg_to_rad(sector_angle)
+		var random_angle := randfn(0.0, sector_rad / 6.0)
+		projectile.direction = projectile.direction.rotated(random_angle)
 	
-	for reloader in _reloaders:
-		reloader.shoot()
+	return projectile
 
 
 func reload() -> void:

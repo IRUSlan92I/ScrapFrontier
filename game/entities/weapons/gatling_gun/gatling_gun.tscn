@@ -20,6 +20,7 @@ metadata/_custom_type_script = "uid://d2gfhnlbqxsoq"
 
 [node name="GatlingGun" type="Node2D"]
 script = ExtResource("1_irb3o")
+sector_angle = 5
 Projectile = ExtResource("2_kifyy")
 reloaders = Array[ExtResource("3_lpe3m")]([SubResource("Resource_kifyy"), SubResource("Resource_6px3v")])
 metadata/_custom_type_script = "uid://dpqxs8hlql2o0"

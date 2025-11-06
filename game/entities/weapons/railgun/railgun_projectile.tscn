@@ -12,6 +12,7 @@ motion_mode = 1
 script = ExtResource("1_hycpq")
 damage = 45
 speed = 900
+piercing = 1
 metadata/_custom_type_script = "uid://ctmjb3nkxrepu"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
