@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=3 uid="uid://c67jhwocoevkv"]
+
+[ext_resource type="Script" uid="uid://bxr150at8ul2a" path="res://game/entities/weapons/laser/laser.gd" id="1_pki4x"]
+[ext_resource type="PackedScene" uid="uid://d31js2vi7dlit" path="res://game/entities/weapons/laser/laser_projectile.tscn" id="2_fecho"]
+[ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_c1wcw"]
+[ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_cl0br"]
+[ext_resource type="Script" uid="uid://dxk56xdihfw4m" path="res://game/reloaders/energy_reloader.gd" id="5_l3tgo"]
+
+[sub_resource type="Resource" id="Resource_77vow"]
+script = ExtResource("4_cl0br")
+firerate = 3000
+metadata/_custom_type_script = "uid://b255rb32vc6co"
+
+[sub_resource type="Resource" id="Resource_nwpae"]
+script = ExtResource("5_l3tgo")
+heat_per_shot = 2
+heat_capacity = 1000
+cooling_down_rate = 2500
+metadata/_custom_type_script = "uid://dxk56xdihfw4m"
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_pki4x")
+Projectile = ExtResource("2_fecho")
+reloaders = Array[ExtResource("3_c1wcw")]([SubResource("Resource_77vow"), SubResource("Resource_nwpae")])
+metadata/_custom_type_script = "uid://dpqxs8hlql2o0"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

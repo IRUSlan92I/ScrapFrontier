@@ -31,7 +31,7 @@ func _ready() -> void:
 	_update_texture_size()
 	_update_collision_shape()
 	
-	const GATLING = preload("res://game/entities/weapons/gatling_gun/gatling_gun.tscn")
+	const GATLING = preload("res://game/entities/weapons/gatling/gatling.tscn")
 	const RAILGUN = preload("res://game/entities/weapons/railgun/railgun.tscn")
 	var weapons_by_offset := {
 		8: GATLING.instantiate(),

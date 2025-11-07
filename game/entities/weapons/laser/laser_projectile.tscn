@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d31js2vi7dlit"]
+
+[ext_resource type="Script" uid="uid://bdxq4aflhc8vd" path="res://game/entities/weapons/laser/laser_projectile.gd" id="1_3a8fg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3a8fg"]
+size = Vector2(4, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3a8fg"]
+radius = 1.0
+
+[node name="LaserProjectile" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_3a8fg")
+damage = 1
+speed = 240
+metadata/_custom_type_script = "uid://ctmjb3nkxrepu"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_3a8fg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3a8fg")

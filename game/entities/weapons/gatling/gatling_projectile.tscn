@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnoiv8hdgossf"]
 
-[ext_resource type="Script" uid="uid://rtsf1n0djorp" path="res://game/entities/weapons/gatling_gun/gatling_projectile.gd" id="1_xq7oi"]
+[ext_resource type="Script" uid="uid://rtsf1n0djorp" path="res://game/entities/weapons/gatling/gatling_projectile.gd" id="1_xq7oi"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xq7oi"]
 size = Vector2(4, 4)

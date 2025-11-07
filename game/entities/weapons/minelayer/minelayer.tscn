@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://beddohbuop7d0"]
+
+[ext_resource type="Script" uid="uid://c3ckkpjaef5jn" path="res://game/entities/weapons/minelayer/minelayer.gd" id="1_12l3k"]
+[ext_resource type="PackedScene" uid="uid://dh46vqucky3bo" path="res://game/entities/weapons/minelayer/minelayer_projectile.tscn" id="2_7y446"]
+[ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_uotj8"]
+[ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_fbmxv"]
+
+[sub_resource type="Resource" id="Resource_vl21o"]
+script = ExtResource("4_fbmxv")
+firerate = 40
+metadata/_custom_type_script = "uid://b255rb32vc6co"
+
+[node name="Minelayer" type="Node2D"]
+script = ExtResource("1_12l3k")
+sector_angle = 10
+Projectile = ExtResource("2_7y446")
+reloaders = Array[ExtResource("3_uotj8")]([SubResource("Resource_vl21o")])
+metadata/_custom_type_script = "uid://dpqxs8hlql2o0"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

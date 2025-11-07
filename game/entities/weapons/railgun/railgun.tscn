@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://drnofu4ium56e" path="res://game/entities/weapons/railgun/railgun.gd" id="1_5nhwg"]
 [ext_resource type="PackedScene" uid="uid://dpd6qm3e3wbjx" path="res://game/entities/weapons/railgun/railgun_projectile.tscn" id="2_cbsia"]
-[ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/entities/weapons/reloaders/abstract_reloader.gd" id="3_qxka8"]
-[ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/entities/weapons/reloaders/firerate_reloader.gd" id="4_igknv"]
-[ext_resource type="Script" uid="uid://d2gfhnlbqxsoq" path="res://game/entities/weapons/reloaders/magazine_reloader.gd" id="5_buejq"]
+[ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_qxka8"]
+[ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_igknv"]
+[ext_resource type="Script" uid="uid://d2gfhnlbqxsoq" path="res://game/reloaders/magazine_reloader.gd" id="5_buejq"]
 
 [sub_resource type="Resource" id="Resource_6wi8i"]
 script = ExtResource("4_igknv")
