@@ -2,13 +2,13 @@ extends AbstractReloader
 class_name MagazineReloader
 
 
-@export var magazine_size : int:
+@export_range(1, 500) var magazine_size : int = 1:
 	set(value):
 		magazine_size = value
 		_calculate_bullets_in_magazine()
 
 
-@export var reload_time : int:
+@export_range(1, 60) var reload_time : int = 1:
 	set(value):
 		reload_time = value
 		_calculate_reload_time_tenth()
@@ -47,7 +47,6 @@ func reload() -> void:
 	if _countdown > 0 or _bullets_in_magazine == magazine_size: return
 	var random_delay := _random.randf_range(-_reload_time_tenth, _reload_time_tenth)
 	_countdown = reload_time + random_delay
-	print("reload")
 
 
 func get_process_percent() -> int:

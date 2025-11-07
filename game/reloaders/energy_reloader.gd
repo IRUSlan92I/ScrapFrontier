@@ -2,19 +2,19 @@ extends AbstractReloader
 class_name EnergyReloader
 
 
-@export var heat_per_shot : int:
+@export_range(1, 250) var heat_per_shot : int = 1:
 	set(value):
 		heat_per_shot = value
 		_calculate_critical_heat()
 
 
-@export var heat_capacity : int:
+@export_range(1, 2500) var heat_capacity : int = 1:
 	set(value):
 		heat_capacity = value
 		_calculate_critical_heat()
 
 
-@export var cooling_down_rate : int:
+@export_range(1, 5000) var cooling_down_rate : int = 1:
 	set(value):
 		cooling_down_rate = value
 		_calculate_cool()

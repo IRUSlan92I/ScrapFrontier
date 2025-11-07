@@ -1,28 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://mhar8dm1ni73"]
+[gd_scene load_steps=9 format=3 uid="uid://cj1jclfterepm"]
 
-[ext_resource type="Script" uid="uid://cu6ck2oqqdem8" path="res://game/entities/weapons/plasma/plasma.gd" id="1_pkk8e"]
-[ext_resource type="PackedScene" uid="uid://b2sd3ur65gpwh" path="res://game/entities/weapons/plasma/plasma_projectile.tscn" id="2_yluvp"]
+[ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_pkk8e"]
+[ext_resource type="Script" uid="uid://cu6ck2oqqdem8" path="res://game/entities/weapons/plasma/plasma.gd" id="2_fnsb7"]
+[ext_resource type="PackedScene" uid="uid://cgvb0hjrl5h4s" path="res://game/entities/weapons/plasma/plasma_projectile.tscn" id="2_yluvp"]
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_fnsb7"]
 [ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_gpth1"]
 [ext_resource type="Script" uid="uid://dxk56xdihfw4m" path="res://game/reloaders/energy_reloader.gd" id="5_daaq0"]
 
-[sub_resource type="Resource" id="Resource_d5x03"]
+[sub_resource type="Resource" id="Resource_yluvp"]
 script = ExtResource("4_gpth1")
 firerate = 150
 metadata/_custom_type_script = "uid://b255rb32vc6co"
 
-[sub_resource type="Resource" id="Resource_028m2"]
+[sub_resource type="Resource" id="Resource_fnsb7"]
 script = ExtResource("5_daaq0")
 heat_per_shot = 35
 heat_capacity = 1000
 cooling_down_rate = 1000
 metadata/_custom_type_script = "uid://dxk56xdihfw4m"
 
-[node name="Plasma" type="Node2D"]
-script = ExtResource("1_pkk8e")
+[node name="Plasma" instance=ExtResource("1_pkk8e")]
+script = ExtResource("2_fnsb7")
 sector_angle = 2
 Projectile = ExtResource("2_yluvp")
-reloaders = Array[ExtResource("3_fnsb7")]([SubResource("Resource_d5x03"), SubResource("Resource_028m2")])
-metadata/_custom_type_script = "uid://dpqxs8hlql2o0"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+reloaders = Array[ExtResource("3_fnsb7")]([SubResource("Resource_yluvp"), SubResource("Resource_fnsb7")])

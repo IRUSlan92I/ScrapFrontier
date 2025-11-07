@@ -1,28 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4vvw741175tj"]
+[gd_scene load_steps=9 format=3 uid="uid://c4mlppn5i55bp"]
 
+[ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_gblx7"]
 [ext_resource type="Script" uid="uid://c1bsvmj7xhnxe" path="res://game/entities/weapons/gatling/gatling.gd" id="1_kg6du"]
-[ext_resource type="PackedScene" uid="uid://cnoiv8hdgossf" path="res://game/entities/weapons/gatling/gatling_projectile.tscn" id="2_ylc0n"]
+[ext_resource type="PackedScene" uid="uid://yfvluap3uy1r" path="res://game/entities/weapons/gatling/gatling_projectile.tscn" id="2_ylc0n"]
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_uucc4"]
 [ext_resource type="Script" uid="uid://oslebeau3f4b" path="res://game/reloaders/gatling_reloader.gd" id="4_g81jq"]
 [ext_resource type="Script" uid="uid://d2gfhnlbqxsoq" path="res://game/reloaders/magazine_reloader.gd" id="5_tjfs0"]
 
-[sub_resource type="Resource" id="Resource_kifyy"]
+[sub_resource type="Resource" id="Resource_kg6du"]
 script = ExtResource("4_g81jq")
 firerate = 600
 spin_out_time = 3
 metadata/_custom_type_script = "uid://oslebeau3f4b"
 
-[sub_resource type="Resource" id="Resource_6px3v"]
+[sub_resource type="Resource" id="Resource_ylc0n"]
 script = ExtResource("5_tjfs0")
-magazine_size = 300
+magazine_size = 150
 reload_time = 2
 metadata/_custom_type_script = "uid://d2gfhnlbqxsoq"
 
-[node name="GatlingGun" type="Node2D"]
+[node name="Gatling" instance=ExtResource("1_gblx7")]
 script = ExtResource("1_kg6du")
 sector_angle = 5
 Projectile = ExtResource("2_ylc0n")
-reloaders = Array[ExtResource("3_uucc4")]([SubResource("Resource_kifyy"), SubResource("Resource_6px3v")])
-metadata/_custom_type_script = "uid://dpqxs8hlql2o0"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+reloaders = Array[ExtResource("3_uucc4")]([SubResource("Resource_kg6du"), SubResource("Resource_ylc0n")])

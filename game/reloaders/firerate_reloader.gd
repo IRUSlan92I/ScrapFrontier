@@ -2,7 +2,7 @@ extends AbstractReloader
 class_name FirerateReloader
 
 
-@export var firerate : int:
+@export_range(1, 1500) var firerate : int = 1:
 	set(value):
 		firerate = value
 		_calculate_delay()

@@ -1,26 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://4ikdkhxoiwox"]
+[gd_scene load_steps=9 format=3 uid="uid://do6h77gmnreho"]
 
+[ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_0nxvu"]
 [ext_resource type="Script" uid="uid://drnofu4ium56e" path="res://game/entities/weapons/railgun/railgun.gd" id="1_5nhwg"]
-[ext_resource type="PackedScene" uid="uid://dpd6qm3e3wbjx" path="res://game/entities/weapons/railgun/railgun_projectile.tscn" id="2_cbsia"]
+[ext_resource type="PackedScene" uid="uid://bab3bopsw74cb" path="res://game/entities/weapons/railgun/railgun_projectile.tscn" id="2_cbsia"]
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_qxka8"]
 [ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_igknv"]
 [ext_resource type="Script" uid="uid://d2gfhnlbqxsoq" path="res://game/reloaders/magazine_reloader.gd" id="5_buejq"]
 
-[sub_resource type="Resource" id="Resource_6wi8i"]
+[sub_resource type="Resource" id="Resource_5nhwg"]
 script = ExtResource("4_igknv")
 firerate = 60
 metadata/_custom_type_script = "uid://b255rb32vc6co"
 
-[sub_resource type="Resource" id="Resource_2gq2l"]
+[sub_resource type="Resource" id="Resource_cbsia"]
 script = ExtResource("5_buejq")
 magazine_size = 30
 reload_time = 7
 metadata/_custom_type_script = "uid://d2gfhnlbqxsoq"
 
-[node name="Railgun" type="Node2D"]
+[node name="Railgun" instance=ExtResource("1_0nxvu")]
 script = ExtResource("1_5nhwg")
 Projectile = ExtResource("2_cbsia")
-reloaders = Array[ExtResource("3_qxka8")]([SubResource("Resource_6wi8i"), SubResource("Resource_2gq2l")])
-metadata/_custom_type_script = "uid://dpqxs8hlql2o0"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+reloaders = Array[ExtResource("3_qxka8")]([SubResource("Resource_5nhwg"), SubResource("Resource_cbsia")])

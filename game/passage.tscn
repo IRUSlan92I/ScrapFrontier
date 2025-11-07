@@ -32,30 +32,3 @@ position = Vector2(640, 180)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_ltkyg")
 one_way_collision = true
-
-[node name="ProjectileBorder" type="StaticBody2D" parent="."]
-collision_layer = 32
-collision_mask = 0
-
-[node name="CollisionTop" type="CollisionShape2D" parent="ProjectileBorder"]
-position = Vector2(320, -50)
-rotation = 3.1415927
-shape = SubResource("WorldBoundaryShape2D_ltkyg")
-one_way_collision = true
-
-[node name="CollisionBottom" type="CollisionShape2D" parent="ProjectileBorder"]
-position = Vector2(320, 410)
-shape = SubResource("WorldBoundaryShape2D_ltkyg")
-one_way_collision = true
-
-[node name="CollisionLeft" type="CollisionShape2D" parent="ProjectileBorder"]
-position = Vector2(-50, 180)
-rotation = 1.5707964
-shape = SubResource("WorldBoundaryShape2D_ltkyg")
-one_way_collision = true
-
-[node name="CollisionRight" type="CollisionShape2D" parent="ProjectileBorder"]
-position = Vector2(690, 180)
-rotation = -1.5707964
-shape = SubResource("WorldBoundaryShape2D_ltkyg")
-one_way_collision = true

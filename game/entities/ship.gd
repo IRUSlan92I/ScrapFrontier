@@ -17,6 +17,7 @@ extends CharacterBody2D
 @export var deceleration : int
 @export var max_speed : int
 
+
 @onready var weapons : Array[AbstractWeapon]:
 	set(value):
 		pass
@@ -73,7 +74,7 @@ func _get_new_speed(accel: float, decel: float, current_speed: float) -> float:
 
 func shoot(weapon: Node) -> void:
 	if weapon in weapons:
-		weapon.shoot()
+		weapon.shoot(velocity)
 
 
 func reload(weapon: Node) -> void:

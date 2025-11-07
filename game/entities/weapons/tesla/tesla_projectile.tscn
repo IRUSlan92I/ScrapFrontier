@@ -1,22 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmvxynbo5bpyw"]
+[gd_scene load_steps=5 format=3 uid="uid://bi64687wtxi4d"]
 
-[ext_resource type="Script" uid="uid://bxcoa2eps0tt1" path="res://game/entities/weapons/tesla/tesla_projectile.gd" id="1_1oexk"]
+[ext_resource type="PackedScene" uid="uid://ybkqaynvpcjm" path="res://game/entities/weapons/abstract_projectile.tscn" id="1_1oexk"]
+[ext_resource type="Script" uid="uid://bxcoa2eps0tt1" path="res://game/entities/weapons/tesla/tesla_projectile.gd" id="2_q73is"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1oexk"]
 size = Vector2(12, 12)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1oexk"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_q73is"]
 radius = 5.0
 
-[node name="TeslaProjectile" type="CharacterBody2D"]
-motion_mode = 1
-script = ExtResource("1_1oexk")
+[node name="TeslaProjectile" instance=ExtResource("1_1oexk")]
+script = ExtResource("2_q73is")
 damage = 45
 speed = 900
-metadata/_custom_type_script = "uid://ctmjb3nkxrepu"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="0"]
 texture = SubResource("PlaceholderTexture2D_1oexk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_1oexk")
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_q73is")

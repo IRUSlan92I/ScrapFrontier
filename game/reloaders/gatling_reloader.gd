@@ -2,12 +2,12 @@ extends AbstractReloader
 class_name GatlingReloader
 
 
-@export var firerate : int:
+@export_range(1, 1500) var firerate : int = 1:
 	set(value):
 		firerate = value
 		_calculate_delay()
 
-@export var spin_out_time : int:
+@export_range(1, 25) var spin_out_time : int = 1:
 	set(value):
 		spin_out_time = value
 		_calculate_delay()

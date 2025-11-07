@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2sd3ur65gpwh"]
+[gd_scene load_steps=5 format=3 uid="uid://cgvb0hjrl5h4s"]
 
-[ext_resource type="Script" uid="uid://bu5sjoh4hwkhn" path="res://game/entities/weapons/plasma/plasma_projectile.gd" id="1_x58hw"]
+[ext_resource type="PackedScene" uid="uid://ybkqaynvpcjm" path="res://game/entities/weapons/abstract_projectile.tscn" id="1_x58hw"]
+[ext_resource type="Script" uid="uid://bu5sjoh4hwkhn" path="res://game/entities/weapons/plasma/plasma_projectile.gd" id="2_0deih"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x58hw"]
 size = Vector2(6, 6)
@@ -8,15 +9,13 @@ size = Vector2(6, 6)
 [sub_resource type="CircleShape2D" id="CircleShape2D_x58hw"]
 radius = 2.0
 
-[node name="PlasmaProjectile" type="CharacterBody2D"]
-motion_mode = 1
-script = ExtResource("1_x58hw")
+[node name="PlasmaProjectile" instance=ExtResource("1_x58hw")]
+script = ExtResource("2_0deih")
 damage = 20
 speed = 450
-metadata/_custom_type_script = "uid://ctmjb3nkxrepu"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="0"]
 texture = SubResource("PlaceholderTexture2D_x58hw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_x58hw")
