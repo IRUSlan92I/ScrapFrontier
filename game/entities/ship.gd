@@ -2,18 +2,14 @@ extends CharacterBody2D
 
 
 @onready var sprite := $Sprite2D
-@onready var colision := $CollisionShape2D
+@onready var collision := $CollisionShape2D
 
 
 @export var size : Vector2:
 	set(value):
 		size = value
-		if sprite and sprite.texture:
-			sprite.texture.size = value
-		if colision:
-			colision.shape.radius = 0.9 * minf(size.x, size.y)/2
-			colision.shape.height = 0.9 * maxf(size.x, size.y)
-			colision.rotation = 0.0 if size.x < size.y else PI/2
+		_update_texture_size()
+		_update_collision_shape()
 	get:
 		return size
 
@@ -30,8 +26,10 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	var texture := PlaceholderTexture2D.new()
-	texture.size = size
 	sprite.texture = texture
+	
+	_update_texture_size()
+	_update_collision_shape()
 	
 	const GATLING = preload("res://game/entities/weapons/gatling_gun/gatling_gun.tscn")
 	const RAILGUN = preload("res://game/entities/weapons/railgun/railgun.tscn")
@@ -81,3 +79,15 @@ func shoot(weapon: Node) -> void:
 func reload(weapon: Node) -> void:
 	if weapon in weapons:
 		weapon.reload()
+
+
+func _update_texture_size() -> void:
+	if sprite and sprite.texture:
+		sprite.texture.size = size
+
+func _update_collision_shape() -> void:
+	if collision:
+		collision.shape.radius = 0.9 * minf(size.x, size.y)/2
+		collision.shape.height = 0.9 * maxf(size.x, size.y)
+		collision.rotation = 0.0 if size.x < size.y else PI/2
+		
