@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://jvyagshykmgb"]
+[gd_scene load_steps=4 format=3 uid="uid://jvyagshykmgb"]
 
 [ext_resource type="Script" uid="uid://cesibaqtrgotl" path="res://game/entities/ship.gd" id="1_6isjb"]
+[ext_resource type="Script" uid="uid://d3g4xbq45qmpr" path="res://game/health_system/health.gd" id="2_n766o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6isjb"]
 height = 20.0
@@ -16,3 +17,11 @@ script = ExtResource("1_6isjb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6isjb")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_n766o")
+max_shield = 1000
+max_armor = 1000
+max_hull = 1000
+
+[connection signal="depleted" from="Health" to="." method="_on_health_depleted"]

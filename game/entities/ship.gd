@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 
+signal  destroyed
+
+
 @onready var sprite := $Sprite2D
 @onready var collision := $CollisionShape2D
 
@@ -13,9 +16,9 @@ extends CharacterBody2D
 	get:
 		return size
 
-@export var acceleration : int
-@export var deceleration : int
-@export var max_speed : int
+@export_range(0, 250) var acceleration : int = 0
+@export_range(0, 250) var deceleration : int = 0
+@export_range(0, 250) var max_speed : int = 0
 
 
 @onready var weapons : Array[AbstractWeapon]:
@@ -86,9 +89,15 @@ func _update_texture_size() -> void:
 	if sprite and sprite.texture:
 		sprite.texture.size = size
 
+
 func _update_collision_shape() -> void:
 	if collision:
 		collision.shape.radius = 0.9 * minf(size.x, size.y)/2
 		collision.shape.height = 0.9 * maxf(size.x, size.y)
 		collision.rotation = 0.0 if size.x < size.y else PI/2
 		
+
+
+func _on_health_depleted() -> void:
+	destroyed.emit()
+	queue_free()

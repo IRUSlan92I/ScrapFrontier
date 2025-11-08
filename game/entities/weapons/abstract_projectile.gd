@@ -8,9 +8,9 @@ const PLAYER_PROJECTILE_LAYER = 8
 const ENEMY_PROJECTILE_LAYER = 16
 
 
-@export_range(0, 250) var damage : int
-@export_range(0, 1000) var speed : int
-@export_range(0, 10) var piercing: int
+@export var damage : AbstractDamage
+@export_range(0, 1000) var speed : int = 0
+@export_range(0, 10) var piercing: int = 0
 
 
 var direction : Vector2
@@ -57,3 +57,10 @@ func _apply_collision_mask() -> void:
 
 func _on_screen_exited() -> void:
 	queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	var health_component : Health = body.find_child("Health")
+	if health_component and health_component.has_method("apply_damage"):
+		health_component.apply_damage(damage)
+		queue_free()

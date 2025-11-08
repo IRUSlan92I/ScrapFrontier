@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi64687wtxi4d"]
+[gd_scene load_steps=7 format=3 uid="uid://bi64687wtxi4d"]
 
 [ext_resource type="PackedScene" uid="uid://ybkqaynvpcjm" path="res://game/entities/weapons/abstract_projectile.tscn" id="1_1oexk"]
 [ext_resource type="Script" uid="uid://bxcoa2eps0tt1" path="res://game/entities/weapons/tesla/tesla_projectile.gd" id="2_q73is"]
+[ext_resource type="Script" uid="uid://c27v705giygv4" path="res://game/health_system/damage/energy_damage.gd" id="3_l65ib"]
+
+[sub_resource type="Resource" id="Resource_1121u"]
+script = ExtResource("3_l65ib")
+value = 45
+metadata/_custom_type_script = "uid://c27v705giygv4"
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1oexk"]
 size = Vector2(12, 12)
@@ -11,7 +17,7 @@ radius = 5.0
 
 [node name="TeslaProjectile" instance=ExtResource("1_1oexk")]
 script = ExtResource("2_q73is")
-damage = 45
+damage = SubResource("Resource_1121u")
 speed = 900
 
 [node name="Sprite2D" parent="." index="0"]

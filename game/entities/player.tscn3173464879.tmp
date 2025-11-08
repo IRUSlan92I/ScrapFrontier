@@ -13,5 +13,3 @@ size = Vector2(48, 32)
 acceleration = 92
 deceleration = 46
 max_speed = 92
-
-[connection signal="destroyed" from="Ship" to="." method="_on_ship_destroyed"]

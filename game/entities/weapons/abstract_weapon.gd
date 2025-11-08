@@ -6,7 +6,7 @@ enum Belonging { PLAYER, ENEMY }
 
 
 @export_range(1, 100) var bullet_per_shot : int = 1
-@export_range(0, 360) var sector_angle : int
+@export_range(0, 360) var sector_angle : int = 0
 
 @export var Projectile : PackedScene
 @export var reloaders : Array[AbstractReloader]

@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dukgbg13ujkv2"]
+[gd_scene load_steps=7 format=3 uid="uid://dukgbg13ujkv2"]
 
 [ext_resource type="PackedScene" uid="uid://ybkqaynvpcjm" path="res://game/entities/weapons/abstract_projectile.tscn" id="1_0mcat"]
 [ext_resource type="Script" uid="uid://dkvur5bdwg3sr" path="res://game/entities/weapons/launcher/launcher_projectile.gd" id="2_6hdsf"]
+[ext_resource type="Script" uid="uid://dftb7hg5f06b5" path="res://game/health_system/damage/explosion_damage.gd" id="3_ycnsk"]
+
+[sub_resource type="Resource" id="Resource_kxgpk"]
+script = ExtResource("3_ycnsk")
+value = 24
+metadata/_custom_type_script = "uid://dftb7hg5f06b5"
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0mcat"]
 size = Vector2(4, 8)
@@ -12,7 +18,7 @@ height = 6.0
 
 [node name="LauncherProjectile" instance=ExtResource("1_0mcat")]
 script = ExtResource("2_6hdsf")
-damage = 24
+damage = SubResource("Resource_kxgpk")
 speed = 300
 
 [node name="Sprite2D" parent="." index="0"]

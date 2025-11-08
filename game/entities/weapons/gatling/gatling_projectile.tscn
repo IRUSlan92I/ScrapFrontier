@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://yfvluap3uy1r"]
+[gd_scene load_steps=7 format=3 uid="uid://yfvluap3uy1r"]
 
 [ext_resource type="PackedScene" uid="uid://ybkqaynvpcjm" path="res://game/entities/weapons/abstract_projectile.tscn" id="1_3tgt7"]
 [ext_resource type="Script" uid="uid://rtsf1n0djorp" path="res://game/entities/weapons/gatling/gatling_projectile.gd" id="2_hbgoq"]
+[ext_resource type="Script" uid="uid://bhqvk5cnjg5mv" path="res://game/health_system/damage/kinetic_damage.gd" id="3_2tbeq"]
+
+[sub_resource type="Resource" id="Resource_ndegg"]
+script = ExtResource("3_2tbeq")
+value = 6
+metadata/_custom_type_script = "uid://bhqvk5cnjg5mv"
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hbgoq"]
 size = Vector2(4, 4)
@@ -11,7 +17,7 @@ radius = 1.0
 
 [node name="GatlingProjectile" instance=ExtResource("1_3tgt7")]
 script = ExtResource("2_hbgoq")
-damage = 6
+damage = SubResource("Resource_ndegg")
 speed = 600
 
 [node name="Sprite2D" parent="." index="0"]

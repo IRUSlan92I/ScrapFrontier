@@ -28,3 +28,7 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_pressed(weapon_actions[index][1]):
 			ship.reload(weapons[index])
+
+
+func _on_ship_destroyed() -> void:
+	queue_free()
