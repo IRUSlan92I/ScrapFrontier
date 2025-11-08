@@ -48,11 +48,9 @@ func _create_projectile(ship_velocity: Vector2) -> Node:
 		Belonging.PLAYER:
 			projectile.direction = Vector2.RIGHT
 			projectile.collide_enemies = true
-			projectile.rotation_degrees = 90
 		Belonging.ENEMY:
 			projectile.direction = Vector2.LEFT
 			projectile.collide_player = true
-			projectile.rotation_degrees = -90
 	
 	if sector_angle > 0:
 		var sector_rad := deg_to_rad(sector_angle)

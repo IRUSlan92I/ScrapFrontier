@@ -20,7 +20,7 @@ script = ExtResource("2_je1a2")
 damage = SubResource("Resource_bytws")
 speed = 500
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = SubResource("PlaceholderTexture2D_je1a2")
 
 [node name="CollisionShape2D" parent="." index="1"]

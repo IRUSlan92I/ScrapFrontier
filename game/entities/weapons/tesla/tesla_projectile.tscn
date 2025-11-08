@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://c27v705giygv4"
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1oexk"]
 size = Vector2(12, 12)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q73is"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_l65ib"]
 radius = 5.0
 
 [node name="TeslaProjectile" instance=ExtResource("1_1oexk")]
@@ -20,8 +20,8 @@ script = ExtResource("2_q73is")
 damage = SubResource("Resource_1121u")
 speed = 900
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = SubResource("PlaceholderTexture2D_1oexk")
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_q73is")
+shape = SubResource("CircleShape2D_l65ib")

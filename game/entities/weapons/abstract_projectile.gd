@@ -13,6 +13,9 @@ const ENEMY_PROJECTILE_LAYER = 16
 @export_range(0, 10) var piercing: int = 0
 
 
+@onready var collision : CollisionShape2D = $CollisionShape2D
+
+
 var direction : Vector2
 var ship_velocity: Vector2
 
@@ -32,6 +35,8 @@ var _velocity: Vector2
 
 func _ready() -> void:
 	_velocity = direction.normalized() * speed + ship_velocity
+	_update_collision_rotation(_velocity)
+	
 	_apply_collision_mask()
 
 
@@ -53,6 +58,10 @@ func _apply_collision_mask() -> void:
 	else:
 		collision_layer &= ~PLAYER_PROJECTILE_LAYER
 		collision_mask &= ~ENEMY_LAYER
+
+
+func _update_collision_rotation(velocity: Vector2) -> void:
+	collision.rotation = velocity.angle() - 0.5 * PI
 
 
 func _on_screen_exited() -> void:

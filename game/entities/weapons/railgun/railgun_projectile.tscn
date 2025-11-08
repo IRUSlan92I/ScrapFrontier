@@ -1,19 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://bab3bopsw74cb"]
+[gd_scene load_steps=9 format=3 uid="uid://bab3bopsw74cb"]
 
 [ext_resource type="Script" uid="uid://n3h1e3pj02g0" path="res://game/entities/weapons/railgun/railgun_projectile.gd" id="1_hycpq"]
 [ext_resource type="PackedScene" uid="uid://ybkqaynvpcjm" path="res://game/entities/weapons/abstract_projectile.tscn" id="1_rfd1j"]
 [ext_resource type="Script" uid="uid://bhqvk5cnjg5mv" path="res://game/health_system/damage/kinetic_damage.gd" id="3_wbdf3"]
+[ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="4_u82jm"]
 
 [sub_resource type="Resource" id="Resource_u82jm"]
 script = ExtResource("3_wbdf3")
 value = 45
 metadata/_custom_type_script = "uid://bhqvk5cnjg5mv"
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_an7sy"]
-size = Vector2(6, 6)
+[sub_resource type="AtlasTexture" id="AtlasTexture_u82jm"]
+atlas = ExtResource("4_u82jm")
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rfd1j"]
-radius = 2.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_whmfh"]
+atlas = ExtResource("4_u82jm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u82jm"]
+radius = 1.0
+height = 4.0
 
 [node name="RailgunProjectile" instance=ExtResource("1_rfd1j")]
 script = ExtResource("1_hycpq")
@@ -21,8 +28,11 @@ damage = SubResource("Resource_u82jm")
 speed = 900
 piercing = 1
 
-[node name="Sprite2D" parent="." index="0"]
-texture = SubResource("PlaceholderTexture2D_an7sy")
+[node name="Sprite2D_Left" type="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_u82jm")
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_rfd1j")
+[node name="Sprite2D_Right" type="Sprite2D" parent="." index="1"]
+texture = SubResource("AtlasTexture_whmfh")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CapsuleShape2D_u82jm")

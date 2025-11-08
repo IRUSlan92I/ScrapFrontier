@@ -9,19 +9,20 @@ script = ExtResource("3_dlvdm")
 value = 20
 metadata/_custom_type_script = "uid://c27v705giygv4"
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x58hw"]
-size = Vector2(6, 6)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dlvdm"]
+size = Vector2(4, 6)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x58hw"]
-radius = 2.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5enq5"]
+radius = 1.0
+height = 4.0
 
 [node name="PlasmaProjectile" instance=ExtResource("1_x58hw")]
 script = ExtResource("2_0deih")
 damage = SubResource("Resource_5enq5")
 speed = 450
 
-[node name="Sprite2D" parent="." index="0"]
-texture = SubResource("PlaceholderTexture2D_x58hw")
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = SubResource("PlaceholderTexture2D_dlvdm")
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_x58hw")
+shape = SubResource("CapsuleShape2D_5enq5")

@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://4mkklqt1g14f"]
+[gd_scene load_steps=8 format=3 uid="uid://4mkklqt1g14f"]
 
 [ext_resource type="PackedScene" uid="uid://ybkqaynvpcjm" path="res://game/entities/weapons/abstract_projectile.tscn" id="1_ufc4r"]
 [ext_resource type="Script" uid="uid://76swcukelnii" path="res://game/entities/weapons/minelayer/minelayer_projectile.gd" id="2_hwwfa"]
 [ext_resource type="Script" uid="uid://dftb7hg5f06b5" path="res://game/health_system/damage/explosion_damage.gd" id="3_hll7s"]
+[ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="4_px1i2"]
 
 [sub_resource type="Resource" id="Resource_px1i2"]
 script = ExtResource("3_hll7s")
 value = 100
 metadata/_custom_type_script = "uid://dftb7hg5f06b5"
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ufc4r"]
-size = Vector2(16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckqco"]
+atlas = ExtResource("4_px1i2")
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ufc4r"]
 radius = 7.0
@@ -22,8 +24,8 @@ livetime = 60
 damage = SubResource("Resource_px1i2")
 speed = 200
 
-[node name="Sprite2D" parent="." index="0"]
-texture = SubResource("PlaceholderTexture2D_ufc4r")
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_ckqco")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_ufc4r")
