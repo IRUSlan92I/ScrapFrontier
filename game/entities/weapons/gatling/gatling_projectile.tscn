@@ -19,6 +19,7 @@ radius = 1.0
 script = ExtResource("2_hbgoq")
 damage = SubResource("Resource_ndegg")
 speed = 600
+piercing = 1
 
 [node name="Sprite2D" parent="." index="0"]
 texture = SubResource("PlaceholderTexture2D_hbgoq")

@@ -63,4 +63,7 @@ func _on_body_entered(body: Node2D) -> void:
 	var health_component : Health = body.find_child("Health")
 	if health_component and health_component.has_method("apply_damage"):
 		health_component.apply_damage(damage)
-		queue_free()
+		if piercing == 0:
+			queue_free()
+		else:
+			piercing -= 1
