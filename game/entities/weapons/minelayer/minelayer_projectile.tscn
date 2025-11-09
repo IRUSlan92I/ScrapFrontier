@@ -18,9 +18,10 @@ region = Rect2(0, 16, 16, 16)
 radius = 7.0
 
 [node name="MinelayerProjectile" instance=ExtResource("1_ufc4r")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("2_hwwfa")
 deceleration = 100
-livetime = 60
 damage = SubResource("Resource_px1i2")
 speed = 200
 
@@ -29,3 +30,10 @@ texture = SubResource("AtlasTexture_ckqco")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_ufc4r")
+
+[node name="LivetimeTimer" type="Timer" parent="." index="3"]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LivetimeTimer" to="." method="_on_livetime_timer_timeout"]

@@ -1,34 +1,25 @@
+class_name PlayerController
 extends Node
 
 
-@onready var ship := $Ship
+signal accelerate(direction: Vector2, delta: float)
+
+signal shoot(weapon_index: int)
+
+signal reload(weapon_index: int)
 
 
-var position : Vector2:
-	set(value):
-		ship.position = value
-	get:
-		return ship.position
-
-  
 func _physics_process(delta: float) -> void:
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	ship.accelerate(input_direction, delta)
+	accelerate.emit(input_direction, delta)
 	
-	var weapons : Array[AbstractWeapon] = ship.weapons
 	var weapon_actions := {
 		0: ["shoot_weapon_1", "reload_weapon_1"],
 		1: ["shoot_weapon_2", "reload_weapon_2"]
 	}
 	for index : int in weapon_actions:
-		if index >= weapons.size(): break
-		
 		if Input.is_action_pressed(weapon_actions[index][0]):
-			ship.shoot(weapons[index])
+			shoot.emit(index)
 		
 		if Input.is_action_pressed(weapon_actions[index][1]):
-			ship.reload(weapons[index])
-
-
-func _on_ship_destroyed() -> void:
-	queue_free()
+			reload.emit(index)

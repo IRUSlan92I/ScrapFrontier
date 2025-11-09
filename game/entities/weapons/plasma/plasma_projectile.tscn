@@ -10,13 +10,15 @@ value = 20
 metadata/_custom_type_script = "uid://c27v705giygv4"
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dlvdm"]
-size = Vector2(4, 6)
+size = Vector2(6, 4)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5enq5"]
 radius = 1.0
 height = 4.0
 
 [node name="PlasmaProjectile" instance=ExtResource("1_x58hw")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("2_0deih")
 damage = SubResource("Resource_5enq5")
 speed = 450

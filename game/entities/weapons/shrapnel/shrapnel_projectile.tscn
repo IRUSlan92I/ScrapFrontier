@@ -18,6 +18,8 @@ region = Rect2(48, 0, 16, 16)
 radius = 1.0
 
 [node name="ShrapnelProjectile" instance=ExtResource("1_yu2c6")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("2_2jiy6")
 max_distance = 350
 damage = SubResource("Resource_klguu")

@@ -16,6 +16,8 @@ size = Vector2(4, 4)
 radius = 1.0
 
 [node name="LaserProjectile" instance=ExtResource("1_3a8fg")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("2_je1a2")
 damage = SubResource("Resource_bytws")
 speed = 500

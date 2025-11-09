@@ -16,6 +16,8 @@ size = Vector2(12, 12)
 radius = 5.0
 
 [node name="TeslaProjectile" instance=ExtResource("1_1oexk")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("2_q73is")
 damage = SubResource("Resource_1121u")
 speed = 900

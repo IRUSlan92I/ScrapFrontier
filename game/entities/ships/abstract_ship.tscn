@@ -1,14 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://jvyagshykmgb"]
 
-[ext_resource type="Script" uid="uid://cesibaqtrgotl" path="res://game/entities/ship.gd" id="1_6isjb"]
+[ext_resource type="Script" uid="uid://cesibaqtrgotl" path="res://game/entities/ships/abstract_ship.gd" id="1_6isjb"]
 [ext_resource type="Script" uid="uid://d3g4xbq45qmpr" path="res://game/health_system/health.gd" id="2_n766o"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6isjb"]
-height = 20.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxtvk"]
 
-[node name="Ship" type="CharacterBody2D"]
+[node name="AbstractShip" type="CharacterBody2D"]
 disable_mode = 1
-collision_layer = 7
 motion_mode = 1
 wall_min_slide_angle = 3.1415927
 script = ExtResource("1_6isjb")
@@ -16,7 +14,7 @@ script = ExtResource("1_6isjb")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_6isjb")
+shape = SubResource("CircleShape2D_xxtvk")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_n766o")
