@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbf3kumeoqpba"]
+
+[ext_resource type="PackedScene" uid="uid://dwsn0lf1e3578" path="res://game/entities/ships/enemies/abstract_enemy_ship.tscn" id="1_lt1av"]
+[ext_resource type="Script" uid="uid://btcce3nflycrs" path="res://game/entities/ships/enemies/small/small_enemy_ship.gd" id="2_bw04d"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bw04d"]
+size = Vector2(32, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lopve"]
+radius = 7.0
+
+[node name="SmallEnemyShip" instance=ExtResource("1_lt1av")]
+script = ExtResource("2_bw04d")
+acceleration = 180
+deceleration = 80
+max_speed = 120
+weapon_positions = Array[Vector2]([Vector2(0, 0)])
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("PlaceholderTexture2D_bw04d")
+
+[node name="CollisionShape2D" parent="." index="1"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_lopve")
+
+[node name="Health" parent="." index="2"]
+max_hull = 50
+
+[connection signal="accelerate" from="EnemyController" to="." method="accelerate"]
+[connection signal="reload" from="EnemyController" to="." method="reload"]
+[connection signal="shoot" from="EnemyController" to="." method="shoot"]

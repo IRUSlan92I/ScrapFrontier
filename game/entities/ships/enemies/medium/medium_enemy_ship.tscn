@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cye5ndbh0ht7w"]
+
+[ext_resource type="PackedScene" uid="uid://dwsn0lf1e3578" path="res://game/entities/ships/enemies/abstract_enemy_ship.tscn" id="1_16owb"]
+[ext_resource type="Script" uid="uid://dcpqrdvp4nk82" path="res://game/entities/ships/enemies/medium/medium_enemy_ship.gd" id="2_dgwiy"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4jmkv"]
+size = Vector2(32, 48)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4jmkv"]
+radius = 15.0
+height = 46.0
+
+[node name="MediumEnemyShip" instance=ExtResource("1_16owb")]
+script = ExtResource("2_dgwiy")
+acceleration = 92
+deceleration = 46
+max_speed = 92
+weapon_positions = Array[Vector2]([Vector2(0, 10), Vector2(0, -10)])
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("PlaceholderTexture2D_4jmkv")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_4jmkv")
+
+[node name="Health" parent="." index="2"]
+max_hull = 100
+
+[connection signal="accelerate" from="EnemyController" to="." method="accelerate"]
+[connection signal="reload" from="EnemyController" to="." method="reload"]
+[connection signal="shoot" from="EnemyController" to="." method="shoot"]

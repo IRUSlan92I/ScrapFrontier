@@ -1,14 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://br074cqcnul3d"]
 
 [ext_resource type="PackedScene" uid="uid://jvyagshykmgb" path="res://game/entities/ships/abstract_ship.tscn" id="1_6otxb"]
-[ext_resource type="Script" uid="uid://ruxw1n03iq4i" path="res://game/entities/ships/player_ship.gd" id="2_625ti"]
+[ext_resource type="Script" uid="uid://ruxw1n03iq4i" path="res://game/entities/ships/player/player_ship.gd" id="2_625ti"]
 [ext_resource type="Script" uid="uid://dgevigih7owxd" path="res://game/controllers/player_controller.gd" id="3_dj8f1"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dj8f1"]
 size = Vector2(48, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dj8f1"]
-height = 20.0
+radius = 15.0
+height = 46.0
 
 [node name="PlayerShip" instance=ExtResource("1_6otxb")]
 collision_layer = 3
@@ -22,7 +23,11 @@ weapon_positions = Array[Vector2]([Vector2(0, 8), Vector2(0, -8)])
 texture = SubResource("PlaceholderTexture2D_dj8f1")
 
 [node name="CollisionShape2D" parent="." index="1"]
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_dj8f1")
+
+[node name="Health" parent="." index="2"]
+max_hull = 1000
 
 [node name="PlayerController" type="Node" parent="." index="3"]
 script = ExtResource("3_dj8f1")

@@ -18,8 +18,5 @@ shape = SubResource("CircleShape2D_xxtvk")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_n766o")
-max_shield = 1000
-max_armor = 1000
-max_hull = 1000
 
 [connection signal="depleted" from="Health" to="." method="_on_health_depleted"]
