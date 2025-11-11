@@ -39,12 +39,13 @@ text = "Ruslan Ignatov"
 layout_mode = 2
 alignment = 2
 
-[node name="MainMenuButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_nidem")
 shortcut = SubResource("Shortcut_nidem")
-text = "Main Menu"
+text = "Back"
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

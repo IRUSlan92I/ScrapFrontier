@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://2oavbr7oaihg"]
+
+[ext_resource type="Script" uid="uid://bqnepsuk13qo8" path="res://menu/title_screen.gd" id="1_lxdol"]
+[ext_resource type="PackedScene" uid="uid://bxlccevt52y70" path="res://menu/main_menu.tscn" id="2_o0rbc"]
+[ext_resource type="PackedScene" uid="uid://btr60idiit4y7" path="res://menu/options.tscn" id="3_88gnj"]
+[ext_resource type="PackedScene" uid="uid://c3q3g2647qc27" path="res://menu/credits.tscn" id="4_w1y3c"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lxdol")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_o0rbc")]
+layout_mode = 0
+
+[node name="Options" parent="." instance=ExtResource("3_88gnj")]
+layout_mode = 0
+
+[node name="Credits" parent="." instance=ExtResource("4_w1y3c")]
+layout_mode = 0
+
+[connection signal="continue_game" from="MainMenu" to="." method="_on_main_menu_continue_game"]
+[connection signal="new_game" from="MainMenu" to="." method="_on_main_menu_new_game"]
+[connection signal="quit_game" from="MainMenu" to="." method="_on_main_menu_quit_game"]
+[connection signal="show_options" from="MainMenu" to="." method="_on_main_menu_show_options"]
+[connection signal="back" from="Options" to="." method="_on_options_back"]
+[connection signal="show_credits" from="Options" to="." method="_on_options_show_credits"]
+[connection signal="back" from="Credits" to="." method="_on_credits_back"]

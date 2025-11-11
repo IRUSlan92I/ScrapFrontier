@@ -80,6 +80,7 @@ theme = ExtResource("2_1tdpy")
 shortcut = SubResource("Shortcut_1tdpy")
 text = "Back"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="toggled" from="VBoxContainer/OptionsGridContainer/FullscreenCheckButton" to="." method="_on_fullscreen_check_button_toggled"]
 [connection signal="item_selected" from="VBoxContainer/OptionsGridContainer/WindowFactorOptionButton" to="." method="_on_window_factor_option_button_item_selected"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

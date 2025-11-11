@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 
 @onready var continue_button := $%ContinueButton
@@ -10,6 +10,14 @@ signal show_main_menu
 
 
 func _ready() -> void:
+	_init_focus()
+	_setup_neighbors()
+
+
+func _on_visibility_changed() -> void:
+	if not is_node_ready(): return
+	if not visible: return
+	
 	_init_focus()
 	_setup_neighbors()
 

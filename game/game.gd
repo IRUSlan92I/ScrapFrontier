@@ -5,9 +5,6 @@ const Passage = preload("res://game/passage.tscn")
 const PauseMenu = preload("res://menu/pause_menu.tscn")
 
 
-signal show_main_menu
-
-
 var _pause_menu: Node
 var _current_passage: Node
 
@@ -26,7 +23,7 @@ func _create_pause_menu() -> void:
 	_pause_menu = PauseMenu.instantiate()
 	add_child(_pause_menu)
 	_pause_menu.continue_game.connect(_unpause_game)
-	_pause_menu.show_main_menu.connect(_show_main_menu)
+	_pause_menu.show_main_menu.connect(_show_title_screen)
 
 
 func _pause_game() -> void:
@@ -39,6 +36,6 @@ func _unpause_game() -> void:
 	_pause_menu.queue_free()
 
 
-func _show_main_menu() -> void:
+func _show_title_screen() -> void:
 	get_tree().paused = false
-	show_main_menu.emit()
+	get_tree().change_scene_to_file("res://menu/title_screen.tscn")

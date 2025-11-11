@@ -1,8 +1,8 @@
-extends Node
+extends Control
 
 
 signal show_credits
-signal show_main_menu
+signal back
 
 
 @onready var fullscreen_button := $%FullscreenCheckButton
@@ -15,7 +15,16 @@ func _ready() -> void:
 	_load_current_settings()
 	_init_focus()
 	_setup_neighbors()
+
+
+func _on_visibility_changed() -> void:
+	if not is_node_ready(): return
+	if not visible: return
 	
+	_load_current_settings()
+	_init_focus()
+	_setup_neighbors()
+
 
 func _init_focus() -> void:
 	fullscreen_button.grab_focus()
@@ -51,4 +60,4 @@ func _on_credits_button_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	show_main_menu.emit()
+	back.emit()
