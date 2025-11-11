@@ -23,6 +23,8 @@ func apply_damage(damage: AbstractDamage) -> void:
 		var damage_value := ceili(damage.value * damage.armor_damage_multiplier())
 		_armor = max(_armor - damage_value, 0)
 	else:
+		if _hull == 0: return
+		
 		var damage_value := ceili(damage.value * damage.hull_damage_multiplier())
 		_hull = max(_hull - damage_value, 0)
 		
