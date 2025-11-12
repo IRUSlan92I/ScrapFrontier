@@ -19,9 +19,9 @@ const ENEMY_PROJECTILE_LAYER = 16
 var direction : Vector2
 var ship_velocity: Vector2
 
-var collide_player: bool:
+var collide_players: bool:
 	set(value):
-		collide_player = value
+		collide_players = value
 		_apply_collision_mask()
 
 var collide_enemies: bool:
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _apply_collision_mask() -> void:
-	if collide_player:
+	if collide_players:
 		collision_layer |= ENEMY_PROJECTILE_LAYER
 		collision_mask |= PLAYER_LAYER
 	else:

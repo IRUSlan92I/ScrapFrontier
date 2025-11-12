@@ -45,7 +45,7 @@ func can_shoot() -> bool:
 
 
 func shoot() -> void:
-	var random_heat := _random.randf_range(-_cool_per_sec_tenth, _cool_per_sec_tenth)
+	var random_heat := randf_range(-_cool_per_sec_tenth, _cool_per_sec_tenth)
 	_heat += heat_per_shot + random_heat
 
 

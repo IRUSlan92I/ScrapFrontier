@@ -3,9 +3,6 @@ extends Resource
 class_name AbstractReloader
 
 
-var _random := RandomNumberGenerator.new()
-
-
 @abstract
 func process(delta: float) -> void
 

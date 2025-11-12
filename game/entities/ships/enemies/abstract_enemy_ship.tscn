@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://byicf1t0807pq" path="res://game/entities/ships/enemies/abstract_enemy_ship.gd" id="2_fwvrd"]
 [ext_resource type="Script" uid="uid://bs8qqj6yepfln" path="res://game/controllers/enemy_controller.gd" id="3_vfnhw"]
 
-[node name="AbstractEnemyShip" instance=ExtResource("1_28j6l")]
+[node name="AbstractEnemyShip" groups=["enemies"] instance=ExtResource("1_28j6l")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("2_fwvrd")

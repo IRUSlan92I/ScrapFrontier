@@ -45,7 +45,7 @@ func shoot() -> void:
 
 func reload() -> void:
 	if _countdown > 0 or _bullets_in_magazine == magazine_size: return
-	var random_delay := _random.randf_range(-_reload_time_tenth, _reload_time_tenth)
+	var random_delay := randf_range(-_reload_time_tenth, _reload_time_tenth)
 	_countdown = reload_time + random_delay
 
 

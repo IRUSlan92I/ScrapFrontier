@@ -11,7 +11,7 @@ size = Vector2(48, 32)
 radius = 15.0
 height = 46.0
 
-[node name="PlayerShip" instance=ExtResource("1_6otxb")]
+[node name="PlayerShip" groups=["players"] instance=ExtResource("1_6otxb")]
 collision_layer = 3
 script = ExtResource("2_625ti")
 acceleration = 92

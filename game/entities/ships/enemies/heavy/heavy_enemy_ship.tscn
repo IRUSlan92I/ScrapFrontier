@@ -26,7 +26,3 @@ shape = SubResource("CapsuleShape2D_cuapu")
 
 [node name="Health" parent="." index="2"]
 max_hull = 200
-
-[connection signal="accelerate" from="EnemyController" to="." method="accelerate"]
-[connection signal="reload" from="EnemyController" to="." method="reload"]
-[connection signal="shoot" from="EnemyController" to="." method="shoot"]
