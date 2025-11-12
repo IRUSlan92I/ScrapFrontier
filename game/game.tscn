@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl7m4rqyj8mck"]
+[gd_scene load_steps=4 format=3 uid="uid://dl7m4rqyj8mck"]
 
 [ext_resource type="Script" uid="uid://1wfu4iuddo25" path="res://game/game.gd" id="1_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://d34nh3lc1gpb" path="res://menu/pause_screen.tscn" id="2_h7iqs"]
+[ext_resource type="PackedScene" uid="uid://dgc0087kvarx6" path="res://game/passage.tscn" id="3_4fuuu"]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node2D"]
 script = ExtResource("1_l1rk1")
+
+[node name="PauseScreen" parent="." instance=ExtResource("2_h7iqs")]
+process_mode = 2
+
+[node name="Passage" parent="." instance=ExtResource("3_4fuuu")]
+
+[connection signal="continue_game" from="PauseScreen" to="." method="_on_pause_screen_continue_game"]
+[connection signal="show_main_menu" from="PauseScreen" to="." method="_on_pause_screen_show_main_menu"]

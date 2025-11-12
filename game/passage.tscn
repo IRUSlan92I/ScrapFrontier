@@ -4,7 +4,7 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ltkyg"]
 
-[node name="Passage" type="Node"]
+[node name="Passage" type="Node2D"]
 script = ExtResource("1_ltkyg")
 
 [node name="World" type="StaticBody2D" parent="."]

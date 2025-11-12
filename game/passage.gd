@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 
 const SMALL_ENEMY = preload("res://game/entities/ships/enemies/small/small_enemy_ship.tscn")

@@ -7,6 +7,7 @@ extends Control
 
 signal continue_game
 signal show_main_menu
+signal show_options
 
 
 func _ready() -> void:
@@ -33,6 +34,10 @@ func _setup_neighbors() -> void:
 
 func _on_continue_button_pressed() -> void:
 	continue_game.emit()
+
+
+func _on_options_button_pressed() -> void:
+	show_options.emit()
 
 
 func _on_main_menu_button_pressed() -> void:
