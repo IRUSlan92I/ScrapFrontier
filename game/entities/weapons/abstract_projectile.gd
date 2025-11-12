@@ -10,7 +10,6 @@ const ENEMY_PROJECTILE_LAYER = 16
 
 @export var damage : AbstractDamage
 @export_range(0, 1000) var speed : int = 0
-@export_range(0, 10) var piercing: int = 0
 
 
 @onready var collision : CollisionShape2D = $CollisionShape2D
@@ -72,7 +71,8 @@ func _on_body_entered(body: Node2D) -> void:
 	var health_component : Health = body.find_child("Health")
 	if health_component and health_component.has_method("apply_damage"):
 		health_component.apply_damage(damage)
-		if piercing == 0:
-			queue_free()
-		else:
-			piercing -= 1
+		_process_hit_for_projectile()
+
+
+func _process_hit_for_projectile() -> void:
+	queue_free()

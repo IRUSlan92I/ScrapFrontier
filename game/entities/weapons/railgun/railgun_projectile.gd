@@ -1,6 +1,9 @@
 extends AbstractProjectile
 
 
+@export_range(1, 10) var piercing: int = 1
+
+
 @onready var sprite_left := $Sprite2D_Left
 @onready var sprite_right := $Sprite2D_Right
 
@@ -19,3 +22,10 @@ func _update_sprite(velocity: Vector2) -> void:
 	else:
 		sprite_left.hide()
 		sprite_right.show()
+
+
+func _process_hit_for_projectile() -> void:
+	if piercing == 0:
+		queue_free()
+	else:
+		piercing -= 1
