@@ -1,3 +1,4 @@
+class_name RailgunProjectile
 extends AbstractProjectile
 
 
@@ -24,7 +25,7 @@ func _update_sprite(velocity: Vector2) -> void:
 		sprite_right.show()
 
 
-func _process_hit_for_projectile() -> void:
+func _process_hit_for_projectile(_collided_body: Node2D) -> void:
 	if piercing == 0:
 		queue_free()
 	else:

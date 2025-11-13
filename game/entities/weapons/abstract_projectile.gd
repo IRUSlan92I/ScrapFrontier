@@ -71,8 +71,8 @@ func _on_body_entered(body: Node2D) -> void:
 	var health_component : Health = body.find_child("Health")
 	if health_component and health_component.has_method("apply_damage"):
 		health_component.apply_damage(damage)
-		_process_hit_for_projectile()
+		_process_hit_for_projectile(body)
 
 
-func _process_hit_for_projectile() -> void:
+func _process_hit_for_projectile(_collided_body: Node2D) -> void:
 	queue_free()

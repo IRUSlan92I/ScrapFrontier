@@ -1,3 +1,4 @@
+class_name TeslaProjectile
 extends AbstractProjectile
 
 
@@ -10,9 +11,26 @@ extends AbstractProjectile
 @onready var jinkTimer : Timer = $JinkTimer
 
 
+var _collided_foes : Array[AbstractShip] = []
+
+
 func _ready() -> void:
+	damage = damage.duplicate()
 	super._ready()
 	_start_jink_timer()
+
+
+func _process_hit_for_projectile(collided_body: Node2D) -> void:
+	if collided_body is AbstractShip:
+		_collided_foes.append(collided_body)
+
+	damage.value = floor(damage.value/2.0)
+	
+	if damage.value == 0:
+		queue_free()
+	else:
+		_apply_random_deviation()
+		_start_jink_timer()
 
 
 func _start_jink_timer() -> void:
@@ -60,10 +78,16 @@ func _get_nearest_foe() -> AbstractShip:
 func _get_foes() -> Array[AbstractShip]:
 	var foes : Array[AbstractShip] = []
 	
-	if collide_enemies:
-		foes.append_array(get_tree().get_nodes_in_group("enemies"))
+	var flags_by_group : Dictionary[String, bool] = {
+		"enemies": collide_enemies,
+		"players": collide_players,
+	}
 	
-	if collide_players:
-		foes.append_array(get_tree().get_nodes_in_group("players"))
+	for group in flags_by_group:
+		if not flags_by_group[group]: continue
+		var nodes := get_tree().get_nodes_in_group(group)
+		for node in nodes:
+			if not node in _collided_foes:
+				foes.append(node)
 	
 	return foes

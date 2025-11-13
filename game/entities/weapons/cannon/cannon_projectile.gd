@@ -1,1 +1,2 @@
+class_name CannonProjectile
 extends AbstractProjectile

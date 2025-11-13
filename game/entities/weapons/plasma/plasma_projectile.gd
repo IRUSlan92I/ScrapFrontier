@@ -1,1 +1,2 @@
+class_name PlasmaProjectile
 extends AbstractProjectile

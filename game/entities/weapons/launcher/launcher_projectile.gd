@@ -1,3 +1,4 @@
+class_name LauncherProjectile
 extends AbstractProjectile
 
 
