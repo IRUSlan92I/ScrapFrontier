@@ -76,3 +76,34 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _process_hit_for_projectile(_collided_body: Node2D) -> void:
 	queue_free()
+
+
+func _get_nearest_foe(filter: Array[AbstractShip]) -> AbstractShip:
+	var nearest_foe : AbstractShip = null
+	var minimal_distance := 1000000
+	
+	for foe in _get_foes(filter):
+		var distance := floori(position.distance_to(foe.position))
+		if distance < minimal_distance:
+			minimal_distance = distance
+			nearest_foe = foe
+	
+	return nearest_foe
+
+
+func _get_foes(filter: Array[AbstractShip]) -> Array[AbstractShip]:
+	var foes : Array[AbstractShip] = []
+	
+	var flags_by_group : Dictionary[String, bool] = {
+		"enemies": collide_enemies,
+		"players": collide_players,
+	}
+	
+	for group in flags_by_group:
+		if not flags_by_group[group]: continue
+		var nodes := get_tree().get_nodes_in_group(group)
+		for node in nodes:
+			if not node in filter:
+				foes.append(node)
+	
+	return foes

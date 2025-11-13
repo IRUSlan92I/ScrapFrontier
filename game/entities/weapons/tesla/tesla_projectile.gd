@@ -39,7 +39,7 @@ func _start_jink_timer() -> void:
 
 
 func _on_jink_timer_timeout() -> void:
-	var foe := _get_nearest_foe()
+	var foe := _get_nearest_foe(_collided_foes)
 	if foe:
 		_target_foe(foe)
 		if position.distance_to(foe.position) > no_deviation_distance:
@@ -60,34 +60,3 @@ func _apply_random_deviation() -> void:
 	var deviation_rad := deg_to_rad(deviation_angle)
 	var random_angle := randfn(0.0, deviation_rad / 6.0)
 	_velocity = _velocity.rotated(random_angle)
-
-
-func _get_nearest_foe() -> AbstractShip:
-	var nearest_foe : AbstractShip = null
-	var minimal_distance := 1000000
-	
-	for foe in _get_foes():
-		var distance := floori(position.distance_to(foe.position))
-		if distance < minimal_distance:
-			minimal_distance = distance
-			nearest_foe = foe
-	
-	return nearest_foe
-
-
-func _get_foes() -> Array[AbstractShip]:
-	var foes : Array[AbstractShip] = []
-	
-	var flags_by_group : Dictionary[String, bool] = {
-		"enemies": collide_enemies,
-		"players": collide_players,
-	}
-	
-	for group in flags_by_group:
-		if not flags_by_group[group]: continue
-		var nodes := get_tree().get_nodes_in_group(group)
-		for node in nodes:
-			if not node in _collided_foes:
-				foes.append(node)
-	
-	return foes
