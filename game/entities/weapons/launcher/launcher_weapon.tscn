@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3l866fdqt7pf"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_sk5u1"]
-[ext_resource type="Script" uid="uid://lauvvj5xhbud" path="res://game/entities/weapons/launcher/launcher.gd" id="2_mxjpe"]
+[ext_resource type="Script" uid="uid://lauvvj5xhbud" path="res://game/entities/weapons/launcher/launcher_weapon.gd" id="2_mxjpe"]
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_1rkeb"]
 [ext_resource type="PackedScene" uid="uid://dukgbg13ujkv2" path="res://game/entities/weapons/launcher/launcher_projectile.tscn" id="3_fsoo2"]
 [ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_fsoo2"]

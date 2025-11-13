@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_xnbws"]
 [ext_resource type="PackedScene" uid="uid://cgi7wd84kjnyw" path="res://game/entities/weapons/cannon/cannon_projectile.tscn" id="2_2bjeu"]
-[ext_resource type="Script" uid="uid://db24dm76b1am7" path="res://game/entities/weapons/cannon/cannon.gd" id="2_ew5um"]
+[ext_resource type="Script" uid="uid://db24dm76b1am7" path="res://game/entities/weapons/cannon/cannon_weapon.gd" id="2_ew5um"]
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_7e2aj"]
 [ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_bv8g1"]
 

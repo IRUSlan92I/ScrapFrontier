@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://r7wnk762jbfy"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_xk300"]
-[ext_resource type="Script" uid="uid://gxwbsiicuqh5" path="res://game/entities/weapons/shrapnel/shrapnel.gd" id="2_1bd18"]
+[ext_resource type="Script" uid="uid://gxwbsiicuqh5" path="res://game/entities/weapons/shrapnel/shrapnel_weapon.gd" id="2_1bd18"]
 [ext_resource type="PackedScene" uid="uid://bsx23u3a2obbj" path="res://game/entities/weapons/shrapnel/shrapnel_projectile.tscn" id="2_xvd4y"]
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_tyrw7"]
 [ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_nfmol"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_12l3k"]
 [ext_resource type="PackedScene" uid="uid://4mkklqt1g14f" path="res://game/entities/weapons/minelayer/minelayer_projectile.tscn" id="2_7y446"]
-[ext_resource type="Script" uid="uid://c3ckkpjaef5jn" path="res://game/entities/weapons/minelayer/minelayer.gd" id="2_mmhtn"]
+[ext_resource type="Script" uid="uid://c3ckkpjaef5jn" path="res://game/entities/weapons/minelayer/minelayer_weapon.gd" id="2_mmhtn"]
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_uotj8"]
 [ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_fbmxv"]
 

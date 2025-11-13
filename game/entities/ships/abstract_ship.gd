@@ -2,15 +2,15 @@ class_name AbstractShip
 extends CharacterBody2D
 
 
-const CANNON = preload("res://game/entities/weapons/cannon/cannon.tscn")
-const GATLING = preload("res://game/entities/weapons/gatling/gatling.tscn")
-const LASER = preload("res://game/entities/weapons/laser/laser.tscn")
-const LAUNCHER = preload("res://game/entities/weapons/launcher/launcher.tscn")
-const MINELAYER = preload("res://game/entities/weapons/minelayer/minelayer.tscn")
-const PLASMA = preload("res://game/entities/weapons/plasma/plasma.tscn")
-const RAILGUN = preload("res://game/entities/weapons/railgun/railgun.tscn")
-const SHRAPNEL = preload("res://game/entities/weapons/shrapnel/shrapnel.tscn")
-const TESLA = preload("res://game/entities/weapons/tesla/tesla.tscn")
+const CANNON = preload("res://game/entities/weapons/cannon/cannon_weapon.tscn")
+const GATLING = preload("res://game/entities/weapons/gatling/gatling_weapon.tscn")
+const LASER = preload("res://game/entities/weapons/laser/laser_weapon.tscn")
+const LAUNCHER = preload("res://game/entities/weapons/launcher/launcher_weapon.tscn")
+const MINELAYER = preload("res://game/entities/weapons/minelayer/minelayer_weapon.tscn")
+const PLASMA = preload("res://game/entities/weapons/plasma/plasma_weapon.tscn")
+const RAILGUN = preload("res://game/entities/weapons/railgun/railgun_weapon.tscn")
+const SHRAPNEL = preload("res://game/entities/weapons/shrapnel/shrapnel_weapon.tscn")
+const TESLA = preload("res://game/entities/weapons/tesla/tesla_weapon.tscn")
 
 const WEAPONS := [
 	CANNON, GATLING, LASER,

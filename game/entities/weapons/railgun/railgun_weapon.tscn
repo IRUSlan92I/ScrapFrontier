@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://do6h77gmnreho"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_0nxvu"]
-[ext_resource type="Script" uid="uid://drnofu4ium56e" path="res://game/entities/weapons/railgun/railgun.gd" id="1_5nhwg"]
+[ext_resource type="Script" uid="uid://drnofu4ium56e" path="res://game/entities/weapons/railgun/railgun_weapon.gd" id="1_5nhwg"]
 [ext_resource type="PackedScene" uid="uid://bab3bopsw74cb" path="res://game/entities/weapons/railgun/railgun_projectile.tscn" id="2_cbsia"]
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_qxka8"]
 [ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_igknv"]

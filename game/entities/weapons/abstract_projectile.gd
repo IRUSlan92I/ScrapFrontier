@@ -78,7 +78,7 @@ func _process_hit_for_projectile(_collided_body: Node2D) -> void:
 	queue_free()
 
 
-func _get_nearest_foe(filter: Array[AbstractShip]) -> AbstractShip:
+func _get_nearest_foe(filter: Array[AbstractShip] = []) -> AbstractShip:
 	var nearest_foe : AbstractShip = null
 	var minimal_distance := 1000000
 	
@@ -91,7 +91,7 @@ func _get_nearest_foe(filter: Array[AbstractShip]) -> AbstractShip:
 	return nearest_foe
 
 
-func _get_foes(filter: Array[AbstractShip]) -> Array[AbstractShip]:
+func _get_foes(filter: Array[AbstractShip] = []) -> Array[AbstractShip]:
 	var foes : Array[AbstractShip] = []
 	
 	var flags_by_group : Dictionary[String, bool] = {

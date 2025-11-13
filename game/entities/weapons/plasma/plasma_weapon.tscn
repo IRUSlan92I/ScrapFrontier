@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cj1jclfterepm"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_pkk8e"]
-[ext_resource type="Script" uid="uid://cu6ck2oqqdem8" path="res://game/entities/weapons/plasma/plasma.gd" id="2_fnsb7"]
+[ext_resource type="Script" uid="uid://cu6ck2oqqdem8" path="res://game/entities/weapons/plasma/plasma_weapon.gd" id="2_fnsb7"]
 [ext_resource type="PackedScene" uid="uid://cgvb0hjrl5h4s" path="res://game/entities/weapons/plasma/plasma_projectile.tscn" id="2_yluvp"]
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_fnsb7"]
 [ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_gpth1"]

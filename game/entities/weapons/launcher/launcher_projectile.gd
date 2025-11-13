@@ -25,27 +25,30 @@ func _physics_process(delta: float) -> void:
 
 
 func _acquire_target() -> void:
-	target = _get_nearest_foe([])
+	target = _get_nearest_foe()
 
 
 func _apply_homing_guidance(delta: float) -> void:
 	if not target: return
 	
-	var max_rotation_speed := deg_to_rad(rotation_speed) * delta
+	var max_angle_change := deg_to_rad(rotation_speed) * delta
 	
-	var angle := (_velocity + position - target.position).angle()
+	var current_angle := _velocity.angle()
+	var target_angle := (target.position - position).angle()
 	
-	_velocity = _velocity.rotated(angle)
+	var angle_diff := wrapf(target_angle - current_angle, -PI, PI)
+	var angle_change := clampf(angle_diff, -max_angle_change, max_angle_change)
+	_velocity = _velocity.rotated(angle_change)
 	
 	_update_sprite(_velocity)
 
 
 func _update_sprite(velocity: Vector2) -> void:
-	var sector := 360.0 / sprites.size()
-	var angle := rad_to_deg(velocity.angle())
-	var bisector := floori(angle + sector * 0.5)
+	var sector := TAU / sprites.size()
+	var angle := velocity.angle()
+	var bisector := angle + sector * 0.5
 	
-	var index := floori(posmod(bisector, 360) / sector)
+	var index := floori(fposmod(bisector, TAU) / sector)
 	
 	for sprite in sprites:
 		sprite.hide()
