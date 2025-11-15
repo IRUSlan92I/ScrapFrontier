@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2snum2pxc2ui"]
+
+[ext_resource type="Script" uid="uid://be7k64p2kel8b" path="res://game/health_system/health_bar/heath_bar.gd" id="1_bx561"]
+[ext_resource type="PackedScene" uid="uid://xbfxsiumbgkp" path="res://game/health_system/health_bar/health_bar_part.tscn" id="2_wb6me"]
+[ext_resource type="Texture2D" uid="uid://do586oblhwuc5" path="res://images/health.png" id="3_fogsl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb6me"]
+atlas = ExtResource("3_fogsl")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fogsl"]
+atlas = ExtResource("3_fogsl")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6cw0"]
+atlas = ExtResource("3_fogsl")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8ken"]
+atlas = ExtResource("3_fogsl")
+region = Rect2(32, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfh3j"]
+atlas = ExtResource("3_fogsl")
+region = Rect2(0, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc4fa"]
+atlas = ExtResource("3_fogsl")
+region = Rect2(32, 32, 32, 16)
+
+[node name="HeathBar" type="Node2D"]
+script = ExtResource("1_bx561")
+
+[node name="HullPart" parent="." instance=ExtResource("2_wb6me")]
+texture_value = SubResource("AtlasTexture_wb6me")
+texture_shade = SubResource("AtlasTexture_fogsl")
+
+[node name="ArmorPart" parent="." instance=ExtResource("2_wb6me")]
+texture_value = SubResource("AtlasTexture_b6cw0")
+texture_shade = SubResource("AtlasTexture_w8ken")
+
+[node name="ShieldPart" parent="." instance=ExtResource("2_wb6me")]
+texture_value = SubResource("AtlasTexture_lfh3j")
+texture_shade = SubResource("AtlasTexture_lc4fa")

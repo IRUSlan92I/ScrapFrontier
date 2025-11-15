@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwsn0lf1e3578"]
+[gd_scene load_steps=5 format=3 uid="uid://dwsn0lf1e3578"]
 
 [ext_resource type="PackedScene" uid="uid://jvyagshykmgb" path="res://game/entities/ships/abstract_ship.tscn" id="1_28j6l"]
 [ext_resource type="Script" uid="uid://byicf1t0807pq" path="res://game/entities/ships/enemies/abstract_enemy_ship.gd" id="2_fwvrd"]
 [ext_resource type="Script" uid="uid://bs8qqj6yepfln" path="res://game/controllers/enemy_controller.gd" id="3_vfnhw"]
+[ext_resource type="PackedScene" uid="uid://d2snum2pxc2ui" path="res://game/health_system/health_bar/heath_bar.tscn" id="4_l8c0n"]
 
 [node name="AbstractEnemyShip" groups=["enemies"] instance=ExtResource("1_28j6l")]
 collision_layer = 4
@@ -12,6 +13,9 @@ script = ExtResource("2_fwvrd")
 [node name="EnemyController" type="Node" parent="." index="3"]
 script = ExtResource("3_vfnhw")
 metadata/_custom_type_script = "uid://bs8qqj6yepfln"
+
+[node name="HeathBar" parent="." index="4" node_paths=PackedStringArray("health") instance=ExtResource("4_l8c0n")]
+health = NodePath("../Health")
 
 [connection signal="accelerate" from="EnemyController" to="." method="accelerate"]
 [connection signal="reload" from="EnemyController" to="." method="reload"]

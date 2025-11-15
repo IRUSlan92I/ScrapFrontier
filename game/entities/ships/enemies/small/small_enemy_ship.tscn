@@ -26,6 +26,5 @@ shape = SubResource("CapsuleShape2D_lopve")
 [node name="Health" parent="." index="2"]
 max_hull = 50
 
-[connection signal="accelerate" from="EnemyController" to="." method="accelerate"]
-[connection signal="reload" from="EnemyController" to="." method="reload"]
-[connection signal="shoot" from="EnemyController" to="." method="shoot"]
+[node name="HeathBar" parent="." index="4"]
+position = Vector2(0, 14)
