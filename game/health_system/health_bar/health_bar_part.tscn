@@ -1,16 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://xbfxsiumbgkp"]
+[gd_scene load_steps=2 format=3 uid="uid://xbfxsiumbgkp"]
 
 [ext_resource type="Script" uid="uid://drwgq8fxaclvn" path="res://game/health_system/health_bar/health_bar_part.gd" id="1_nuv67"]
-[ext_resource type="Texture2D" uid="uid://do586oblhwuc5" path="res://images/health.png" id="2_jlvn5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jlvn5"]
-atlas = ExtResource("2_jlvn5")
-region = Rect2(0, 48, 32, 16)
-
-[node name="HealthBarPart" type="Node2D"]
+[node name="HealthBarPart" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_nuv67")
 
 [node name="ShadeBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -22,9 +20,10 @@ offset_right = 16.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_under = SubResource("AtlasTexture_jlvn5")
+pivot_offset = Vector2(16, 8)
 
 [node name="ValueBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -36,13 +35,14 @@ offset_right = 16.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(16, 8)
 
-[node name="ShadeResetTimer" type="Timer" parent="."]
+[node name="ShadeDelayTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
 [node name="ShadeTickTimer" type="Timer" parent="."]
 wait_time = 0.1
 
-[connection signal="timeout" from="ShadeResetTimer" to="." method="_on_shade_reset_timer_timeout"]
+[connection signal="timeout" from="ShadeDelayTimer" to="." method="_on_shade_delay_timer_timeout"]
 [connection signal="timeout" from="ShadeTickTimer" to="." method="_on_shade_tick_timer_timeout"]

@@ -27,4 +27,7 @@ shape = SubResource("CapsuleShape2D_4jmkv")
 max_hull = 100
 
 [node name="HeathBar" parent="." index="4"]
-position = Vector2(0, 30)
+offset_top = 30.0
+offset_bottom = 30.0
+
+[connection signal="depleted" from="Health" to="." method="_on_health_depleted"]

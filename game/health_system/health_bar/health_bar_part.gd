@@ -1,5 +1,5 @@
 class_name HealthBarPart
-extends Node2D
+extends Control
 
 @export var texture_value : Texture2D
 @export var texture_shade : Texture2D
@@ -8,7 +8,7 @@ extends Node2D
 @onready var value_bar : TextureProgressBar = $ValueBar
 @onready var shade_bar : TextureProgressBar = $ShadeBar
 
-@onready var shade_reset_timer : Timer = $ShadeResetTimer
+@onready var shade_delay_timer : Timer = $ShadeDelayTimer
 @onready var shade_tick_timer : Timer = $ShadeTickTimer
 
 
@@ -16,7 +16,7 @@ const TICK_COUNT = 5
 
 
 var _tick_size : int = 0
-var _target_value: int = 0
+var _target_value: float = 0
 
 
 func _ready() -> void:
@@ -31,7 +31,7 @@ func set_value(value: int) -> void:
 	if shade_bar.value < value_bar.value:
 		shade_bar.value = value_bar.value
 	else:
-		shade_reset_timer.start()
+		shade_delay_timer.start()
 
 
 func set_max_value(max_value: int) -> void:
@@ -46,7 +46,7 @@ func set_max_value(max_value: int) -> void:
 		shade_bar.show()
 
 
-func _on_shade_reset_timer_timeout() -> void:
+func _on_shade_delay_timer_timeout() -> void:
 	var value_delta := shade_bar.value - value_bar.value
 	_tick_size = ceil(value_delta / TICK_COUNT)
 	_target_value = value_bar.value

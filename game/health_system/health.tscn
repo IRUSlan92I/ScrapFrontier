@@ -4,3 +4,13 @@
 
 [node name="Health" type="Node"]
 script = ExtResource("1_gwdg4")
+
+[node name="ShieldRegenDelayTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="ShieldRegenTickTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="ShieldRegenDelayTimer" to="." method="_on_shield_regen_delay_timer_timeout"]
+[connection signal="timeout" from="ShieldRegenTickTimer" to="." method="_on_shield_regen_tick_timer_timeout"]

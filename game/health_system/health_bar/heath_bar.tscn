@@ -1,8 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2snum2pxc2ui"]
+[gd_scene load_steps=13 format=3 uid="uid://d2snum2pxc2ui"]
 
 [ext_resource type="Script" uid="uid://be7k64p2kel8b" path="res://game/health_system/health_bar/heath_bar.gd" id="1_bx561"]
 [ext_resource type="PackedScene" uid="uid://xbfxsiumbgkp" path="res://game/health_system/health_bar/health_bar_part.tscn" id="2_wb6me"]
 [ext_resource type="Texture2D" uid="uid://do586oblhwuc5" path="res://images/health.png" id="3_fogsl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgr4k"]
+atlas = ExtResource("3_fogsl")
+region = Rect2(0, 64, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wb6me"]
 atlas = ExtResource("3_fogsl")
@@ -20,25 +24,52 @@ region = Rect2(0, 16, 32, 16)
 atlas = ExtResource("3_fogsl")
 region = Rect2(32, 16, 32, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfh3j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hknxs"]
 atlas = ExtResource("3_fogsl")
 region = Rect2(0, 32, 32, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lc4fa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0v4d"]
 atlas = ExtResource("3_fogsl")
 region = Rect2(32, 32, 32, 16)
 
-[node name="HeathBar" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfh3j"]
+atlas = ExtResource("3_fogsl")
+region = Rect2(0, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc4fa"]
+atlas = ExtResource("3_fogsl")
+region = Rect2(32, 48, 32, 16)
+
+[node name="HeathBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_bx561")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 8.0
+pivot_offset = Vector2(16, 8)
+texture = SubResource("AtlasTexture_sgr4k")
+
 [node name="HullPart" parent="." instance=ExtResource("2_wb6me")]
+layout_mode = 0
 texture_value = SubResource("AtlasTexture_wb6me")
 texture_shade = SubResource("AtlasTexture_fogsl")
 
 [node name="ArmorPart" parent="." instance=ExtResource("2_wb6me")]
+layout_mode = 0
 texture_value = SubResource("AtlasTexture_b6cw0")
 texture_shade = SubResource("AtlasTexture_w8ken")
 
-[node name="ShieldPart" parent="." instance=ExtResource("2_wb6me")]
+[node name="SmallShieldPart" parent="." instance=ExtResource("2_wb6me")]
+layout_mode = 0
+texture_value = SubResource("AtlasTexture_hknxs")
+texture_shade = SubResource("AtlasTexture_f0v4d")
+
+[node name="LargeShieldPart" parent="." instance=ExtResource("2_wb6me")]
+layout_mode = 0
 texture_value = SubResource("AtlasTexture_lfh3j")
 texture_shade = SubResource("AtlasTexture_lc4fa")

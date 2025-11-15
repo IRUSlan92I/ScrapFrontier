@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://br074cqcnul3d"]
+[gd_scene load_steps=6 format=3 uid="uid://br074cqcnul3d"]
 
 [ext_resource type="PackedScene" uid="uid://jvyagshykmgb" path="res://game/entities/ships/abstract_ship.tscn" id="1_6otxb"]
 [ext_resource type="Script" uid="uid://ruxw1n03iq4i" path="res://game/entities/ships/player/player_ship.gd" id="2_625ti"]
-[ext_resource type="Script" uid="uid://dgevigih7owxd" path="res://game/controllers/player_controller.gd" id="3_dj8f1"]
-[ext_resource type="PackedScene" uid="uid://d2snum2pxc2ui" path="res://game/health_system/health_bar/heath_bar.tscn" id="4_4mjo1"]
+[ext_resource type="PackedScene" uid="uid://dh1oj1w5wx4je" path="res://game/controllers/player_controller.tscn" id="3_4mjo1"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dj8f1"]
 size = Vector2(48, 32)
@@ -28,16 +27,17 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_dj8f1")
 
 [node name="Health" parent="." index="2"]
+max_shield = 1000
+max_armor = 1000
 max_hull = 1000
 
-[node name="PlayerController" type="Node" parent="." index="3"]
-script = ExtResource("3_dj8f1")
-metadata/_custom_type_script = "uid://dgevigih7owxd"
+[node name="HeathBar" parent="." index="3"]
+offset_top = 22.0
+offset_bottom = 22.0
 
-[node name="HeathBar" parent="." index="4" node_paths=PackedStringArray("health") instance=ExtResource("4_4mjo1")]
-position = Vector2(0, 22)
-health = NodePath("../Health")
+[node name="PlayerController" parent="." index="4" instance=ExtResource("3_4mjo1")]
 
+[connection signal="depleted" from="Health" to="." method="_on_health_depleted"]
 [connection signal="accelerate" from="PlayerController" to="." method="accelerate"]
 [connection signal="reload" from="PlayerController" to="." method="reload"]
 [connection signal="shoot" from="PlayerController" to="." method="shoot"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://jvyagshykmgb"]
+[gd_scene load_steps=5 format=3 uid="uid://jvyagshykmgb"]
 
 [ext_resource type="Script" uid="uid://cesibaqtrgotl" path="res://game/entities/ships/abstract_ship.gd" id="1_6isjb"]
-[ext_resource type="Script" uid="uid://d3g4xbq45qmpr" path="res://game/health_system/health.gd" id="2_n766o"]
+[ext_resource type="PackedScene" uid="uid://clkymhkv3cevm" path="res://game/health_system/health.tscn" id="2_xxtvk"]
+[ext_resource type="PackedScene" uid="uid://d2snum2pxc2ui" path="res://game/health_system/health_bar/heath_bar.tscn" id="3_l62e5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xxtvk"]
 
@@ -16,7 +17,7 @@ script = ExtResource("1_6isjb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xxtvk")
 
-[node name="Health" type="Node" parent="."]
-script = ExtResource("2_n766o")
+[node name="Health" parent="." instance=ExtResource("2_xxtvk")]
 
-[connection signal="depleted" from="Health" to="." method="_on_health_depleted"]
+[node name="HeathBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_l62e5")]
+health = NodePath("../Health")
