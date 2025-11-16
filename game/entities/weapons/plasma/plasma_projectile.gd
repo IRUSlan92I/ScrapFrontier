@@ -1,2 +1,2 @@
 class_name PlasmaProjectile
-extends AbstractProjectile
+extends DirectHitProjectile

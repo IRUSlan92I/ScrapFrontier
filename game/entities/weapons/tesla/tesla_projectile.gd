@@ -1,5 +1,5 @@
 class_name TeslaProjectile
-extends AbstractProjectile
+extends DirectHitProjectile
 
 
 @export_range(0.01, 0.5) var jink_min_delay: float = 0.01

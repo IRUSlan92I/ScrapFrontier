@@ -1,5 +1,5 @@
 class_name MinelayerProjectile
-extends AbstractProjectile
+extends BlastProjectile
 
 
 @export var deceleration : int

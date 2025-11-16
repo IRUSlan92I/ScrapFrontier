@@ -8,7 +8,6 @@ const PLAYER_PROJECTILE_LAYER = 8
 const ENEMY_PROJECTILE_LAYER = 16
 
 
-@export var damage : AbstractDamage
 @export_range(0, 1000) var speed : int = 0
 
 
@@ -44,19 +43,23 @@ func _physics_process(delta: float) -> void:
 
 
 func _apply_collision_mask() -> void:
+	_apply_collision_mask_to_area(self)
+
+
+func _apply_collision_mask_to_area(area: Area2D) -> void:
 	if collide_players:
-		collision_layer |= ENEMY_PROJECTILE_LAYER
-		collision_mask |= PLAYER_LAYER
+		area.collision_layer |= ENEMY_PROJECTILE_LAYER
+		area.collision_mask |= PLAYER_LAYER
 	else:
-		collision_layer &= ~ENEMY_PROJECTILE_LAYER
-		collision_mask &= ~PLAYER_LAYER
+		area.collision_layer &= ~ENEMY_PROJECTILE_LAYER
+		area.collision_mask &= ~PLAYER_LAYER
 	
 	if collide_enemies:
-		collision_layer |= PLAYER_PROJECTILE_LAYER
-		collision_mask |= ENEMY_LAYER
+		area.collision_layer |= PLAYER_PROJECTILE_LAYER
+		area.collision_mask |= ENEMY_LAYER
 	else:
-		collision_layer &= ~PLAYER_PROJECTILE_LAYER
-		collision_mask &= ~ENEMY_LAYER
+		area.collision_layer &= ~PLAYER_PROJECTILE_LAYER
+		area.collision_mask &= ~ENEMY_LAYER
 
 
 func _update_collision_rotation(velocity: Vector2) -> void:
@@ -67,11 +70,12 @@ func _on_screen_exited() -> void:
 	queue_free()
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _try_to_damage(body: Node2D, damage: AbstractDamage) -> bool:
 	var health_component : Health = body.find_child("Health")
 	if health_component and health_component.has_method("apply_damage"):
 		health_component.apply_damage(damage)
-		_process_hit_for_projectile(body)
+		return true
+	return false
 
 
 func _process_hit_for_projectile(_collided_body: Node2D) -> void:

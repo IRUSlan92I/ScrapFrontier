@@ -1,2 +1,2 @@
 class_name CannonProjectile
-extends AbstractProjectile
+extends BlastProjectile

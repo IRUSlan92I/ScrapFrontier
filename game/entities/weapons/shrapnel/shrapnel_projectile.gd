@@ -1,5 +1,5 @@
 class_name ShrapnelProjectile
-extends AbstractProjectile
+extends DirectHitProjectile
 
 
 @export var max_distance : int

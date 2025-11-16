@@ -1,2 +1,2 @@
 class_name GatlingProjectile
-extends AbstractProjectile
+extends DirectHitProjectile

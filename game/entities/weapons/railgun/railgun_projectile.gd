@@ -1,5 +1,5 @@
 class_name RailgunProjectile
-extends AbstractProjectile
+extends DirectHitProjectile
 
 
 @export_range(1, 10) var piercing: int = 1

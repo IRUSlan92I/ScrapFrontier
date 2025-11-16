@@ -1,5 +1,5 @@
 class_name LauncherProjectile
-extends AbstractProjectile
+extends BlastProjectile
 
 
 @export_range(0, 360) var rotation_speed: int

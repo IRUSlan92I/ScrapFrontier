@@ -1,14 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgi7wd84kjnyw"]
+[gd_scene load_steps=9 format=3 uid="uid://cgi7wd84kjnyw"]
 
 [ext_resource type="PackedScene" uid="uid://betr5ry5tc75e" path="res://game/entities/weapons/blast_projectile.tscn" id="1_20qwt"]
 [ext_resource type="Script" uid="uid://dfdh0o88as054" path="res://game/entities/weapons/cannon/cannon_projectile.gd" id="2_x3axw"]
 [ext_resource type="Script" uid="uid://dftb7hg5f06b5" path="res://game/health_system/damage/explosion_damage.gd" id="3_lb11p"]
 [ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="4_bb01p"]
-
-[sub_resource type="Resource" id="Resource_bb01p"]
-script = ExtResource("3_lb11p")
-value = 50
-metadata/_custom_type_script = "uid://dftb7hg5f06b5"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ugryq"]
 atlas = ExtResource("4_bb01p")
@@ -17,11 +12,18 @@ region = Rect2(32, 16, 16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_lb11p"]
 radius = 2.0
 
+[sub_resource type="Resource" id="Resource_ugryq"]
+script = ExtResource("3_lb11p")
+value = 50
+metadata/_custom_type_script = "uid://dftb7hg5f06b5"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bb01p"]
+radius = 80.0
+
 [node name="CannonProjectile" instance=ExtResource("1_20qwt")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_x3axw")
-damage = SubResource("Resource_bb01p")
 speed = 600
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
@@ -29,3 +31,7 @@ texture = SubResource("AtlasTexture_ugryq")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_lb11p")
+
+[node name="Blast" parent="." index="3"]
+damage = SubResource("Resource_ugryq")
+shape = SubResource("CircleShape2D_bb01p")
