@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://yfvluap3uy1r"]
 
-[ext_resource type="PackedScene" uid="uid://ybkqaynvpcjm" path="res://game/entities/weapons/abstract_projectile.tscn" id="1_3tgt7"]
+[ext_resource type="PackedScene" uid="uid://cdv5n4t47hr8i" path="res://game/entities/weapons/direct_hit__projectile.tscn" id="1_3tgt7"]
 [ext_resource type="Script" uid="uid://rtsf1n0djorp" path="res://game/entities/weapons/gatling/gatling_projectile.gd" id="2_hbgoq"]
 [ext_resource type="Script" uid="uid://bhqvk5cnjg5mv" path="res://game/health_system/damage/kinetic_damage.gd" id="3_2tbeq"]
 [ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="4_ndegg"]

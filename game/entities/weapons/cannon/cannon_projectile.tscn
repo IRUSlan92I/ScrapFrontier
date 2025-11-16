@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cgi7wd84kjnyw"]
 
-[ext_resource type="PackedScene" uid="uid://ybkqaynvpcjm" path="res://game/entities/weapons/abstract_projectile.tscn" id="1_20qwt"]
+[ext_resource type="PackedScene" uid="uid://betr5ry5tc75e" path="res://game/entities/weapons/blast_projectile.tscn" id="1_20qwt"]
 [ext_resource type="Script" uid="uid://dfdh0o88as054" path="res://game/entities/weapons/cannon/cannon_projectile.gd" id="2_x3axw"]
 [ext_resource type="Script" uid="uid://dftb7hg5f06b5" path="res://game/health_system/damage/explosion_damage.gd" id="3_lb11p"]
 [ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="4_bb01p"]
