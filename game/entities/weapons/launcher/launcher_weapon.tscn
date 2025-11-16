@@ -11,7 +11,7 @@ script = ExtResource("4_fsoo2")
 firerate = 120
 metadata/_custom_type_script = "uid://b255rb32vc6co"
 
-[node name="Launcher" instance=ExtResource("1_sk5u1")]
+[node name="LauncherWeapon" instance=ExtResource("1_sk5u1")]
 script = ExtResource("2_mxjpe")
 sector_angle = 5
 Projectile = ExtResource("3_fsoo2")

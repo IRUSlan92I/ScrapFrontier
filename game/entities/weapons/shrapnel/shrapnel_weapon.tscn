@@ -18,7 +18,7 @@ magazine_size = 35
 reload_time = 5
 metadata/_custom_type_script = "uid://d2gfhnlbqxsoq"
 
-[node name="Shrapnel" instance=ExtResource("1_xk300")]
+[node name="ShrapnelWeapon" instance=ExtResource("1_xk300")]
 script = ExtResource("2_1bd18")
 bullet_per_shot = 20
 sector_angle = 30

@@ -19,7 +19,7 @@ heat_capacity = 1000
 cooling_down_rate = 2500
 metadata/_custom_type_script = "uid://dxk56xdihfw4m"
 
-[node name="Tesla" instance=ExtResource("1_rpud7")]
+[node name="TeslaWeapon" instance=ExtResource("1_rpud7")]
 script = ExtResource("2_08si3")
 sector_angle = 10
 Projectile = ExtResource("2_1rrdy")

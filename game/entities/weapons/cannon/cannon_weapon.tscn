@@ -11,7 +11,7 @@ script = ExtResource("4_bv8g1")
 firerate = 50
 metadata/_custom_type_script = "uid://b255rb32vc6co"
 
-[node name="Cannon" instance=ExtResource("1_xnbws")]
+[node name="CannonWeapon" instance=ExtResource("1_xnbws")]
 script = ExtResource("2_ew5um")
 sector_angle = 1
 Projectile = ExtResource("2_2bjeu")

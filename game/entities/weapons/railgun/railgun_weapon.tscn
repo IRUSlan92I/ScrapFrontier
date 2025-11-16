@@ -18,7 +18,7 @@ magazine_size = 30
 reload_time = 7
 metadata/_custom_type_script = "uid://d2gfhnlbqxsoq"
 
-[node name="Railgun" instance=ExtResource("1_0nxvu")]
+[node name="RailgunWeapon" instance=ExtResource("1_0nxvu")]
 script = ExtResource("1_5nhwg")
 Projectile = ExtResource("2_cbsia")
 reloaders = Array[ExtResource("3_qxka8")]([SubResource("Resource_5nhwg"), SubResource("Resource_cbsia")])

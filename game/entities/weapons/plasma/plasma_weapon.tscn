@@ -19,7 +19,7 @@ heat_capacity = 1000
 cooling_down_rate = 1000
 metadata/_custom_type_script = "uid://dxk56xdihfw4m"
 
-[node name="Plasma" instance=ExtResource("1_pkk8e")]
+[node name="PlasmaWeapon" instance=ExtResource("1_pkk8e")]
 script = ExtResource("2_fnsb7")
 sector_angle = 2
 Projectile = ExtResource("2_yluvp")

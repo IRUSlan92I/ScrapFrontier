@@ -19,7 +19,7 @@ magazine_size = 150
 reload_time = 2
 metadata/_custom_type_script = "uid://d2gfhnlbqxsoq"
 
-[node name="Gatling" instance=ExtResource("1_gblx7")]
+[node name="GatlingWeapon" instance=ExtResource("1_gblx7")]
 script = ExtResource("1_kg6du")
 sector_angle = 5
 Projectile = ExtResource("2_ylc0n")

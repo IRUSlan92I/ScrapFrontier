@@ -19,7 +19,7 @@ heat_capacity = 1000
 cooling_down_rate = 2500
 metadata/_custom_type_script = "uid://dxk56xdihfw4m"
 
-[node name="Laser" instance=ExtResource("1_pki4x")]
+[node name="LaserWeapon" instance=ExtResource("1_pki4x")]
 script = ExtResource("2_lbdvb")
 bullet_per_shot = 2
 Projectile = ExtResource("2_fecho")

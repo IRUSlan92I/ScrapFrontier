@@ -20,7 +20,7 @@ region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u82jm"]
 radius = 1.0
-height = 4.0
+height = 8.0
 
 [node name="RailgunProjectile" instance=ExtResource("1_rfd1j")]
 collision_layer = 0
