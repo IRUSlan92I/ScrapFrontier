@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4mkklqt1g14f"]
+[gd_scene load_steps=10 format=3 uid="uid://4mkklqt1g14f"]
 
 [ext_resource type="PackedScene" uid="uid://betr5ry5tc75e" path="res://game/entities/weapons/blast_projectile.tscn" id="1_ufc4r"]
 [ext_resource type="Script" uid="uid://76swcukelnii" path="res://game/entities/weapons/minelayer/minelayer_projectile.gd" id="2_hwwfa"]
@@ -8,6 +8,10 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckqco"]
 atlas = ExtResource("4_px1i2")
 region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px1i2"]
+atlas = ExtResource("4_px1i2")
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ufc4r"]
 radius = 7.0
@@ -27,19 +31,32 @@ script = ExtResource("2_hwwfa")
 deceleration = 100
 speed = 200
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="Sprite2D_Off" type="Sprite2D" parent="." index="0"]
 texture = SubResource("AtlasTexture_ckqco")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="Sprite2D_On" type="Sprite2D" parent="." index="1"]
+texture = SubResource("AtlasTexture_px1i2")
+
+[node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CircleShape2D_ufc4r")
 
-[node name="Blast" parent="." index="3"]
+[node name="Blast" parent="." index="4"]
 damage = SubResource("Resource_ckqco")
 shape = SubResource("CircleShape2D_px1i2")
 
-[node name="LivetimeTimer" type="Timer" parent="." index="4"]
+[node name="LivetimeTimer" type="Timer" parent="." index="5"]
 wait_time = 60.0
 one_shot = true
 autostart = true
 
+[node name="SpriteOnTimer" type="Timer" parent="." index="6"]
+one_shot = true
+
+[node name="SpriteOffTimer" type="Timer" parent="." index="7"]
+one_shot = true
+
+[connection signal="body_entered" from="Blast" to="." method="_on_blast_body_entered"]
+[connection signal="body_exited" from="Blast" to="." method="_on_blast_body_exited"]
 [connection signal="timeout" from="LivetimeTimer" to="." method="_on_livetime_timer_timeout"]
+[connection signal="timeout" from="SpriteOnTimer" to="." method="_on_sprite_on_timer_timeout"]
+[connection signal="timeout" from="SpriteOffTimer" to="." method="_on_sprite_off_timer_timeout"]
