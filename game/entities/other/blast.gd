@@ -29,19 +29,20 @@ func get_damage_to(body: Node2D) -> AbstractDamage:
 func _get_distance_to(body: Node2D) -> float:
 	if not shape: return INF
 	
+	var space_state := get_world_2d().direct_space_state
+	var query := PhysicsShapeQueryParameters2D.new()
+	var circle_shape := CircleShape2D.new()
+	query.shape = circle_shape
+	query.transform = Transform2D(0, global_position)
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
+	query.collision_mask = collision_mask
+	query.exclude = [self]
+	
 	#TODO optimize by binary search
 	for radius in range(shape.radius + 1):
-		var query := PhysicsShapeQueryParameters2D.new()
-		var circle_shape := CircleShape2D.new()
 		circle_shape.radius = radius
-		query.shape = circle_shape
-		query.transform = Transform2D(0, global_position)
-		query.collide_with_areas = false
-		query.collide_with_bodies = true
-		query.collision_mask = collision_mask
-		query.exclude = [self]
 		
-		var space_state := get_world_2d().direct_space_state
 		var results := space_state.intersect_shape(query)
 		
 		for result in results:

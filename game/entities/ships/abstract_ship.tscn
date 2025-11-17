@@ -21,3 +21,5 @@ shape = SubResource("CircleShape2D_xxtvk")
 
 [node name="HeathBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_l62e5")]
 health = NodePath("../Health")
+
+[connection signal="depleted" from="Health" to="." method="_on_health_depleted"]

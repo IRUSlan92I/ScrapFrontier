@@ -27,5 +27,6 @@ shape = SubResource("CapsuleShape2D_cuapu")
 [node name="Health" parent="." index="2"]
 max_hull = 200
 
-[node name="HeathBar" parent="." index="4"]
-position = Vector2(0, 30)
+[node name="HeathBar" parent="." index="3"]
+offset_top = 30.0
+offset_bottom = 30.0

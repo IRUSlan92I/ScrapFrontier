@@ -11,7 +11,6 @@ script = ExtResource("2_fwvrd")
 
 [node name="EnemyController" parent="." index="4" instance=ExtResource("3_l8c0n")]
 
-[connection signal="depleted" from="Health" to="." method="_on_health_depleted"]
 [connection signal="accelerate" from="EnemyController" to="." method="accelerate"]
 [connection signal="reload" from="EnemyController" to="." method="reload"]
 [connection signal="shoot" from="EnemyController" to="." method="shoot"]
