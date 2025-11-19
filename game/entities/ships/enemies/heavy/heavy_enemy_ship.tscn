@@ -15,6 +15,7 @@ script = ExtResource("2_3umer")
 acceleration = 30
 deceleration = 18
 max_speed = 60
+mass = 600
 weapon_positions = Array[Vector2]([Vector2(0, 16), Vector2(0, 0), Vector2(0, -16)])
 
 [node name="Sprite2D" parent="." index="0"]

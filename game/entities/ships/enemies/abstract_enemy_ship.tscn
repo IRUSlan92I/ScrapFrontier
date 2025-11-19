@@ -6,7 +6,7 @@
 
 [node name="AbstractEnemyShip" groups=["enemies"] instance=ExtResource("1_28j6l")]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("2_fwvrd")
 
 [node name="EnemyController" parent="." index="4" instance=ExtResource("3_l8c0n")]

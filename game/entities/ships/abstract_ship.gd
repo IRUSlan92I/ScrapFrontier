@@ -29,6 +29,7 @@ signal destroyed
 @export_range(0, 250) var acceleration : int = 0
 @export_range(0, 250) var deceleration : int = 0
 @export_range(0, 250) var max_speed : int = 0
+@export_range(0, 1000) var mass : int = 0
 
 @export var weapon_positions: Array[Vector2]
 
@@ -47,6 +48,18 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	var was_collided := move_and_slide()
 	if was_collided:
+		for i in get_slide_collision_count():
+			var collider := get_slide_collision(i).get_collider()
+			if collider is AbstractShip:
+				var other_ship := collider as AbstractShip
+				var momentum := mass * velocity
+				var collider_momentum := other_ship.mass * other_ship.velocity
+				var total_mass := mass + other_ship.mass
+				
+				var new_velocity := (momentum + collider_momentum)/total_mass
+				other_ship.velocity = new_velocity
+				velocity = new_velocity
+		
 		var normal := get_wall_normal()
 		velocity -= normal.abs() * velocity
 
