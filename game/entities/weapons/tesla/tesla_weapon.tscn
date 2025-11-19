@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyebeblayioji"]
+[gd_scene load_steps=31 format=3 uid="uid://dyebeblayioji"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_rpud7"]
 [ext_resource type="PackedScene" uid="uid://bi64687wtxi4d" path="res://game/entities/weapons/tesla/tesla_projectile.tscn" id="2_1rrdy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_08si3"]
 [ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_rqarv"]
 [ext_resource type="Script" uid="uid://dxk56xdihfw4m" path="res://game/reloaders/energy_reloader.gd" id="5_j5i31"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="7_ub67s"]
 
 [sub_resource type="Resource" id="Resource_1rrdy"]
 script = ExtResource("4_rqarv")
@@ -22,6 +23,149 @@ metadata/_custom_type_script = "uid://dxk56xdihfw4m"
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dra6h"]
 size = Vector2(10, 7)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucdpq"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifsj2"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(32, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1fov"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(64, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u727i"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(96, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8rch"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(128, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3n8b"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(160, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xemq"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(192, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekb5u"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(224, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ksu7"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14sqy"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57vww"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ook02"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4veo"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa0we"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50pvw"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(192, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vagjq"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(224, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckvhw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucdpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifsj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1fov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u727i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8rch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3n8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xemq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekb5u")
+}],
+"loop": true,
+"name": &"enemy_idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ksu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14sqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57vww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ook02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4veo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa0we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50pvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vagjq")
+}],
+"loop": true,
+"name": &"player_idle",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_ub67s"]
+colors = PackedColorArray(0.4509804, 0.9372549, 0.96862745, 1, 0.25490198, 0.6509804, 0.9647059, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ucdpq"]
+gradient = SubResource("Gradient_ub67s")
+width = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ifsj2"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+
 [node name="TeslaWeapon" instance=ExtResource("1_rpud7")]
 script = ExtResource("2_08si3")
 sector_angle = 10
@@ -30,3 +174,14 @@ reloaders = Array[ExtResource("3_08si3")]([SubResource("Resource_1rrdy"), SubRes
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = SubResource("PlaceholderTexture2D_dra6h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_ckvhw")
+animation = &"player_idle"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
+amount = 16
+texture = SubResource("GradientTexture1D_ucdpq")
+lifetime = 2.0
+fixed_fps = 10
+process_material = SubResource("ParticleProcessMaterial_ifsj2")

@@ -17,6 +17,9 @@ const PREFIXES := {
 	Belonging.ENEMY: "enemy_",
 }
 
+const SHOT_POSTFIX = "shot"
+const IDLE_POSTFIX = "idle"
+
 
 var _belonging: Belonging
 

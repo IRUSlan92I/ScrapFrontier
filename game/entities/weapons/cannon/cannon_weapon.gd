@@ -1,11 +1,6 @@
 extends AbstractWeapon
 
 
-
-const SHOT_POSTFIX = "shot"
-const IDLE_POSTFIX = "idle"
-
-
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var front_particles : GPUParticles2D = $ShotParticles/Front
 @onready var left_particles : GPUParticles2D = $ShotParticles/Left
