@@ -12,31 +12,35 @@ enum Belonging { PLAYER, ENEMY }
 @export var reloaders : Array[AbstractReloader]
 
 
-var belonging: Belonging
+const PREFIXES := {
+	Belonging.PLAYER: "player_",
+	Belonging.ENEMY: "enemy_",
+}
 
 
-var _reloaders : Array[AbstractReloader]
-
-
-func _ready() -> void:
-	for reloader in reloaders:
-		_reloaders.append(reloader.duplicate())
+var _belonging: Belonging
 
 
 func _physics_process(delta: float) -> void:
-	for reloader in _reloaders:
+	for reloader in reloaders:
 		reloader.process(delta)
 
 
-func shoot(ship_velocity: Vector2) -> void:
-	if not _can_shoot(): return
+func set_belonging(belonging: Belonging) -> void:
+	_belonging = belonging
+
+
+func shoot(ship_velocity: Vector2) -> bool:
+	if not _can_shoot(): return false
 	
 	for i in range(bullet_per_shot):
 		var projectile := _create_projectile(ship_velocity)
 		get_tree().current_scene.add_child(projectile)
 	
-	for reloader in _reloaders:
+	for reloader in reloaders:
 		reloader.shoot()
+	
+	return true
 
 
 func _create_projectile(ship_velocity: Vector2) -> Node:
@@ -44,7 +48,7 @@ func _create_projectile(ship_velocity: Vector2) -> Node:
 	projectile.global_position = global_position
 	projectile.ship_velocity = ship_velocity
 	
-	match belonging:
+	match _belonging:
 		Belonging.PLAYER:
 			projectile.direction = Vector2.RIGHT
 			projectile.collide_enemies = true
@@ -61,12 +65,12 @@ func _create_projectile(ship_velocity: Vector2) -> Node:
 
 
 func reload() -> void:
-	for reloader in _reloaders:
+	for reloader in reloaders:
 		reloader.reload()
 
 
 func _can_shoot() -> bool:
-	for reloader in _reloaders:
+	for reloader in reloaders:
 		if not reloader.can_shoot():
 			return false
 	return true

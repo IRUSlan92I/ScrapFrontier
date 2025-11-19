@@ -5,4 +5,4 @@ extends AbstractShip
 func _ready() -> void:
 	super._ready()
 	for weapon in _weapons:
-		weapon.belonging = AbstractWeapon.Belonging.ENEMY
+		weapon.set_belonging(AbstractWeapon.Belonging.ENEMY)

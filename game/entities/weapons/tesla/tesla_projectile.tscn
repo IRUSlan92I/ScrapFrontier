@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c27v705giygv4" path="res://game/health_system/damage/energy_damage.gd" id="3_l65ib"]
 
 [sub_resource type="Resource" id="Resource_1121u"]
+resource_local_to_scene = true
 script = ExtResource("3_l65ib")
 value = 45
 metadata/_custom_type_script = "uid://c27v705giygv4"

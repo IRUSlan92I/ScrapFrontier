@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj1jclfterepm"]
+[gd_scene load_steps=10 format=3 uid="uid://cj1jclfterepm"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_pkk8e"]
 [ext_resource type="Script" uid="uid://cu6ck2oqqdem8" path="res://game/entities/weapons/plasma/plasma_weapon.gd" id="2_fnsb7"]
@@ -19,8 +19,14 @@ heat_capacity = 1000
 cooling_down_rate = 1000
 metadata/_custom_type_script = "uid://dxk56xdihfw4m"
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dra6h"]
+size = Vector2(10, 7)
+
 [node name="PlasmaWeapon" instance=ExtResource("1_pkk8e")]
 script = ExtResource("2_fnsb7")
 sector_angle = 2
 Projectile = ExtResource("2_yluvp")
 reloaders = Array[ExtResource("3_fnsb7")]([SubResource("Resource_yluvp"), SubResource("Resource_fnsb7")])
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = SubResource("PlaceholderTexture2D_dra6h")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4mlppn5i55bp"]
+[gd_scene load_steps=10 format=3 uid="uid://c4mlppn5i55bp"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_gblx7"]
 [ext_resource type="Script" uid="uid://c1bsvmj7xhnxe" path="res://game/entities/weapons/gatling/gatling_weapon.gd" id="1_kg6du"]
@@ -19,8 +19,14 @@ magazine_size = 150
 reload_time = 2
 metadata/_custom_type_script = "uid://d2gfhnlbqxsoq"
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dra6h"]
+size = Vector2(10, 7)
+
 [node name="GatlingWeapon" instance=ExtResource("1_gblx7")]
 script = ExtResource("1_kg6du")
 sector_angle = 5
 Projectile = ExtResource("2_ylc0n")
 reloaders = Array[ExtResource("3_uucc4")]([SubResource("Resource_kg6du"), SubResource("Resource_ylc0n")])
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = SubResource("PlaceholderTexture2D_dra6h")

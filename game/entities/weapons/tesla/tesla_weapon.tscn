@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyebeblayioji"]
+[gd_scene load_steps=10 format=3 uid="uid://dyebeblayioji"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_rpud7"]
 [ext_resource type="PackedScene" uid="uid://bi64687wtxi4d" path="res://game/entities/weapons/tesla/tesla_projectile.tscn" id="2_1rrdy"]
@@ -19,8 +19,14 @@ heat_capacity = 1000
 cooling_down_rate = 2500
 metadata/_custom_type_script = "uid://dxk56xdihfw4m"
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dra6h"]
+size = Vector2(10, 7)
+
 [node name="TeslaWeapon" instance=ExtResource("1_rpud7")]
 script = ExtResource("2_08si3")
 sector_angle = 10
 Projectile = ExtResource("2_1rrdy")
 reloaders = Array[ExtResource("3_08si3")]([SubResource("Resource_1rrdy"), SubResource("Resource_08si3")])
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = SubResource("PlaceholderTexture2D_dra6h")

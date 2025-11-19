@@ -27,8 +27,6 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_dj8f1")
 
 [node name="Health" parent="." index="2"]
-max_shield = 1000
-max_armor = 1000
 max_hull = 1000
 
 [node name="HeathBar" parent="." index="3"]

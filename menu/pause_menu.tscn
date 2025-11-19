@@ -29,6 +29,7 @@ text = "CONTINUE"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("2_vy7sn")
 text = "OPTIONS"
 

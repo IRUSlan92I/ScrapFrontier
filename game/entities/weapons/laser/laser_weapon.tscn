@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://def1alrel4ioo"]
+[gd_scene load_steps=10 format=3 uid="uid://def1alrel4ioo"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_pki4x"]
 [ext_resource type="PackedScene" uid="uid://cmni0xrbbfcy5" path="res://game/entities/weapons/laser/laser_projectile.tscn" id="2_fecho"]
@@ -19,8 +19,14 @@ heat_capacity = 1000
 cooling_down_rate = 2500
 metadata/_custom_type_script = "uid://dxk56xdihfw4m"
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dra6h"]
+size = Vector2(10, 7)
+
 [node name="LaserWeapon" instance=ExtResource("1_pki4x")]
 script = ExtResource("2_lbdvb")
 bullet_per_shot = 2
 Projectile = ExtResource("2_fecho")
 reloaders = Array[ExtResource("3_c1wcw")]([SubResource("Resource_fecho"), SubResource("Resource_c1wcw")])
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = SubResource("PlaceholderTexture2D_dra6h")

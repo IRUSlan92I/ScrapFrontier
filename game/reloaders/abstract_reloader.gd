@@ -3,6 +3,10 @@ extends Resource
 class_name AbstractReloader
 
 
+func _init() -> void:
+	resource_local_to_scene = true
+
+
 @abstract
 func process(delta: float) -> void
 

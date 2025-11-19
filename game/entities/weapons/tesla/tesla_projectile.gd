@@ -15,7 +15,6 @@ var _collided_foes : Array[AbstractShip] = []
 
 
 func _ready() -> void:
-	damage = damage.duplicate()
 	super._ready()
 	_start_jink_timer()
 
