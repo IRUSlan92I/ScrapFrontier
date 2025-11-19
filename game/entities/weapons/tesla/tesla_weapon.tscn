@@ -164,7 +164,6 @@ spread = 180.0
 initial_velocity_min = 5.0
 initial_velocity_max = 5.0
 gravity = Vector3(0, 0, 0)
-scale_max = 2.0
 
 [node name="TeslaWeapon" instance=ExtResource("1_rpud7")]
 script = ExtResource("2_08si3")
