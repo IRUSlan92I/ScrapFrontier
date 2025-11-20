@@ -33,5 +33,7 @@ texture = SubResource("AtlasTexture_ugryq")
 shape = SubResource("CircleShape2D_lb11p")
 
 [node name="Blast" parent="." index="3"]
+collision_layer = 0
+collision_mask = 0
 damage = SubResource("Resource_ugryq")
 shape = SubResource("CircleShape2D_bb01p")

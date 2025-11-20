@@ -84,5 +84,7 @@ texture = SubResource("AtlasTexture_dl8vu")
 shape = SubResource("CapsuleShape2D_6hdsf")
 
 [node name="Blast" parent="." index="10"]
+collision_layer = 0
+collision_mask = 0
 damage = SubResource("Resource_kos01")
 shape = SubResource("CircleShape2D_kxgpk")
