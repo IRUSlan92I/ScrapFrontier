@@ -10,6 +10,7 @@ enum Belonging { PLAYER, ENEMY }
 
 @export var Projectile : PackedScene
 @export var reloaders : Array[AbstractReloader]
+@export var projectile_positions : Array[Vector2]
 
 
 const PREFIXES := {
@@ -22,6 +23,7 @@ const IDLE_POSTFIX = "idle"
 
 
 var _belonging: Belonging
+var _current_projectile_position := 0
 
 
 func _physics_process(delta: float) -> void:
@@ -38,6 +40,13 @@ func shoot(ship_velocity: Vector2) -> bool:
 	
 	for i in range(bullet_per_shot):
 		var projectile := _create_projectile(ship_velocity)
+		
+		if projectile_positions.size() > 0:
+			projectile.global_position = global_position + projectile_positions[_current_projectile_position]
+			_current_projectile_position += 1
+			if _current_projectile_position >= projectile_positions.size():
+				_current_projectile_position = 0
+		
 		get_tree().current_scene.add_child(projectile)
 	
 	for reloader in reloaders:
@@ -46,7 +55,7 @@ func shoot(ship_velocity: Vector2) -> bool:
 	return true
 
 
-func _create_projectile(ship_velocity: Vector2) -> Node:
+func _create_projectile(ship_velocity: Vector2) -> AbstractProjectile:
 	var projectile : AbstractProjectile = Projectile.instantiate()
 	projectile.global_position = global_position
 	projectile.ship_velocity = ship_velocity

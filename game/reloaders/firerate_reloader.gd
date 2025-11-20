@@ -27,8 +27,7 @@ func can_shoot() -> bool:
 
 
 func shoot() -> void:
-	var random_delay := randf_range(-_delay_tenth, _delay_tenth)
-	_cooldown = _delay + random_delay
+	_cooldown = _delay
 
 
 func reload() -> void:
