@@ -1,19 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmni0xrbbfcy5"]
+[gd_scene load_steps=8 format=3 uid="uid://cmni0xrbbfcy5"]
 
 [ext_resource type="PackedScene" uid="uid://cdv5n4t47hr8i" path="res://game/entities/weapons/direct_hit__projectile.tscn" id="1_3a8fg"]
 [ext_resource type="Script" uid="uid://bdxq4aflhc8vd" path="res://game/entities/weapons/laser/laser_projectile.gd" id="2_je1a2"]
 [ext_resource type="Script" uid="uid://c27v705giygv4" path="res://game/health_system/damage/energy_damage.gd" id="3_ylokk"]
+[ext_resource type="Texture2D" uid="uid://dedca1d30igae" path="res://particle_textures/energy.tres" id="4_bytws"]
 
 [sub_resource type="Resource" id="Resource_bytws"]
 script = ExtResource("3_ylokk")
 value = 2
 metadata/_custom_type_script = "uid://c27v705giygv4"
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_je1a2"]
-size = Vector2(4, 4)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ylokk"]
 radius = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7dd03"]
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.5
+spread = 15.0
+gravity = Vector3(0, 0, 0)
 
 [node name="LaserProjectile" instance=ExtResource("1_3a8fg")]
 collision_layer = 0
@@ -22,8 +28,11 @@ script = ExtResource("2_je1a2")
 damage = SubResource("Resource_bytws")
 speed = 500
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-texture = SubResource("PlaceholderTexture2D_je1a2")
-
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_ylokk")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
+amount = 32
+texture = ExtResource("4_bytws")
+lifetime = 0.05
+process_material = SubResource("ParticleProcessMaterial_7dd03")
