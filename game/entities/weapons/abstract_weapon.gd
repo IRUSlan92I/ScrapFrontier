@@ -10,7 +10,6 @@ enum Belonging { PLAYER, ENEMY }
 
 @export var Projectile : PackedScene
 @export var reloaders : Array[AbstractReloader]
-@export var projectile_positions : Array[Vector2]
 
 
 const PREFIXES := {
@@ -42,11 +41,7 @@ func shoot(ship_velocity: Vector2) -> bool:
 	for i in range(bullet_per_shot):
 		var projectile := _create_projectile(ship_velocity)
 		
-		if projectile_positions.size() > 0:
-			projectile.global_position = global_position + projectile_positions[_current_projectile_position]
-			_current_projectile_position += 1
-			if _current_projectile_position >= projectile_positions.size():
-				_current_projectile_position = 0
+		projectile.global_position = global_position + _get_projectile_position()
 		
 		get_tree().current_scene.add_child(projectile)
 	
@@ -54,6 +49,10 @@ func shoot(ship_velocity: Vector2) -> bool:
 		reloader.shoot()
 	
 	return true
+
+
+func _get_projectile_position() -> Vector2:
+	return Vector2.ZERO
 
 
 func _create_projectile(ship_velocity: Vector2) -> AbstractProjectile:

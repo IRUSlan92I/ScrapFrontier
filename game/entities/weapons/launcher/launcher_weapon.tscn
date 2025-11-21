@@ -1,24 +1,116 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3l866fdqt7pf"]
+[gd_scene load_steps=12 format=3 uid="uid://c3l866fdqt7pf"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_sk5u1"]
 [ext_resource type="Script" uid="uid://lauvvj5xhbud" path="res://game/entities/weapons/launcher/launcher_weapon.gd" id="2_mxjpe"]
-[ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_1rkeb"]
 [ext_resource type="PackedScene" uid="uid://dukgbg13ujkv2" path="res://game/entities/weapons/launcher/launcher_projectile.tscn" id="3_fsoo2"]
-[ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_fsoo2"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="6_3cw5x"]
+[ext_resource type="Texture2D" uid="uid://leofxnlflrdn" path="res://particle_textures/flame.tres" id="7_u8eh0"]
 
-[sub_resource type="Resource" id="Resource_8arbu"]
-script = ExtResource("4_fsoo2")
-firerate = 120
-metadata/_custom_type_script = "uid://b255rb32vc6co"
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u8eh0"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(-8, -3.5, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 0.5
+direction = Vector3(-1, 0, 0)
+spread = 15.0
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dra6h"]
-size = Vector2(10, 7)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0brql"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(-8, 3.5, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 0.5
+direction = Vector3(-1, 0, 0)
+spread = 15.0
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3cw5x"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(8, -3.5, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 0.5
+spread = 15.0
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ylgjm"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(8, 3.5, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 0.5
+spread = 15.0
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8eh0"]
+atlas = ExtResource("6_3cw5x")
+region = Rect2(224, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylgjm"]
+atlas = ExtResource("6_3cw5x")
+region = Rect2(224, 128, 32, 16)
 
 [node name="LauncherWeapon" instance=ExtResource("1_sk5u1")]
 script = ExtResource("2_mxjpe")
 sector_angle = 5
 Projectile = ExtResource("3_fsoo2")
-reloaders = Array[ExtResource("3_1rkeb")]([SubResource("Resource_8arbu")])
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-texture = SubResource("PlaceholderTexture2D_dra6h")
+[node name="ShotProjectiles" type="Node2D" parent="." index="0"]
+
+[node name="PlayerLeftParticles" type="GPUParticles2D" parent="ShotProjectiles" index="0"]
+emitting = false
+amount = 16
+texture = ExtResource("7_u8eh0")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_u8eh0")
+
+[node name="PlayerRightParticles" type="GPUParticles2D" parent="ShotProjectiles" index="1"]
+emitting = false
+amount = 16
+texture = ExtResource("7_u8eh0")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_0brql")
+
+[node name="EnemyLeftParticles" type="GPUParticles2D" parent="ShotProjectiles" index="2"]
+emitting = false
+amount = 16
+texture = ExtResource("7_u8eh0")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_3cw5x")
+
+[node name="EnemyRightParticles" type="GPUParticles2D" parent="ShotProjectiles" index="3"]
+emitting = false
+amount = 16
+texture = ExtResource("7_u8eh0")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_ylgjm")
+
+[node name="PlayerSprite" type="Sprite2D" parent="." index="1"]
+texture = SubResource("AtlasTexture_u8eh0")
+
+[node name="EnemySprite" type="Sprite2D" parent="." index="2"]
+texture = SubResource("AtlasTexture_ylgjm")
+
+[node name="CooldownTimer" type="Timer" parent="." index="3"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

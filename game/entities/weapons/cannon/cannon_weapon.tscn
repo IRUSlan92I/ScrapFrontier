@@ -1,17 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://bccaoirwdkp7n"]
+[gd_scene load_steps=23 format=3 uid="uid://bccaoirwdkp7n"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_xnbws"]
 [ext_resource type="PackedScene" uid="uid://cgi7wd84kjnyw" path="res://game/entities/weapons/cannon/cannon_projectile.tscn" id="2_2bjeu"]
 [ext_resource type="Script" uid="uid://db24dm76b1am7" path="res://game/entities/weapons/cannon/cannon_weapon.gd" id="2_ew5um"]
+[ext_resource type="Texture2D" uid="uid://leofxnlflrdn" path="res://particle_textures/flame.tres" id="4_jfd4t"]
 [ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="6_jfd4t"]
 [ext_resource type="Texture2D" uid="uid://3w0itm7k5fxq" path="res://images/particles.png" id="7_i0ica"]
-
-[sub_resource type="Gradient" id="Gradient_jfd4t"]
-colors = PackedColorArray(1, 0.8039216, 0.45882353, 1, 0.9372549, 0.49019608, 0.34117648, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_i0ica"]
-gradient = SubResource("Gradient_jfd4t")
-width = 2
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_377p4"]
 resource_local_to_scene = true
@@ -160,7 +154,7 @@ Projectile = ExtResource("2_2bjeu")
 [node name="Front" type="GPUParticles2D" parent="ShotParticles" index="0"]
 emitting = false
 amount = 32
-texture = SubResource("GradientTexture1D_i0ica")
+texture = ExtResource("4_jfd4t")
 lifetime = 0.5
 one_shot = true
 preprocess = 0.1
@@ -169,7 +163,7 @@ process_material = SubResource("ParticleProcessMaterial_377p4")
 
 [node name="Left" type="GPUParticles2D" parent="ShotParticles" index="1"]
 emitting = false
-texture = SubResource("GradientTexture1D_i0ica")
+texture = ExtResource("4_jfd4t")
 lifetime = 0.2
 one_shot = true
 fixed_fps = 10
@@ -177,7 +171,7 @@ process_material = SubResource("ParticleProcessMaterial_i0ica")
 
 [node name="Right" type="GPUParticles2D" parent="ShotParticles" index="2"]
 emitting = false
-texture = SubResource("GradientTexture1D_i0ica")
+texture = ExtResource("4_jfd4t")
 lifetime = 0.2
 one_shot = true
 fixed_fps = 10

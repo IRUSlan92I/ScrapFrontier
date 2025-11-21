@@ -1,9 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://dukgbg13ujkv2"]
+[gd_scene load_steps=18 format=3 uid="uid://dukgbg13ujkv2"]
 
 [ext_resource type="PackedScene" uid="uid://betr5ry5tc75e" path="res://game/entities/weapons/blast_projectile.tscn" id="1_0mcat"]
 [ext_resource type="Script" uid="uid://dkvur5bdwg3sr" path="res://game/entities/weapons/launcher/launcher_projectile.gd" id="2_6hdsf"]
+[ext_resource type="Texture2D" uid="uid://leofxnlflrdn" path="res://particle_textures/flame.tres" id="3_kos01"]
 [ext_resource type="Script" uid="uid://dftb7hg5f06b5" path="res://game/health_system/damage/explosion_damage.gd" id="3_ycnsk"]
 [ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="4_kxgpk"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kxgpk"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+spread = 15.0
+gravity = Vector3(0, 0, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxgpk"]
 atlas = ExtResource("4_kxgpk")
@@ -56,34 +65,40 @@ script = ExtResource("2_6hdsf")
 rotation_speed = 90
 speed = 300
 
-[node name="Sprite2D_E" type="Sprite2D" parent="." index="0"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="0"]
+amount = 16
+texture = ExtResource("3_kos01")
+lifetime = 0.09999999999999999
+process_material = SubResource("ParticleProcessMaterial_kxgpk")
+
+[node name="Sprite2D_E" type="Sprite2D" parent="." index="1"]
 texture = SubResource("AtlasTexture_kxgpk")
 
-[node name="Sprite2D_SE" type="Sprite2D" parent="." index="1"]
+[node name="Sprite2D_SE" type="Sprite2D" parent="." index="2"]
 texture = SubResource("AtlasTexture_kos01")
 
-[node name="Sprite2D_S" type="Sprite2D" parent="." index="2"]
+[node name="Sprite2D_S" type="Sprite2D" parent="." index="3"]
 texture = SubResource("AtlasTexture_iqm85")
 
-[node name="Sprite2D_SW" type="Sprite2D" parent="." index="3"]
+[node name="Sprite2D_SW" type="Sprite2D" parent="." index="4"]
 texture = SubResource("AtlasTexture_rno65")
 
-[node name="Sprite2D_W" type="Sprite2D" parent="." index="4"]
+[node name="Sprite2D_W" type="Sprite2D" parent="." index="5"]
 texture = SubResource("AtlasTexture_f648y")
 
-[node name="Sprite2D_NW" type="Sprite2D" parent="." index="5"]
+[node name="Sprite2D_NW" type="Sprite2D" parent="." index="6"]
 texture = SubResource("AtlasTexture_she3g")
 
-[node name="Sprite2D_N" type="Sprite2D" parent="." index="6"]
+[node name="Sprite2D_N" type="Sprite2D" parent="." index="7"]
 texture = SubResource("AtlasTexture_4wwm4")
 
-[node name="Sprite2D_NE" type="Sprite2D" parent="." index="7"]
+[node name="Sprite2D_NE" type="Sprite2D" parent="." index="8"]
 texture = SubResource("AtlasTexture_dl8vu")
 
-[node name="CollisionShape2D" parent="." index="8"]
+[node name="CollisionShape2D" parent="." index="9"]
 shape = SubResource("CapsuleShape2D_6hdsf")
 
-[node name="Blast" parent="." index="10"]
+[node name="Blast" parent="." index="11"]
 collision_layer = 0
 collision_mask = 0
 damage = SubResource("Resource_kos01")
