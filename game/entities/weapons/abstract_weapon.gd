@@ -24,6 +24,7 @@ const IDLE_POSTFIX = "idle"
 
 var _belonging: Belonging
 var _current_projectile_position := 0
+var _can_shoot := true
 
 
 func _physics_process(delta: float) -> void:
@@ -36,7 +37,7 @@ func set_belonging(belonging: Belonging) -> void:
 
 
 func shoot(ship_velocity: Vector2) -> bool:
-	if not _can_shoot(): return false
+	if not _can_shoot or not _reloaders_can_shoot(): return false
 	
 	for i in range(bullet_per_shot):
 		var projectile := _create_projectile(ship_velocity)
@@ -81,7 +82,7 @@ func reload() -> void:
 		reloader.reload()
 
 
-func _can_shoot() -> bool:
+func _reloaders_can_shoot() -> bool:
 	for reloader in reloaders:
 		if not reloader.can_shoot():
 			return false

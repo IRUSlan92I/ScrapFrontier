@@ -13,6 +13,7 @@ func set_belonging(belonging: Belonging) -> void:
 func shoot(ship_velocity: Vector2) -> bool:
 	var is_shot := super.shoot(ship_velocity)
 	if is_shot:
+		_can_shoot = false
 		sprite.play(PREFIXES[_belonging] + SHOT_POSTFIX)
 	
 	return is_shot
@@ -20,3 +21,4 @@ func shoot(ship_velocity: Vector2) -> bool:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	sprite.play(PREFIXES[_belonging] + IDLE_POSTFIX)
+	_can_shoot = true

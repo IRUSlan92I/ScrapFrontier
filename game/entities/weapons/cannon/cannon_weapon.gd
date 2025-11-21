@@ -6,6 +6,7 @@ extends AbstractWeapon
 @onready var left_particles : GPUParticles2D = $ShotParticles/Left
 @onready var right_particles : GPUParticles2D = $ShotParticles/Right
 @onready var shell_particles : GPUParticles2D = $ShellParticles
+@onready var cooldown_timer : Timer = $CooldownTimer
 
 
 func set_belonging(belonging: Belonging) -> void:
@@ -61,6 +62,8 @@ func shoot(ship_velocity: Vector2) -> bool:
 	var is_shot := super.shoot(ship_velocity)
 	if is_shot:
 		sprite.play(PREFIXES[_belonging] + SHOT_POSTFIX)
+		_can_shoot = false
+		cooldown_timer.start()
 		_restart_particles()
 	
 	return is_shot
@@ -75,3 +78,7 @@ func _restart_particles() -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	sprite.play(PREFIXES[_belonging] + IDLE_POSTFIX)
+
+
+func _on_cooldown_timer_timeout() -> void:
+	_can_shoot = true

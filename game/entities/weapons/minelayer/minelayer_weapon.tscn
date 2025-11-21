@@ -1,16 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://j3yht6q4ru4e"]
+[gd_scene load_steps=18 format=3 uid="uid://j3yht6q4ru4e"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_12l3k"]
 [ext_resource type="PackedScene" uid="uid://4mkklqt1g14f" path="res://game/entities/weapons/minelayer/minelayer_projectile.tscn" id="2_7y446"]
 [ext_resource type="Script" uid="uid://c3ckkpjaef5jn" path="res://game/entities/weapons/minelayer/minelayer_weapon.gd" id="2_mmhtn"]
-[ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_uotj8"]
-[ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_fbmxv"]
 [ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="6_ais8e"]
-
-[sub_resource type="Resource" id="Resource_uotj8"]
-script = ExtResource("4_fbmxv")
-firerate = 40
-metadata/_custom_type_script = "uid://b255rb32vc6co"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ais8e"]
 atlas = ExtResource("6_ais8e")
@@ -123,7 +116,6 @@ animations = [{
 script = ExtResource("2_mmhtn")
 sector_angle = 10
 Projectile = ExtResource("2_7y446")
-reloaders = Array[ExtResource("3_uotj8")]([SubResource("Resource_uotj8")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_wwpdh")
