@@ -14,11 +14,14 @@ metadata/_custom_type_script = "uid://c27v705giygv4"
 radius = 1.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7dd03"]
+resource_local_to_scene = true
 particle_flag_disable_z = true
 angle_min = -179.99998
 angle_max = 180.00002
-inherit_velocity_ratio = 0.5
-spread = 15.0
+inherit_velocity_ratio = 1.0
+spread = 0.0
+initial_velocity_min = -250.0
+initial_velocity_max = -250.0
 gravity = Vector3(0, 0, 0)
 
 [node name="LaserProjectile" instance=ExtResource("1_3a8fg")]
@@ -32,7 +35,7 @@ speed = 500
 shape = SubResource("CircleShape2D_ylokk")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
-amount = 32
+amount = 64
 texture = ExtResource("4_bytws")
-lifetime = 0.05
+lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_7dd03")

@@ -13,12 +13,12 @@ enum Belonging { PLAYER, ENEMY }
 
 
 const PREFIXES := {
-	Belonging.PLAYER: "player_",
-	Belonging.ENEMY: "enemy_",
+	Belonging.PLAYER: "player",
+	Belonging.ENEMY: "enemy",
 }
 
-const SHOT_POSTFIX = "shot"
-const IDLE_POSTFIX = "idle"
+const SHOT_POSTFIX = "_shot"
+const IDLE_POSTFIX = "_idle"
 
 
 var _belonging: Belonging

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://def1alrel4ioo"]
+[gd_scene load_steps=27 format=3 uid="uid://def1alrel4ioo"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_pki4x"]
 [ext_resource type="PackedScene" uid="uid://cmni0xrbbfcy5" path="res://game/entities/weapons/laser/laser_projectile.tscn" id="2_fecho"]
 [ext_resource type="Script" uid="uid://bxr150at8ul2a" path="res://game/entities/weapons/laser/laser_weapon.gd" id="2_lbdvb"]
 [ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_c1wcw"]
 [ext_resource type="Script" uid="uid://b255rb32vc6co" path="res://game/reloaders/firerate_reloader.gd" id="4_cl0br"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="6_c8tb4"]
 
 [sub_resource type="Resource" id="Resource_fecho"]
 script = ExtResource("4_cl0br")
@@ -14,6 +15,144 @@ metadata/_custom_type_script = "uid://b255rb32vc6co"
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dra6h"]
 size = Vector2(10, 7)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a3il"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(0, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1iu2"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(32, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgblc"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(64, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2vvu"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(96, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rt33"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(0, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n02tm"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(32, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q2cb"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(64, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qatwk"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(96, 64, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjjka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a3il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1iu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgblc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2vvu")
+}],
+"loop": true,
+"name": &"enemy",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rt33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n02tm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q2cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qatwk")
+}],
+"loop": true,
+"name": &"player",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dggsl"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(128, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbu7x"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(160, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2prsi"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(192, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgejx"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(224, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c4fv"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(128, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jgsd"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(160, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n6qh"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(192, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amoq0"]
+atlas = ExtResource("6_c8tb4")
+region = Rect2(224, 64, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c8tb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dggsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbu7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2prsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgejx")
+}],
+"loop": true,
+"name": &"enemy",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c4fv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jgsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n6qh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amoq0")
+}],
+"loop": true,
+"name": &"player",
+"speed": 10.0
+}]
+
 [node name="LaserWeapon" instance=ExtResource("1_pki4x")]
 script = ExtResource("2_lbdvb")
 bullet_per_shot = 2
@@ -22,3 +161,18 @@ reloaders = Array[ExtResource("3_c1wcw")]([SubResource("Resource_fecho")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = SubResource("PlaceholderTexture2D_dra6h")
+
+[node name="IdleAnimatedSprite" type="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_qjjka")
+animation = &"player"
+
+[node name="FiringAnimatedSprite" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_c8tb4")
+animation = &"player"
+
+[node name="CooldownTimer" type="Timer" parent="." index="3"]
+process_callback = 0
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
