@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4mlppn5i55bp"]
+[gd_scene load_steps=7 format=3 uid="uid://c4mlppn5i55bp"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_gblx7"]
 [ext_resource type="Script" uid="uid://c1bsvmj7xhnxe" path="res://game/entities/weapons/gatling/gatling_weapon.gd" id="1_kg6du"]
 [ext_resource type="PackedScene" uid="uid://yfvluap3uy1r" path="res://game/entities/weapons/gatling/gatling_projectile.tscn" id="2_ylc0n"]
-[ext_resource type="Script" uid="uid://ccpriilfr3kme" path="res://game/reloaders/abstract_reloader.gd" id="3_uucc4"]
-[ext_resource type="Script" uid="uid://oslebeau3f4b" path="res://game/reloaders/gatling_reloader.gd" id="4_g81jq"]
+[ext_resource type="Script" uid="uid://oslebeau3f4b" path="res://game/entities/weapons/gatling/gatling_reloader.gd" id="4_g81jq"]
 
-[sub_resource type="Resource" id="Resource_kg6du"]
+[sub_resource type="Resource" id="Resource_oppha"]
 script = ExtResource("4_g81jq")
 firerate = 600
 spin_out_time = 3
@@ -17,9 +16,9 @@ size = Vector2(10, 7)
 
 [node name="GatlingWeapon" instance=ExtResource("1_gblx7")]
 script = ExtResource("1_kg6du")
+reloader = SubResource("Resource_oppha")
 sector_angle = 5
 Projectile = ExtResource("2_ylc0n")
-reloaders = Array[ExtResource("3_uucc4")]([SubResource("Resource_kg6du")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = SubResource("PlaceholderTexture2D_dra6h")

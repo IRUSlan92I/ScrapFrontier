@@ -1,4 +1,4 @@
-extends AbstractReloader
+extends Resource
 class_name GatlingReloader
 
 
@@ -21,6 +21,10 @@ var _current_delay : float = INITIAL_DELAY
 var _delay_decrement : float
 var _cooldown : float
 var _last_delta : float
+
+
+func _init() -> void:
+	resource_local_to_scene = true
 
 
 func _ready() -> void:

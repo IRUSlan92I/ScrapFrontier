@@ -9,7 +9,6 @@ enum Belonging { PLAYER, ENEMY }
 @export_range(0, 360) var sector_angle : int = 0
 
 @export var Projectile : PackedScene
-@export var reloaders : Array[AbstractReloader]
 
 
 const PREFIXES := {
@@ -23,13 +22,8 @@ const RELOAD_POSTFIX = "_reloading"
 
 
 var _belonging: Belonging
-var _current_projectile_position := 0
 var _can_shoot := true
 
-
-func _physics_process(delta: float) -> void:
-	for reloader in reloaders:
-		reloader.process(delta)
 
 
 func set_belonging(belonging: Belonging) -> void:
@@ -37,7 +31,7 @@ func set_belonging(belonging: Belonging) -> void:
 
 
 func shoot(ship_velocity: Vector2) -> bool:
-	if not _can_shoot or not _reloaders_can_shoot(): return false
+	if not _can_shoot: return false
 	
 	for i in range(bullet_per_shot):
 		var projectile := _create_projectile(ship_velocity)
@@ -45,9 +39,6 @@ func shoot(ship_velocity: Vector2) -> bool:
 		projectile.global_position = global_position + _get_projectile_position()
 		
 		get_tree().current_scene.add_child(projectile)
-	
-	for reloader in reloaders:
-		reloader.shoot()
 	
 	return true
 
@@ -75,10 +66,3 @@ func _create_projectile(ship_velocity: Vector2) -> AbstractProjectile:
 		projectile.direction = projectile.direction.rotated(random_angle)
 	
 	return projectile
-
-
-func _reloaders_can_shoot() -> bool:
-	for reloader in reloaders:
-		if not reloader.can_shoot():
-			return false
-	return true
