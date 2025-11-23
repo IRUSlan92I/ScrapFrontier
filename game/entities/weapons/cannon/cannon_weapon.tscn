@@ -45,43 +45,43 @@ gravity = Vector3(0, 0, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jfd4t"]
 atlas = ExtResource("6_jfd4t")
-region = Rect2(0, 160, 32, 16)
+region = Rect2(0, 176, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0ica"]
 atlas = ExtResource("6_jfd4t")
-region = Rect2(32, 160, 32, 16)
+region = Rect2(32, 176, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_377p4"]
 atlas = ExtResource("6_jfd4t")
-region = Rect2(64, 160, 32, 16)
+region = Rect2(64, 176, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrbut"]
 atlas = ExtResource("6_jfd4t")
-region = Rect2(96, 160, 32, 16)
+region = Rect2(96, 176, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mk6k8"]
 atlas = ExtResource("6_jfd4t")
-region = Rect2(128, 160, 32, 16)
+region = Rect2(128, 176, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxfcx"]
 atlas = ExtResource("6_jfd4t")
-region = Rect2(0, 144, 32, 16)
+region = Rect2(0, 160, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvc0n"]
 atlas = ExtResource("6_jfd4t")
-region = Rect2(32, 144, 32, 16)
+region = Rect2(32, 160, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_caj01"]
 atlas = ExtResource("6_jfd4t")
-region = Rect2(64, 144, 32, 16)
+region = Rect2(64, 160, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e28g8"]
 atlas = ExtResource("6_jfd4t")
-region = Rect2(96, 144, 32, 16)
+region = Rect2(96, 160, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7kmj"]
 atlas = ExtResource("6_jfd4t")
-region = Rect2(128, 144, 32, 16)
+region = Rect2(128, 160, 32, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kdf62"]
 animations = [{

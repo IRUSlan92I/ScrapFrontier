@@ -81,12 +81,6 @@ func shoot(weapon_index: int) -> void:
 	_weapons[weapon_index].shoot(velocity)
 
 
-func reload(weapon_index: int) -> void:
-	if weapon_index >= _weapons.size(): return
-	
-	_weapons[weapon_index].reload()
-
-
 func _get_new_speed(accel: float, decel: float, current_speed: float) -> float:
 	if is_zero_approx(accel):
 		if absf(current_speed) < decel:

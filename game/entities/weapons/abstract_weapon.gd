@@ -19,6 +19,7 @@ const PREFIXES := {
 
 const SHOT_POSTFIX = "_shot"
 const IDLE_POSTFIX = "_idle"
+const RELOAD_POSTFIX = "_reloading"
 
 
 var _belonging: Belonging
@@ -74,11 +75,6 @@ func _create_projectile(ship_velocity: Vector2) -> AbstractProjectile:
 		projectile.direction = projectile.direction.rotated(random_angle)
 	
 	return projectile
-
-
-func reload() -> void:
-	for reloader in reloaders:
-		reloader.reload()
 
 
 func _reloaders_can_shoot() -> bool:
