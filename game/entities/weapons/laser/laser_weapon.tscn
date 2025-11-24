@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://def1alrel4ioo"]
+[gd_scene load_steps=24 format=3 uid="uid://def1alrel4ioo"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_pki4x"]
 [ext_resource type="PackedScene" uid="uid://cmni0xrbbfcy5" path="res://game/entities/weapons/laser/laser_projectile.tscn" id="2_fecho"]
@@ -150,6 +150,7 @@ animations = [{
 script = ExtResource("2_lbdvb")
 bullet_per_shot = 2
 Projectile = ExtResource("2_fecho")
+type = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = SubResource("PlaceholderTexture2D_dra6h")

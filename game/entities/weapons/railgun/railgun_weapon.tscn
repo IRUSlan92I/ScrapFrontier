@@ -157,6 +157,7 @@ animations = [{
 [node name="RailgunWeapon" instance=ExtResource("1_0nxvu")]
 script = ExtResource("1_5nhwg")
 Projectile = ExtResource("2_cbsia")
+type = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = SubResource("PlaceholderTexture2D_dra6h")

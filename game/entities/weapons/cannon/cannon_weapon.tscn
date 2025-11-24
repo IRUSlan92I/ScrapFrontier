@@ -155,6 +155,7 @@ gravity = Vector3(0, 0, 0)
 script = ExtResource("2_ew5um")
 sector_angle = 1
 Projectile = ExtResource("2_2bjeu")
+type = 2
 
 [node name="ShotParticles" type="Node2D" parent="." index="0"]
 

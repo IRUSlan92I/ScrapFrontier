@@ -76,6 +76,7 @@ region = Rect2(224, 144, 32, 16)
 script = ExtResource("2_mxjpe")
 sector_angle = 5
 Projectile = ExtResource("3_fsoo2")
+type = 3
 
 [node name="ShotProjectiles" type="Node2D" parent="." index="0"]
 
