@@ -10,6 +10,11 @@ extends DirectHitProjectile
 
 @onready var jinkTimer : Timer = $JinkTimer
 
+@onready var particles_huge : GPUParticles2D = $ParticlesHuge
+@onready var particles_large : GPUParticles2D = $ParticlesLarge
+@onready var particles_medium : GPUParticles2D = $ParticlesMedium
+@onready var particles_small : GPUParticles2D = $ParticlesSmall
+
 
 var _collided_foes : Array[AbstractShip] = []
 
@@ -22,7 +27,11 @@ func _ready() -> void:
 func _process_hit_for_projectile(collided_body: Node2D) -> void:
 	if collided_body is AbstractShip:
 		_collided_foes.append(collided_body)
-
+		match _collided_foes.size():
+			1: particles_huge.emitting = false
+			2: particles_large.emitting = false
+			3: particles_medium.emitting = false
+	
 	damage.value = floor(damage.value/2.0)
 	
 	if damage.value == 0:

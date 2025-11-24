@@ -19,8 +19,8 @@ func set_belonging(belonging: Belonging) -> void:
 
 func _init_particles() -> void:
 	const FRONT_OFFSET_X = 12
-	const LEFT_OFFSET_X = 7
-	const LEFT_OFFSET_Y = 5
+	const SIDE_OFFSET_X = 6
+	const SIDE_OFFSET_Y = 5
 	const SHELL_OFFSET_X = -10
 	const SHELL_OFFSET_Y = 2
 	
@@ -30,12 +30,12 @@ func _init_particles() -> void:
 			front_particles.process_material.emission_shape_offset.x = FRONT_OFFSET_X
 			front_particles.process_material.direction = Vector3.RIGHT
 			
-			left_particles.process_material.emission_shape_offset.x = LEFT_OFFSET_X
-			left_particles.process_material.emission_shape_offset.y = -LEFT_OFFSET_Y
+			left_particles.process_material.emission_shape_offset.x = SIDE_OFFSET_X
+			left_particles.process_material.emission_shape_offset.y = -SIDE_OFFSET_Y
 			left_particles.process_material.direction = Vector3.DOWN + Vector3.LEFT
 			
-			right_particles.process_material.emission_shape_offset.x = LEFT_OFFSET_X
-			right_particles.process_material.emission_shape_offset.y = LEFT_OFFSET_Y
+			right_particles.process_material.emission_shape_offset.x = SIDE_OFFSET_X
+			right_particles.process_material.emission_shape_offset.y = SIDE_OFFSET_Y
 			right_particles.process_material.direction = Vector3.UP + Vector3.LEFT
 			
 			shell_particles.process_material.emission_shape_offset.x = SHELL_OFFSET_X
@@ -45,12 +45,12 @@ func _init_particles() -> void:
 			front_particles.process_material.emission_shape_offset.x = -FRONT_OFFSET_X
 			front_particles.process_material.direction = Vector3.LEFT
 			
-			left_particles.process_material.emission_shape_offset.x = -LEFT_OFFSET_X
-			left_particles.process_material.emission_shape_offset.y = -LEFT_OFFSET_Y
+			left_particles.process_material.emission_shape_offset.x = -SIDE_OFFSET_X
+			left_particles.process_material.emission_shape_offset.y = -SIDE_OFFSET_Y
 			left_particles.process_material.direction = Vector3.DOWN + Vector3.RIGHT
 			
-			right_particles.process_material.emission_shape_offset.x = -LEFT_OFFSET_X
-			right_particles.process_material.emission_shape_offset.y = LEFT_OFFSET_Y
+			right_particles.process_material.emission_shape_offset.x = -SIDE_OFFSET_X
+			right_particles.process_material.emission_shape_offset.y = SIDE_OFFSET_Y
 			right_particles.process_material.direction = Vector3.UP + Vector3.RIGHT
 			
 			shell_particles.process_material.emission_shape_offset.x = -SHELL_OFFSET_X

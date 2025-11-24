@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_rpud7"]
 [ext_resource type="PackedScene" uid="uid://bi64687wtxi4d" path="res://game/entities/weapons/tesla/tesla_projectile.tscn" id="2_1rrdy"]
 [ext_resource type="Script" uid="uid://ctv408wdwvttc" path="res://game/entities/weapons/tesla/tesla_weapon.gd" id="2_08si3"]
-[ext_resource type="Texture2D" uid="uid://dedca1d30igae" path="res://particle_textures/energy.tres" id="5_dhfvk"]
+[ext_resource type="Texture2D" uid="uid://c6aixtu6lbfud" path="res://particle_textures/energy_small.tres" id="5_dhfvk"]
 [ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="7_ub67s"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dra6h"]

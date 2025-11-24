@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cdv5n4t47hr8i" path="res://game/entities/weapons/direct_hit__projectile.tscn" id="1_rfd1j"]
 [ext_resource type="Script" uid="uid://bhqvk5cnjg5mv" path="res://game/health_system/damage/kinetic_damage.gd" id="3_wbdf3"]
 [ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="4_u82jm"]
-[ext_resource type="Texture2D" uid="uid://dedca1d30igae" path="res://particle_textures/energy.tres" id="5_whmfh"]
+[ext_resource type="Texture2D" uid="uid://c6aixtu6lbfud" path="res://particle_textures/energy_small.tres" id="4_whmfh"]
 
 [sub_resource type="Resource" id="Resource_u82jm"]
 script = ExtResource("3_wbdf3")
@@ -48,7 +48,7 @@ speed = 900
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="0"]
 amount = 32
-texture = ExtResource("5_whmfh")
+texture = ExtResource("4_whmfh")
 lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_yedu2")
 

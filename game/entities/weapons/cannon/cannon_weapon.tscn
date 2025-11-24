@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_xnbws"]
 [ext_resource type="PackedScene" uid="uid://cgi7wd84kjnyw" path="res://game/entities/weapons/cannon/cannon_projectile.tscn" id="2_2bjeu"]
 [ext_resource type="Script" uid="uid://db24dm76b1am7" path="res://game/entities/weapons/cannon/cannon_weapon.gd" id="2_ew5um"]
-[ext_resource type="Texture2D" uid="uid://leofxnlflrdn" path="res://particle_textures/flame.tres" id="4_jfd4t"]
+[ext_resource type="Texture2D" uid="uid://b13al44e8ofsx" path="res://particle_textures/flame_large.tres" id="4_i0ica"]
+[ext_resource type="Texture2D" uid="uid://b2tpy3y2bpuat" path="res://particle_textures/flame_small.tres" id="5_377p4"]
+[ext_resource type="Texture2D" uid="uid://bi1s5xrnunw3c" path="res://particle_textures/shell_large.tres" id="6_i0ica"]
 [ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="6_jfd4t"]
-[ext_resource type="Texture2D" uid="uid://3w0itm7k5fxq" path="res://images/particles.png" id="7_i0ica"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_377p4"]
 resource_local_to_scene = true
@@ -23,6 +24,8 @@ gravity = Vector3(0, 0, 0)
 resource_local_to_scene = true
 lifetime_randomness = 0.1
 particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
 angle_min = -179.99998
 angle_max = 180.00002
 inherit_velocity_ratio = 0.2
@@ -35,6 +38,8 @@ gravity = Vector3(0, 0, 0)
 resource_local_to_scene = true
 lifetime_randomness = 0.1
 particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
 angle_min = -179.99998
 angle_max = 180.00002
 inherit_velocity_ratio = 0.2
@@ -136,10 +141,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h76ev"]
-atlas = ExtResource("7_i0ica")
-region = Rect2(0, 0, 16, 16)
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nrbut"]
 resource_local_to_scene = true
 lifetime_randomness = 0.5
@@ -160,7 +161,7 @@ Projectile = ExtResource("2_2bjeu")
 [node name="Front" type="GPUParticles2D" parent="ShotParticles" index="0"]
 emitting = false
 amount = 32
-texture = ExtResource("4_jfd4t")
+texture = ExtResource("4_i0ica")
 lifetime = 0.5
 one_shot = true
 preprocess = 0.1
@@ -169,16 +170,16 @@ process_material = SubResource("ParticleProcessMaterial_377p4")
 
 [node name="Left" type="GPUParticles2D" parent="ShotParticles" index="1"]
 emitting = false
-texture = ExtResource("4_jfd4t")
-lifetime = 0.2
+texture = ExtResource("5_377p4")
+lifetime = 0.4
 one_shot = true
 fixed_fps = 10
 process_material = SubResource("ParticleProcessMaterial_i0ica")
 
 [node name="Right" type="GPUParticles2D" parent="ShotParticles" index="2"]
 emitting = false
-texture = ExtResource("4_jfd4t")
-lifetime = 0.2
+texture = ExtResource("5_377p4")
+lifetime = 0.4
 one_shot = true
 fixed_fps = 10
 process_material = SubResource("ParticleProcessMaterial_jfd4t")
@@ -191,7 +192,7 @@ animation = &"player_idle"
 z_index = 1
 emitting = false
 amount = 1
-texture = SubResource("AtlasTexture_h76ev")
+texture = ExtResource("6_i0ica")
 lifetime = 2.0
 one_shot = true
 fixed_fps = 10

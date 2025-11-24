@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cdv5n4t47hr8i" path="res://game/entities/weapons/direct_hit__projectile.tscn" id="1_x58hw"]
 [ext_resource type="Script" uid="uid://bu5sjoh4hwkhn" path="res://game/entities/weapons/plasma/plasma_projectile.gd" id="2_0deih"]
 [ext_resource type="Script" uid="uid://c27v705giygv4" path="res://game/health_system/damage/energy_damage.gd" id="3_dlvdm"]
-[ext_resource type="Texture2D" uid="uid://dedca1d30igae" path="res://particle_textures/energy.tres" id="4_5enq5"]
+[ext_resource type="Texture2D" uid="uid://dk3t14mrgjmma" path="res://particle_textures/energy_medium.tres" id="4_5enq5"]
 
 [sub_resource type="Resource" id="Resource_5enq5"]
 script = ExtResource("3_dlvdm")
@@ -36,7 +36,7 @@ shape = SubResource("CapsuleShape2D_5enq5")
 debug_color = Color(0.98039216, 0, 0.39215687, 1)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
-amount = 64
+amount = 32
 texture = ExtResource("4_5enq5")
 lifetime = 0.2
 preprocess = 0.1

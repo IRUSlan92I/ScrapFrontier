@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://r7wnk762jbfy"]
+[gd_scene load_steps=18 format=3 uid="uid://r7wnk762jbfy"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_xk300"]
 [ext_resource type="Script" uid="uid://gxwbsiicuqh5" path="res://game/entities/weapons/shrapnel/shrapnel_weapon.gd" id="2_1bd18"]
 [ext_resource type="PackedScene" uid="uid://bsx23u3a2obbj" path="res://game/entities/weapons/shrapnel/shrapnel_projectile.tscn" id="2_xvd4y"]
+[ext_resource type="Texture2D" uid="uid://b2tpy3y2bpuat" path="res://particle_textures/flame_small.tres" id="4_0tw2i"]
 [ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="6_0tw2i"]
-[ext_resource type="Texture2D" uid="uid://leofxnlflrdn" path="res://particle_textures/flame.tres" id="7_gdolk"]
-[ext_resource type="Texture2D" uid="uid://3w0itm7k5fxq" path="res://images/particles.png" id="8_a22j7"]
+[ext_resource type="Texture2D" uid="uid://dxcxybr27kkra" path="res://particle_textures/shell_medium.tres" id="6_gdolk"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a22j7"]
 resource_local_to_scene = true
@@ -16,6 +16,7 @@ emission_sphere_radius = 2.0
 angle_min = -179.99998
 angle_max = 180.00002
 inherit_velocity_ratio = 0.5
+spread = 60.0
 initial_velocity_min = 10.0
 initial_velocity_max = 15.0
 gravity = Vector3(0, 0, 0)
@@ -99,10 +100,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_he4pe"]
-atlas = ExtResource("8_a22j7")
-region = Rect2(0, 0, 16, 16)
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t57yr"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
@@ -121,8 +118,8 @@ Projectile = ExtResource("2_xvd4y")
 [node name="ShotParticles" type="GPUParticles2D" parent="." index="0"]
 emitting = false
 amount = 32
-texture = ExtResource("7_gdolk")
-lifetime = 0.2
+texture = ExtResource("4_0tw2i")
+lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_a22j7")
 
@@ -138,7 +135,7 @@ one_shot = true
 z_index = 1
 emitting = false
 amount = 1
-texture = SubResource("AtlasTexture_he4pe")
+texture = ExtResource("6_gdolk")
 lifetime = 2.0
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_t57yr")

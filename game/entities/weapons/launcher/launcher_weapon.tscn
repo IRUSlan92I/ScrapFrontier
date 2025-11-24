@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_sk5u1"]
 [ext_resource type="Script" uid="uid://lauvvj5xhbud" path="res://game/entities/weapons/launcher/launcher_weapon.gd" id="2_mxjpe"]
 [ext_resource type="PackedScene" uid="uid://dukgbg13ujkv2" path="res://game/entities/weapons/launcher/launcher_projectile.tscn" id="3_fsoo2"]
+[ext_resource type="Texture2D" uid="uid://gh7mwehpqfco" path="res://particle_textures/flame_medium.tres" id="4_0brql"]
 [ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="6_3cw5x"]
-[ext_resource type="Texture2D" uid="uid://leofxnlflrdn" path="res://particle_textures/flame.tres" id="7_u8eh0"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u8eh0"]
 lifetime_randomness = 0.5
@@ -82,7 +82,7 @@ Projectile = ExtResource("3_fsoo2")
 [node name="PlayerLeftParticles" type="GPUParticles2D" parent="ShotProjectiles" index="0"]
 emitting = false
 amount = 16
-texture = ExtResource("7_u8eh0")
+texture = ExtResource("4_0brql")
 lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_u8eh0")
@@ -90,7 +90,7 @@ process_material = SubResource("ParticleProcessMaterial_u8eh0")
 [node name="PlayerRightParticles" type="GPUParticles2D" parent="ShotProjectiles" index="1"]
 emitting = false
 amount = 16
-texture = ExtResource("7_u8eh0")
+texture = ExtResource("4_0brql")
 lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_0brql")
@@ -98,7 +98,7 @@ process_material = SubResource("ParticleProcessMaterial_0brql")
 [node name="EnemyLeftParticles" type="GPUParticles2D" parent="ShotProjectiles" index="2"]
 emitting = false
 amount = 16
-texture = ExtResource("7_u8eh0")
+texture = ExtResource("4_0brql")
 lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_3cw5x")
@@ -106,7 +106,7 @@ process_material = SubResource("ParticleProcessMaterial_3cw5x")
 [node name="EnemyRightParticles" type="GPUParticles2D" parent="ShotProjectiles" index="3"]
 emitting = false
 amount = 16
-texture = ExtResource("7_u8eh0")
+texture = ExtResource("4_0brql")
 lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_ylgjm")

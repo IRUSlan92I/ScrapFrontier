@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi64687wtxi4d"]
+[gd_scene load_steps=11 format=3 uid="uid://bi64687wtxi4d"]
 
 [ext_resource type="PackedScene" uid="uid://cdv5n4t47hr8i" path="res://game/entities/weapons/direct_hit__projectile.tscn" id="1_1oexk"]
 [ext_resource type="Script" uid="uid://bxcoa2eps0tt1" path="res://game/entities/weapons/tesla/tesla_projectile.gd" id="2_q73is"]
 [ext_resource type="Script" uid="uid://c27v705giygv4" path="res://game/health_system/damage/energy_damage.gd" id="3_l65ib"]
+[ext_resource type="Texture2D" uid="uid://cqdctagygc0c0" path="res://particle_textures/energy_large.tres" id="4_1121u"]
+[ext_resource type="Texture2D" uid="uid://d2k7bcwqr5v2q" path="res://particle_textures/energy_huge.tres" id="4_wtuxv"]
+[ext_resource type="Texture2D" uid="uid://dk3t14mrgjmma" path="res://particle_textures/energy_medium.tres" id="5_wtuxv"]
+[ext_resource type="Texture2D" uid="uid://c6aixtu6lbfud" path="res://particle_textures/energy_small.tres" id="7_eyfoy"]
 
 [sub_resource type="Resource" id="Resource_1121u"]
 resource_local_to_scene = true
@@ -10,11 +14,21 @@ script = ExtResource("3_l65ib")
 value = 45
 metadata/_custom_type_script = "uid://c27v705giygv4"
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1oexk"]
-size = Vector2(12, 12)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_l65ib"]
 radius = 5.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wtuxv"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 5.0
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.5
+spread = 15.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+turbulence_enabled = true
 
 [node name="TeslaProjectile" instance=ExtResource("1_1oexk")]
 collision_layer = 0
@@ -27,13 +41,38 @@ no_deviation_distance = 50
 damage = SubResource("Resource_1121u")
 speed = 900
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-texture = SubResource("PlaceholderTexture2D_1oexk")
-
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_l65ib")
 
-[node name="JinkTimer" type="Timer" parent="." index="3"]
+[node name="JinkTimer" type="Timer" parent="." index="2"]
 one_shot = true
+
+[node name="ParticlesHuge" type="GPUParticles2D" parent="." index="3"]
+amount = 32
+texture = ExtResource("4_wtuxv")
+lifetime = 0.3
+preprocess = 0.1
+process_material = SubResource("ParticleProcessMaterial_wtuxv")
+
+[node name="ParticlesLarge" type="GPUParticles2D" parent="." index="4"]
+amount = 32
+texture = ExtResource("4_1121u")
+lifetime = 0.4
+preprocess = 0.1
+process_material = SubResource("ParticleProcessMaterial_wtuxv")
+
+[node name="ParticlesMedium" type="GPUParticles2D" parent="." index="5"]
+amount = 32
+texture = ExtResource("5_wtuxv")
+lifetime = 0.5
+preprocess = 0.1
+process_material = SubResource("ParticleProcessMaterial_wtuxv")
+
+[node name="ParticlesSmall" type="GPUParticles2D" parent="." index="6"]
+amount = 32
+texture = ExtResource("7_eyfoy")
+lifetime = 0.5
+preprocess = 0.1
+process_material = SubResource("ParticleProcessMaterial_wtuxv")
 
 [connection signal="timeout" from="JinkTimer" to="." method="_on_jink_timer_timeout"]
