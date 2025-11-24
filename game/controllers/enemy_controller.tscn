@@ -4,3 +4,10 @@
 
 [node name="EnemyController" type="Node"]
 script = ExtResource("1_10a67")
+
+[node name="DirectionTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

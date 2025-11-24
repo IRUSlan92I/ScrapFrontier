@@ -9,8 +9,12 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_fwvrd")
 
-[node name="EnemyController" parent="." index="4" instance=ExtResource("3_l8c0n")]
+[node name="EnemyController" parent="." index="4" node_paths=PackedStringArray("ship") instance=ExtResource("3_l8c0n")]
+ship = NodePath("..")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="5"]
 
 [connection signal="accelerate" from="EnemyController" to="." method="accelerate"]
-[connection signal="reload" from="EnemyController" to="." method="reload"]
-[connection signal="shoot" from="EnemyController" to="." method="shoot"]
+[connection signal="shoot" from="EnemyController" to="." method="_on_enemy_controller_shoot"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

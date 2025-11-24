@@ -10,6 +10,7 @@ extends BlastProjectile
 @onready var livetime_timer := $LivetimeTimer
 @onready var sprite_on_timer := $SpriteOnTimer
 @onready var sprite_off_timer := $SpriteOffTimer
+@onready var explosion_particles : ExplosionParticles = $ExplosionParticles
 
 
 const OFF_TIMES = [
@@ -106,10 +107,6 @@ func _switch_sprite(new_state_state: SpriteState) -> void:
 		SpriteState.Disabled:
 			sprite_on.hide()
 			sprite_off.hide()
-
-
-@onready var sprite : Sprite2D = $Sprite2D
-@onready var explosion_particles : ExplosionParticles = $ExplosionParticles
 
 
 func _process_hit_for_projectile(_collided_body: Node2D) -> void:

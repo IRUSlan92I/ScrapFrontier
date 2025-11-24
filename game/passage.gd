@@ -25,5 +25,6 @@ func _create_random_enemy() -> void:
 	
 	var enemy : AbstractEnemyShip = ENEMIES.pick_random().instantiate()
 	add_child(enemy)
-	enemy.position = Vector2(550, 180)
+	enemy.position = Vector2(750, randi_range(0, 360))
+	enemy.controller.target_position = Vector2(550, 180)
 	enemy.destroyed.connect(_create_random_enemy, CONNECT_DEFERRED)
