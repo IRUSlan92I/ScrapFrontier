@@ -9,6 +9,7 @@ extends BlastProjectile
 	$Sprite2D_E, $Sprite2D_SE, $Sprite2D_S, $Sprite2D_SW,
 	$Sprite2D_W, $Sprite2D_NW, $Sprite2D_N, $Sprite2D_NE,
 ]
+@onready var explosion_particles : ExplosionParticles = $ExplosionParticles
 
 var target : AbstractShip = null
 
@@ -54,3 +55,16 @@ func _update_sprite(velocity: Vector2) -> void:
 		sprite.hide()
 	
 	sprites[index].show()
+
+
+func _process_hit_for_projectile(_collided_body: Node2D) -> void:
+	for sprite in sprites:
+		sprite.hide()
+	explosion_particles.emitting = true
+	set_physics_process(false)
+	collision_mask = 0
+	blast.collision_mask = 0
+
+
+func _on_explosion_particles_finished() -> void:
+	queue_free()

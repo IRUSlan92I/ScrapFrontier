@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://4mkklqt1g14f"]
+[gd_scene load_steps=12 format=3 uid="uid://4mkklqt1g14f"]
 
 [ext_resource type="PackedScene" uid="uid://betr5ry5tc75e" path="res://game/entities/weapons/blast_projectile.tscn" id="1_ufc4r"]
 [ext_resource type="Script" uid="uid://76swcukelnii" path="res://game/entities/weapons/minelayer/minelayer_projectile.gd" id="2_hwwfa"]
 [ext_resource type="Script" uid="uid://dftb7hg5f06b5" path="res://game/health_system/damage/explosion_damage.gd" id="3_hll7s"]
 [ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="4_px1i2"]
+[ext_resource type="PackedScene" uid="uid://bhxib2ltpkcbf" path="res://game/entities/other/explosion_particles.tscn" id="5_ckqco"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckqco"]
 atlas = ExtResource("4_px1i2")
@@ -23,6 +24,18 @@ metadata/_custom_type_script = "uid://dftb7hg5f06b5"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_px1i2"]
 radius = 48.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ckqco"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 48.0
+angle_min = -179.99998
+angle_max = 180.00002
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(0.1, 0.1, 0.1)
 
 [node name="MinelayerProjectile" instance=ExtResource("1_ufc4r")]
 collision_layer = 0
@@ -57,8 +70,13 @@ one_shot = true
 [node name="SpriteOffTimer" type="Timer" parent="." index="7"]
 one_shot = true
 
+[node name="ExplosionParticles" parent="." index="8" instance=ExtResource("5_ckqco")]
+process_material = SubResource("ParticleProcessMaterial_ckqco")
+amount_ratio = 0.5
+
 [connection signal="body_entered" from="Blast" to="." method="_on_blast_body_entered"]
 [connection signal="body_exited" from="Blast" to="." method="_on_blast_body_exited"]
 [connection signal="timeout" from="LivetimeTimer" to="." method="_on_livetime_timer_timeout"]
 [connection signal="timeout" from="SpriteOnTimer" to="." method="_on_sprite_on_timer_timeout"]
 [connection signal="timeout" from="SpriteOffTimer" to="." method="_on_sprite_off_timer_timeout"]
+[connection signal="finished" from="ExplosionParticles" to="." method="_on_explosion_particles_finished"]

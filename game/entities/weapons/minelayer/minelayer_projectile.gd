@@ -18,18 +18,21 @@ const OFF_TIMES = [
 const ON_TIME = 0.05
 
 
-enum Sprite {
+enum SpriteState {
 	ON,
 	OFF,
+	Disabled,
 }
 
 
 var _bodies_inside: Array[Node2D] = []
-var current_off_time_index := 0
+var _current_off_time_index := 0
+var _current_sprite_state : SpriteState:
+	set = _switch_sprite
 
 
 func _ready() -> void:
-	_switch_sprite(Sprite.OFF)
+	_current_sprite_state = SpriteState.OFF
 	super._ready()
 
 
@@ -52,7 +55,7 @@ func _on_livetime_timer_timeout() -> void:
 
 func _on_blast_body_entered(body: Node2D) -> void:
 	_bodies_inside.append(body)
-	_switch_sprite(Sprite.ON)
+	_current_sprite_state = SpriteState.ON
 	if sprite_on_timer.is_stopped() and sprite_off_timer.is_stopped():
 		sprite_on_timer.start(ON_TIME)
 
@@ -67,33 +70,55 @@ func _on_blast_body_exited(body: Node2D) -> void:
 
 
 func _on_sprite_on_timer_timeout() -> void:
-	current_off_time_index += 1
+	_current_off_time_index += 1
 	
-	if current_off_time_index >= OFF_TIMES.size():
+	if _current_off_time_index >= OFF_TIMES.size():
 		_try_to_damage_by_blast()
 		_process_hit_for_projectile(null)
 	else:
-		_switch_sprite(Sprite.OFF)
-		sprite_off_timer.start(OFF_TIMES[current_off_time_index])
+		_current_sprite_state = SpriteState.OFF
+		sprite_off_timer.start(OFF_TIMES[_current_off_time_index])
 
 
 func _on_sprite_off_timer_timeout() -> void:
-	_switch_sprite(Sprite.ON)
+	_current_sprite_state = SpriteState.ON
 	sprite_on_timer.start(ON_TIME)
 
 
 func _reset() -> void:
-	_switch_sprite(Sprite.OFF)
+	_current_sprite_state = SpriteState.OFF
 	sprite_on_timer.stop()
 	sprite_off_timer.stop()
-	current_off_time_index = 0
+	_current_off_time_index = 0
 
 
-func _switch_sprite(sprite: Sprite) -> void:
-	match sprite:
-		Sprite.ON:
+func _switch_sprite(new_state_state: SpriteState) -> void:
+	if _current_sprite_state == SpriteState.Disabled: return
+	
+	_current_sprite_state = new_state_state
+	match _current_sprite_state:
+		SpriteState.ON:
 			sprite_on.show()
 			sprite_off.hide()
-		Sprite.OFF:
+		SpriteState.OFF:
 			sprite_on.hide()
 			sprite_off.show()
+		SpriteState.Disabled:
+			sprite_on.hide()
+			sprite_off.hide()
+
+
+@onready var sprite : Sprite2D = $Sprite2D
+@onready var explosion_particles : ExplosionParticles = $ExplosionParticles
+
+
+func _process_hit_for_projectile(_collided_body: Node2D) -> void:
+	_current_sprite_state = SpriteState.Disabled
+	explosion_particles.emitting = true
+	set_physics_process(false)
+	collision_mask = 0
+	blast.collision_mask = 0
+
+
+func _on_explosion_particles_finished() -> void:
+	queue_free()
