@@ -1,16 +1,16 @@
+class_name Passage
 extends Node2D
 
-
-const SMALL_ENEMY = preload("res://game/entities/ships/enemies/small/small_enemy_ship.tscn")
-const MEDIUM_ENEMY = preload("res://game/entities/ships/enemies/medium/medium_enemy_ship.tscn")
-const HEAVY_ENEMY = preload("res://game/entities/ships/enemies/heavy/heavy_enemy_ship.tscn")
 
 const PLAYER := preload("res://game/entities/ships/player/player_ship.tscn")
 
 
+@onready var enemy_swamp_controller : EnemySwampController = $EnemySwampController
+@onready var enemy_timer : Timer = $EnemyTimer
+
+
 func _ready() -> void:
 	_create_player()
-	_create_random_enemy()
 
 
 func _create_player() -> void:
@@ -20,11 +20,7 @@ func _create_player() -> void:
 	add_child(player)
 
 
-func _create_random_enemy() -> void:
-	const ENEMIES := [ SMALL_ENEMY, MEDIUM_ENEMY, HEAVY_ENEMY ]
+func _on_enemy_timer_timeout() -> void:
+	enemy_swamp_controller.create_enemy()
 	
-	var enemy : AbstractEnemyShip = ENEMIES.pick_random().instantiate()
-	enemy.position = Vector2(750, randi_range(0, 360))
-	enemy.destroyed.connect(_create_random_enemy, CONNECT_DEFERRED)
-	add_child(enemy)
-	enemy.controller.target_position = Vector2(550, 180)
+	enemy_timer.start(randi_range(3, 9))
