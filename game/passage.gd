@@ -15,16 +15,16 @@ func _ready() -> void:
 
 func _create_player() -> void:
 	var player : PlayerShip = PLAYER.instantiate()
-	add_child(player)
 	player.position = Vector2(100, 100)
 	player.destroyed.connect(_create_player, CONNECT_DEFERRED)
+	add_child(player)
 
 
 func _create_random_enemy() -> void:
 	const ENEMIES := [ SMALL_ENEMY, MEDIUM_ENEMY, HEAVY_ENEMY ]
 	
 	var enemy : AbstractEnemyShip = ENEMIES.pick_random().instantiate()
-	add_child(enemy)
 	enemy.position = Vector2(750, randi_range(0, 360))
-	enemy.controller.target_position = Vector2(550, 180)
 	enemy.destroyed.connect(_create_random_enemy, CONNECT_DEFERRED)
+	add_child(enemy)
+	enemy.controller.target_position = Vector2(550, 180)

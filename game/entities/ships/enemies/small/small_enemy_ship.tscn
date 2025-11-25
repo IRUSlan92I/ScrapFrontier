@@ -30,3 +30,6 @@ max_hull = 50
 [node name="HeathBar" parent="." index="3"]
 offset_top = 14.0
 offset_bottom = 14.0
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="5"]
+rect = Rect2(-13, -5, 26, 10)

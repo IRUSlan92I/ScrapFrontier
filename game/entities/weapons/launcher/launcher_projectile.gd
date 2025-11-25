@@ -45,6 +45,10 @@ func _apply_homing_guidance(delta: float) -> void:
 
 
 func _update_sprite(velocity: Vector2) -> void:
+	if velocity.is_zero_approx():
+		sprites[0].show()
+		return
+	
 	var sector := TAU / sprites.size()
 	var angle := velocity.angle()
 	var bisector := angle + sector * 0.5
