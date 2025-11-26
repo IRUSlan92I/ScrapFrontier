@@ -119,6 +119,7 @@ Projectile = ExtResource("2_7y446")
 type = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(-7, 0)
 sprite_frames = SubResource("SpriteFrames_wwpdh")
 animation = &"player_shot"
 

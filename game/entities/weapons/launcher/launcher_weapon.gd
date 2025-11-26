@@ -6,12 +6,12 @@ extends AbstractWeapon
 @onready var cooldown_timer : Timer = $CooldownTimer
 
 @onready var particles : Array[GPUParticles2D] = [
-	$RightParticles, $LeftParticles,
+	$LeftParticles, $RightParticles,
 ]
 var _particles_index := 0
 
 @onready var muzzles : Array[Node2D] = [
-	$RightMuzzle, $LeftMuzzle,
+	$Muzzle, $SecondMuzzle,
 ]
 var _muzzle_index := 0
 
@@ -48,7 +48,7 @@ func _restart_particles() -> void:
 
 
 func _get_projectile_position() -> Vector2:
-	var projectile_position := muzzles[_muzzle_index].position
+	var projectile_position := muzzles[_muzzle_index].global_position - global_position
 	_muzzle_index += 1
 	if _muzzle_index >= muzzles.size():
 		_muzzle_index = 0

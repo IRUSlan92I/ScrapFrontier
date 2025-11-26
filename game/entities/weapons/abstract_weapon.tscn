@@ -5,3 +5,5 @@
 [node name="AbstractWeapon" type="Node2D"]
 z_index = 2
 script = ExtResource("1_x30ps")
+
+[node name="Muzzle" type="Node2D" parent="."]

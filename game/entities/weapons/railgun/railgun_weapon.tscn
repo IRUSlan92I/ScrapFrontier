@@ -1,12 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://do6h77gmnreho"]
+[gd_scene load_steps=22 format=3 uid="uid://do6h77gmnreho"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_0nxvu"]
 [ext_resource type="Script" uid="uid://drnofu4ium56e" path="res://game/entities/weapons/railgun/railgun_weapon.gd" id="1_5nhwg"]
 [ext_resource type="PackedScene" uid="uid://bab3bopsw74cb" path="res://game/entities/weapons/railgun/railgun_projectile.tscn" id="2_cbsia"]
 [ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="4_qxcog"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dra6h"]
-size = Vector2(10, 7)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxcog"]
 atlas = ExtResource("4_qxcog")
@@ -159,11 +156,12 @@ script = ExtResource("1_5nhwg")
 Projectile = ExtResource("2_cbsia")
 type = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-texture = SubResource("PlaceholderTexture2D_dra6h")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_caa1b")
 animation = &"enemy_reloading"
+
+[node name="Muzzle" parent="." index="1"]
+position = Vector2(11, 0)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -21,18 +21,6 @@ func shoot(ship_velocity: Vector2) -> bool:
 	return is_shot
 
 
-func _get_projectile_position() -> Vector2:
-	var projectile_position : Vector2
-	
-	match _belonging:
-		Belonging.PLAYER:
-			projectile_position = Vector2(-5, 2)
-		Belonging.ENEMY:
-			projectile_position = Vector2(5, -2)
-	
-	return projectile_position
-
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	sprite.play(PREFIXES[_belonging] + RELOAD_POSTFIX)
 

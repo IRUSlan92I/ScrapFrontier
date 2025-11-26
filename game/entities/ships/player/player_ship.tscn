@@ -17,7 +17,7 @@ acceleration = 92
 deceleration = 46
 max_speed = 92
 mass = 250
-weapon_positions = Array[Vector2]([Vector2(-2, 18), Vector2(-2, -18)])
+weapon_rotation = null
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_uf2n1")
@@ -34,6 +34,12 @@ offset_top = 22.0
 offset_bottom = 22.0
 
 [node name="PlayerController" parent="." index="4" instance=ExtResource("3_4mjo1")]
+
+[node name="First" type="Node2D" parent="WeaponSlots" index="0"]
+position = Vector2(-2, 8)
+
+[node name="Second" type="Node2D" parent="WeaponSlots" index="1"]
+position = Vector2(-2, -8)
 
 [connection signal="accelerate" from="PlayerController" to="." method="accelerate"]
 [connection signal="shoot" from="PlayerController" to="." method="_on_player_controller_shoot"]

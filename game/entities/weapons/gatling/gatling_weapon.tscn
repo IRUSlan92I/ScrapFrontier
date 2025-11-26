@@ -49,3 +49,6 @@ Projectile = ExtResource("2_ylc0n")
 position = Vector2(6, 0)
 sprite_frames = SubResource("SpriteFrames_pjn33")
 animation = &"player_idle"
+
+[node name="Muzzle" parent="." index="1"]
+position = Vector2(14, 0)

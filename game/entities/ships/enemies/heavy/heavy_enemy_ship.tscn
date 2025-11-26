@@ -16,7 +16,6 @@ acceleration = 30
 deceleration = 18
 max_speed = 60
 mass = 600
-weapon_positions = Array[Vector2]([Vector2(0, 16), Vector2(0, 0), Vector2(0, -16)])
 
 [node name="Sprite2D" parent="." index="0"]
 texture = SubResource("PlaceholderTexture2D_cuapu")
@@ -34,3 +33,11 @@ offset_bottom = 30.0
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="5"]
 rect = Rect2(-29, -21, 58, 42)
+
+[node name="First" type="Node2D" parent="WeaponSlots" index="0"]
+position = Vector2(0, -13)
+
+[node name="Second" type="Node2D" parent="WeaponSlots" index="1"]
+
+[node name="Third" type="Node2D" parent="WeaponSlots" index="2"]
+position = Vector2(0, 13)

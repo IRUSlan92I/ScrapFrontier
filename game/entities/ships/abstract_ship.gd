@@ -32,17 +32,23 @@ signal destroyed
 @export_range(0, 1000) var mass : int = 0
 
 @export_range(0, 360) var weapon_rotation : int = 0
-@export var weapon_positions: Array[Vector2]
+
+
+var weapon_positions: Array[Vector2]
 
 
 var _weapons : Array[AbstractWeapon]
 
 
 func _ready() -> void:
+	for slot in $WeaponSlots.get_children():
+		if slot is Node2D:
+			weapon_positions.append(slot.global_position - global_position)
+	
 	for pos in weapon_positions:
 		var weapon : AbstractWeapon = WEAPONS.pick_random().instantiate()
 		weapon.position = pos
-		weapon.rotation = deg_to_rad(weapon_rotation)
+		weapon.rotation_degrees = weapon_rotation
 		add_child(weapon)
 		_weapons.append(weapon)
 

@@ -13,6 +13,9 @@ enum Type { SHORT_RANGE, MEDIUM_RANGE, LONG_RANGE, HOMING, MINES }
 @export var type := Type.MEDIUM_RANGE
 
 
+@onready var muzzle : Node2D = $Muzzle
+
+
 const PREFIXES := {
 	Belonging.PLAYER: "player",
 	Belonging.ENEMY: "enemy",
@@ -46,7 +49,7 @@ func shoot(ship_velocity: Vector2) -> bool:
 
 
 func _get_projectile_position() -> Vector2:
-	return Vector2.ZERO
+	return muzzle.global_position - global_position
 
 
 func _create_projectile(ship_velocity: Vector2) -> AbstractProjectile:

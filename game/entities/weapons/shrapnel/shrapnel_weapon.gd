@@ -10,8 +10,6 @@ extends AbstractWeapon
 func set_belonging(belonging: Belonging) -> void:
 	super.set_belonging(belonging)
 	
-	_init_particles()
-	
 	sprite.play(PREFIXES[_belonging] + IDLE_POSTFIX)
 
 
@@ -24,29 +22,6 @@ func shoot(ship_velocity: Vector2) -> bool:
 		_restart_particles()
 	
 	return is_shot
-
-
-func _init_particles() -> void:
-	const SHOT_OFFSET_X = 11
-	const SHELL_OFFSET_X = -8
-	const SHELL_OFFSET_Y = 1
-	
-	
-	match _belonging:
-		Belonging.PLAYER:
-			shot_particles.process_material.emission_shape_offset.x = SHOT_OFFSET_X
-			shot_particles.process_material.direction = Vector3.RIGHT
-			
-			shell_particles.process_material.emission_shape_offset.x = SHELL_OFFSET_X
-			shell_particles.process_material.emission_shape_offset.y = SHELL_OFFSET_Y
-			shell_particles.process_material.direction = Vector3.UP
-		Belonging.ENEMY:
-			shot_particles.process_material.emission_shape_offset.x = -SHOT_OFFSET_X
-			shot_particles.process_material.direction = Vector3.LEFT
-			
-			shell_particles.process_material.emission_shape_offset.x = -SHELL_OFFSET_X
-			shell_particles.process_material.emission_shape_offset.y = -SHELL_OFFSET_Y
-			shell_particles.process_material.direction = Vector3.DOWN
 
 
 func _restart_particles() -> void:

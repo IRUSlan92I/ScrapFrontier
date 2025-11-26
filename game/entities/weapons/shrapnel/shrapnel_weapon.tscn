@@ -104,9 +104,10 @@ animations = [{
 resource_local_to_scene = true
 particle_flag_disable_z = true
 inherit_velocity_ratio = 1.0
+direction = Vector3(0, 1, 0)
 spread = 15.0
 initial_velocity_min = 15.0
-initial_velocity_max = 50.0
+initial_velocity_max = 25.0
 gravity = Vector3(0, 0, 0)
 
 [node name="ShrapnelWeapon" instance=ExtResource("1_xk300")]
@@ -117,6 +118,7 @@ Projectile = ExtResource("2_xvd4y")
 type = 0
 
 [node name="ShotParticles" type="GPUParticles2D" parent="." index="0"]
+position = Vector2(17, 0)
 emitting = false
 amount = 32
 texture = ExtResource("4_0tw2i")
@@ -125,6 +127,7 @@ one_shot = true
 process_material = SubResource("ParticleProcessMaterial_a22j7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_he4pe")
 animation = &"player_shot"
 
@@ -134,12 +137,16 @@ one_shot = true
 
 [node name="ShellParticles" type="GPUParticles2D" parent="." index="3"]
 z_index = 1
+position = Vector2(-1, 1)
 emitting = false
 amount = 1
 texture = ExtResource("6_gdolk")
 lifetime = 2.0
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_t57yr")
+
+[node name="Muzzle" parent="." index="4"]
+position = Vector2(14, 0)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

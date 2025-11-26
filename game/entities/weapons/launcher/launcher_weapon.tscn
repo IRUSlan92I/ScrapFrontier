@@ -78,10 +78,10 @@ texture = SubResource("AtlasTexture_ylgjm")
 wait_time = 0.5
 one_shot = true
 
-[node name="LeftMuzzle" type="Node2D" parent="." index="5"]
-position = Vector2(12, -3)
+[node name="Muzzle" parent="." index="5"]
+position = Vector2(11, -3)
 
-[node name="RightMuzzle" type="Node2D" parent="." index="6"]
-position = Vector2(12, 3)
+[node name="SecondMuzzle" type="Node2D" parent="." index="6"]
+position = Vector2(11, 3)
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

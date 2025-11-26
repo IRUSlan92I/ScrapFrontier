@@ -7,7 +7,6 @@ extends AbstractWeapon
 @onready var right_particles : GPUParticles2D = $ShotParticles/Right
 @onready var shell_particles : GPUParticles2D = $ShellParticles
 @onready var cooldown_timer : Timer = $CooldownTimer
-@onready var muzzle : Node2D = $Muzzle
 
 
 func set_belonging(belonging: Belonging) -> void:
@@ -25,10 +24,6 @@ func shoot(ship_velocity: Vector2) -> bool:
 		_restart_particles()
 	
 	return is_shot
-
-
-func _get_projectile_position() -> Vector2:
-	return muzzle.position
 
 
 func _restart_particles() -> void:

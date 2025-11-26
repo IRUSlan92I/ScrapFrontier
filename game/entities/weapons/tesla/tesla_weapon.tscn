@@ -1,13 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://dyebeblayioji"]
+[gd_scene load_steps=24 format=3 uid="uid://dyebeblayioji"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_rpud7"]
 [ext_resource type="PackedScene" uid="uid://bi64687wtxi4d" path="res://game/entities/weapons/tesla/tesla_projectile.tscn" id="2_1rrdy"]
 [ext_resource type="Script" uid="uid://ctv408wdwvttc" path="res://game/entities/weapons/tesla/tesla_weapon.gd" id="2_08si3"]
 [ext_resource type="Texture2D" uid="uid://c6aixtu6lbfud" path="res://particle_textures/energy_small.tres" id="5_dhfvk"]
 [ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="7_ub67s"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dra6h"]
-size = Vector2(10, 7)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ucdpq"]
 atlas = ExtResource("7_ub67s")
@@ -151,21 +148,18 @@ sector_angle = 10
 Projectile = ExtResource("2_1rrdy")
 type = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-texture = SubResource("PlaceholderTexture2D_dra6h")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ckvhw")
 animation = &"player_idle"
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="1"]
 amount = 16
 texture = ExtResource("5_dhfvk")
 lifetime = 0.1
 fixed_fps = 10
 process_material = SubResource("ParticleProcessMaterial_ifsj2")
 
-[node name="CooldownTimer" type="Timer" parent="." index="3"]
+[node name="CooldownTimer" type="Timer" parent="." index="2"]
 wait_time = 1.3
 one_shot = true
 
