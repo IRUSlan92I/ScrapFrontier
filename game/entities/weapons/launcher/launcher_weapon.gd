@@ -5,21 +5,15 @@ extends AbstractWeapon
 @onready var enemy_sprite : Sprite2D = $EnemySprite
 @onready var cooldown_timer : Timer = $CooldownTimer
 
-@onready var player_particles : Array[GPUParticles2D] = [
-	$ShotProjectiles/PlayerRightParticles, $ShotProjectiles/PlayerLeftParticles,
-]
-@onready var enemy_particles : Array[GPUParticles2D] = [
-	$ShotProjectiles/EnemyRightParticles, $ShotProjectiles/EnemyLeftParticles,
+@onready var particles : Array[GPUParticles2D] = [
+	$RightParticles, $LeftParticles,
 ]
 var _particles_index := 0
 
-const PLAYER_PROJECTILE_POSITIONS : Array[Vector2] = [
-	Vector2(4, 3), Vector2(4, -3),
+@onready var muzzles : Array[Node2D] = [
+	$RightMuzzle, $LeftMuzzle,
 ]
-const ENEMY_PROJECTILE_POSITIONS : Array[Vector2] = [
-	Vector2(-4, 3), Vector2(-4, -3),
-]
-var _projectile_position_index := 0
+var _muzzle_index := 0
 
 
 func set_belonging(belonging: Belonging) -> void:
@@ -47,42 +41,26 @@ func shoot(ship_velocity: Vector2) -> bool:
 func _restart_particles() -> void:
 	var particle : GPUParticles2D = null
 	
-	match _belonging:
-		Belonging.PLAYER:
-			particle = _get_particle_from_array(player_particles)
-		Belonging.ENEMY:
-			particle = _get_particle_from_array(enemy_particles)
+	particle = _get_particle()
 	
 	if particle != null:
 		particle.restart()
 
 
 func _get_projectile_position() -> Vector2:
-	var projectile_position : Vector2
-	
-	match _belonging:
-		Belonging.PLAYER:
-			projectile_position = _get_projectile_position_from_array(PLAYER_PROJECTILE_POSITIONS)
-		Belonging.ENEMY:
-			projectile_position = _get_projectile_position_from_array(ENEMY_PROJECTILE_POSITIONS)
-	
+	var projectile_position := muzzles[_muzzle_index].position
+	_muzzle_index += 1
+	if _muzzle_index >= muzzles.size():
+		_muzzle_index = 0
 	return projectile_position
 
 
-func _get_particle_from_array(array: Array[GPUParticles2D]) -> GPUParticles2D:
-	var particle := array[_particles_index]
+func _get_particle() -> GPUParticles2D:
+	var particle := particles[_particles_index]
 	_particles_index += 1
-	if _particles_index >= array.size():
+	if _particles_index >= particles.size():
 		_particles_index = 0
 	return particle
-
-
-func _get_projectile_position_from_array(array: Array[Vector2]) -> Vector2:
-	var projectile_position := array[_projectile_position_index]
-	_projectile_position_index += 1
-	if _projectile_position_index >= array.size():
-		_projectile_position_index = 0
-	return projectile_position
 
 
 func _on_cooldown_timer_timeout() -> void:

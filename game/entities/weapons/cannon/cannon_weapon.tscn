@@ -29,6 +29,7 @@ emission_sphere_radius = 2.0
 angle_min = -179.99998
 angle_max = 180.00002
 inherit_velocity_ratio = 0.2
+direction = Vector3(-1, -1, 0)
 spread = 5.0
 initial_velocity_min = 10.0
 initial_velocity_max = 20.0
@@ -43,6 +44,7 @@ emission_sphere_radius = 2.0
 angle_min = -179.99998
 angle_max = 180.00002
 inherit_velocity_ratio = 0.2
+direction = Vector3(-1, 1, 0)
 spread = 5.0
 initial_velocity_min = 10.0
 initial_velocity_max = 20.0
@@ -146,6 +148,7 @@ resource_local_to_scene = true
 lifetime_randomness = 0.5
 particle_flag_disable_z = true
 inherit_velocity_ratio = 1.0
+direction = Vector3(0, 1, 0)
 spread = 15.0
 initial_velocity_min = 5.0
 initial_velocity_max = 15.0
@@ -160,6 +163,7 @@ type = 2
 [node name="ShotParticles" type="Node2D" parent="." index="0"]
 
 [node name="Front" type="GPUParticles2D" parent="ShotParticles" index="0"]
+position = Vector2(22, 0)
 emitting = false
 amount = 32
 texture = ExtResource("4_i0ica")
@@ -170,6 +174,7 @@ fixed_fps = 10
 process_material = SubResource("ParticleProcessMaterial_377p4")
 
 [node name="Left" type="GPUParticles2D" parent="ShotParticles" index="1"]
+position = Vector2(17, -4)
 emitting = false
 texture = ExtResource("5_377p4")
 lifetime = 0.4
@@ -178,6 +183,7 @@ fixed_fps = 10
 process_material = SubResource("ParticleProcessMaterial_i0ica")
 
 [node name="Right" type="GPUParticles2D" parent="ShotParticles" index="2"]
+position = Vector2(17, 4)
 emitting = false
 texture = ExtResource("5_377p4")
 lifetime = 0.4
@@ -186,11 +192,13 @@ fixed_fps = 10
 process_material = SubResource("ParticleProcessMaterial_jfd4t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(9, 0)
 sprite_frames = SubResource("SpriteFrames_kdf62")
 animation = &"player_idle"
 
 [node name="ShellParticles" type="GPUParticles2D" parent="." index="2"]
 z_index = 1
+position = Vector2(-1, 1)
 emitting = false
 amount = 1
 texture = ExtResource("6_i0ica")
@@ -202,6 +210,9 @@ process_material = SubResource("ParticleProcessMaterial_nrbut")
 [node name="CooldownTimer" type="Timer" parent="." index="3"]
 wait_time = 1.2
 one_shot = true
+
+[node name="Muzzle" type="Node2D" parent="." index="4"]
+position = Vector2(20, 0)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

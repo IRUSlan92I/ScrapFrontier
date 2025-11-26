@@ -31,6 +31,7 @@ signal destroyed
 @export_range(0, 250) var max_speed : int = 0
 @export_range(0, 1000) var mass : int = 0
 
+@export_range(0, 360) var weapon_rotation : int = 0
 @export var weapon_positions: Array[Vector2]
 
 
@@ -41,6 +42,7 @@ func _ready() -> void:
 	for pos in weapon_positions:
 		var weapon : AbstractWeapon = WEAPONS.pick_random().instantiate()
 		weapon.position = pos
+		weapon.rotation = deg_to_rad(weapon_rotation)
 		add_child(weapon)
 		_weapons.append(weapon)
 

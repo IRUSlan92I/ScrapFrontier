@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3l866fdqt7pf"]
+[gd_scene load_steps=10 format=3 uid="uid://c3l866fdqt7pf"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_sk5u1"]
 [ext_resource type="Script" uid="uid://lauvvj5xhbud" path="res://game/entities/weapons/launcher/launcher_weapon.gd" id="2_mxjpe"]
@@ -9,7 +9,6 @@
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u8eh0"]
 lifetime_randomness = 0.5
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(-8, -3.5, 0)
 emission_shape = 1
 emission_sphere_radius = 1.0
 angle_min = -179.99998
@@ -24,41 +23,12 @@ gravity = Vector3(0, 0, 0)
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0brql"]
 lifetime_randomness = 0.5
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(-8, 3.5, 0)
 emission_shape = 1
 emission_sphere_radius = 1.0
 angle_min = -179.99998
 angle_max = 180.00002
 inherit_velocity_ratio = 0.5
 direction = Vector3(-1, 0, 0)
-spread = 15.0
-initial_velocity_min = 30.0
-initial_velocity_max = 50.0
-gravity = Vector3(0, 0, 0)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3cw5x"]
-lifetime_randomness = 0.5
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(8, -3.5, 0)
-emission_shape = 1
-emission_sphere_radius = 1.0
-angle_min = -179.99998
-angle_max = 180.00002
-inherit_velocity_ratio = 0.5
-spread = 15.0
-initial_velocity_min = 30.0
-initial_velocity_max = 50.0
-gravity = Vector3(0, 0, 0)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ylgjm"]
-lifetime_randomness = 0.5
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(8, 3.5, 0)
-emission_shape = 1
-emission_sphere_radius = 1.0
-angle_min = -179.99998
-angle_max = 180.00002
-inherit_velocity_ratio = 0.5
 spread = 15.0
 initial_velocity_min = 30.0
 initial_velocity_max = 50.0
@@ -78,9 +48,8 @@ sector_angle = 5
 Projectile = ExtResource("3_fsoo2")
 type = 3
 
-[node name="ShotProjectiles" type="Node2D" parent="." index="0"]
-
-[node name="PlayerLeftParticles" type="GPUParticles2D" parent="ShotProjectiles" index="0"]
+[node name="LeftParticles" type="GPUParticles2D" parent="." index="0"]
+position = Vector2(-4, -3)
 emitting = false
 amount = 16
 texture = ExtResource("4_0brql")
@@ -88,7 +57,8 @@ lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_u8eh0")
 
-[node name="PlayerRightParticles" type="GPUParticles2D" parent="ShotProjectiles" index="1"]
+[node name="RightParticles" type="GPUParticles2D" parent="." index="1"]
+position = Vector2(-4, 3)
 emitting = false
 amount = 16
 texture = ExtResource("4_0brql")
@@ -96,30 +66,22 @@ lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_0brql")
 
-[node name="EnemyLeftParticles" type="GPUParticles2D" parent="ShotProjectiles" index="2"]
-emitting = false
-amount = 16
-texture = ExtResource("4_0brql")
-lifetime = 0.3
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_3cw5x")
-
-[node name="EnemyRightParticles" type="GPUParticles2D" parent="ShotProjectiles" index="3"]
-emitting = false
-amount = 16
-texture = ExtResource("4_0brql")
-lifetime = 0.3
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_ylgjm")
-
-[node name="PlayerSprite" type="Sprite2D" parent="." index="1"]
+[node name="PlayerSprite" type="Sprite2D" parent="." index="2"]
+position = Vector2(4, 0)
 texture = SubResource("AtlasTexture_u8eh0")
 
-[node name="EnemySprite" type="Sprite2D" parent="." index="2"]
+[node name="EnemySprite" type="Sprite2D" parent="." index="3"]
+position = Vector2(4, 0)
 texture = SubResource("AtlasTexture_ylgjm")
 
-[node name="CooldownTimer" type="Timer" parent="." index="3"]
+[node name="CooldownTimer" type="Timer" parent="." index="4"]
 wait_time = 0.5
 one_shot = true
+
+[node name="LeftMuzzle" type="Node2D" parent="." index="5"]
+position = Vector2(12, -3)
+
+[node name="RightMuzzle" type="Node2D" parent="." index="6"]
+position = Vector2(12, 3)
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

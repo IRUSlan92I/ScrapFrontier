@@ -8,6 +8,7 @@
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_fwvrd")
+weapon_rotation = 180
 
 [node name="EnemyController" parent="." index="4" node_paths=PackedStringArray("ship") instance=ExtResource("3_l8c0n")]
 ship = NodePath("..")

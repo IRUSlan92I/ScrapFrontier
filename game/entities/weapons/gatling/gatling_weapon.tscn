@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4mlppn5i55bp"]
+[gd_scene load_steps=10 format=3 uid="uid://c4mlppn5i55bp"]
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_gblx7"]
 [ext_resource type="Script" uid="uid://c1bsvmj7xhnxe" path="res://game/entities/weapons/gatling/gatling_weapon.gd" id="1_kg6du"]
 [ext_resource type="PackedScene" uid="uid://yfvluap3uy1r" path="res://game/entities/weapons/gatling/gatling_projectile.tscn" id="2_ylc0n"]
 [ext_resource type="Script" uid="uid://oslebeau3f4b" path="res://game/entities/weapons/gatling/gatling_reloader.gd" id="4_g81jq"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="5_ydc6p"]
 
 [sub_resource type="Resource" id="Resource_oppha"]
 script = ExtResource("4_g81jq")
@@ -11,8 +12,32 @@ firerate = 600
 spin_out_time = 3
 metadata/_custom_type_script = "uid://oslebeau3f4b"
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dra6h"]
-size = Vector2(10, 7)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydc6p"]
+atlas = ExtResource("5_ydc6p")
+region = Rect2(160, 176, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v064d"]
+atlas = ExtResource("5_ydc6p")
+region = Rect2(160, 160, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjn33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydc6p")
+}],
+"loop": true,
+"name": &"enemy_idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v064d")
+}],
+"loop": true,
+"name": &"player_idle",
+"speed": 10.0
+}]
 
 [node name="GatlingWeapon" instance=ExtResource("1_gblx7")]
 script = ExtResource("1_kg6du")
@@ -20,5 +45,7 @@ reloader = SubResource("Resource_oppha")
 sector_angle = 5
 Projectile = ExtResource("2_ylc0n")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-texture = SubResource("PlaceholderTexture2D_dra6h")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(6, 0)
+sprite_frames = SubResource("SpriteFrames_pjn33")
+animation = &"player_idle"
