@@ -21,6 +21,9 @@ func _create_player() -> void:
 
 
 func _on_enemy_timer_timeout() -> void:
-	enemy_swamp_controller.create_enemy()
+	
+	var enemies := get_tree().get_nodes_in_group("enemies")
+	if enemies.size() < 25:
+		enemy_swamp_controller.create_enemy()
 	
 	enemy_timer.start(randi_range(3, 9))

@@ -32,16 +32,4 @@ func get_acceleration_direction() -> Vector2:
 	if distance < FREE_FLIGHT_DIST:
 		return Vector2.ZERO
 	
-	var direction_to_target := (target_position - ship.position).normalized()
-	var speed_to_target := ship.velocity.dot(direction_to_target)
-	
-	var slow_down_distance := speed_to_target/ship.acceleration * speed_to_target
-	
-	var speed_coef := distance / (slow_down_distance + FREE_FLIGHT_DIST)
-	
-	var target_speed := ship.max_speed * clampf(speed_coef, 0.0, 1.0)
-	var target_velocity := direction_to_target * target_speed
-	
-	var delta_velocity := target_velocity - ship.velocity
-	
-	return direction_to_target * ship.max_speed/delta_velocity.length()
+	return (target_position - ship.position).normalized()
