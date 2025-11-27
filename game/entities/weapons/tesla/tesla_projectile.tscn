@@ -11,7 +11,7 @@
 [sub_resource type="Resource" id="Resource_1121u"]
 resource_local_to_scene = true
 script = ExtResource("3_l65ib")
-value = 45
+value = 30
 metadata/_custom_type_script = "uid://c27v705giygv4"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l65ib"]

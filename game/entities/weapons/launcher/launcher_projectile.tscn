@@ -77,7 +77,7 @@ turbulence_noise_speed = Vector3(0.1, 0.1, 0.1)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_6hdsf")
-rotation_speed = 90
+rotation_speed = 5
 speed = 300
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="0"]

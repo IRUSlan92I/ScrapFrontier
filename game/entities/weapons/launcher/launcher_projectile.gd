@@ -23,6 +23,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_apply_homing_guidance(delta)
 	super._physics_process(delta)
+	_update_sprite(_velocity)
 
 
 func _acquire_target() -> void:
@@ -40,8 +41,6 @@ func _apply_homing_guidance(delta: float) -> void:
 	var angle_diff := wrapf(target_angle - current_angle, -PI, PI)
 	var angle_change := clampf(angle_diff, -max_angle_change, max_angle_change)
 	_velocity = _velocity.rotated(angle_change)
-	
-	_update_sprite(_velocity)
 
 
 func _update_sprite(velocity: Vector2) -> void:

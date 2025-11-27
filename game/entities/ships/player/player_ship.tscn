@@ -21,6 +21,7 @@ texture = ExtResource("3_uf2n1")
 polygon = PackedVector2Array(-23, -10, -17, -14, -3, -15, 21, -13, 22, -12, 22, 12, 21, 13, -3, 15, -17, 14, -23, 10)
 
 [node name="Health" parent="." index="2"]
+max_shield = 250
 max_hull = 1000
 
 [node name="HeathBar" parent="." index="3"]
