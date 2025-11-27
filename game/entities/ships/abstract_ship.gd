@@ -23,7 +23,6 @@ signal destroyed
 
 
 @onready var sprite := $Sprite2D
-@onready var collision := $CollisionShape2D
 
 
 @export_range(0, 250) var acceleration : int = 0

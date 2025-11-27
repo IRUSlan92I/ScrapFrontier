@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://jvyagshykmgb"]
+[gd_scene load_steps=4 format=3 uid="uid://jvyagshykmgb"]
 
 [ext_resource type="Script" uid="uid://cesibaqtrgotl" path="res://game/entities/ships/abstract_ship.gd" id="1_6isjb"]
 [ext_resource type="PackedScene" uid="uid://clkymhkv3cevm" path="res://game/health_system/health.tscn" id="2_xxtvk"]
 [ext_resource type="PackedScene" uid="uid://d2snum2pxc2ui" path="res://game/health_system/health_bar/heath_bar.tscn" id="3_l62e5"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xxtvk"]
 
 [node name="AbstractShip" type="CharacterBody2D"]
 disable_mode = 1
@@ -14,8 +12,7 @@ script = ExtResource("1_6isjb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_xxtvk")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 [node name="Health" parent="." instance=ExtResource("2_xxtvk")]
 

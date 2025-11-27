@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://br074cqcnul3d"]
+[gd_scene load_steps=5 format=3 uid="uid://br074cqcnul3d"]
 
 [ext_resource type="PackedScene" uid="uid://jvyagshykmgb" path="res://game/entities/ships/abstract_ship.tscn" id="1_6otxb"]
 [ext_resource type="Script" uid="uid://ruxw1n03iq4i" path="res://game/entities/ships/player/player_ship.gd" id="2_625ti"]
 [ext_resource type="PackedScene" uid="uid://dh1oj1w5wx4je" path="res://game/controllers/player_controller.tscn" id="3_4mjo1"]
 [ext_resource type="Texture2D" uid="uid://y2yfli24n51v" path="res://images/ships/player.png" id="3_uf2n1"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dj8f1"]
-radius = 15.0
-height = 46.0
 
 [node name="PlayerShip" groups=["players"] instance=ExtResource("1_6otxb")]
 collision_layer = 3
@@ -17,14 +13,12 @@ acceleration = 92
 deceleration = 46
 max_speed = 92
 mass = 250
-weapon_rotation = null
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_uf2n1")
 
-[node name="CollisionShape2D" parent="." index="1"]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_dj8f1")
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-23, -10, -17, -14, -3, -15, 21, -13, 22, -12, 22, 12, 21, 13, -3, 15, -17, 14, -23, 10)
 
 [node name="Health" parent="." index="2"]
 max_hull = 1000
