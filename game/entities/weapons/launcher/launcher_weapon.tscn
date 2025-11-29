@@ -46,7 +46,7 @@ region = Rect2(224, 144, 32, 16)
 script = ExtResource("2_mxjpe")
 sector_angle = 5
 Projectile = ExtResource("3_fsoo2")
-type = 3
+type = 4
 
 [node name="LeftParticles" type="GPUParticles2D" parent="." index="0"]
 position = Vector2(-4, -3)

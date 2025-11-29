@@ -146,7 +146,7 @@ gravity = Vector3(0, 0, 0)
 script = ExtResource("2_08si3")
 sector_angle = 10
 Projectile = ExtResource("2_1rrdy")
-type = 3
+type = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ckvhw")

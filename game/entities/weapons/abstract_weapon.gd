@@ -3,14 +3,14 @@ extends Node2D
 
 
 enum Belonging { PLAYER, ENEMY }
-enum Type { SHORT_RANGE, MEDIUM_RANGE, LONG_RANGE, HOMING, MINES }
+enum Type { NONE, SHORT_RANGE, MEDIUM_RANGE, LONG_RANGE, HOMING, MINES }
 
 
 @export_range(1, 100) var bullet_per_shot : int = 1
 @export_range(0, 360) var sector_angle : int = 0
 
 @export var Projectile : PackedScene
-@export var type := Type.MEDIUM_RANGE
+@export var type := Type.NONE
 
 
 @onready var muzzle : Node2D = $Muzzle

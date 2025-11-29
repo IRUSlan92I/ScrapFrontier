@@ -154,7 +154,7 @@ animations = [{
 [node name="RailgunWeapon" instance=ExtResource("1_0nxvu")]
 script = ExtResource("1_5nhwg")
 Projectile = ExtResource("2_cbsia")
-type = 2
+type = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(5, 0)

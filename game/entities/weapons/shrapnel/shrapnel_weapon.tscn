@@ -115,7 +115,7 @@ script = ExtResource("2_1bd18")
 bullet_per_shot = 20
 sector_angle = 30
 Projectile = ExtResource("2_xvd4y")
-type = 0
+type = 1
 
 [node name="ShotParticles" type="GPUParticles2D" parent="." index="0"]
 position = Vector2(17, 0)

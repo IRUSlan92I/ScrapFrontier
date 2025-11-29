@@ -11,8 +11,15 @@ extends AbstractShip
 
 func _ready() -> void:
 	super._ready()
-	for weapon in _weapons:
-		weapon.set_belonging(AbstractWeapon.Belonging.PLAYER)
+	
+	for weapon_position in weapon_positions:
+		var weapon : AbstractWeapon = WEAPONS.pick_random().instantiate()
+		_add_weapon(weapon, weapon_position)
+
+
+func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
+	super._add_weapon(weapon, weapon_position)
+	weapon.set_belonging(AbstractWeapon.Belonging.PLAYER)
 
 
 func _on_player_controller_shoot(weapon_index: int) -> void:

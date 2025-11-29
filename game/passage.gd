@@ -14,10 +14,12 @@ const PLAYER := preload("res://game/entities/ships/player/player_ship.tscn")
 
 func _on_enemy_timer_timeout() -> void:
 	var enemies := get_tree().get_nodes_in_group("enemies")
-	if enemies.size() < 25:
+	if enemies.size() < 1:
 		enemy_swamp_controller.create_enemy()
 	
-	enemy_timer.start(randi_range(1, 3))
+	var factor := maxi(enemies.size(), 1)
+	
+	enemy_timer.start(randi_range(1 * factor, 3 * factor))
 
 
 func _on_player_ship_destroyed() -> void:

@@ -6,7 +6,8 @@
 script = ExtResource("1_ol8cy")
 
 [node name="EnemyUpdateTimer" type="Timer" parent="."]
-one_shot = true
+process_callback = 0
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="EnemyUpdateTimer" to="." method="_on_enemy_update_timer_timeout"]

@@ -43,13 +43,6 @@ func _ready() -> void:
 	for slot in $WeaponSlots.get_children():
 		if slot is Node2D:
 			weapon_positions.append(slot.global_position - global_position)
-	
-	for pos in weapon_positions:
-		var weapon : AbstractWeapon = WEAPONS.pick_random().instantiate()
-		weapon.position = pos
-		weapon.rotation_degrees = weapon_rotation
-		add_child(weapon)
-		_weapons.append(weapon)
 
 
 func _physics_process(_delta: float) -> void:
@@ -94,3 +87,10 @@ func _get_new_speed(accel: float, decel: float, current_speed: float) -> float:
 func _on_health_depleted() -> void:
 	queue_free()
 	destroyed.emit()
+
+
+func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
+	weapon.position = weapon_position
+	weapon.rotation_degrees = weapon_rotation
+	add_child(weapon)
+	_weapons.append(weapon)

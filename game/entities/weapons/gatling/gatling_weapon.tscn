@@ -44,6 +44,7 @@ script = ExtResource("1_kg6du")
 reloader = SubResource("Resource_oppha")
 sector_angle = 5
 Projectile = ExtResource("2_ylc0n")
+type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(6, 0)

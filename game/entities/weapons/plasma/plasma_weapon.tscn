@@ -99,6 +99,7 @@ animations = [{
 script = ExtResource("2_fnsb7")
 sector_angle = 2
 Projectile = ExtResource("2_yluvp")
+type = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(8, 0)
