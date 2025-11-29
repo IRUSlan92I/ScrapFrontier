@@ -32,7 +32,7 @@ func create_enemy() -> void:
 	_update_enemy.call_deferred(enemy)
 
 
-func _on_enemy_update_timer_timeout() -> void:	
+func _on_enemy_update_timer_timeout() -> void:
 	var enemies := get_tree().get_nodes_in_group("enemies")
 	if enemies.is_empty(): return
 	
@@ -69,7 +69,7 @@ func _target_enemy_to_player(enemy: AbstractEnemyShip, player: PlayerShip) -> vo
 		AbstractWeapon.Type.HOMING:
 			_update_enemy_target_position(enemy, player, LONG_DISTANCE, INDIRECT_OFFSET)
 		AbstractWeapon.Type.MINES:
-			_update_enemy_target_position(enemy, player, SHORT_DISTANCE, INDIRECT_OFFSET)
+			_update_enemy_target_position(enemy, player, MEDIUM_DISTANCE, INDIRECT_OFFSET)
 
 
 func _update_enemy_target_position(

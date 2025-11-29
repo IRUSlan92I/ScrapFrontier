@@ -18,6 +18,8 @@ const OFF_TIMES = [
 ]
 const ON_TIME = 0.05
 
+const SCROLL_VELOCITY = Vector2(-50, 0)
+
 
 enum SpriteState {
 	ON,
@@ -43,15 +45,11 @@ func _physics_process(delta: float) -> void:
 
 
 func _process_acceleration(delta: float) -> void:
-	var current_deceleration := deceleration * delta
-	if _velocity.length() > current_deceleration:
-		_velocity -= _velocity.normalized() * current_deceleration
-	else:
-		_velocity = Vector2.ZERO
-
-
-func _on_livetime_timer_timeout() -> void:
-	queue_free()
+	var delta_velocity := SCROLL_VELOCITY - _velocity
+	var new_direction := delta_velocity.normalized()
+	var current_deceleration := clampf(delta_velocity.length(), 0.0, deceleration * delta)
+	
+	_velocity += new_direction * current_deceleration
 
 
 func _on_blast_body_entered(body: Node2D) -> void:

@@ -59,24 +59,21 @@ collision_mask = 0
 damage = SubResource("Resource_ckqco")
 shape = SubResource("CircleShape2D_px1i2")
 
-[node name="LivetimeTimer" type="Timer" parent="." index="5"]
-wait_time = 60.0
-one_shot = true
-autostart = true
-
-[node name="SpriteOnTimer" type="Timer" parent="." index="6"]
+[node name="SpriteOnTimer" type="Timer" parent="." index="5"]
 one_shot = true
 
-[node name="SpriteOffTimer" type="Timer" parent="." index="7"]
+[node name="SpriteOffTimer" type="Timer" parent="." index="6"]
 one_shot = true
 
-[node name="ExplosionParticles" parent="." index="8" instance=ExtResource("5_ckqco")]
+[node name="ExplosionParticles" parent="." index="7" instance=ExtResource("5_ckqco")]
 process_material = SubResource("ParticleProcessMaterial_ckqco")
 amount_ratio = 0.5
 
+[node name="OutOfScreenTimer" parent="." index="8"]
+wait_time = 5.0
+
 [connection signal="body_entered" from="Blast" to="." method="_on_blast_body_entered"]
 [connection signal="body_exited" from="Blast" to="." method="_on_blast_body_exited"]
-[connection signal="timeout" from="LivetimeTimer" to="." method="_on_livetime_timer_timeout"]
 [connection signal="timeout" from="SpriteOnTimer" to="." method="_on_sprite_on_timer_timeout"]
 [connection signal="timeout" from="SpriteOffTimer" to="." method="_on_sprite_off_timer_timeout"]
 [connection signal="finished" from="ExplosionParticles" to="." method="_on_explosion_particles_finished"]

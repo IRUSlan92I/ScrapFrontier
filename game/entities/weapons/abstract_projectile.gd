@@ -12,6 +12,7 @@ const ENEMY_PROJECTILE_LAYER = 16
 
 
 @onready var collision : CollisionShape2D = $CollisionShape2D
+@onready var out_of_screen_timer : Timer = $OutOfScreenTimer
 
 
 var direction : Vector2
@@ -66,7 +67,15 @@ func _update_collision_rotation(velocity: Vector2) -> void:
 	collision.rotation = velocity.angle() - 0.5 * PI
 
 
+func _on_screen_entered() -> void:
+	out_of_screen_timer.stop()
+
+
 func _on_screen_exited() -> void:
+	out_of_screen_timer.start()
+
+
+func _on_out_of_screen_timer_timeout() -> void:
 	queue_free()
 
 

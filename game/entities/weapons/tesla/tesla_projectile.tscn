@@ -75,4 +75,7 @@ lifetime = 0.5
 preprocess = 0.1
 process_material = SubResource("ParticleProcessMaterial_wtuxv")
 
+[node name="OutOfScreenTimer" parent="." index="7"]
+wait_time = 1.0
+
 [connection signal="timeout" from="JinkTimer" to="." method="_on_jink_timer_timeout"]

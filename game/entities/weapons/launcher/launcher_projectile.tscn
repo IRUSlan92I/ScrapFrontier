@@ -123,4 +123,7 @@ shape = SubResource("CircleShape2D_kxgpk")
 process_material = SubResource("ParticleProcessMaterial_iqm85")
 amount_ratio = 0.05
 
+[node name="OutOfScreenTimer" parent="." index="13"]
+wait_time = 3.0
+
 [connection signal="finished" from="ExplosionParticles" to="." method="_on_explosion_particles_finished"]
