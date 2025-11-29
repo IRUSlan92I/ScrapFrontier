@@ -1,10 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgc0087kvarx6"]
+[gd_scene load_steps=9 format=3 uid="uid://dgc0087kvarx6"]
 
 [ext_resource type="Script" uid="uid://c6gpm3edyr4nu" path="res://game/passage.gd" id="1_ltkyg"]
 [ext_resource type="PackedScene" uid="uid://cpn5x0ijgl7ei" path="res://game/controllers/enemy_swamp_controller.tscn" id="2_72vqi"]
 [ext_resource type="PackedScene" uid="uid://br074cqcnul3d" path="res://game/entities/ships/player/player_ship.tscn" id="3_r3x05"]
+[ext_resource type="Texture2D" uid="uid://mvcnpsfsyiq6" path="res://images/passage/background.png" id="4_cuj01"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ltkyg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yetnv"]
+atlas = ExtResource("4_cuj01")
+region = Rect2(0, 0, 3200, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuj01"]
+atlas = ExtResource("4_cuj01")
+region = Rect2(0, 360, 3200, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0ams"]
+atlas = ExtResource("4_cuj01")
+region = Rect2(0, 720, 3200, 360)
 
 [node name="Passage" type="Node2D"]
 script = ExtResource("1_ltkyg")
@@ -45,6 +58,39 @@ passage = NodePath("..")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -100
+
+[node name="Parallax1" type="Parallax2D" parent="Background"]
+scroll_offset = Vector2(0, 180)
+repeat_size = Vector2(3200, 0)
+autoscroll = Vector2(-1, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax1"]
+texture = SubResource("AtlasTexture_yetnv")
+
+[node name="Parallax2" type="Parallax2D" parent="Background"]
+scroll_offset = Vector2(0, 180)
+repeat_size = Vector2(3200, 0)
+autoscroll = Vector2(-5, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2"]
+texture = SubResource("AtlasTexture_cuj01")
+
+[node name="Parallax3" type="Parallax2D" parent="Background"]
+scroll_offset = Vector2(0, 180)
+repeat_size = Vector2(3200, 0)
+autoscroll = Vector2(-10, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax3"]
+texture = SubResource("AtlasTexture_u0ams")
 
 [connection signal="destroyed" from="PlayerShip" to="." method="_on_player_ship_destroyed"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
