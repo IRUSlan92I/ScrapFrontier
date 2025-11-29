@@ -75,6 +75,11 @@ func accelerate(direction: Vector2, delta: float) -> void:
 		velocity = velocity.normalized() * max_speed
 
 
+func shoot() -> void:
+	for weapon in _weapons:
+		weapon.shoot(velocity)
+
+
 func _get_new_speed(accel: float, decel: float, current_speed: float) -> float:
 	if is_zero_approx(accel):
 		if absf(current_speed) < decel:

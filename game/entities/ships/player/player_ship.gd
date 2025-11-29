@@ -22,12 +22,6 @@ func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
 	weapon.set_belonging(AbstractWeapon.Belonging.PLAYER)
 
 
-func _on_player_controller_shoot(weapon_index: int) -> void:
-	if weapon_index >= _weapons.size(): return
-	
-	_weapons[weapon_index].shoot(velocity)
-
-
 func _blink(direction: Vector2) -> void:
 	if not blink_timer.is_stopped(): return
 	

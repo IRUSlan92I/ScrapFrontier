@@ -61,10 +61,10 @@ one_shot = true
 emitting = false
 amount = 2
 texture = SubResource("AtlasTexture_34rhw")
-lifetime = 0.09999999999999999
+lifetime = 0.1
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_pjmi2")
 
 [connection signal="accelerate" from="PlayerController" to="." method="accelerate"]
 [connection signal="blink" from="PlayerController" to="." method="_blink"]
-[connection signal="shoot" from="PlayerController" to="." method="_on_player_controller_shoot"]
+[connection signal="shoot" from="PlayerController" to="." method="shoot"]
