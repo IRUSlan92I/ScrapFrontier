@@ -9,9 +9,20 @@ signal hull_updated(value: int, max_value: int)
 signal depleted
 
 
-@export_range(0, 5000) var max_shield: int = 0
-@export_range(0, 5000) var max_armor: int = 0
-@export_range(1, 5000) var max_hull: int = 1
+@export_range(0, 5000) var max_shield: int = 0:
+	set(value):
+		max_shield = value
+		shield_updated.emit(_shield, max_shield)
+
+@export_range(0, 5000) var max_armor: int = 0:
+	set(value):
+		max_armor = value
+		armor_updated.emit(_armor, max_armor)
+
+@export_range(1, 5000) var max_hull: int = 1:
+	set(value):
+		max_hull = value
+		hull_updated.emit(_hull, max_hull)
 
 
 @onready var shield_regen_delay_timer : Timer = $ShieldRegenDelayTimer
