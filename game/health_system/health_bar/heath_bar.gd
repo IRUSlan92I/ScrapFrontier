@@ -33,18 +33,22 @@ func _ready() -> void:
 	health.hull_updated.connect(_on_hull_updated)
 
 
-func _on_shield_updated(new_value: int) -> void:
-	small_shield_part.set_value(new_value)
-	large_shield_part.set_value(new_value)
+func _on_shield_updated(value: int, max_value: int) -> void:
+	small_shield_part.set_value(value)
+	large_shield_part.set_value(value)
+	small_shield_part.set_max_value(max_value)
+	large_shield_part.set_max_value(max_value)
 
 
-func _on_armor_updated(new_value: int) -> void:
-	armor_part.set_value(new_value)
-	_select_armor_part(new_value)
+func _on_armor_updated(value: int, max_value: int) -> void:
+	armor_part.set_value(value)
+	armor_part.set_max_value(max_value)
+	_select_armor_part(value)
 
 
-func _on_hull_updated(new_value: int) -> void:
-	hull_part.set_value(new_value)
+func _on_hull_updated(value: int, max_value: int) -> void:
+	hull_part.set_value(value)
+	hull_part.set_max_value(max_value)
 
 
 func _select_armor_part(armor_value: int) -> void:

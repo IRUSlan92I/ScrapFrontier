@@ -10,7 +10,11 @@ motion_mode = 1
 wall_min_slide_angle = 3.1415927
 script = ExtResource("1_6isjb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ShipSprite" type="Sprite2D" parent="."]
+
+[node name="ArmorSprite" type="Sprite2D" parent="."]
+
+[node name="ShieldSprite" type="Sprite2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

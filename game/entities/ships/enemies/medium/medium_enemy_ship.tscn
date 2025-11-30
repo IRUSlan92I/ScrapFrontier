@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cye5ndbh0ht7w"]
+[gd_scene load_steps=7 format=3 uid="uid://cye5ndbh0ht7w"]
 
 [ext_resource type="PackedScene" uid="uid://dwsn0lf1e3578" path="res://game/entities/ships/enemies/abstract_enemy_ship.tscn" id="1_16owb"]
 [ext_resource type="Script" uid="uid://dcpqrdvp4nk82" path="res://game/entities/ships/enemies/medium/medium_enemy_ship.gd" id="2_dgwiy"]
@@ -8,6 +8,14 @@
 atlas = ExtResource("3_d2xji")
 region = Rect2(0, 0, 48, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_om3xa"]
+atlas = ExtResource("3_d2xji")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jorhn"]
+atlas = ExtResource("3_d2xji")
+region = Rect2(0, 64, 48, 32)
+
 [node name="MediumEnemyShip" instance=ExtResource("1_16owb")]
 script = ExtResource("2_dgwiy")
 acceleration = 92
@@ -15,21 +23,27 @@ deceleration = 46
 max_speed = 92
 mass = 250
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="ShipSprite" parent="." index="0"]
 texture = SubResource("AtlasTexture_d2xji")
 
-[node name="CollisionPolygon2D" parent="." index="1"]
+[node name="ArmorSprite" parent="." index="1"]
+texture = SubResource("AtlasTexture_om3xa")
+
+[node name="ShieldSprite" parent="." index="2"]
+texture = SubResource("AtlasTexture_jorhn")
+
+[node name="CollisionPolygon2D" parent="." index="3"]
 polygon = PackedVector2Array(-23, -2, -12, -13, -6, -15, 22, -15, 23, -14, 23, 14, 22, 15, -6, 15, -12, 13, -23, 2)
-
-[node name="Health" parent="." index="2"]
-max_hull = 100
-
-[node name="HeathBar" parent="." index="3"]
-offset_top = 30.0
-offset_bottom = 30.0
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="5"]
 rect = Rect2(-13, -21, 26, 42)
+
+[node name="Health" parent="." index="6"]
+max_hull = 100
+
+[node name="HeathBar" parent="." index="7"]
+offset_top = 30.0
+offset_bottom = 30.0
 
 [node name="First" type="Node2D" parent="WeaponSlots" index="0"]
 position = Vector2(4, -8)

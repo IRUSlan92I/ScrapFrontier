@@ -22,15 +22,19 @@ const WEAPONS := [
 signal destroyed
 
 
-@onready var sprite := $Sprite2D
-
-
 @export_range(0, 250) var acceleration : int = 0
 @export_range(0, 250) var deceleration : int = 0
 @export_range(0, 250) var max_speed : int = 0
 @export_range(0, 1000) var mass : int = 0
 
 @export_range(0, 360) var weapon_rotation : int = 0
+
+
+@onready var ship_sprite : Sprite2D = $ShipSprite
+@onready var armor_sprite : Sprite2D = $ArmorSprite
+@onready var shield_sprite : Sprite2D = $ShieldSprite
+
+@onready var health : Health = $Health
 
 
 var weapon_positions: Array[Vector2]
@@ -40,6 +44,9 @@ var _weapons : Array[AbstractWeapon]
 
 
 func _ready() -> void:
+	shield_sprite.visible = health.shield != 0
+	armor_sprite.visible = health.armor != 0
+	
 	for slot in $WeaponSlots.get_children():
 		if slot is Node2D:
 			weapon_positions.append(slot.global_position - global_position)
@@ -99,3 +106,15 @@ func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
 	weapon.rotation_degrees = weapon_rotation
 	add_child(weapon)
 	_weapons.append(weapon)
+
+
+func _on_shield_updated(value: int, _max_value: int) -> void:
+	shield_sprite.visible = value != 0
+
+
+func _on_armor_updated(value: int, _max_value: int) -> void:
+	armor_sprite.visible = value != 0
+
+
+func _on_hull_updated(_value: int, _max_value: int) -> void:
+	pass # Replace with function body.

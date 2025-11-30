@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://br074cqcnul3d"]
+[gd_scene load_steps=10 format=3 uid="uid://br074cqcnul3d"]
 
 [ext_resource type="PackedScene" uid="uid://jvyagshykmgb" path="res://game/entities/ships/abstract_ship.tscn" id="1_6otxb"]
 [ext_resource type="Script" uid="uid://ruxw1n03iq4i" path="res://game/entities/ships/player/player_ship.gd" id="2_625ti"]
@@ -9,9 +9,17 @@
 atlas = ExtResource("3_uf2n1")
 region = Rect2(0, 0, 48, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_34rhw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf2n1"]
 atlas = ExtResource("3_uf2n1")
 region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui1ht"]
+atlas = ExtResource("3_uf2n1")
+region = Rect2(0, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34rhw"]
+atlas = ExtResource("3_uf2n1")
+region = Rect2(0, 96, 48, 32)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pjmi2"]
 particle_flag_disable_z = true
@@ -30,27 +38,23 @@ deceleration = 46
 max_speed = 92
 mass = 250
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="ShipSprite" parent="." index="0"]
 texture = SubResource("AtlasTexture_4mjo1")
 
-[node name="CollisionPolygon2D" parent="." index="1"]
+[node name="ArmorSprite" parent="." index="1"]
+texture = SubResource("AtlasTexture_uf2n1")
+
+[node name="ShieldSprite" parent="." index="2"]
+texture = SubResource("AtlasTexture_ui1ht")
+
+[node name="CollisionPolygon2D" parent="." index="3"]
 polygon = PackedVector2Array(-23, -10, -17, -14, -3, -15, 21, -13, 22, -12, 22, 12, 21, 13, -3, 15, -17, 14, -23, 10)
-
-[node name="Health" parent="." index="2"]
-max_shield = 250
-max_hull = 1000
-
-[node name="HeathBar" parent="." index="3"]
-offset_top = 22.0
-offset_bottom = 22.0
 
 [node name="PlayerController" parent="." index="4" instance=ExtResource("3_4mjo1")]
 
-[node name="First" type="Node2D" parent="WeaponSlots" index="0"]
-position = Vector2(-2, 8)
-
-[node name="Second" type="Node2D" parent="WeaponSlots" index="1"]
-position = Vector2(-2, -8)
+[node name="Health" parent="." index="5"]
+max_shield = 250
+max_hull = 1000
 
 [node name="BlinkTimer" type="Timer" parent="." index="6"]
 process_callback = 0
@@ -65,6 +69,19 @@ lifetime = 0.1
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_pjmi2")
 
+[node name="HeathBar" parent="." index="8"]
+offset_top = 22.0
+offset_bottom = 22.0
+
+[node name="First" type="Node2D" parent="WeaponSlots" index="0"]
+position = Vector2(-2, 8)
+
+[node name="Second" type="Node2D" parent="WeaponSlots" index="1"]
+position = Vector2(-2, -8)
+
 [connection signal="accelerate" from="PlayerController" to="." method="accelerate"]
 [connection signal="blink" from="PlayerController" to="." method="_blink"]
 [connection signal="shoot" from="PlayerController" to="." method="shoot"]
+[connection signal="armor_updated" from="Health" to="." method="_on_armor_updated"]
+[connection signal="hull_updated" from="Health" to="." method="_on_hull_updated"]
+[connection signal="shield_updated" from="Health" to="." method="_on_shield_updated"]

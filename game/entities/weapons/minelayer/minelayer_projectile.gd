@@ -7,7 +7,6 @@ extends BlastProjectile
 
 @onready var sprite_on := $Sprite2D_On
 @onready var sprite_off := $Sprite2D_Off
-@onready var livetime_timer := $LivetimeTimer
 @onready var sprite_on_timer := $SpriteOnTimer
 @onready var sprite_off_timer := $SpriteOffTimer
 @onready var explosion_particles : ExplosionParticles = $ExplosionParticles

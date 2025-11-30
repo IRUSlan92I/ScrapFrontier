@@ -2,9 +2,9 @@ class_name Health
 extends Node
 
 
-signal shield_updated(value: int)
-signal armor_updated(value: int)
-signal hull_updated(value: int)
+signal shield_updated(value: int, max_value: int)
+signal armor_updated(value: int, max_value: int)
+signal hull_updated(value: int, max_value: int)
 
 signal depleted
 
@@ -32,15 +32,15 @@ var hull: int:
 @onready var _shield := max_shield:
 	set(value):
 		_shield = value
-		shield_updated.emit(_shield)
+		shield_updated.emit(_shield, max_shield)
 @onready var _armor := max_armor:
 	set(value):
 		_armor = value
-		armor_updated.emit(_armor)
+		armor_updated.emit(_armor, max_armor)
 @onready var _hull := max_hull:
 	set(value):
 		_hull = value
-		hull_updated.emit(_hull)
+		hull_updated.emit(_hull, max_hull)
 
 @onready var _shield_regen := floori(max_shield/30.0)
 
