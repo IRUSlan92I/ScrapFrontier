@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cye5ndbh0ht7w"]
+[gd_scene load_steps=5 format=3 uid="uid://cye5ndbh0ht7w"]
 
 [ext_resource type="PackedScene" uid="uid://dwsn0lf1e3578" path="res://game/entities/ships/enemies/abstract_enemy_ship.tscn" id="1_16owb"]
 [ext_resource type="Script" uid="uid://dcpqrdvp4nk82" path="res://game/entities/ships/enemies/medium/medium_enemy_ship.gd" id="2_dgwiy"]
 [ext_resource type="Texture2D" uid="uid://dkwvm246s0wnd" path="res://images/ships/enemies/medium.png" id="3_d2xji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2xji"]
+atlas = ExtResource("3_d2xji")
+region = Rect2(0, 0, 48, 32)
 
 [node name="MediumEnemyShip" instance=ExtResource("1_16owb")]
 script = ExtResource("2_dgwiy")
@@ -12,7 +16,7 @@ max_speed = 92
 mass = 250
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("3_d2xji")
+texture = SubResource("AtlasTexture_d2xji")
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 polygon = PackedVector2Array(-23, -2, -12, -13, -6, -15, 22, -15, 23, -14, 23, 14, 22, 15, -6, 15, -12, 13, -23, 2)
