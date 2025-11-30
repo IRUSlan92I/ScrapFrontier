@@ -108,13 +108,15 @@ func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
 	_weapons.append(weapon)
 
 
-func _on_shield_updated(value: int, _max_value: int) -> void:
+func _on_shield_updated(value: int, max_value: int) -> void:
 	shield_sprite.visible = value != 0
+	shield_sprite.material.set("shader_parameter/intensity", value/float(max_value))
 
 
-func _on_armor_updated(value: int, _max_value: int) -> void:
+func _on_armor_updated(value: int, max_value: int) -> void:
 	armor_sprite.visible = value != 0
+	armor_sprite.material.set("shader_parameter/intensity", value/float(max_value))
 
 
 func _on_hull_updated(_value: int, _max_value: int) -> void:
-	pass # Replace with function body.
+	pass

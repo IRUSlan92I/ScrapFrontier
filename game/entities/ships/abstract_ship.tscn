@@ -1,8 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://jvyagshykmgb"]
+[gd_scene load_steps=7 format=3 uid="uid://jvyagshykmgb"]
 
 [ext_resource type="Script" uid="uid://cesibaqtrgotl" path="res://game/entities/ships/abstract_ship.gd" id="1_6isjb"]
+[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/entities/ships/shield.gdshader" id="2_dokxo"]
 [ext_resource type="PackedScene" uid="uid://clkymhkv3cevm" path="res://game/health_system/health.tscn" id="2_xxtvk"]
 [ext_resource type="PackedScene" uid="uid://d2snum2pxc2ui" path="res://game/health_system/health_bar/heath_bar.tscn" id="3_l62e5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dokxo"]
+shader = ExtResource("2_dokxo")
+shader_parameter/speed = 0.0
+shader_parameter/scale = 20.0
+shader_parameter/intensity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkxo4"]
+shader = ExtResource("2_dokxo")
+shader_parameter/speed = 5.0
+shader_parameter/scale = 20.0
+shader_parameter/intensity = 1.0
 
 [node name="AbstractShip" type="CharacterBody2D"]
 disable_mode = 1
@@ -13,8 +26,10 @@ script = ExtResource("1_6isjb")
 [node name="ShipSprite" type="Sprite2D" parent="."]
 
 [node name="ArmorSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dokxo")
 
 [node name="ShieldSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bkxo4")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

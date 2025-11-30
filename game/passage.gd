@@ -23,9 +23,9 @@ func _on_enemy_timer_timeout() -> void:
 	if enemies.size() < 1:
 		enemy_swamp_controller.create_enemy()
 	
-	var factor := maxi(enemies.size(), 1)
+	var factor := maxi(enemies.size(), 1) * 0.5
 	
-	enemy_timer.start(randi_range(1 * factor, 3 * factor))
+	enemy_timer.start(randf_range(1 * factor, 3 * factor))
 
 
 func _on_player_ship_destroyed() -> void:
