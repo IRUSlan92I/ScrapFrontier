@@ -5,6 +5,9 @@ extends AbstractShip
 @export_range(0, 200) var blink_range := 0
 
 
+const ENEMY_LAYER = 4
+
+
 @onready var blink_timer : Timer = $BlinkTimer
 @onready var blink_shadow : GPUParticles2D = $BlinkShadow
 
@@ -36,4 +39,6 @@ func _blink(direction: Vector2) -> void:
 	get_tree().current_scene.add_child(shadow)
 	shadow.finished.connect(shadow.queue_free)
 	
+	collision_mask &= ~ENEMY_LAYER
 	move_and_collide(direction * blink_range)
+	collision_mask |= ENEMY_LAYER

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://2oavbr7oaihg"]
+[gd_scene load_steps=6 format=3 uid="uid://2oavbr7oaihg"]
 
 [ext_resource type="Script" uid="uid://bqnepsuk13qo8" path="res://menu/title_screen.gd" id="1_lxdol"]
 [ext_resource type="PackedScene" uid="uid://bxlccevt52y70" path="res://menu/main_menu.tscn" id="2_o0rbc"]
 [ext_resource type="PackedScene" uid="uid://btr60idiit4y7" path="res://menu/options.tscn" id="3_88gnj"]
 [ext_resource type="PackedScene" uid="uid://c3q3g2647qc27" path="res://menu/credits.tscn" id="4_w1y3c"]
+[ext_resource type="PackedScene" uid="uid://chdrjc7c6bdpb" path="res://game/background.tscn" id="5_88gnj"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -18,6 +19,8 @@ layout_mode = 0
 
 [node name="Credits" parent="." instance=ExtResource("4_w1y3c")]
 layout_mode = 0
+
+[node name="Background" parent="." instance=ExtResource("5_88gnj")]
 
 [connection signal="continue_game" from="MainMenu" to="." method="_on_main_menu_continue_game"]
 [connection signal="new_game" from="MainMenu" to="." method="_on_main_menu_new_game"]

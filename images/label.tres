@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cigren10ijb75"]
+
+[ext_resource type="FontFile" uid="uid://b3xawfjtsnm5b" path="res://images/main_font.png" id="1_h3mgl"]
+
+[resource]
+default_font = ExtResource("1_h3mgl")
