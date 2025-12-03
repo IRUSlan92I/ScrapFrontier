@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4l1cv3o25lhv"]
+
+[ext_resource type="Script" uid="uid://bcq74qwnbylg2" path="res://game/world/generators/area_generator.gd" id="1_hahgo"]
+
+[node name="AreaGenerator" type="Node"]
+script = ExtResource("1_hahgo")

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ggf76ayl53bb"]
+[gd_scene load_steps=3 format=3 uid="uid://ggf76ayl53bb"]
 
 [ext_resource type="Script" uid="uid://b7e3xk14le68j" path="res://game/world/generators/world_generator.gd" id="1_c1jvo"]
+[ext_resource type="PackedScene" uid="uid://c4l1cv3o25lhv" path="res://game/world/generators/area_generator.tscn" id="2_exe4n"]
 
 [node name="WorldGenerator" type="Node"]
 script = ExtResource("1_c1jvo")
+
+[node name="AreaGenerator" parent="." instance=ExtResource("2_exe4n")]

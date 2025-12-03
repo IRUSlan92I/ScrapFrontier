@@ -7,4 +7,4 @@ extends Resource
 
 @export var enemies : Array[EnemyData] = []
 
-@export var seed_string : String = ""
+@export var seed_value : int = 0

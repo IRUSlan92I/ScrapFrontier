@@ -3,6 +3,7 @@ extends Node
 
 @onready var pause_screen : Control = $PauseScreen
 @onready var game_over_screen : Control = $GameOverScreen
+@onready var world_generator : WorldGenerator = $WorldGenerator
 
 
 func _ready() -> void:

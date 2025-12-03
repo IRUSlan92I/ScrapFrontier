@@ -1,20 +1,27 @@
+class_name  WorldGenerator
 extends Node
 
 
-func generate(seed_string: String) -> WorldData:
+@onready var area_generator : AreaGenerator = $AreaGenerator
+
+
+const MAX_AREA_COUNT = 3
+
+
+func generate(seed_value: int) -> WorldData:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = seed_value
+	
 	var data : WorldData = WorldData.new()
+	data.seed_value = seed_value
 	
-	data.seed_string = seed_string
-	
-	_fill_areas(data)
+	_fill_areas(rng, data)
 	
 	return data
 
 
-func _fill_areas(data : WorldData) -> void:
-	const MAX_AREA_COUNT = 3
-	var rng := RandomNumberGenerator.new()
-	rng.seed = hash(data.seed_string)
-	
+func _fill_areas(rng: RandomNumberGenerator, data : WorldData) -> void:
 	for i in MAX_AREA_COUNT:
-		pass
+		var seed_value := rng.randi()
+		var area := area_generator.generate(seed_value)
+		data.areas.append(area)

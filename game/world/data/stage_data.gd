@@ -4,4 +4,4 @@ extends Resource
 
 @export var sectors : Array[SectorData] = []
 
-@export var seed_string : String = ""
+@export var seed_value : int = 0

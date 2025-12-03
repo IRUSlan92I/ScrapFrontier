@@ -7,4 +7,4 @@ extends Resource
 @export var inner_stages : Array[StageData] = []
 @export var passages : Array[PassageData] = []
 
-@export var seed_string : String = ""
+@export var seed_value : int = 0
