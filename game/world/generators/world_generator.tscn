@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ggf76ayl53bb"]
+
+[ext_resource type="Script" uid="uid://b7e3xk14le68j" path="res://game/world/generators/world_generator.gd" id="1_c1jvo"]
+
+[node name="WorldGenerator" type="Node"]
+script = ExtResource("1_c1jvo")
