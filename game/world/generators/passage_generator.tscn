@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfcpr07j58cvx"]
+
+[ext_resource type="Script" uid="uid://bi5vt3ikxya8d" path="res://game/world/generators/passage_generator.gd" id="1_3arab"]
+
+[node name="PassageGenerator" type="Node"]
+script = ExtResource("1_3arab")

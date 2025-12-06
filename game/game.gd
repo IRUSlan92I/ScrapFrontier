@@ -9,6 +9,7 @@ extends Node
 func _ready() -> void:
 	pause_screen.hide()
 	game_over_screen.hide()
+	world_generator.generate(randi())
 
 
 func _input(event: InputEvent) -> void:

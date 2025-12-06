@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh1v37wol5ktj"]
+
+[ext_resource type="Script" uid="uid://de386hpwwum7o" path="res://game/world/generators/sector_generator.gd" id="1_trjpu"]
+
+[node name="SectorGenerator" type="Node"]
+script = ExtResource("1_trjpu")

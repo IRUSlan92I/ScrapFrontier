@@ -8,20 +8,24 @@ extends Node
 const AREA_COUNT = 3
 
 
+var local_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
+var area_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
+
 func generate(seed_value: int) -> WorldData:
-	var rng := RandomNumberGenerator.new()
-	rng.seed = seed_value
+	local_seed_rng.seed = seed_value
+	area_seed_rng.seed = local_seed_rng.randi()
 	
 	var data : WorldData = WorldData.new()
 	data.seed_value = seed_value
 	
-	_fill_areas(rng, data)
+	_fill_areas(data)
 	
 	return data
 
 
-func _fill_areas(rng: RandomNumberGenerator, data : WorldData) -> void:
+func _fill_areas(data : WorldData) -> void:
 	for i in AREA_COUNT:
-		var seed_value := rng.randi()
+		var seed_value := area_seed_rng.randi()
 		var area := area_generator.generate(seed_value)
 		data.areas.append(area)
