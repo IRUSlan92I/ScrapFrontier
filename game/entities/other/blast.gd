@@ -2,11 +2,11 @@ class_name Blast
 extends Area2D
 
 
+const FALLOFF_FACTOR = 3
+
+
 @export var damage : AbstractDamage
 @export var shape : CircleShape2D
-
-
-const FALLOFF_FACTOR = 3
 
 
 @onready var collision : CollisionShape2D = $CollisionShape2D

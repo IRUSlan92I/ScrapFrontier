@@ -5,11 +5,11 @@ extends Node
 const ENEMY_COUNT = 10
 
 
-@onready var enemy_generator : EnemyGenerator = $EnemyGenerator
-
-
 var local_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var enemy_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
+
+@onready var enemy_generator : EnemyGenerator = $EnemyGenerator
 
 
 func generate(seed_value: int) -> PassageData:

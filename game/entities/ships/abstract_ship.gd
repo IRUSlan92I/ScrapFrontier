@@ -2,6 +2,9 @@ class_name AbstractShip
 extends CharacterBody2D
 
 
+signal destroyed
+
+
 const CANNON = preload("res://game/entities/weapons/cannon/cannon_weapon.tscn")
 const GATLING = preload("res://game/entities/weapons/gatling/gatling_weapon.tscn")
 const LASER = preload("res://game/entities/weapons/laser/laser_weapon.tscn")
@@ -19,9 +22,6 @@ const WEAPONS := [
 ]
 
 
-signal destroyed
-
-
 @export_range(0, 250) var acceleration : int = 0
 @export_range(0, 250) var deceleration : int = 0
 @export_range(0, 250) var max_speed : int = 0
@@ -30,17 +30,16 @@ signal destroyed
 @export_range(0, 360) var weapon_rotation : int = 0
 
 
+var weapon_positions: Array[Vector2]
+
+var _weapons : Array[AbstractWeapon]
+
+
 @onready var ship_sprite : Sprite2D = $ShipSprite
 @onready var armor_sprite : Sprite2D = $ArmorSprite
 @onready var shield_sprite : Sprite2D = $ShieldSprite
 
 @onready var health : Health = $Health
-
-
-var weapon_positions: Array[Vector2]
-
-
-var _weapons : Array[AbstractWeapon]
 
 
 func _ready() -> void:

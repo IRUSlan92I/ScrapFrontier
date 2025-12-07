@@ -2,9 +2,6 @@ class_name EnemySwampController
 extends Node
 
 
-@export var passage : Passage
-
-
 const SMALL_ENEMY = preload("res://game/entities/ships/enemies/small/small_enemy_ship.tscn")
 const MEDIUM_ENEMY = preload("res://game/entities/ships/enemies/medium/medium_enemy_ship.tscn")
 const HEAVY_ENEMY = preload("res://game/entities/ships/enemies/heavy/heavy_enemy_ship.tscn")
@@ -19,6 +16,9 @@ const INDIRECT_OFFSET = 75
 
 const MIN_POSITION = Vector2(300, 30)
 const MAX_POSITION = Vector2(600, 330)
+
+
+@export var passage : Passage
 
 
 @onready var enemy_update_timer : Timer = $EnemyUpdateTimer

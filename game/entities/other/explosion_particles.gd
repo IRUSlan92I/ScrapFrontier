@@ -9,13 +9,7 @@ signal finished
 @export_range(0, 1) var amount_ratio: float = 1
 
 
-@onready var particles_huge : GPUParticles2D = $ParticlesHuge
-@onready var particles_large : GPUParticles2D = $ParticlesLarge
-@onready var particles_medium : GPUParticles2D = $ParticlesMedium
-
-
 var _emiting_count := 0
-
 
 var emitting : bool = false:
 	set(value):
@@ -23,6 +17,11 @@ var emitting : bool = false:
 		if particles_huge: particles_huge.emitting  = emitting; _emiting_count += 1
 		if particles_large: particles_large.emitting = emitting; _emiting_count += 1
 		if particles_medium: particles_medium.emitting = emitting; _emiting_count += 1
+
+
+@onready var particles_huge : GPUParticles2D = $ParticlesHuge
+@onready var particles_large : GPUParticles2D = $ParticlesLarge
+@onready var particles_medium : GPUParticles2D = $ParticlesMedium
 
 
 func _ready() -> void:

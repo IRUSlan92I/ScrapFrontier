@@ -9,12 +9,12 @@ const CHANSES_BY_SECTOR_COUNT : Dictionary[int, int] = {
 }
 
 
-@onready var sector_generator : SectorGenerator = $SectorGenerator
-
-
 var local_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var sector_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var sector_count_rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
+
+@onready var sector_generator : SectorGenerator = $SectorGenerator
 
 
 func generate(seed_value: int, is_endpoint: bool = false) -> StageData:

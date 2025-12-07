@@ -1,8 +1,16 @@
 class_name HealthBarPart
 extends Control
 
+
+const TICK_COUNT = 5
+
+
 @export var texture_value : Texture2D
 @export var texture_shade : Texture2D
+
+
+var _tick_size : int = 0
+var _target_value: float = 0
 
 
 @onready var value_bar : TextureProgressBar = $ValueBar
@@ -10,13 +18,6 @@ extends Control
 
 @onready var shade_delay_timer : Timer = $ShadeDelayTimer
 @onready var shade_tick_timer : Timer = $ShadeTickTimer
-
-
-const TICK_COUNT = 5
-
-
-var _tick_size : int = 0
-var _target_value: float = 0
 
 
 func _ready() -> void:

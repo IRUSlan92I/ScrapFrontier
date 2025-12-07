@@ -8,15 +8,15 @@ extends DirectHitProjectile
 @export_range(0, 1000) var no_deviation_distance: int = 0
 
 
+var _collided_foes : Array[AbstractShip] = []
+
+
 @onready var jinkTimer : Timer = $JinkTimer
 
 @onready var particles_huge : GPUParticles2D = $ParticlesHuge
 @onready var particles_large : GPUParticles2D = $ParticlesLarge
 @onready var particles_medium : GPUParticles2D = $ParticlesMedium
 @onready var particles_small : GPUParticles2D = $ParticlesSmall
-
-
-var _collided_foes : Array[AbstractShip] = []
 
 
 func _ready() -> void:

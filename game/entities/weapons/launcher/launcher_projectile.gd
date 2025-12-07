@@ -5,13 +5,14 @@ extends BlastProjectile
 @export_range(0, 360) var rotation_speed: int
 
 
+var target : AbstractShip = null
+
+
 @onready var sprites : Array[Sprite2D] = [
 	$Sprite2D_E, $Sprite2D_SE, $Sprite2D_S, $Sprite2D_SW,
 	$Sprite2D_W, $Sprite2D_NW, $Sprite2D_N, $Sprite2D_NE,
 ]
 @onready var explosion_particles : ExplosionParticles = $ExplosionParticles
-
-var target : AbstractShip = null
 
 
 func _ready() -> void:

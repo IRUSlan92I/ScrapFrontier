@@ -6,16 +6,6 @@ enum Belonging { PLAYER, ENEMY }
 enum Type { NONE, SHORT_RANGE, MEDIUM_RANGE, LONG_RANGE, HOMING, MINES }
 
 
-@export_range(1, 100) var bullet_per_shot : int = 1
-@export_range(0, 360) var sector_angle : int = 0
-
-@export var Projectile : PackedScene
-@export var type := Type.NONE
-
-
-@onready var muzzle : Node2D = $Muzzle
-
-
 const PREFIXES := {
 	Belonging.PLAYER: "player",
 	Belonging.ENEMY: "enemy",
@@ -26,9 +16,18 @@ const IDLE_POSTFIX = "_idle"
 const RELOAD_POSTFIX = "_reloading"
 
 
+@export_range(1, 100) var bullet_per_shot : int = 1
+@export_range(0, 360) var sector_angle : int = 0
+
+@export var Projectile : PackedScene
+@export var type := Type.NONE
+
+
 var _belonging: Belonging
 var _can_shoot := true
 
+
+@onready var muzzle : Node2D = $Muzzle
 
 
 func set_belonging(belonging: Belonging) -> void:

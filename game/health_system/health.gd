@@ -25,10 +25,6 @@ signal depleted
 		hull_updated.emit(_hull, max_hull)
 
 
-@onready var shield_regen_delay_timer : Timer = $ShieldRegenDelayTimer
-@onready var shield_regen_tick_timer : Timer = $ShieldRegenTickTimer
-
-
 var shield: int:
 	get: return _shield
 	set(value): pass
@@ -38,6 +34,10 @@ var armor: int:
 var hull: int:
 	get: return _hull
 	set(value): pass
+
+
+@onready var shield_regen_delay_timer : Timer = $ShieldRegenDelayTimer
+@onready var shield_regen_tick_timer : Timer = $ShieldRegenTickTimer
 
 
 @onready var _shield := max_shield:

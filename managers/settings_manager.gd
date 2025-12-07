@@ -7,8 +7,8 @@ const CATEGORY_VIDEO = "video"
 const SETTING_FULLSCREEN = "fullscreen"
 const SETTING_WINDOW_FACTOR = "window_factor"
 
-var _config: ConfigFile
 
+var _config: ConfigFile
 
 var _fullscreen := false
 var fullscreen : bool:
@@ -18,7 +18,6 @@ var fullscreen : bool:
 		_fullscreen = value
 		_apply_video_settings()
 		_save_settings()
-
 
 var _window_factor := 0
 var window_factor : int:

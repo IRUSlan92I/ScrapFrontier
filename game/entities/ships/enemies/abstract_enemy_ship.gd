@@ -2,11 +2,11 @@ class_name AbstractEnemyShip
 extends AbstractShip
 
 
-@onready var controller : EnemyController = $EnemyController
-
-
 var is_on_screen : bool = false
 var weapon_type : AbstractWeapon.Type = AbstractWeapon.Type.NONE
+
+
+@onready var controller : EnemyController = $EnemyController
 
 
 func _ready() -> void:

@@ -6,10 +6,10 @@ signal accelerate(direction: Vector2, delta: float)
 signal shoot()
 
 
-@export var ship: AbstractEnemyShip
-
-
 const FREE_FLIGHT_DIST = 50
+
+
+@export var ship: AbstractEnemyShip
 
 
 var target_position : Vector2
@@ -23,10 +23,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_direction_timer_timeout() -> void:
-	direction = get_acceleration_direction()
+	direction = _get_acceleration_direction()
 
 
-func get_acceleration_direction() -> Vector2:
+func _get_acceleration_direction() -> Vector2:
 	var distance := ship.position.distance_to(target_position)
 	
 	if distance < FREE_FLIGHT_DIST:

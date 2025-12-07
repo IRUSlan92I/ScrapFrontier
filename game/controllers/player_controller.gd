@@ -21,5 +21,6 @@ func _input(event: InputEvent) -> void:
 		if not input_direction.is_zero_approx():
 			blink.emit(input_direction)
 
+
 func _get_input_direction() -> Vector2:
 	return Input.get_vector("move_left", "move_right", "move_up", "move_down")

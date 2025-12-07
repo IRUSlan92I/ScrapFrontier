@@ -2,14 +2,11 @@ class_name MinelayerProjectile
 extends BlastProjectile
 
 
-@export var deceleration : int
-
-
-@onready var sprite_on := $Sprite2D_On
-@onready var sprite_off := $Sprite2D_Off
-@onready var sprite_on_timer := $SpriteOnTimer
-@onready var sprite_off_timer := $SpriteOffTimer
-@onready var explosion_particles : ExplosionParticles = $ExplosionParticles
+enum SpriteState {
+	ON,
+	OFF,
+	Disabled,
+}
 
 
 const OFF_TIMES = [
@@ -20,17 +17,20 @@ const ON_TIME = 0.05
 const SCROLL_VELOCITY = Vector2(-50, 0)
 
 
-enum SpriteState {
-	ON,
-	OFF,
-	Disabled,
-}
+@export var deceleration : int
 
 
 var _bodies_inside: Array[Node2D] = []
 var _current_off_time_index := 0
 var _current_sprite_state : SpriteState:
 	set = _switch_sprite
+
+
+@onready var sprite_on := $Sprite2D_On
+@onready var sprite_off := $Sprite2D_Off
+@onready var sprite_on_timer := $SpriteOnTimer
+@onready var sprite_off_timer := $SpriteOffTimer
+@onready var explosion_particles : ExplosionParticles = $ExplosionParticles
 
 
 func _ready() -> void:

@@ -1,13 +1,13 @@
 extends Control
 
 
-@onready var continue_button := $%ContinueButton
-@onready var main_menu_button := $%MainMenuButton
-
-
 signal continue_game
 signal show_main_menu
 signal show_options
+
+
+@onready var continue_button := $%ContinueButton
+@onready var main_menu_button := $%MainMenuButton
 
 
 func _ready() -> void:

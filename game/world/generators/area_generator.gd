@@ -2,10 +2,6 @@ class_name AreaGenerator
 extends Node
 
 
-@onready var stage_generator : StageGenerator = $StageGenerator
-@onready var passage_generator : PassageGenerator = $PassageGenerator
-
-
 const STAGE_COUNT = 9
 
 const EXTRA_PASSAGE_CHANCE = 20
@@ -16,6 +12,10 @@ var stage_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var passage_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var passage_chance_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var passage_direction_rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
+
+@onready var stage_generator : StageGenerator = $StageGenerator
+@onready var passage_generator : PassageGenerator = $PassageGenerator
 
 
 func generate(seed_value: int) -> AreaData:

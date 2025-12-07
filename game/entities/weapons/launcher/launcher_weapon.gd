@@ -5,15 +5,18 @@ extends AbstractWeapon
 @onready var enemy_sprite : Sprite2D = $EnemySprite
 @onready var cooldown_timer : Timer = $CooldownTimer
 
+
+var _particles_index := 0
+var _muzzle_index := 0
+
+
 @onready var particles : Array[GPUParticles2D] = [
 	$LeftParticles, $RightParticles,
 ]
-var _particles_index := 0
 
 @onready var muzzles : Array[Node2D] = [
 	$Muzzle, $SecondMuzzle,
 ]
-var _muzzle_index := 0
 
 
 func set_belonging(belonging: Belonging) -> void:

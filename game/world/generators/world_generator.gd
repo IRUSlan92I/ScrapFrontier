@@ -2,14 +2,14 @@ class_name  WorldGenerator
 extends Node
 
 
-@onready var area_generator : AreaGenerator = $AreaGenerator
-
-
 const AREA_COUNT = 3
 
 
 var local_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var area_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
+
+@onready var area_generator : AreaGenerator = $AreaGenerator
 
 
 func generate(seed_value: int) -> WorldData:

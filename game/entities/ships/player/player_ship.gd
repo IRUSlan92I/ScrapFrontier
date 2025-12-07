@@ -2,10 +2,10 @@ class_name PlayerShip
 extends AbstractShip
 
 
-@export_range(0, 200) var blink_range := 0
-
-
 const ENEMY_LAYER = 4
+
+
+@export_range(0, 200) var blink_range := 0
 
 
 @onready var blink_timer : Timer = $BlinkTimer

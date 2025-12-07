@@ -11,10 +11,6 @@ const ENEMY_PROJECTILE_LAYER = 16
 @export_range(0, 1000) var speed : int = 0
 
 
-@onready var collision : CollisionShape2D = $CollisionShape2D
-@onready var out_of_screen_timer : Timer = $OutOfScreenTimer
-
-
 var direction : Vector2
 var ship_velocity: Vector2
 
@@ -30,6 +26,10 @@ var collide_enemies: bool:
 
 
 var _velocity: Vector2
+
+
+@onready var collision : CollisionShape2D = $CollisionShape2D
+@onready var out_of_screen_timer : Timer = $OutOfScreenTimer
 
 
 func _ready() -> void:
