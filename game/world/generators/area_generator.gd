@@ -36,10 +36,20 @@ func generate(seed_value: int) -> AreaData:
 
 func _fill_stages(data : AreaData) -> void:
 	for i in range(STAGE_COUNT):
-		var is_endpoint := i == 0 or i == STAGE_COUNT - 1
+		var stage_type := _get_stage_type(i)
 		var seed_value := stage_seed_rng.randi()
-		var stage := stage_generator.generate(seed_value, is_endpoint)
+		var stage := stage_generator.generate(seed_value, stage_type)
 		data.stages.append(stage)
+
+
+func _get_stage_type(stage_index: int) -> StageGenerator.StageType:
+	match stage_index:
+		0:
+			return StageGenerator.StageType.Start
+		STAGE_COUNT - 1:
+			return StageGenerator.StageType.Boss
+		_:
+			return StageGenerator.StageType.Inner
 
 
 func _fill_passages(data : AreaData) -> void:
@@ -92,21 +102,43 @@ func _fill_passages_for_unequal_pair(
 	is_sectors_flipped: bool
 ) -> void:
 	var lesser_size := lesser_sectors.size()
-	var greater_size := greater_sectors.size()
 	
 	match lesser_size:
 		1:
-			for i in range(greater_size):
-				_connect_sectors(data, lesser_sectors[0], greater_sectors[i], is_sectors_flipped)
+			_fill_passages_for_unequal_pair_1_to_2_3(
+				data, lesser_sectors, greater_sectors, is_sectors_flipped
+			)
 		2:
-			_connect_sectors(data, lesser_sectors[0], greater_sectors[0], is_sectors_flipped)
-			_connect_sectors(data, lesser_sectors[1], greater_sectors[2], is_sectors_flipped)
-			if _extra_passage_needed():
-				_connect_sectors(data, lesser_sectors[0], greater_sectors[1], is_sectors_flipped)
-				_connect_sectors(data, lesser_sectors[1], greater_sectors[1], is_sectors_flipped)
-			else:
-				var from := 0 if _is_extra_passage_flipped() else 1
-				_connect_sectors(data, lesser_sectors[from], greater_sectors[1], is_sectors_flipped)
+			_fill_passages_for_unequal_pair_2_to_3(
+				data, lesser_sectors, greater_sectors, is_sectors_flipped
+			)
+
+
+func _fill_passages_for_unequal_pair_1_to_2_3(
+	data : AreaData,
+	lesser_sectors: Array[SectorData],
+	greater_sectors: Array[SectorData],
+	is_sectors_flipped: bool
+) -> void:
+	var greater_size := greater_sectors.size()
+	for i in range(greater_size):
+		_connect_sectors(data, lesser_sectors[0], greater_sectors[i], is_sectors_flipped)
+
+
+func _fill_passages_for_unequal_pair_2_to_3(
+	data : AreaData,
+	lesser_sectors: Array[SectorData],
+	greater_sectors: Array[SectorData],
+	is_sectors_flipped: bool
+) -> void:
+	_connect_sectors(data, lesser_sectors[0], greater_sectors[0], is_sectors_flipped)
+	_connect_sectors(data, lesser_sectors[1], greater_sectors[2], is_sectors_flipped)
+	if _extra_passage_needed():
+		_connect_sectors(data, lesser_sectors[0], greater_sectors[1], is_sectors_flipped)
+		_connect_sectors(data, lesser_sectors[1], greater_sectors[1], is_sectors_flipped)
+	else:
+		var from := 0 if _is_extra_passage_flipped() else 1
+		_connect_sectors(data, lesser_sectors[from], greater_sectors[1], is_sectors_flipped)
 
 
 func _extra_passage_needed() -> bool:

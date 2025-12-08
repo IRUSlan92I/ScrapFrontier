@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://b8qwok6v44la"]
+
+[ext_resource type="Script" uid="uid://yf2bef674enx" path="res://game/area_map/indicators/current_sector_indicator.gd" id="1_7irmv"]
+[ext_resource type="Texture2D" uid="uid://orutjsnhhruf" path="res://images/map.png" id="2_l75qw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqys3"]
+atlas = ExtResource("2_l75qw")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua7c8"]
+atlas = ExtResource("2_l75qw")
+region = Rect2(272, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a5ox"]
+atlas = ExtResource("2_l75qw")
+region = Rect2(288, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmkab"]
+atlas = ExtResource("2_l75qw")
+region = Rect2(304, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5b5h"]
+atlas = ExtResource("2_l75qw")
+region = Rect2(256, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gekak"]
+atlas = ExtResource("2_l75qw")
+region = Rect2(272, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02s10"]
+atlas = ExtResource("2_l75qw")
+region = Rect2(288, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do7pi"]
+atlas = ExtResource("2_l75qw")
+region = Rect2(304, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2biry"]
+animations = [{
+"frames": [{
+"duration": 25.0,
+"texture": SubResource("AtlasTexture_iqys3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua7c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a5ox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmkab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5b5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gekak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02s10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do7pi")
+}],
+"loop": true,
+"name": &"animation",
+"speed": 10.0
+}]
+
+[node name="CurrentSectorIndicator" type="Node2D"]
+script = ExtResource("1_7irmv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2biry")
+animation = &"animation"
+frame_progress = 0.8128894

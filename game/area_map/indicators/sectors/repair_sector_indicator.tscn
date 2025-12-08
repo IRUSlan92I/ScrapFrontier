@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7d6jylti6bea"]
+
+[ext_resource type="PackedScene" uid="uid://bofxdki5oelxe" path="res://game/area_map/indicators/abstract_sector_indicator.tscn" id="1_5phms"]
+[ext_resource type="Texture2D" uid="uid://orutjsnhhruf" path="res://images/map.png" id="2_e1mcs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5phms"]
+atlas = ExtResource("2_e1mcs")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1mcs"]
+atlas = ExtResource("2_e1mcs")
+region = Rect2(32, 16, 16, 16)
+
+[node name="RepairSectorIndicator" instance=ExtResource("1_5phms")]
+
+[node name="ActiveTexture" parent="." index="0"]
+texture = SubResource("AtlasTexture_5phms")
+
+[node name="InactiveTexture" parent="." index="1"]
+texture = SubResource("AtlasTexture_e1mcs")

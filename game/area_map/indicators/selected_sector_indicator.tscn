@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwru7i7xetjth"]
+
+[ext_resource type="Script" uid="uid://d3eqb5341h7y0" path="res://game/area_map/indicators/selected_sector_indicator.gd" id="1_06a3o"]
+[ext_resource type="Texture2D" uid="uid://orutjsnhhruf" path="res://images/map.png" id="2_485wc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx6w1"]
+atlas = ExtResource("2_485wc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igqhl"]
+atlas = ExtResource("2_485wc")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw2o"]
+atlas = ExtResource("2_485wc")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih4lp"]
+atlas = ExtResource("2_485wc")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5e44l"]
+animations = [{
+"frames": [{
+"duration": 25.0,
+"texture": SubResource("AtlasTexture_gx6w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igqhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih4lp")
+}],
+"loop": true,
+"name": &"animation",
+"speed": 10.0
+}]
+
+[node name="SelectedSectorIndicator" type="Node2D"]
+script = ExtResource("1_06a3o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5e44l")
+animation = &"animation"

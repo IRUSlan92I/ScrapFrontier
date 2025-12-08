@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://g05q5dxwktr8"]
+
+[ext_resource type="PackedScene" uid="uid://bofxdki5oelxe" path="res://game/area_map/indicators/abstract_sector_indicator.tscn" id="1_glpdm"]
+[ext_resource type="Texture2D" uid="uid://orutjsnhhruf" path="res://images/map.png" id="2_37krw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glpdm"]
+atlas = ExtResource("2_37krw")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37krw"]
+atlas = ExtResource("2_37krw")
+region = Rect2(64, 16, 16, 16)
+
+[node name="StartSectorIndicator" instance=ExtResource("1_glpdm")]
+
+[node name="ActiveTexture" parent="." index="0"]
+texture = SubResource("AtlasTexture_glpdm")
+
+[node name="InactiveTexture" parent="." index="1"]
+texture = SubResource("AtlasTexture_37krw")

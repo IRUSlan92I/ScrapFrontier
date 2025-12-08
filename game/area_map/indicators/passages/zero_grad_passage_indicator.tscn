@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d24hqpbq2yqfn"]
+
+[ext_resource type="PackedScene" uid="uid://b03vje74ld8ms" path="res://game/area_map/indicators/absctact_passage_indicator.tscn" id="1_q65pt"]
+[ext_resource type="Texture2D" uid="uid://orutjsnhhruf" path="res://images/map.png" id="2_4t74o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f73ej"]
+atlas = ExtResource("2_4t74o")
+region = Rect2(0, 32, 80, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8pmf"]
+atlas = ExtResource("2_4t74o")
+region = Rect2(160, 32, 80, 16)
+
+[node name="PassageIndicator0Grad" instance=ExtResource("1_q65pt")]
+
+[node name="ActiveTexture" parent="." index="0"]
+position = Vector2(32, 0)
+texture = SubResource("AtlasTexture_f73ej")
+
+[node name="InactiveTexture" parent="." index="1"]
+position = Vector2(32, 0)
+texture = SubResource("AtlasTexture_b8pmf")
