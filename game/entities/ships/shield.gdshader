@@ -3,6 +3,7 @@ shader_type canvas_item;
 uniform float speed = 5.0;
 uniform float scale = 20.0;
 uniform float intensity = 1;
+uniform sampler2D noise;
 
 float rand(vec2 coord) {
 	return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.5453);

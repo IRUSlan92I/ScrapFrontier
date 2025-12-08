@@ -2,7 +2,10 @@ class_name PassageData
 extends Resource
 
 
-enum PassageAngle {
+signal activity_changed(is_active: bool)
+
+
+enum PassageType {
 	Minus45Grad,
 	Minus26Grad,
 	ZeroGrad,
@@ -17,4 +20,11 @@ enum PassageAngle {
 
 @export var seed_value : int = 0
 
-@export var angle : PassageAngle = PassageAngle.ZeroGrad
+@export var type : PassageType = PassageType.ZeroGrad
+
+
+var is_active: bool = true:
+	set(value):
+		if is_active == value: return
+		is_active = value
+		activity_changed.emit(is_active)

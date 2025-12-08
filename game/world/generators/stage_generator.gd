@@ -10,9 +10,9 @@ enum StageType {
 
 
 const CHANSES_BY_SECTOR_COUNT : Dictionary[int, int] = {
-	1: 25,
-	2: 60,
-	3: 15
+	1: 20,
+	2: 30,
+	3: 50
 }
 
 

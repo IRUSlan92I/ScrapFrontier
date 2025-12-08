@@ -8,16 +8,18 @@ const SECTOR_XS = [
 	64 * 7, 64 * 8, 64 * 9,
 ]
 
+const SECTOR_Y_OFFSET = 24
+
 const SECTOR_YS_FOR_ONE = [
-	64 * 2
+	SECTOR_Y_OFFSET + 64 * 1
 ]
 
 const SECTOR_YS_FOR_TWO = [
-	64 * 1.5, 64 * 2.5,
+	SECTOR_Y_OFFSET + 64 * 0.5, SECTOR_Y_OFFSET + 64 * 1.5,
 ]
 
 const SECTOR_YS_FOR_THREE = [
-	64 * 1, 64 * 2, 64 * 3,
+	SECTOR_Y_OFFSET + 64 * 0, SECTOR_Y_OFFSET + 64 * 1, SECTOR_Y_OFFSET + 64 * 2,
 ]
 
 const CURRENT_SECTOR_INDICATOR_OFFSET = Vector2(0, 16)
@@ -36,16 +38,16 @@ const SECTOR_SCENES : Dictionary[SectorData.SectorType, PackedScene] = {
 	SectorData.SectorType.BossSector:
 		preload("res://game/area_map/indicators/sectors/boss_sector_indicator.tscn"),
 }
-const PASSAGE_SCENES : Dictionary[PassageData.PassageAngle, PackedScene] = {
-	PassageData.PassageAngle.Minus45Grad:
+const PASSAGE_SCENES : Dictionary[PassageData.PassageType, PackedScene] = {
+	PassageData.PassageType.Minus45Grad:
 		preload("res://game/area_map/indicators/passages/minus_45_grad_passage_indicator.tscn"),
-	PassageData.PassageAngle.Minus26Grad:
+	PassageData.PassageType.Minus26Grad:
 		preload("res://game/area_map/indicators/passages/minus_26_grad_passage_indicator.tscn"),
-	PassageData.PassageAngle.ZeroGrad:
+	PassageData.PassageType.ZeroGrad:
 		preload("res://game/area_map/indicators/passages/zero_grad_passage_indicator.tscn"),
-	PassageData.PassageAngle.Plus26Grad:
+	PassageData.PassageType.Plus26Grad:
 		preload("res://game/area_map/indicators/passages/plus_26_grad_passage_indicator.tscn"),
-	PassageData.PassageAngle.Plus45Grad:
+	PassageData.PassageType.Plus45Grad:
 		preload("res://game/area_map/indicators/passages/plus_45_grad_passage_indicator.tscn"),
 }
 
@@ -67,6 +69,7 @@ var selected_sector: SectorData = null:
 var sector_positions : Dictionary[SectorData, Vector2] = {}
 
 var test_rng : RandomNumberGenerator = RandomNumberGenerator.new()
+var test_seed := 0
 
 
 @onready var passages_node : Node2D = $Passages
@@ -79,7 +82,7 @@ var test_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 
 func _ready() -> void:
-	area_data = test_area_generator.generate(4)
+	area_data = test_area_generator.generate(test_seed)
 	test_rng.seed = 0
 	current_sector = _get_random_sector()
 	selected_sector = _get_random_sector()
@@ -148,16 +151,18 @@ func _fill_sectors(stage: StageData) -> void:
 		var sector_instance : AbstractSectorIndicator = scene.instantiate()
 		sector_instance.position = sector_position
 		sectors_node.add_child(sector_instance)
+		sector.activity_changed.connect(sector_instance.set_active)
 
 
 func _fill_passages(passages: Array[PassageData], sector_position: Vector2) -> void:
 	for passage in passages:
-		if not passage.angle in PASSAGE_SCENES: continue
+		if not passage.type in PASSAGE_SCENES: continue
 		
-		var scene := PASSAGE_SCENES[passage.angle]
+		var scene := PASSAGE_SCENES[passage.type]
 		var passage_instance : AbstractPassageIndicator = scene.instantiate()
 		passage_instance.position = sector_position
 		passages_node.add_child(passage_instance)
+		passage.activity_changed.connect(passage_instance.set_active)
 
 
 func _get_sector_position(stage_index: int, sector_index: int, sector_count: int) -> Vector2:
@@ -205,3 +210,10 @@ func _set_selected_sector(sector: SectorData) -> void:
 	selected_sector_indicator.position = sector_position
 	
 	selected_sector_indicator.show()
+
+
+func _on_test_timer_timeout() -> void:
+	test_seed += 1
+	area_data = test_area_generator.generate(test_seed)
+	current_sector = _get_random_sector()
+	selected_sector = _get_random_sector()
