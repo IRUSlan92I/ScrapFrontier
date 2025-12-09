@@ -2,6 +2,9 @@ class_name AreaMap
 extends Node2D
 
 
+signal sector_selected(sector: SectorData)
+
+
 const SECTOR_XS = [
 	64 * 1, 64 * 2, 64 * 3,
 	64 * 4, 64 * 5, 64 * 6,
@@ -66,9 +69,6 @@ var selected_sector: SectorData = null:
 
 var sector_positions : Dictionary[SectorData, Vector2] = {}
 
-var test_rng : RandomNumberGenerator = RandomNumberGenerator.new()
-var test_seed := 0
-
 
 @onready var passages_node : Node2D = $Passages
 @onready var sectors_node : Node2D = $Sectors
@@ -76,14 +76,10 @@ var test_seed := 0
 @onready var current_sector_indicator : CurrentSectorIndicator = $CurrentSectorIndicator
 @onready var selected_sector_indicator : SelectedSectorIndicator = $SelectedSectorIndicator
 
-@onready var test_area_generator : AreaGenerator = $TestAreaGenerator
-
 
 func _ready() -> void:
-	area_data = test_area_generator.generate(test_seed)
-	test_rng.seed = 0
-	current_sector = _get_random_sector()
-	selected_sector = _get_random_sector()
+	current_sector_indicator.hide()
+	selected_sector_indicator.hide()
 
 
 func _input(event: InputEvent) -> void:
@@ -98,26 +94,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_down"):
 		_set_selected_sector(selected_sector.sector_below)
 	if event.is_action_pressed("ui_accept"):
-		_load_text_test()
-
-
-func _set_area_data(data: AreaData) -> void:
-	area_data = data
-	
-	_fill_map()
-
-
-func _get_random_sector() -> SectorData:
-	if area_data == null: return null
-	if area_data.stages.size() == 0: return null
-	
-	var stage_index := test_rng.randf_range(0, area_data.stages.size() - 1)
-	var stage := area_data.stages[stage_index]
-	
-	if stage.sectors.size() == 0: return null
-	var sector_index := test_rng.randf_range(0, stage.sectors.size() - 1)
-	
-	return stage.sectors[sector_index]
+		if _is_sector_accessible(current_sector):
+			sector_selected.emit(current_sector)
 
 
 func _fill_sector_positions() -> void:
@@ -140,9 +118,10 @@ func _fill_sector_positions() -> void:
 func _fill_map() -> void:
 	_clear_node(sectors_node)
 	_clear_node(passages_node)
-	_fill_sector_positions()
-
+	
 	if area_data == null: return
+	
+	_fill_sector_positions()
 	
 	for stage in area_data.stages:
 		_fill_sectors(stage)
@@ -199,35 +178,41 @@ func _clear_node(node: Node) -> void:
 		n.queue_free()
 
 
+func _set_area_data(data: AreaData) -> void:
+	area_data = data
+	current_sector = null
+	selected_sector = null
+	
+	_fill_map()
+
+
 func _set_current_sector(sector: SectorData) -> void:
-	if sector == null: return
+	current_sector = sector
+	
+	_update_selected_sector_indicator()
 	
 	if not sector in sector_positions:
 		current_sector_indicator.hide()
 		return
 	
-	current_sector = sector
-	
 	var sector_position := sector_positions[sector]
 	current_sector_indicator.position = sector_position + CURRENT_SECTOR_INDICATOR_OFFSET
 	
-	_update_selected_sector_indicator()
 	current_sector_indicator.show()
 
 
 func _set_selected_sector(sector: SectorData) -> void:
-	if sector == null: return
+	selected_sector = sector
+	
+	_update_selected_sector_indicator()
 	
 	if not sector in sector_positions:
 		selected_sector_indicator.hide()
 		return
 	
-	selected_sector = sector
-	
 	var sector_position := sector_positions[sector]
 	selected_sector_indicator.position = sector_position
 	
-	_update_selected_sector_indicator()
 	selected_sector_indicator.show()
 
 
@@ -246,10 +231,3 @@ func _is_sector_accessible(sector: SectorData) -> bool:
 			return true
 	
 	return false
-
-
-func _load_text_test() -> void:
-	test_seed += 1
-	area_data = test_area_generator.generate(test_seed)
-	current_sector = _get_random_sector()
-	selected_sector = _get_random_sector()
