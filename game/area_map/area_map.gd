@@ -86,6 +86,21 @@ func _ready() -> void:
 	selected_sector = _get_random_sector()
 
 
+func _input(event: InputEvent) -> void:
+	if selected_sector == null: return
+	
+	if event.is_action_pressed("ui_left"):
+		_set_selected_sector(selected_sector.sector_to_left)
+	if event.is_action_pressed("ui_right"):
+		_set_selected_sector(selected_sector.sector_to_right)
+	if event.is_action_pressed("ui_up"):
+		_set_selected_sector(selected_sector.sector_above)
+	if event.is_action_pressed("ui_down"):
+		_set_selected_sector(selected_sector.sector_below)
+	if event.is_action_pressed("ui_accept"):
+		_load_text_test()
+
+
 func _set_area_data(data: AreaData) -> void:
 	area_data = data
 	
@@ -185,6 +200,8 @@ func _clear_node(node: Node) -> void:
 
 
 func _set_current_sector(sector: SectorData) -> void:
+	if sector == null: return
+	
 	if not sector in sector_positions:
 		current_sector_indicator.hide()
 		return
@@ -199,6 +216,8 @@ func _set_current_sector(sector: SectorData) -> void:
 
 
 func _set_selected_sector(sector: SectorData) -> void:
+	if sector == null: return
+	
 	if not sector in sector_positions:
 		selected_sector_indicator.hide()
 		return
@@ -229,7 +248,7 @@ func _is_sector_accessible(sector: SectorData) -> bool:
 	return false
 
 
-func _on_test_timer_timeout() -> void:
+func _load_text_test() -> void:
 	test_seed += 1
 	area_data = test_area_generator.generate(test_seed)
 	current_sector = _get_random_sector()

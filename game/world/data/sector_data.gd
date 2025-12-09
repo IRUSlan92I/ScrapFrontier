@@ -21,6 +21,11 @@ enum SectorType {
 
 @export var type : SectorType = SectorType.DebrisSector
 
+@export var sector_to_left: SectorData = null
+@export var sector_to_right: SectorData = null
+@export var sector_above: SectorData = null
+@export var sector_below: SectorData = null
+
 
 var is_active: bool = true:
 	set(value):

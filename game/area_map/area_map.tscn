@@ -17,9 +17,3 @@ script = ExtResource("1_hkcry")
 [node name="SelectedSectorIndicator" parent="." instance=ExtResource("3_oxnrh")]
 
 [node name="TestAreaGenerator" parent="." instance=ExtResource("2_0o0gd")]
-
-[node name="TestTimer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
-[connection signal="timeout" from="TestTimer" to="." method="_on_test_timer_timeout"]

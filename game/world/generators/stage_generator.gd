@@ -12,7 +12,7 @@ enum StageType {
 const CHANSES_BY_SECTOR_COUNT : Dictionary[int, int] = {
 	1: 20,
 	2: 30,
-	3: 50
+	3: 50,
 }
 
 
@@ -48,6 +48,7 @@ func _fill_sectors(data : StageData, type: StageType = StageType.Inner) -> void:
 				sector.type = SectorData.SectorType.StartSector
 			StageType.Boss:
 				sector.type = SectorData.SectorType.BossSector
+	_update_neighbors(data)
 
 
 func _get_sector_count() -> int:
@@ -64,3 +65,12 @@ func _get_sector_count() -> int:
 			return count
 	
 	return 1
+
+
+func _update_neighbors(data : StageData) -> void:
+	var size := data.sectors.size()
+	for i in range(size):
+		if i > 0:
+			data.sectors[i].sector_above = data.sectors[i-1]
+		if i < size - 1:
+			data.sectors[i].sector_below = data.sectors[i+1]

@@ -66,6 +66,8 @@ func _fill_stages(data : AreaData) -> void:
 		var seed_value := stage_seed_rng.randi()
 		var stage := stage_generator.generate(seed_value, stage_type)
 		data.stages.append(stage)
+	
+	_update_neighbors(data)
 
 
 func _get_stage_type(stage_index: int) -> StageGenerator.StageType:
@@ -224,3 +226,49 @@ func _get_passage_type(
 	
 	var key := "%d %d %d" % [from_size, to_size, diff]
 	return PASSAGE_TYPES.get(key, PassageData.PassageType.ZeroGrad)
+
+
+func _update_neighbors(data : AreaData) -> void:
+	for stage_index in range(data.stages.size()):
+		var stage := data.stages[stage_index]
+		for sector_index in range(stage.sectors.size()):
+			var sector := stage.sectors[sector_index]
+			sector.sector_to_left = _get_left_neighbor(data, stage_index, sector_index)
+			sector.sector_to_right = _get_right_neighbor(data, stage_index, sector_index)
+
+
+func _get_left_neighbor(data : AreaData, stage_index: int, sector_index: int) -> SectorData:
+	if stage_index == 0: return null
+	
+	var current_stage := data.stages[stage_index]
+	var left_stage := data.stages[stage_index-1]
+	
+	return _get_side_neighbor(sector_index, current_stage, left_stage)
+
+
+func _get_right_neighbor(data : AreaData, stage_index: int, sector_index: int) -> SectorData:
+	if stage_index == data.stages.size() - 1: return null
+	
+	var current_stage := data.stages[stage_index]
+	var right_stage := data.stages[stage_index+1]
+	
+	return _get_side_neighbor(sector_index, current_stage, right_stage)
+
+
+func _get_side_neighbor(
+	sector_index: int, current_stage: StageData, side_stage: StageData
+) -> SectorData:
+	var current_size := current_stage.sectors.size()
+	var side_size := side_stage.sectors.size()
+	
+	if side_size == 0:
+		return null
+	
+	if current_size == 1:
+		return side_stage.sectors[floori(side_size / 2.0)]
+	
+	var normalized_position := float(sector_index) / float(current_size - 1)
+	var side_index := floori(normalized_position * (side_size - 1))
+	side_index = clampi(side_index, 0, side_size - 1)
+	
+	return side_stage.sectors[side_index]
