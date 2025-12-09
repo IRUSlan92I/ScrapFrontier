@@ -6,7 +6,6 @@ signal activity_changed(is_active: bool)
 
 
 enum SectorType {
-	EmptySector,
 	ShopSector,
 	RepairSector,
 	DebrisSector,
@@ -20,7 +19,7 @@ enum SectorType {
 
 @export var seed_value : int = 0
 
-@export var type : SectorType = SectorType.EmptySector
+@export var type : SectorType = SectorType.DebrisSector
 
 
 var is_active: bool = true:

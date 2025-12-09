@@ -44,7 +44,7 @@ var passage_direction_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var passage_generator : PassageGenerator = $PassageGenerator
 
 
-func generate(seed_value: int) -> AreaData:	
+func generate(seed_value: int) -> AreaData:
 	local_seed_rng.seed = seed_value
 	stage_seed_rng.seed = local_seed_rng.randi()
 	passage_seed_rng.seed = local_seed_rng.randi()

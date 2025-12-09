@@ -5,16 +5,16 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1il3o"]
 atlas = ExtResource("2_yiddm")
-region = Rect2(48, 0, 16, 16)
+region = Rect2(96, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yiddm"]
 atlas = ExtResource("2_yiddm")
-region = Rect2(48, 16, 16, 16)
+region = Rect2(256, 48, 16, 16)
 
 [node name="DebrisSectorIndicator" instance=ExtResource("1_1il3o")]
 
-[node name="ActiveTexture" parent="." index="0"]
+[node name="ActiveSprite" parent="." index="0"]
 texture = SubResource("AtlasTexture_1il3o")
 
-[node name="InactiveTexture" parent="." index="1"]
+[node name="InactiveSprite" parent="." index="1"]
 texture = SubResource("AtlasTexture_yiddm")

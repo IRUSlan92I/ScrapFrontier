@@ -5,18 +5,18 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1wcf5"]
 atlas = ExtResource("2_qtofm")
-region = Rect2(0, 96, 80, 80)
+region = Rect2(0, 112, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqbnh"]
 atlas = ExtResource("2_qtofm")
-region = Rect2(160, 96, 80, 80)
+region = Rect2(160, 112, 80, 80)
 
 [node name="PassageIndicator45Grad" instance=ExtResource("1_nk4h4")]
 
-[node name="ActiveTexture" parent="." index="0"]
+[node name="ActiveSprite" parent="." index="0"]
 position = Vector2(32, 32)
 texture = SubResource("AtlasTexture_1wcf5")
 
-[node name="InactiveTexture" parent="." index="1"]
+[node name="InactiveSprite" parent="." index="1"]
 position = Vector2(32, 32)
 texture = SubResource("AtlasTexture_lqbnh")

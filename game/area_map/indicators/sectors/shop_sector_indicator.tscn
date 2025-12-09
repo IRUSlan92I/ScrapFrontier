@@ -5,16 +5,16 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4uu3o"]
 atlas = ExtResource("2_j10ah")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(112, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j10ah"]
 atlas = ExtResource("2_j10ah")
-region = Rect2(16, 16, 16, 16)
+region = Rect2(272, 48, 16, 16)
 
 [node name="ShopSectorIndicator" instance=ExtResource("1_4uu3o")]
 
-[node name="ActiveTexture" parent="." index="0"]
+[node name="ActiveSprite" parent="." index="0"]
 texture = SubResource("AtlasTexture_4uu3o")
 
-[node name="InactiveTexture" parent="." index="1"]
+[node name="InactiveSprite" parent="." index="1"]
 texture = SubResource("AtlasTexture_j10ah")

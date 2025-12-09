@@ -25,8 +25,6 @@ const SECTOR_YS_FOR_THREE = [
 const CURRENT_SECTOR_INDICATOR_OFFSET = Vector2(0, 16)
 
 const SECTOR_SCENES : Dictionary[SectorData.SectorType, PackedScene] = {
-	SectorData.SectorType.EmptySector: 
-		preload("res://game/area_map/indicators/sectors/empty_sector_indicator.tscn"),
 	SectorData.SectorType.ShopSector:
 		preload("res://game/area_map/indicators/sectors/shop_sector_indicator.tscn"),
 	SectorData.SectorType.RepairSector:
@@ -196,6 +194,7 @@ func _set_current_sector(sector: SectorData) -> void:
 	var sector_position := sector_positions[sector]
 	current_sector_indicator.position = sector_position + CURRENT_SECTOR_INDICATOR_OFFSET
 	
+	_update_selected_sector_indicator()
 	current_sector_indicator.show()
 
 
@@ -209,7 +208,25 @@ func _set_selected_sector(sector: SectorData) -> void:
 	var sector_position := sector_positions[sector]
 	selected_sector_indicator.position = sector_position
 	
+	_update_selected_sector_indicator()
 	selected_sector_indicator.show()
+
+
+func _update_selected_sector_indicator() -> void:
+	if selected_sector == null: return
+	
+	var is_accessible := _is_sector_accessible(selected_sector)
+	selected_sector_indicator.set_active(is_accessible)
+
+
+func _is_sector_accessible(sector: SectorData) -> bool:
+	if current_sector == null: return false
+	
+	for passage in current_sector.next_passages:
+		if passage.next_sector == sector:
+			return true
+	
+	return false
 
 
 func _on_test_timer_timeout() -> void:

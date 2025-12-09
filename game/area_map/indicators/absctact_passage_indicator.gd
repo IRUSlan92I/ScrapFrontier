@@ -2,14 +2,14 @@ class_name AbstractPassageIndicator
 extends Node2D
 
 
-@onready var active_texture : Sprite2D = $ActiveTexture
-@onready var inactive_texture : Sprite2D = $InactiveTexture
+@onready var active_sprite : Sprite2D = $ActiveSprite
+@onready var inactive_sprite : Sprite2D = $InactiveSprite
 
 
 func _ready() -> void:
-	inactive_texture.hide()
+	inactive_sprite.hide()
 
 
 func set_active(is_active: bool) -> void:
-	active_texture.visible = is_active
-	inactive_texture.visible = not is_active
+	active_sprite.visible = is_active
+	inactive_sprite.visible = not is_active

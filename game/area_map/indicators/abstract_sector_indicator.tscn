@@ -5,6 +5,6 @@
 [node name="AbstractSectorIndicator" type="Node2D"]
 script = ExtResource("1_mp2r3")
 
-[node name="ActiveTexture" type="Sprite2D" parent="."]
+[node name="ActiveSprite" type="Sprite2D" parent="."]
 
-[node name="InactiveTexture" type="Sprite2D" parent="."]
+[node name="InactiveSprite" type="Sprite2D" parent="."]

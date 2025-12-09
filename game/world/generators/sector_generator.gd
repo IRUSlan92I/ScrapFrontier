@@ -3,10 +3,9 @@ extends Node
 
 
 const CHANSES_BY_SECTOR_TYPE : Dictionary[SectorData.SectorType, int] = {
-	SectorData.SectorType.EmptySector: 45,
-	SectorData.SectorType.ShopSector: 30,
+	SectorData.SectorType.ShopSector: 40,
 	SectorData.SectorType.RepairSector: 20,
-	SectorData.SectorType.DebrisSector: 5,
+	SectorData.SectorType.DebrisSector: 40,
 }
 
 
@@ -39,4 +38,4 @@ func _get_sector_type() -> SectorData.SectorType:
 		if threshold <= cumulative:
 			return type
 	
-	return SectorData.SectorType.EmptySector
+	return SectorData.SectorType.DebrisSector
