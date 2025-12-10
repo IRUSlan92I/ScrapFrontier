@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://d20nvskf38vpo"]
+
+[ext_resource type="Script" uid="uid://bpfr1laquec3u" path="res://game/entities/ships/player/blink_charge_indicator.gd" id="1_5n4fu"]
+[ext_resource type="Texture2D" uid="uid://y2yfli24n51v" path="res://images/ships/player.png" id="2_i476t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo48j"]
+atlas = ExtResource("2_i476t")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i476t"]
+atlas = ExtResource("2_i476t")
+region = Rect2(16, 128, 16, 16)
+
+[node name="BlinkChargeIndicator" type="Node2D"]
+script = ExtResource("1_5n4fu")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+step = 0.1
+value = 100.0
+texture_progress = SubResource("AtlasTexture_fo48j")
+
+[node name="ChargedSprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_i476t")

@@ -15,12 +15,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -16.0
-offset_top = -8.0
+offset_top = -1.0
 offset_right = 16.0
-offset_bottom = 8.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(16, 8)
+pivot_offset = Vector2(16, 1)
 
 [node name="ValueBar" type="TextureProgressBar" parent="."]
 layout_mode = 1
@@ -30,12 +30,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -16.0
-offset_top = -8.0
+offset_top = -1.0
 offset_right = 16.0
-offset_bottom = 8.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(16, 8)
+pivot_offset = Vector2(16, 1)
 
 [node name="ShadeDelayTimer" type="Timer" parent="."]
 wait_time = 0.5

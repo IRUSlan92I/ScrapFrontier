@@ -36,6 +36,7 @@ material = SubResource("ShaderMaterial_bkxo4")
 [node name="Health" parent="." instance=ExtResource("2_xxtvk")]
 
 [node name="HeathBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_l62e5")]
+z_index = 101
 health = NodePath("../Health")
 
 [node name="WeaponSlots" type="Node2D" parent="."]
