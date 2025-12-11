@@ -58,7 +58,7 @@ autostart = true
 
 [node name="Background" parent="." instance=ExtResource("4_cuj01")]
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
 z_index = 50
 anchors_preset = 2
 anchor_top = 1.0
@@ -67,6 +67,7 @@ offset_top = 352.0
 offset_right = 640.0
 offset_bottom = 360.0
 grow_vertical = 0
+step = 0.5
 texture_under = SubResource("AtlasTexture_u0ams")
 texture_progress = SubResource("AtlasTexture_heelu")
 

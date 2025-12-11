@@ -1,6 +1,7 @@
 extends Node
 
 
+@onready var passage : Passage = $Passage
 @onready var pause_screen : Control = $PauseScreen
 @onready var game_over_screen : Control = $GameOverScreen
 @onready var world_generator : WorldGenerator = $WorldGenerator
@@ -9,7 +10,8 @@ extends Node
 func _ready() -> void:
 	pause_screen.hide()
 	game_over_screen.hide()
-	world_generator.generate(randi())
+	var world_data := world_generator.generate(randi())
+	passage.data = world_data.areas[0].stages[0].sectors[0].next_passages[0]
 
 
 func _input(event: InputEvent) -> void:
