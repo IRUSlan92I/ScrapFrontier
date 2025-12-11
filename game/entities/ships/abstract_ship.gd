@@ -21,6 +21,8 @@ const WEAPONS := [
 	RAILGUN, SHRAPNEL, TESLA,
 ]
 
+const SHADER_INTENSITY = "shader_parameter/intensity"
+
 
 @export_range(0, 250) var acceleration : int = 0
 @export_range(0, 250) var deceleration : int = 0
@@ -49,6 +51,9 @@ func _ready() -> void:
 	for slot in $WeaponSlots.get_children():
 		if slot is Node2D:
 			weapon_positions.append(slot.global_position - global_position)
+	
+	armor_sprite.material.set(SHADER_INTENSITY, health.armor/float(health.max_armor))
+	shield_sprite.material.set(SHADER_INTENSITY, health.shield/float(health.max_shield))
 
 
 func _physics_process(_delta: float) -> void:
@@ -109,12 +114,12 @@ func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
 
 func _on_shield_updated(value: int, max_value: int) -> void:
 	shield_sprite.visible = value != 0
-	shield_sprite.material.set("shader_parameter/intensity", value/float(max_value))
+	shield_sprite.material.set(SHADER_INTENSITY, value/float(max_value))
 
 
 func _on_armor_updated(value: int, max_value: int) -> void:
 	armor_sprite.visible = value != 0
-	armor_sprite.material.set("shader_parameter/intensity", value/float(max_value))
+	armor_sprite.material.set(SHADER_INTENSITY, value/float(max_value))
 
 
 func _on_hull_updated(_value: int, _max_value: int) -> void:

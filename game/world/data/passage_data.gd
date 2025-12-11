@@ -20,6 +20,8 @@ enum PassageType {
 
 @export var seed_value : int = 0
 
+@export var length : float = 0
+
 @export var type : PassageType = PassageType.ZeroGrad
 
 

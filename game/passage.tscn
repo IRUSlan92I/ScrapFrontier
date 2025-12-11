@@ -59,7 +59,7 @@ autostart = true
 [node name="Background" parent="." instance=ExtResource("4_cuj01")]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-z_index = 100
+z_index = 50
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
