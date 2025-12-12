@@ -31,13 +31,13 @@ var window_factor : int:
 
 
 func _ready() -> void:
+	_config = ConfigFile.new()
+	
 	_load_settings()
 	_apply_all_settings()
 
 
 func _load_settings() -> void:
-	_config = ConfigFile.new()
-	
 	if _config.load(CONFIG_FILE) == OK:
 		_fullscreen = _config.get_value(CATEGORY_VIDEO, SETTING_FULLSCREEN, false)
 		_window_factor = _config.get_value(CATEGORY_VIDEO, SETTING_WINDOW_FACTOR, 0)

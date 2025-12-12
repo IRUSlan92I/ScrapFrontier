@@ -47,6 +47,7 @@ one_way_collision = true
 
 [node name="PlayerShip" parent="." instance=ExtResource("3_r3x05")]
 position = Vector2(100, 100)
+player_data = null
 
 [node name="EnemySwampController" parent="." node_paths=PackedStringArray("passage") instance=ExtResource("2_72vqi")]
 passage = NodePath("..")

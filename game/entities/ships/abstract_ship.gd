@@ -5,21 +5,17 @@ extends CharacterBody2D
 signal destroyed
 
 
-const CANNON = preload("res://game/entities/weapons/cannon/cannon_weapon.tscn")
-const GATLING = preload("res://game/entities/weapons/gatling/gatling_weapon.tscn")
-const LASER = preload("res://game/entities/weapons/laser/laser_weapon.tscn")
-const LAUNCHER = preload("res://game/entities/weapons/launcher/launcher_weapon.tscn")
-const MINELAYER = preload("res://game/entities/weapons/minelayer/minelayer_weapon.tscn")
-const PLASMA = preload("res://game/entities/weapons/plasma/plasma_weapon.tscn")
-const RAILGUN = preload("res://game/entities/weapons/railgun/railgun_weapon.tscn")
-const SHRAPNEL = preload("res://game/entities/weapons/shrapnel/shrapnel_weapon.tscn")
-const TESLA = preload("res://game/entities/weapons/tesla/tesla_weapon.tscn")
-
-const WEAPONS := [
-	CANNON, GATLING, LASER,
-	LAUNCHER, MINELAYER, PLASMA,
-	RAILGUN, SHRAPNEL, TESLA,
-]
+const WEAPON_SCENES : Dictionary[String, String] = {
+	"cannon": "res://game/entities/weapons/cannon/cannon_weapon.tscn",
+	"gatling": "res://game/entities/weapons/gatling/gatling_weapon.tscn",
+	"laser": "res://game/entities/weapons/laser/laser_weapon.tscn",
+	"launcher": "res://game/entities/weapons/launcher/launcher_weapon.tscn",
+	"minelayer": "res://game/entities/weapons/minelayer/minelayer_weapon.tscn",
+	"plasma": "res://game/entities/weapons/plasma/plasma_weapon.tscn",
+	"railgun": "res://game/entities/weapons/railgun/railgun_weapon.tscn",
+	"shrapnel": "res://game/entities/weapons/shrapnel/shrapnel_weapon.tscn",
+	"tesla": "res://game/entities/weapons/tesla/tesla_weapon.tscn",
+}
 
 const SHADER_INTENSITY = "shader_parameter/intensity"
 

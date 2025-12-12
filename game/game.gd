@@ -85,7 +85,8 @@ func _create_passage(passage_data: PassageData) -> void:
 	_current_passage_scene = PASSAGE.instantiate()
 	add_child(_current_passage_scene)
 	
-	_current_passage_scene.data = passage_data
+	_current_passage_scene.passage_data = passage_data
+	_current_passage_scene.player_data = SaveManager.player_data
 	_current_passage_scene.completed.connect(_on_passage_completion)
 	_current_passage_scene.player_died.connect(_on_passage_player_died)
 

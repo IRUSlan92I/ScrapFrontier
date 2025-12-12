@@ -12,7 +12,8 @@ var weapon_type : AbstractWeapon.Type = AbstractWeapon.Type.NONE
 func _ready() -> void:
 	super._ready()
 	
-	var weapon_scene : PackedScene = WEAPONS.pick_random()
+	var weapon_id : String = WEAPON_SCENES.keys().pick_random()
+	var weapon_scene : PackedScene = load(WEAPON_SCENES[weapon_id])
 	for weapon_position in weapon_positions:
 		var weapon : AbstractWeapon = weapon_scene.instantiate()
 		weapon_type = weapon.type

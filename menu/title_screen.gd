@@ -26,7 +26,15 @@ func _on_main_menu_continue_game() -> void:
 
 func _on_main_menu_new_game() -> void:
 	SaveManager.new_game()
+	
+	SaveManager.player_data.first_weapon_id = _get_random_weapon_id()
+	SaveManager.player_data.second_weapon_id = _get_random_weapon_id()
+	
 	get_tree().change_scene_to_file("res://game/game.tscn")
+
+
+func _get_random_weapon_id() -> String:
+	return AbstractShip.WEAPON_SCENES.keys().pick_random()
 
 
 func _on_main_menu_quit_game() -> void:

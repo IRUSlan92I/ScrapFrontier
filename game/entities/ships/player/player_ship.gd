@@ -8,6 +8,8 @@ const BLINK_CHARGE_MAXIMUM = 3.0
 
 
 @export_range(0, 200) var blink_range := 0
+@export var player_data : PlayerData:
+	set = _set_player_data
 
 
 var blink_charge: float:
@@ -26,10 +28,6 @@ func _ready() -> void:
 	
 	blink_charge_indicator.maximum = BLINK_CHARGE_MAXIMUM
 	blink_charge = BLINK_CHARGE_MAXIMUM
-	
-	for weapon_position in weapon_positions:
-		var weapon : AbstractWeapon = WEAPONS.pick_random().instantiate()
-		_add_weapon(weapon, weapon_position)
 
 
 func _physics_process(delta: float) -> void:
@@ -62,3 +60,20 @@ func _blink(direction: Vector2) -> void:
 	collision_mask &= ~ENEMY_LAYER
 	move_and_collide(direction * blink_range)
 	collision_mask |= ENEMY_LAYER
+
+
+func _set_player_data(new_data: PlayerData) -> void:
+	if new_data == null: return
+	
+	player_data = new_data
+	_weapons.clear()
+	_add_weapon_by_id(player_data.first_weapon_id, weapon_positions[0])
+	_add_weapon_by_id(player_data.second_weapon_id, weapon_positions[1])
+
+
+func _add_weapon_by_id(weapon_id: String, weapon_position: Vector2) -> void:
+	if weapon_id.is_empty() or not weapon_id in WEAPON_SCENES: return
+	
+	var weapon_scene : PackedScene = load(WEAPON_SCENES[weapon_id])
+	var weapon : AbstractWeapon = weapon_scene.instantiate()
+	_add_weapon(weapon, weapon_position)
