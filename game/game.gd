@@ -24,7 +24,7 @@ func _ready() -> void:
 	pause_screen.hide()
 	game_over_screen.hide()
 	
-	start_game(SaveManager.game_data)
+	start_game(SaveManager.get_game_data())
 
 
 func _input(event: InputEvent) -> void:
@@ -92,6 +92,8 @@ func _on_pause_screen_continue_game() -> void:
 func _show_main_menu() -> void:
 	if _current_passage_scene: _current_passage_scene.queue_free()
 	if _current_area_map_scene: _current_area_map_scene.queue_free()
+	
+	SaveManager.save()
 	
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://menu/title_screen.tscn")

@@ -15,11 +15,14 @@ signal show_options
 func _ready() -> void:
 	_init_focus()
 	_setup_neighbors()
+	continue_button.disabled = SaveManager.get_game_data().game_seed == ""
 
 
 func _on_visibility_changed() -> void:
 	if not is_node_ready(): return
 	if not visible: return
+	
+	continue_button.disabled = SaveManager.get_game_data().game_seed == ""
 	
 	_init_focus()
 	_setup_neighbors()

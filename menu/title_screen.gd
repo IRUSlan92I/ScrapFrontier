@@ -21,14 +21,11 @@ func _show_menu(menu: Control) -> void:
 
 
 func _on_main_menu_continue_game() -> void:
-	print("continue")
+	get_tree().change_scene_to_file("res://game/game.tscn")
 
 
 func _on_main_menu_new_game() -> void:
-	var game_data := GameData.new()
-	game_data.randomize()
-	SaveManager.game_data = game_data
-	
+	SaveManager.new_game()
 	get_tree().change_scene_to_file("res://game/game.tscn")
 
 
