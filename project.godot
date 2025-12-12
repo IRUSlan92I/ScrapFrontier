@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SettingsManager="*res://managers/settings_manager.gd"
+SaveManager="*res://managers/save_manager.gd"
 
 [debug]
 

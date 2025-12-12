@@ -1,5 +1,6 @@
 extends Node
 
+
 const CONFIG_FILE = "user://settings.cfg"
 const BASE_SIZE = Vector2i(640, 360)
 

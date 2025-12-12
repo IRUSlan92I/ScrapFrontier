@@ -13,6 +13,7 @@ enum PassageType {
 	Plus45Grad,
 }
 
+
 @export var previous_sector : SectorData
 @export var next_sector : SectorData
 

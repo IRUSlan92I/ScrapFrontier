@@ -2,7 +2,7 @@ class_name AreaMap
 extends Node2D
 
 
-signal sector_selected(sector: SectorData)
+signal passage_selected(passage: PassageData)
 
 
 const SECTOR_XS = [
@@ -94,8 +94,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_down"):
 		_set_selected_sector(selected_sector.sector_below)
 	if event.is_action_pressed("ui_accept"):
-		if _is_sector_accessible(current_sector):
-			sector_selected.emit(current_sector)
+		var selected_passage := _get_passage_to_sector(selected_sector)
+		if selected_passage != null:
+			passage_selected.emit(selected_passage)
 
 
 func _fill_sector_positions() -> void:
@@ -224,10 +225,13 @@ func _update_selected_sector_indicator() -> void:
 
 
 func _is_sector_accessible(sector: SectorData) -> bool:
-	if current_sector == null: return false
+	return _get_passage_to_sector(sector) != null
+
+
+func _get_passage_to_sector(sector: SectorData) -> PassageData:
+	if current_sector == null: return null
 	
 	for passage in current_sector.next_passages:
 		if passage.next_sector == sector:
-			return true
-	
-	return false
+			return passage
+	return null

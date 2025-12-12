@@ -3,6 +3,7 @@ extends Node2D
 
 
 signal player_died
+signal completed
 
 
 @export var data : PassageData:
@@ -18,9 +19,10 @@ var _current_progress := 0.0
 
 
 func _physics_process(delta: float) -> void:
-	if data:
-		_current_progress += delta
-		_update_progress_indicator()
+	_current_progress += delta
+	_update_progress_indicator()
+	if _current_progress >= data.length:
+		completed.emit()
 
 
 func _set_data(new_data: PassageData) -> void:
