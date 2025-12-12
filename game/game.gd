@@ -82,6 +82,7 @@ func _create_passage(passage_data: PassageData) -> void:
 	
 	_current_passage_scene.data = passage_data
 	_current_passage_scene.completed.connect(_show_map)
+	_current_passage_scene.player_died.connect(_on_passage_player_died)
 
 
 func _on_pause_screen_continue_game() -> void:

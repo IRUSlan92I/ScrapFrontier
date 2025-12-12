@@ -85,13 +85,13 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if selected_sector == null: return
 	
-	if event.is_action_pressed("ui_left"):
+	if event.is_action_pressed("ui_left") and selected_sector.sector_to_left:
 		_set_selected_sector(selected_sector.sector_to_left)
-	if event.is_action_pressed("ui_right"):
+	if event.is_action_pressed("ui_right") and selected_sector.sector_to_right:
 		_set_selected_sector(selected_sector.sector_to_right)
-	if event.is_action_pressed("ui_up"):
+	if event.is_action_pressed("ui_up") and selected_sector.sector_above:
 		_set_selected_sector(selected_sector.sector_above)
-	if event.is_action_pressed("ui_down"):
+	if event.is_action_pressed("ui_down") and selected_sector.sector_below:
 		_set_selected_sector(selected_sector.sector_below)
 	if event.is_action_pressed("ui_accept"):
 		var selected_passage := _get_passage_to_sector(selected_sector)
