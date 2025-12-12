@@ -45,15 +45,13 @@ var _weapons : Array[AbstractWeapon]
 
 
 func _ready() -> void:
-	shield_sprite.visible = health.shield != 0
-	armor_sprite.visible = health.armor != 0
-	
 	for slot in $WeaponSlots.get_children():
 		if slot is Node2D:
 			weapon_positions.append(slot.global_position - global_position)
 	
-	armor_sprite.material.set(SHADER_INTENSITY, health.armor/float(health.max_armor))
-	shield_sprite.material.set(SHADER_INTENSITY, health.shield/float(health.max_shield))
+	_on_shield_updated(health.shield, health.max_shield)
+	_on_armor_updated(health.armor, health.max_armor)
+	_on_hull_updated(health.hull, health.max_hull)
 
 
 func _physics_process(_delta: float) -> void:
@@ -114,12 +112,14 @@ func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
 
 func _on_shield_updated(value: int, max_value: int) -> void:
 	shield_sprite.visible = value != 0
-	shield_sprite.material.set(SHADER_INTENSITY, value/float(max_value))
+	var intensity := value/float(max_value) if value != 0 else 0.0
+	shield_sprite.material.set(SHADER_INTENSITY, intensity)
 
 
 func _on_armor_updated(value: int, max_value: int) -> void:
 	armor_sprite.visible = value != 0
-	armor_sprite.material.set(SHADER_INTENSITY, value/float(max_value))
+	var intensity := value/float(max_value) if value != 0 else 0.0
+	armor_sprite.material.set(SHADER_INTENSITY, intensity)
 
 
 func _on_hull_updated(_value: int, _max_value: int) -> void:

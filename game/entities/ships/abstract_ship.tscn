@@ -6,12 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://d2snum2pxc2ui" path="res://game/health_system/health_bar/heath_bar.tscn" id="3_l62e5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dokxo"]
+resource_local_to_scene = true
 shader = ExtResource("2_dokxo")
 shader_parameter/speed = 0.0
 shader_parameter/scale = 20.0
 shader_parameter/intensity = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bkxo4"]
+resource_local_to_scene = true
 shader = ExtResource("2_dokxo")
 shader_parameter/speed = 5.0
 shader_parameter/scale = 20.0
