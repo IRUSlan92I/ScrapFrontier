@@ -107,12 +107,16 @@ func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
 
 
 func _on_shield_updated(value: int, max_value: int) -> void:
+	if shield_sprite == null: return
+	
 	shield_sprite.visible = value != 0
 	var intensity := value/float(max_value) if value != 0 else 0.0
 	shield_sprite.material.set(SHADER_INTENSITY, intensity)
 
 
 func _on_armor_updated(value: int, max_value: int) -> void:
+	if armor_sprite == null: return
+	
 	armor_sprite.visible = value != 0
 	var intensity := value/float(max_value) if value != 0 else 0.0
 	armor_sprite.material.set(SHADER_INTENSITY, intensity)

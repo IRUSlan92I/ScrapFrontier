@@ -1,18 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://br074cqcnul3d"]
+[gd_scene load_steps=14 format=3 uid="uid://br074cqcnul3d"]
 
 [ext_resource type="PackedScene" uid="uid://jvyagshykmgb" path="res://game/entities/ships/abstract_ship.tscn" id="1_6otxb"]
 [ext_resource type="Script" uid="uid://ruxw1n03iq4i" path="res://game/entities/ships/player/player_ship.gd" id="2_625ti"]
 [ext_resource type="PackedScene" uid="uid://dh1oj1w5wx4je" path="res://game/controllers/player_controller.tscn" id="3_4mjo1"]
 [ext_resource type="Texture2D" uid="uid://y2yfli24n51v" path="res://images/ships/player.png" id="3_uf2n1"]
+[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/entities/ships/shield.gdshader" id="4_ui1ht"]
 [ext_resource type="PackedScene" uid="uid://d20nvskf38vpo" path="res://game/entities/ships/player/blink_charge_indicator.tscn" id="5_uf2n1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4mjo1"]
 atlas = ExtResource("3_uf2n1")
 region = Rect2(0, 0, 48, 32)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_waejo"]
+resource_local_to_scene = true
+shader = ExtResource("4_ui1ht")
+shader_parameter/speed = 0.0
+shader_parameter/scale = 20.0
+shader_parameter/intensity = 1.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf2n1"]
 atlas = ExtResource("3_uf2n1")
 region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xifi"]
+resource_local_to_scene = true
+shader = ExtResource("4_ui1ht")
+shader_parameter/speed = 5.0
+shader_parameter/scale = 20.0
+shader_parameter/intensity = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ui1ht"]
 atlas = ExtResource("3_uf2n1")
@@ -34,6 +49,7 @@ collision_layer = 3
 collision_mask = 5
 script = ExtResource("2_625ti")
 blink_range = 75
+player_data = null
 acceleration = 92
 deceleration = 46
 max_speed = 92
@@ -43,9 +59,11 @@ mass = 250
 texture = SubResource("AtlasTexture_4mjo1")
 
 [node name="ArmorSprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_waejo")
 texture = SubResource("AtlasTexture_uf2n1")
 
 [node name="ShieldSprite" parent="." index="2"]
+material = SubResource("ShaderMaterial_5xifi")
 texture = SubResource("AtlasTexture_ui1ht")
 
 [node name="CollisionPolygon2D" parent="." index="3"]

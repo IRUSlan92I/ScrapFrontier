@@ -111,6 +111,10 @@ func _on_passage_player_died() -> void:
 
 
 func _on_passage_completion() -> void:
+	var projectiles := get_tree().get_nodes_in_group("projectiles")
+	for projectile in projectiles:
+		projectile.queue_free()
+	
 	current_sector = current_passage.next_sector
 	_update_data_indexes()
 	_show_map()

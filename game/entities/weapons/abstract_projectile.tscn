@@ -4,7 +4,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4b2nh"]
 
-[node name="AbstrastProjectile" type="Area2D"]
+[node name="AbstrastProjectile" type="Area2D" groups=["projectiles"]]
 z_index = 1
 script = ExtResource("1_4b2nh")
 

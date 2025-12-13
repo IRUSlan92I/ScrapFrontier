@@ -29,6 +29,7 @@ func _on_main_menu_new_game() -> void:
 	
 	SaveManager.player_data.first_weapon_id = _get_random_weapon_id()
 	SaveManager.player_data.second_weapon_id = _get_random_weapon_id()
+	SaveManager.player_data.hull = 0
 	
 	get_tree().change_scene_to_file("res://game/game.tscn")
 

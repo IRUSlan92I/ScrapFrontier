@@ -10,9 +10,10 @@ const GAME_AREA_INDEX = "current_area_index"
 const GAME_STAGE_INDEX = "current_stage_index"
 const GAME_SECTOR_INDEX = "current_sector_index"
 
-const CATEGORY_PLAYER = "game"
-const PLAYER_FIRST_WEAPON = "player_first_weapon_id"
-const PLAYER_SECOND_WEAPON = "player_second_weapon_id"
+const CATEGORY_PLAYER = "player"
+const PLAYER_FIRST_WEAPON = "first_weapon_id"
+const PLAYER_SECOND_WEAPON = "second_weapon_id"
+const PLAYER_HULL = "hull"
 
 
 var _save_file: ConfigFile
@@ -60,13 +61,14 @@ func _process_save_file() -> void:
 func _set_game_values() -> void:
 	_save_file.set_value(CATEGORY_GAME, GAME_SEED, game_data.game_seed)
 	_save_file.set_value(CATEGORY_GAME, GAME_AREA_INDEX, game_data.current_area_index)
-	_save_file.set_value(CATEGORY_GAME, GAME_AREA_INDEX, game_data.current_stage_index)
-	_save_file.set_value(CATEGORY_GAME, GAME_AREA_INDEX, game_data.current_sector_index)
+	_save_file.set_value(CATEGORY_GAME, GAME_STAGE_INDEX, game_data.current_stage_index)
+	_save_file.set_value(CATEGORY_GAME, GAME_SECTOR_INDEX, game_data.current_sector_index)
 
 
 func _set_player_values() -> void:
 	_save_file.set_value(CATEGORY_PLAYER, PLAYER_FIRST_WEAPON, player_data.first_weapon_id)
 	_save_file.set_value(CATEGORY_PLAYER, PLAYER_SECOND_WEAPON, player_data.second_weapon_id)
+	_save_file.set_value(CATEGORY_PLAYER, PLAYER_HULL, player_data.hull)
 
 
 func _get_game_values() -> void:
@@ -77,10 +79,10 @@ func _get_game_values() -> void:
 		CATEGORY_GAME, GAME_AREA_INDEX, game_data.current_area_index
 	)
 	game_data.current_stage_index  = _save_file.get_value(
-		CATEGORY_GAME, GAME_AREA_INDEX, game_data.current_stage_index
+		CATEGORY_GAME, GAME_STAGE_INDEX, game_data.current_stage_index
 	)
 	game_data.current_sector_index  = _save_file.get_value(
-		CATEGORY_GAME, GAME_AREA_INDEX, game_data.current_sector_index
+		CATEGORY_GAME, GAME_SECTOR_INDEX, game_data.current_sector_index
 	)
 
 
@@ -90,4 +92,7 @@ func _get_player_values() -> void:
 	)
 	player_data.second_weapon_id  = _save_file.get_value(
 		CATEGORY_PLAYER, PLAYER_SECOND_WEAPON, player_data.second_weapon_id
+	)
+	player_data.hull  = _save_file.get_value(
+		CATEGORY_PLAYER, PLAYER_HULL, player_data.hull
 	)

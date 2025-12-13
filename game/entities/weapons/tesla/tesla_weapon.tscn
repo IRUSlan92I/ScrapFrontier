@@ -160,7 +160,7 @@ fixed_fps = 10
 process_material = SubResource("ParticleProcessMaterial_ifsj2")
 
 [node name="CooldownTimer" type="Timer" parent="." index="2"]
-wait_time = 1.3
+wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
