@@ -9,11 +9,16 @@ enum StageType {
 }
 
 
-const CHANSES_BY_SECTOR_COUNT : Dictionary[int, int] = {
-	1: 20,
-	2: 30,
-	3: 50,
-}
+const SECTOR_COUNTS : Array[int] = [
+	1,
+	2,
+	3,
+]
+const SECTOR_CHANCES : Array[int] = [
+	20,
+	30,
+	50,
+]
 
 
 var local_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
@@ -52,19 +57,8 @@ func _fill_sectors(data : StageData, type: StageType = StageType.Inner) -> void:
 
 
 func _get_sector_count() -> int:
-	var total_chance := 0
-	for count in CHANSES_BY_SECTOR_COUNT:
-		total_chance += CHANSES_BY_SECTOR_COUNT[count]
-	
-	var threshold := sector_count_rng.randi_range(1, total_chance)
-	
-	var cumulative := 0
-	for count in CHANSES_BY_SECTOR_COUNT:
-		cumulative += CHANSES_BY_SECTOR_COUNT[count]
-		if threshold <= cumulative:
-			return count
-	
-	return 1
+	var index := sector_count_rng.rand_weighted(SECTOR_CHANCES)
+	return SECTOR_COUNTS[index]
 
 
 func _update_neighbors(data : StageData) -> void:

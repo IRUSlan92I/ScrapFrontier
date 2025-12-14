@@ -1,12 +1,16 @@
 class_name SectorGenerator
 extends Node
 
-
-const CHANSES_BY_SECTOR_TYPE : Dictionary[SectorData.SectorType, int] = {
-	SectorData.SectorType.ShopSector: 40,
-	SectorData.SectorType.RepairSector: 20,
-	SectorData.SectorType.DebrisSector: 40,
-}
+const SECTOR_TYPES : Array[SectorData.SectorType] = [
+	SectorData.SectorType.ShopSector,
+	SectorData.SectorType.RepairSector,
+	SectorData.SectorType.DebrisSector,
+]
+const SECTOR_CHANCES : Array[int] = [
+	40,
+	20,
+	40,
+]
 
 
 var local_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
@@ -26,16 +30,5 @@ func generate(seed_value: int) -> SectorData:
 
 
 func _get_sector_type() -> SectorData.SectorType:
-	var total_chance := 0
-	for type in CHANSES_BY_SECTOR_TYPE:
-		total_chance += CHANSES_BY_SECTOR_TYPE[type]
-	
-	var threshold := sector_type_rng.randi_range(1, total_chance)
-	
-	var cumulative := 0
-	for type in CHANSES_BY_SECTOR_TYPE:
-		cumulative += CHANSES_BY_SECTOR_TYPE[type]
-		if threshold <= cumulative:
-			return type
-	
-	return SectorData.SectorType.DebrisSector
+	var index := sector_type_rng.rand_weighted(SECTOR_CHANCES)
+	return SECTOR_TYPES[index]
