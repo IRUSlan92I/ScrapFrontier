@@ -35,12 +35,21 @@ func _input(event: InputEvent) -> void:
 
 
 func start_game(game_data: GameData) -> void:
+	
 	if not _fill_data(game_data):
 		print("Can't process game data")
 		_show_main_menu()
 		return
 	
+	if SaveManager.player_data.is_new_game:
+		_initialize_new_game()
+	
 	_create_game_map()
+
+
+func _initialize_new_game() -> void:
+	for i in range(data.player_start_weapon_ids.size()):
+		SaveManager.player_data.weapon_ids.append(data.player_start_weapon_ids[i])
 
 
 func _fill_data(game_data: GameData) -> bool:

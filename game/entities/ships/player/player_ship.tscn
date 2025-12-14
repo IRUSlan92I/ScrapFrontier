@@ -93,10 +93,10 @@ offset_top = 19.0
 offset_bottom = 19.0
 
 [node name="First" type="Node2D" parent="WeaponSlots" index="0"]
-position = Vector2(-2, 8)
+position = Vector2(-2, -8)
 
 [node name="Second" type="Node2D" parent="WeaponSlots" index="1"]
-position = Vector2(-2, -8)
+position = Vector2(-2, 8)
 
 [node name="BlinkChargeIndicator" parent="." index="10" instance=ExtResource("5_uf2n1")]
 position = Vector2(-11, 0)
