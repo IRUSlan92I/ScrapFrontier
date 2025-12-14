@@ -2,12 +2,6 @@ class_name EnemySwampController
 extends Node
 
 
-const SMALL_ENEMY = preload("res://game/entities/ships/enemies/small/small_enemy_ship.tscn")
-const MEDIUM_ENEMY = preload("res://game/entities/ships/enemies/medium/medium_enemy_ship.tscn")
-const HEAVY_ENEMY = preload("res://game/entities/ships/enemies/heavy/heavy_enemy_ship.tscn")
-
-const ENEMY_TYPES := [ SMALL_ENEMY, MEDIUM_ENEMY, HEAVY_ENEMY ]
-
 const SHORT_DISTANCE = 75
 const MEDIUM_DISTANCE = 150
 const LONG_DISTANCE = 300
@@ -24,11 +18,12 @@ const MAX_POSITION = Vector2(600, 330)
 @onready var enemy_update_timer : Timer = $EnemyUpdateTimer
 
 
-func create_enemy() -> void:
-	var enemy : AbstractEnemyShip = ENEMY_TYPES.pick_random().instantiate()
-	enemy.position = Vector2(750, randi_range(0, 360))
+func create_enemy(enemy_data: EnemyData) -> void:
+	var enemy_scene : PackedScene = load(enemy_data.enemy_scene)
+	var enemy : AbstractEnemyShip = enemy_scene.instantiate()
 	passage.add_child(enemy)
-	
+	enemy.position = enemy_data.spawn_point
+	enemy.enemy_data = enemy_data
 	_update_enemy.call_deferred(enemy)
 
 

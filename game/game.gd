@@ -50,6 +50,7 @@ func start_game(game_data: GameData) -> void:
 func _initialize_new_game() -> void:
 	for i in range(data.player_start_weapon_ids.size()):
 		SaveManager.player_data.weapon_ids.append(data.player_start_weapon_ids[i])
+	SaveManager.player_data.is_new_game = false
 
 
 func _fill_data(game_data: GameData) -> bool:

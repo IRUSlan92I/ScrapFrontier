@@ -5,7 +5,7 @@ extends Resource
 @export var seed_value : int = 0
 
 @export var spawn_point : Vector2
-@export var spawn_time : int
+@export var spawn_time : float
 
 @export var enemy_scene: String
 

@@ -5,14 +5,14 @@ extends Node
 enum EnemyType {
 	Small,
 	Medium,
-	Large,
+	Heavy,
 }
 
 
 const ENEMY_TYPES : Array[EnemyType] = [
 	EnemyType.Small,
 	EnemyType.Medium,
-	EnemyType.Large,
+	EnemyType.Heavy,
 ]
 const ENEMY_CHANCES : Array[int] = [
 	45,
@@ -22,14 +22,14 @@ const ENEMY_CHANCES : Array[int] = [
 
 const ENEMY_SCENES : Dictionary[EnemyType, String] = {
 	EnemyType.Small: "res://game/entities/ships/enemies/small/small_enemy_ship.tscn",
-	EnemyType.Medium: "res://game/entities/ships/enemies/small/medium_enemy_ship.tscn",
-	EnemyType.Large: "res://game/entities/ships/enemies/small/large_enemy_ship.tscn",
+	EnemyType.Medium: "res://game/entities/ships/enemies/medium/medium_enemy_ship.tscn",
+	EnemyType.Heavy: "res://game/entities/ships/enemies/heavy/heavy_enemy_ship.tscn",
 }
 
 const ENEMY_MAX_WEAPON_COUNT : Dictionary[EnemyType, int] = {
 	EnemyType.Small: 1,
 	EnemyType.Medium: 2,
-	EnemyType.Large: 3,
+	EnemyType.Heavy: 3,
 }
 
 
@@ -63,8 +63,8 @@ func _get_enemy_type() -> EnemyType:
 
 
 func _full_spawn(data: EnemyData) -> void:
-	data.spawn_point.y = 750
-	data.spawn_point.x = spawn_rng.randf_range(0.0, 360.0)
+	data.spawn_point.x = 750
+	data.spawn_point.y = spawn_rng.randf_range(0.0, 360.0)
 
 
 func _full_scene(data: EnemyData, type: EnemyType) -> void:

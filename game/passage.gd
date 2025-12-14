@@ -14,6 +14,8 @@ signal completed
 
 
 var _current_progress := 0.0
+var _timer_time_elapsed := 0.0
+var _current_enemy_index := 0
 
 
 @onready var player : PlayerShip = $PlayerShip
@@ -33,6 +35,10 @@ func _set_passage_data(new_data: PassageData) -> void:
 	passage_data = new_data
 	if passage_data and progress_bar:
 		_update_progress_indicator()
+	_current_enemy_index = 0
+	_timer_time_elapsed = 0
+	
+	_start_timer_for_current_enemy()
 
 
 func _set_player_data(new_data: PlayerData) -> void:
@@ -46,14 +52,21 @@ func _update_progress_indicator() -> void:
 	progress_bar.max_value = passage_data.length
 
 
+func _start_timer_for_current_enemy() -> void:
+	if passage_data == null: return
+	if _current_enemy_index >= passage_data.enemies.size(): return
+	
+	var enemy := passage_data.enemies[_current_enemy_index]
+	var time := enemy.spawn_time - _timer_time_elapsed
+	enemy_timer.start(time)
+	_timer_time_elapsed += time
+
+
 func _on_enemy_timer_timeout() -> void:
-	var enemies := get_tree().get_nodes_in_group("enemies")
-	if enemies.size() < 25:
-		enemy_swamp_controller.create_enemy()
-	
-	var factor := maxi(enemies.size(), 1) * 0.5
-	
-	enemy_timer.start(randf_range(1 * factor, 2 * factor))
+	var enemy := passage_data.enemies[_current_enemy_index]
+	enemy_swamp_controller.create_enemy(enemy)
+	_current_enemy_index += 1
+	_start_timer_for_current_enemy()
 
 
 func _on_player_ship_destroyed() -> void:

@@ -70,8 +70,8 @@ func _set_player_data(new_data: PlayerData) -> void:
 	for i in range(min(player_data.weapon_ids.size(), weapon_positions.size())):
 		_add_weapon_by_id(player_data.weapon_ids[i], weapon_positions[i])
 	
-	if player_data.is_new_game:
-		health.hull = health.max_hull
+	if player_data.hull > 0:
+		health.hull = min(player_data.hull, health.max_hull)
 
 
 func _add_weapon_by_id(weapon_id: String, weapon_position: Vector2) -> void:

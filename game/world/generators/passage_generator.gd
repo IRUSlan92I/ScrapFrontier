@@ -2,24 +2,23 @@ class_name PassageGenerator
 extends Node
 
 
-const ENEMY_COUNT_MEAN = 50.0
-const ENEMY_COUNT_DEVIATION = 100.0
+const ENEMY_DELAY_MEAN = 3.0
+const ENEMY_DELAY_DEVIATION = 2.0
 
 const LENGTH_MEAN = 300.0
 const LENGTH_DEVIATION = 50.0
 
-const SPAWN_START_DELAY = 3
-const SPAWN_END_DELAY = 3
+const SPAWN_START_DELAY = 3.0
+const SPAWN_END_DELAY = 3.0
 
-const USE_NEXT_WEAPON_CHANCE = 10
+const USE_NEXT_WEAPON_CHANCE = 50
 
 
 var local_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var weapon_ids_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var length_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var enemy_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
-var enemy_count_rng : RandomNumberGenerator = RandomNumberGenerator.new()
-var enemy_spawn_time_rng : RandomNumberGenerator = RandomNumberGenerator.new()
+var enemy_delay_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var enemy_weapon_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 var weapon_ids : Array[String]
@@ -33,8 +32,7 @@ func generate(seed_value: int) -> PassageData:
 	weapon_ids_rng.seed = local_seed_rng.randi()
 	length_rng.seed = local_seed_rng.randi()
 	enemy_seed_rng.seed = local_seed_rng.randi()
-	enemy_count_rng.seed = local_seed_rng.randi()
-	enemy_spawn_time_rng.seed = local_seed_rng.randi()
+	enemy_delay_rng.seed = local_seed_rng.randi()
 	enemy_weapon_rng.seed = local_seed_rng.randi()
 	
 	weapon_ids = _get_weapon_ids()
@@ -68,25 +66,29 @@ func _fill_length(data: PassageData) -> void:
 func _fill_enemies(data: PassageData) -> void:
 	var spawn_end_time := floori(data.length - SPAWN_END_DELAY)
 	
-	var enemy_count := roundi(enemy_count_rng.randfn(ENEMY_COUNT_MEAN, ENEMY_COUNT_DEVIATION))
-	for i in range(enemy_count):
+	var time := SPAWN_START_DELAY
+	while time < spawn_end_time:
+		time += enemy_delay_rng.randfn(ENEMY_DELAY_MEAN, ENEMY_DELAY_DEVIATION)
+		if time < SPAWN_START_DELAY: time = SPAWN_START_DELAY
+		elif time > spawn_end_time: time = spawn_end_time
+	
 		var seed_value := enemy_seed_rng.randi()
 		var enemy := enemy_generator.generate(seed_value)
 		
-		enemy.spawn_time = enemy_spawn_time_rng.randi_range(SPAWN_START_DELAY, spawn_end_time)
+		enemy.spawn_time = time
 		enemy.weapon_id = _get_weapon_id()
 		
 		data.enemies.append(enemy)
 	
 	var enemy_spawn_time_compare := func(a: EnemyData, b: EnemyData) -> bool:
-		return a.spawn_time > b.spawn_time
+		return a.spawn_time < b.spawn_time
 	data.enemies.sort_custom(enemy_spawn_time_compare)
 
 
 func _get_weapon_id() -> String:
 	var index := 0
 	
-	while [index < weapon_ids.size()]:
+	while index < weapon_ids.size() - 1:
 		if enemy_weapon_rng.randi_range(1, 100) <= USE_NEXT_WEAPON_CHANCE:
 			index += 1
 		else:
