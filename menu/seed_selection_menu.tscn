@@ -9,7 +9,7 @@ action = &"ui_cancel"
 [sub_resource type="Shortcut" id="Shortcut_s4s14"]
 events = [SubResource("InputEventAction_g2smo")]
 
-[node name="SeedSelection" type="Control"]
+[node name="SeedSelectionMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

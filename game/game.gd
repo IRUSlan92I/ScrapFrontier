@@ -18,24 +18,26 @@ var _current_area_map_scene : AreaMap
 
 @onready var pause_screen : Control = $PauseScreen
 @onready var game_over_screen : Control = $GameOverScreen
+@onready var victory_screen : Control = $VictoryScreen
 @onready var world_generator : WorldGenerator = $WorldGenerator
 
 
 func _ready() -> void:
 	pause_screen.hide()
+	victory_screen.hide()
 	game_over_screen.hide()
 	
 	start_game(SaveManager.game_data)
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	var is_game_over := victory_screen.visible or game_over_screen.visible
+	if event.is_action_pressed("pause") and not is_game_over:
 		pause_screen.show()
 		get_tree().paused = true
 
 
 func start_game(game_data: GameData) -> void:
-	
 	if not _fill_data(game_data):
 		print("Can't process game data")
 		_show_main_menu()
@@ -56,6 +58,10 @@ func _initialize_new_game() -> void:
 func _fill_data(game_data: GameData) -> bool:
 	data = world_generator.generate(game_data.game_seed.hash())
 	
+	return _set_currents(game_data)
+
+
+func _set_currents(game_data: GameData) -> bool:
 	if game_data.current_area_index >= data.areas.size(): return false
 	current_area = data.areas[game_data.current_area_index]
 	
@@ -66,6 +72,22 @@ func _fill_data(game_data: GameData) -> bool:
 	current_sector = current_stage.sectors[game_data.current_sector_index]
 	
 	return true
+
+
+func _process_to_next_area() -> void:
+	SaveManager.game_data.current_area_index += 1
+	SaveManager.game_data.current_stage_index = 0
+	SaveManager.game_data.current_sector_index = 0
+	
+	print(SaveManager.game_data.current_area_index)
+	
+	if SaveManager.game_data.current_area_index >= data.areas.size():
+		SaveManager.delete_game_data()
+		victory_screen.show()
+	else:
+		SaveManager.save()
+		_set_currents(SaveManager.game_data)
+		_create_game_map()
 
 
 func _create_game_map() -> void:
@@ -121,13 +143,17 @@ func _on_passage_player_died() -> void:
 
 
 func _on_passage_completion() -> void:
+	_current_passage_scene.queue_free()
 	var projectiles := get_tree().get_nodes_in_group("projectiles")
 	for projectile in projectiles:
 		projectile.queue_free()
 	
 	current_sector = current_passage.next_sector
-	_update_data_indexes()
-	_show_map()
+	if current_sector.next_passages.size() == 0:
+		_process_to_next_area()
+	else:
+		_update_data_indexes()
+		_show_map()
 
 
 func _update_data_indexes() -> void:
