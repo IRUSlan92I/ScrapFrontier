@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c36n317rhv8k7"]
+[gd_scene load_steps=5 format=3 uid="uid://c36n317rhv8k7"]
 
 [ext_resource type="Script" uid="uid://dyynshvsgnepp" path="res://menu/seed_selection_menu.gd" id="1_g2smo"]
 [ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://images/menu_button.tres" id="2_s4s14"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_g2smo"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_s4s14"]
+events = [SubResource("InputEventAction_g2smo")]
 
 [node name="SeedSelection" type="Control"]
 layout_mode = 3
@@ -63,6 +69,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_s4s14")
+shortcut = SubResource("Shortcut_s4s14")
 text = "Main menu"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
