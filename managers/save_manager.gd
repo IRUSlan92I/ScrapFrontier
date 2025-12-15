@@ -36,8 +36,10 @@ func save() -> void:
 	_save_file.save_encrypted_pass(SAVE_FILE, SAVE_FILE_PASS)
 
 
-func new_game() -> void:
-	game_data.randomize()
+func new_game(game_seed: String) -> void:
+	game_data.reset()
+	player_data.reset()
+	game_data.game_seed = game_seed
 
 
 func delete_game_data() -> void:

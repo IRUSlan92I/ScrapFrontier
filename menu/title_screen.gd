@@ -4,6 +4,7 @@ extends Control
 @onready var main_menu : Control = $MainMenu
 @onready var options : Control = $Options
 @onready var credits : Control = $Credits
+@onready var seed_selection : Control = $SeedSelection
 
 
 func _ready() -> void:
@@ -12,7 +13,7 @@ func _ready() -> void:
 
 
 func _show_menu(menu: Control) -> void:
-	var menus : Array[Control] = [ main_menu, options, credits ]
+	var menus : Array[Control] = [ main_menu, options, credits, seed_selection ]
 	
 	for m in menus:
 		m.hide()
@@ -25,11 +26,7 @@ func _on_main_menu_continue_game() -> void:
 
 
 func _on_main_menu_new_game() -> void:
-	SaveManager.new_game()
-	
-	SaveManager.player_data.reset()
-	
-	get_tree().change_scene_to_file("res://game/game.tscn")
+	_show_menu(seed_selection)
 
 
 func _get_random_weapon_id() -> String:
@@ -48,9 +45,9 @@ func _on_options_show_credits() -> void:
 	_show_menu(credits)
 
 
-func _on_options_back() -> void:
-	_show_menu(main_menu)
-
-
 func _on_credits_back() -> void:
 	_show_menu(options)
+
+
+func _show_main_menu() -> void:
+	_show_menu(main_menu)
