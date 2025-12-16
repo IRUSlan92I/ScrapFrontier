@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://c7tim0uie3m35"]
+
+[ext_resource type="Script" uid="uid://870r1efinhqd" path="res://game/world/data/weapon_data.gd" id="1_a16gw"]
+[ext_resource type="PackedScene" uid="uid://dyebeblayioji" path="res://game/entities/weapons/tesla/tesla_weapon.tscn" id="1_uxb6m"]
+
+[resource]
+script = ExtResource("1_a16gw")
+id = "tesla"
+name = "Tesla"
+scene = ExtResource("1_uxb6m")
+metadata/_custom_type_script = "uid://870r1efinhqd"

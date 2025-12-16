@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://djelo5gu3ybuf"]
+
+[ext_resource type="Script" uid="uid://870r1efinhqd" path="res://game/world/data/weapon_data.gd" id="1_bt4k8"]
+[ext_resource type="PackedScene" uid="uid://c4mlppn5i55bp" path="res://game/entities/weapons/gatling/gatling_weapon.tscn" id="3_2rwg6"]
+
+[resource]
+script = ExtResource("1_bt4k8")
+id = "gatling"
+name = "Gatling"
+scene = ExtResource("3_2rwg6")
+metadata/_custom_type_script = "uid://870r1efinhqd"

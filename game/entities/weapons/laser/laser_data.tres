@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://y7ccba1uqf2d"]
+
+[ext_resource type="PackedScene" uid="uid://def1alrel4ioo" path="res://game/entities/weapons/laser/laser_weapon.tscn" id="1_aey1r"]
+[ext_resource type="Script" uid="uid://870r1efinhqd" path="res://game/world/data/weapon_data.gd" id="1_ipxhy"]
+
+[resource]
+script = ExtResource("1_ipxhy")
+id = "laser"
+name = "Laser"
+scene = ExtResource("1_aey1r")
+metadata/_custom_type_script = "uid://870r1efinhqd"

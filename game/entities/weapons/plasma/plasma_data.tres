@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://dq0pjpg3slr8s"]
+
+[ext_resource type="Script" uid="uid://870r1efinhqd" path="res://game/world/data/weapon_data.gd" id="1_3fasx"]
+[ext_resource type="PackedScene" uid="uid://cj1jclfterepm" path="res://game/entities/weapons/plasma/plasma_weapon.tscn" id="1_rcvob"]
+
+[resource]
+script = ExtResource("1_3fasx")
+id = "plasma"
+name = "Plasma"
+scene = ExtResource("1_rcvob")
+metadata/_custom_type_script = "uid://870r1efinhqd"

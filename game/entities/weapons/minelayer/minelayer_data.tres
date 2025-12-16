@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://40sshnf6g80k"]
+
+[ext_resource type="Script" uid="uid://870r1efinhqd" path="res://game/world/data/weapon_data.gd" id="1_152qt"]
+[ext_resource type="PackedScene" uid="uid://j3yht6q4ru4e" path="res://game/entities/weapons/minelayer/minelayer_weapon.tscn" id="1_fh5qv"]
+
+[resource]
+script = ExtResource("1_152qt")
+id = "minelayer"
+name = "Minelayer"
+scene = ExtResource("1_fh5qv")
+metadata/_custom_type_script = "uid://870r1efinhqd"
