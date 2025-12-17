@@ -6,4 +6,4 @@ extends Resource
 
 @export var seed_value : int = 0
 
-@export var player_start_weapon_ids: Array[String]
+@export var player_start_weapons: Array[WeaponData]

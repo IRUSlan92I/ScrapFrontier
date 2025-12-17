@@ -9,6 +9,6 @@ extends Resource
 
 @export var enemy_scene: String
 
-@export var weapon_id: String
+@export var weapon: WeaponData
 
 @export var weapon_count: int

@@ -21,7 +21,7 @@ var enemy_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var enemy_delay_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var enemy_weapon_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
-var weapon_ids : Array[String]
+var weapons : Array[WeaponData]
 
 
 @onready var enemy_generator : EnemyGenerator = $EnemyGenerator
@@ -35,7 +35,7 @@ func generate(seed_value: int) -> PassageData:
 	enemy_delay_rng.seed = local_seed_rng.randi()
 	enemy_weapon_rng.seed = local_seed_rng.randi()
 	
-	weapon_ids = _get_weapon_ids()
+	weapons = _get_weapons()
 	
 	var data : PassageData = PassageData.new()
 	data.seed_value = seed_value
@@ -46,8 +46,8 @@ func generate(seed_value: int) -> PassageData:
 	return data
 
 
-func _get_weapon_ids() -> Array[String]:
-	var array : Array[String] = AbstractShip.WEAPON_SCENES.keys().duplicate()
+func _get_weapons() -> Array[WeaponData]:
+	var array : Array[WeaponData] = SaveManager.WEAPONS.duplicate()
 	
 	for i in range(array.size() - 1, 0, -1):
 		var j := weapon_ids_rng.randi_range(0, i)
@@ -76,7 +76,7 @@ func _fill_enemies(data: PassageData) -> void:
 		var enemy := enemy_generator.generate(seed_value)
 		
 		enemy.spawn_time = time
-		enemy.weapon_id = _get_weapon_id()
+		enemy.weapon = _get_weapon()
 		
 		data.enemies.append(enemy)
 	
@@ -85,13 +85,13 @@ func _fill_enemies(data: PassageData) -> void:
 	data.enemies.sort_custom(enemy_spawn_time_compare)
 
 
-func _get_weapon_id() -> String:
+func _get_weapon() -> WeaponData:
 	var index := 0
 	
-	while index < weapon_ids.size() - 1:
+	while index < weapons.size() - 1:
 		if enemy_weapon_rng.randi_range(1, 100) <= USE_NEXT_WEAPON_CHANCE:
 			index += 1
 		else:
 			break
 	
-	return weapon_ids[index]
+	return weapons[index]

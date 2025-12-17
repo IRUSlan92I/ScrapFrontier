@@ -4,12 +4,6 @@ extends Node
 
 const AREA_COUNT = 3
 
-const WEAPON_GROUPS : Array[Array] = [
-	[ "gatling", "railgun", "shrapnel", ],
-	[ "laser", "plasma", "tesla", ],
-	[ "minelayer", "launcher", "cannon", ],
-]
-
 
 var local_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var area_seed_rng : RandomNumberGenerator = RandomNumberGenerator.new()
@@ -41,9 +35,16 @@ func _fill_areas(data : WorldData) -> void:
 
 
 func _fill_weapons(data : WorldData) -> void:
-	for i in range(WEAPON_GROUPS.size()):
-		var group := WEAPON_GROUPS[i]
-		if group.size() == 0: continue
+	var weapon_by_group : Dictionary[String, Array] = {}
+	
+	for weapon in SaveManager.WEAPONS:
+		if not weapon.group in weapon_by_group:
+			weapon_by_group[weapon.group] = [] as Array[WeaponData]
+		weapon_by_group[weapon.group].append(weapon)
+	
+	for group in weapon_by_group:
+		var array : Array[WeaponData] = weapon_by_group[group]
+		if array.size() == 0: continue
 		
-		var index := weapon_rng.randi_range(1, group.size()) - 1
-		data.player_start_weapon_ids.append(group[index])
+		var index := weapon_rng.randi_range(1, array.size()) - 1
+		data.player_start_weapons.append(array[index])

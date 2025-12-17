@@ -35,8 +35,8 @@ func _set_enemy_data(data: EnemyData) -> void:
 		positions.remove_at(0)
 	
 	for i in range(min(enemy_data.weapon_count, positions.size())):
-		var weapon := _create_weapon(enemy_data.weapon_id)
-		_add_weapon(weapon, positions[i])
+		var weapon : AbstractWeapon = enemy_data.weapon.scene.instantiate()
+		_add_weapon(weapon, weapon_positions[i])
 
 
 func _create_weapon(weapon_id : String) -> AbstractWeapon:

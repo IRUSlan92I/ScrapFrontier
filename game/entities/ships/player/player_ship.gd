@@ -67,19 +67,13 @@ func _set_player_data(new_data: PlayerData) -> void:
 	
 	player_data = new_data
 	_weapons.clear()
-	for i in range(min(player_data.weapon_ids.size(), weapon_positions.size())):
-		_add_weapon_by_id(player_data.weapon_ids[i], weapon_positions[i])
+	for i in range(min(player_data.weapons.size(), weapon_positions.size())):
+		var weapon_scene := player_data.weapons[i].scene
+		var weapon : AbstractWeapon = weapon_scene.instantiate()
+		_add_weapon(weapon, weapon_positions[i])
 	
 	if player_data.hull > 0:
 		health.hull = min(player_data.hull, health.max_hull)
-
-
-func _add_weapon_by_id(weapon_id: String, weapon_position: Vector2) -> void:
-	if weapon_id.is_empty() or not weapon_id in WEAPON_SCENES: return
-	
-	var weapon_scene : PackedScene = load(WEAPON_SCENES[weapon_id])
-	var weapon : AbstractWeapon = weapon_scene.instantiate()
-	_add_weapon(weapon, weapon_position)
 
 
 func _on_hull_updated(value: int, max_value: int) -> void:

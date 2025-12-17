@@ -1,6 +1,18 @@
 extends Node
 
 
+const WEAPONS : Array[WeaponData] = [
+	preload("res://game/entities/weapons/cannon/cannon_data.tres"),
+	preload("res://game/entities/weapons/gatling/gatling_data.tres"),
+	preload("res://game/entities/weapons/laser/laser_data.tres"),
+	preload("res://game/entities/weapons/launcher/launcher_data.tres"),
+	preload("res://game/entities/weapons/minelayer/minelayer_data.tres"),
+	preload("res://game/entities/weapons/plasma/plasma_data.tres"),
+	preload("res://game/entities/weapons/railgun/railgun_data.tres"),
+	preload("res://game/entities/weapons/shrapnel/shrapnel_data.tres"),
+	preload("res://game/entities/weapons/tesla/tesla_data.tres"),
+]
+
 const SAVE_FILE = "user://save.bin"
 const SAVE_FILE_PASS = "save_file_data"
 
@@ -27,6 +39,14 @@ func _ready() -> void:
 	player_data = PlayerData.new()
 	
 	_load()
+
+
+static func get_weapon_data(weapon_id: String) -> WeaponData:
+	for weapon in WEAPONS:
+		if weapon.id == weapon_id:
+			return weapon
+	
+	return null
 
 
 func save() -> void:
@@ -67,29 +87,39 @@ func _set_game_values() -> void:
 
 
 func _set_player_values() -> void:
-	_save_file.set_value(CATEGORY_PLAYER, PLAYER_WEAPONS, player_data.weapon_ids)
+	var weapon_ids : Array[String] = []
+	for weapon in player_data.weapons:
+		weapon_ids.append(weapon.id)
+		
+	
+	_save_file.set_value(CATEGORY_PLAYER, PLAYER_WEAPONS, weapon_ids)
 	_save_file.set_value(CATEGORY_PLAYER, PLAYER_HULL, player_data.hull)
 
 
 func _get_game_values() -> void:
-	game_data.game_seed  = _save_file.get_value(
+	game_data.game_seed = _save_file.get_value(
 		CATEGORY_GAME, GAME_SEED, game_data.game_seed
 	)
-	game_data.current_area_index  = _save_file.get_value(
+	game_data.current_area_index = _save_file.get_value(
 		CATEGORY_GAME, GAME_AREA_INDEX, game_data.current_area_index
 	)
-	game_data.current_stage_index  = _save_file.get_value(
+	game_data.current_stage_index = _save_file.get_value(
 		CATEGORY_GAME, GAME_STAGE_INDEX, game_data.current_stage_index
 	)
-	game_data.current_sector_index  = _save_file.get_value(
+	game_data.current_sector_index = _save_file.get_value(
 		CATEGORY_GAME, GAME_SECTOR_INDEX, game_data.current_sector_index
 	)
 
 
 func _get_player_values() -> void:
-	player_data.weapon_ids  = _save_file.get_value(
-		CATEGORY_PLAYER, PLAYER_WEAPONS, player_data.weapon_ids
+	var weapon_ids : Array[String] = _save_file.get_value(
+		CATEGORY_PLAYER, PLAYER_WEAPONS, []
 	)
-	player_data.hull  = _save_file.get_value(
+	for weapon_id in weapon_ids:
+		var weapon := get_weapon_data(weapon_id)
+		if weapon != null:
+			player_data.weapons.append(weapon)
+	
+	player_data.hull = _save_file.get_value(
 		CATEGORY_PLAYER, PLAYER_HULL, player_data.hull
 	)
