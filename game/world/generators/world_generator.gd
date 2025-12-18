@@ -35,16 +35,18 @@ func _fill_areas(data : WorldData) -> void:
 
 
 func _fill_weapons(data : WorldData) -> void:
-	var weapon_by_group : Dictionary[String, Array] = {}
+	var weapons_by_group : Dictionary[String, Array] = {}
 	
 	for weapon in SaveManager.WEAPONS:
-		if not weapon.group in weapon_by_group:
-			weapon_by_group[weapon.group] = [] as Array[WeaponData]
-		weapon_by_group[weapon.group].append(weapon)
+		if not weapon.group in weapons_by_group:
+			weapons_by_group[weapon.group] = [] as Array[WeaponData]
+		weapons_by_group[weapon.group].append(weapon)
 	
-	for group in weapon_by_group:
-		var array : Array[WeaponData] = weapon_by_group[group]
+	for group in weapons_by_group:
+		var array : Array[WeaponData] = weapons_by_group[group]
 		if array.size() == 0: continue
 		
 		var index := weapon_rng.randi_range(1, array.size()) - 1
 		data.player_start_weapons.append(array[index])
+	
+	data.player_start_weapons.shuffle()

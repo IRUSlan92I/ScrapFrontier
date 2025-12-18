@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_tcis2")
 id = "launcher"
-name = "launcher"
+name = "Launcher"
 group = "explosion"
 scene = ExtResource("1_3oqtq")
 metadata/_custom_type_script = "uid://870r1efinhqd"

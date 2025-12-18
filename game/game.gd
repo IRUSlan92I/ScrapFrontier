@@ -4,9 +4,10 @@ extends Node
 
 const PASSAGE = preload("res://game/passage.tscn")
 const AREA_MAP = preload("res://game/area_map/area_map.tscn")
+const WEAPON_SELECTION_SCREEN = preload("res://menu/ingame/weapon_selection_screen.tscn")
 
 
-var data : WorldData
+var world_data : WorldData
 var current_area : AreaData
 var current_stage : StageData
 var current_sector : SectorData
@@ -14,6 +15,7 @@ var current_passage : PassageData
 
 var _current_passage_scene : Passage
 var _current_area_map_scene : AreaMap
+var weapon_selection_screen : WeaponSelectionScreen
 
 
 @onready var pause_screen : Control = $PauseScreen
@@ -44,26 +46,28 @@ func start_game(game_data: GameData) -> void:
 		return
 	
 	if SaveManager.player_data.is_new_game:
-		_initialize_new_game()
-	
-	_create_game_map()
+		_show_weapon_selection_screen()
+	else:
+		_create_game_map()
 
 
-func _initialize_new_game() -> void:
-	for i in range(data.player_start_weapons.size()):
-		SaveManager.player_data.weapons.append(data.player_start_weapons[i])
-	SaveManager.player_data.is_new_game = false
+func _show_weapon_selection_screen() -> void:
+	if weapon_selection_screen != null: weapon_selection_screen.queue_free()
+	weapon_selection_screen = WEAPON_SELECTION_SCREEN.instantiate()
+	add_child(weapon_selection_screen)
+	weapon_selection_screen.world_data = world_data
+	weapon_selection_screen.weapon_selected.connect(_on_weapon_selected)
 
 
 func _fill_data(game_data: GameData) -> bool:
-	data = world_generator.generate(game_data.game_seed.hash())
+	world_data = world_generator.generate(game_data.game_seed.hash())
 	
 	return _set_currents(game_data)
 
 
 func _set_currents(game_data: GameData) -> bool:
-	if game_data.current_area_index >= data.areas.size(): return false
-	current_area = data.areas[game_data.current_area_index]
+	if game_data.current_area_index >= world_data.areas.size(): return false
+	current_area = world_data.areas[game_data.current_area_index]
 	
 	if game_data.current_stage_index >= current_area.stages.size(): return false
 	current_stage = current_area.stages[game_data.current_stage_index]
@@ -81,7 +85,7 @@ func _process_to_next_area() -> void:
 	
 	print(SaveManager.game_data.current_area_index)
 	
-	if SaveManager.game_data.current_area_index >= data.areas.size():
+	if SaveManager.game_data.current_area_index >= world_data.areas.size():
 		SaveManager.delete_game_data()
 		victory_screen.show()
 	else:
@@ -123,6 +127,15 @@ func _create_passage(passage_data: PassageData) -> void:
 	_current_passage_scene.player_died.connect(_on_passage_player_died)
 
 
+func _on_weapon_selected(weapon_data: WeaponData) -> void:
+	if weapon_selection_screen != null: weapon_selection_screen.queue_free()
+	
+	SaveManager.player_data.weapons.append(weapon_data)
+	SaveManager.player_data.is_new_game = false
+	SaveManager.save()
+	_create_game_map()
+
+
 func _on_pause_screen_continue_game() -> void:
 	pause_screen.hide()
 
@@ -157,8 +170,8 @@ func _on_passage_completion() -> void:
 
 
 func _update_data_indexes() -> void:
-	for area_index in range(data.areas.size()):
-		var area := data.areas[area_index]
+	for area_index in range(world_data.areas.size()):
+		var area := world_data.areas[area_index]
 		for stage_index in range(area.stages.size()):
 			var stage := area.stages[stage_index]
 			for sector_index in range(stage.sectors.size()):
