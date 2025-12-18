@@ -8,5 +8,10 @@ script = ExtResource("1_152qt")
 id = "minelayer"
 name = "Minelayer"
 group = "explosion"
+description = "High damage (explosion)
+Low firerate
+Low velocity
+Medium explosion radius
+Short range"
 scene = ExtResource("1_fh5qv")
 metadata/_custom_type_script = "uid://870r1efinhqd"

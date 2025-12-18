@@ -8,5 +8,9 @@ script = ExtResource("1_6lcn5")
 id = "railgun"
 name = "Railgun"
 group = "kinetic"
+description = "High damage (kinetic)
+Low firerate
+High velocity
+Can pierce enemies"
 scene = ExtResource("1_cbt0i")
 metadata/_custom_type_script = "uid://870r1efinhqd"

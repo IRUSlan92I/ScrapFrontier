@@ -6,4 +6,6 @@ extends Resource
 @export var name: String
 @export var group: String
 
+@export_multiline var description: String
+
 @export var scene: PackedScene

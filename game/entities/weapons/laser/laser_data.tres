@@ -8,5 +8,8 @@ script = ExtResource("1_ipxhy")
 id = "laser"
 name = "Laser"
 group = "energy"
+description = "Low damage (energetic)
+High firerate
+Low velocity"
 scene = ExtResource("1_aey1r")
 metadata/_custom_type_script = "uid://870r1efinhqd"

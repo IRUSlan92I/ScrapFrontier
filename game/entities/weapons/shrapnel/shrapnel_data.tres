@@ -8,5 +8,10 @@ script = ExtResource("1_xds2o")
 id = "shrapnel"
 name = "Shrapnel"
 group = "kinetic"
+description = "High damage (kinetic)
+Moderate firerate
+Moderate velocity
+Short range
+Multiple projectiles"
 scene = ExtResource("1_8lpql")
 metadata/_custom_type_script = "uid://870r1efinhqd"

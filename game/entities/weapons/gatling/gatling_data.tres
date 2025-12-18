@@ -8,5 +8,8 @@ script = ExtResource("1_bt4k8")
 id = "gatling"
 name = "Gatling"
 group = "kinetic"
+description = "Low damage (kinetic)
+High firerate
+Moderate velocity"
 scene = ExtResource("3_2rwg6")
 metadata/_custom_type_script = "uid://870r1efinhqd"

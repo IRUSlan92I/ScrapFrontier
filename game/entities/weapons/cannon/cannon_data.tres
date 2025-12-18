@@ -8,5 +8,9 @@ script = ExtResource("1_c34y3")
 id = "cannon"
 name = "Cannon"
 group = "explosion"
+description = "High damage (explosion)
+Low firerate
+Moderate velocity
+High explosion radius"
 scene = ExtResource("3_2dgua")
 metadata/_custom_type_script = "uid://870r1efinhqd"

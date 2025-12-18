@@ -8,5 +8,10 @@ script = ExtResource("1_tcis2")
 id = "launcher"
 name = "Launcher"
 group = "explosion"
+description = "Moderate damage (explosion)
+Moderate firerate
+Low velocity
+Small explosion radius
+Homing"
 scene = ExtResource("1_3oqtq")
 metadata/_custom_type_script = "uid://870r1efinhqd"

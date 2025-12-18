@@ -8,5 +8,8 @@ script = ExtResource("1_3fasx")
 id = "plasma"
 name = "Plasma"
 group = "energy"
+description = "Moderate damage (energetic)
+Moderate firerate
+Moderate velocity"
 scene = ExtResource("1_rcvob")
 metadata/_custom_type_script = "uid://870r1efinhqd"

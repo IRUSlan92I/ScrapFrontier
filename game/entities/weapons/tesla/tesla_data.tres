@@ -8,5 +8,10 @@ script = ExtResource("1_a16gw")
 id = "tesla"
 name = "Tesla"
 group = "energy"
+description = "Moderate damage (energetic)
+Low firerate
+High velocity
+Hits nearest target
+Can pierce enemies"
 scene = ExtResource("1_uxb6m")
 metadata/_custom_type_script = "uid://870r1efinhqd"
