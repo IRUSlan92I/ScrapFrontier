@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c36n317rhv8k7"]
 
-[ext_resource type="Script" uid="uid://dyynshvsgnepp" path="res://menu/seed_selection_menu.gd" id="1_g2smo"]
+[ext_resource type="Script" uid="uid://dyynshvsgnepp" path="res://menu/main/seed_selection_menu.gd" id="1_g2smo"]
 [ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://images/menu_button.tres" id="2_s4s14"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_g2smo"]

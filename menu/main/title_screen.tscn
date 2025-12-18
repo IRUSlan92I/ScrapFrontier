@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://2oavbr7oaihg"]
 
-[ext_resource type="Script" uid="uid://bqnepsuk13qo8" path="res://menu/title_screen.gd" id="1_lxdol"]
-[ext_resource type="PackedScene" uid="uid://bxlccevt52y70" path="res://menu/main_menu.tscn" id="2_o0rbc"]
-[ext_resource type="PackedScene" uid="uid://btr60idiit4y7" path="res://menu/options.tscn" id="3_88gnj"]
-[ext_resource type="PackedScene" uid="uid://c3q3g2647qc27" path="res://menu/credits.tscn" id="4_w1y3c"]
+[ext_resource type="Script" uid="uid://bqnepsuk13qo8" path="res://menu/main/title_screen.gd" id="1_lxdol"]
+[ext_resource type="PackedScene" uid="uid://bxlccevt52y70" path="res://menu/main/main_menu.tscn" id="2_o0rbc"]
+[ext_resource type="PackedScene" uid="uid://btr60idiit4y7" path="res://menu/common/options.tscn" id="3_88gnj"]
+[ext_resource type="PackedScene" uid="uid://c3q3g2647qc27" path="res://menu/common/credits.tscn" id="4_w1y3c"]
 [ext_resource type="PackedScene" uid="uid://chdrjc7c6bdpb" path="res://game/background.tscn" id="5_88gnj"]
-[ext_resource type="PackedScene" uid="uid://c36n317rhv8k7" path="res://menu/seed_selection_menu.tscn" id="5_w1y3c"]
+[ext_resource type="PackedScene" uid="uid://c36n317rhv8k7" path="res://menu/main/seed_selection_menu.tscn" id="5_w1y3c"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3

@@ -134,7 +134,7 @@ func _show_main_menu() -> void:
 	SaveManager.save()
 	
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://menu/title_screen.tscn")
+	get_tree().change_scene_to_file("res://menu/main/title_screen.tscn")
 
 
 func _on_passage_player_died() -> void:

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://d34nh3lc1gpb"]
 
-[ext_resource type="Script" uid="uid://c5d2t2o53wkmt" path="res://menu/pause_screen.gd" id="1_fe1q8"]
-[ext_resource type="PackedScene" uid="uid://bclo2wl8ibrcg" path="res://menu/pause_menu.tscn" id="2_4r6ly"]
-[ext_resource type="PackedScene" uid="uid://btr60idiit4y7" path="res://menu/options.tscn" id="3_3gwb3"]
-[ext_resource type="PackedScene" uid="uid://c3q3g2647qc27" path="res://menu/credits.tscn" id="4_jph5s"]
+[ext_resource type="Script" uid="uid://c5d2t2o53wkmt" path="res://menu/ingame/pause_screen.gd" id="1_fe1q8"]
+[ext_resource type="PackedScene" uid="uid://bclo2wl8ibrcg" path="res://menu/ingame/pause_menu.tscn" id="2_4r6ly"]
+[ext_resource type="PackedScene" uid="uid://btr60idiit4y7" path="res://menu/common/options.tscn" id="3_3gwb3"]
+[ext_resource type="PackedScene" uid="uid://c3q3g2647qc27" path="res://menu/common/credits.tscn" id="4_jph5s"]
 
 [node name="PauseScreen" type="Control"]
 layout_mode = 3

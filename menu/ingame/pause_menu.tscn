@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bclo2wl8ibrcg"]
 
-[ext_resource type="Script" uid="uid://npqs2m5g5bd6" path="res://menu/pause_menu.gd" id="1_inj1j"]
+[ext_resource type="Script" uid="uid://npqs2m5g5bd6" path="res://menu/ingame/pause_menu.gd" id="1_inj1j"]
 [ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://images/menu_button.tres" id="2_vy7sn"]
 
 [sub_resource type="Shortcut" id="Shortcut_lgp46"]

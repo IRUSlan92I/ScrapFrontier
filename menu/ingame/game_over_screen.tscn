@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://duxm8n62j2qt6"]
 
-[ext_resource type="Script" uid="uid://bkj8s7588e1ho" path="res://menu/game_over_screen.gd" id="1_rkkr6"]
+[ext_resource type="Script" uid="uid://bkj8s7588e1ho" path="res://menu/ingame/game_over_screen.gd" id="1_rkkr6"]
 [ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://images/menu_button.tres" id="2_uh3ar"]
 
 [node name="GameOverScreen" type="Control"]

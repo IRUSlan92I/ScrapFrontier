@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://btr60idiit4y7"]
 
-[ext_resource type="Script" uid="uid://ceng1u112aqg0" path="res://menu/options.gd" id="1_61pji"]
+[ext_resource type="Script" uid="uid://ceng1u112aqg0" path="res://menu/common/options.gd" id="1_61pji"]
 [ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://images/menu_button.tres" id="2_1tdpy"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_61pji"]
