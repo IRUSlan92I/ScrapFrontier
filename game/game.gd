@@ -15,7 +15,7 @@ var current_passage : PassageData
 
 var _current_passage_scene : Passage
 var _current_area_map_scene : AreaMap
-var weapon_selection_screen : WeaponSelectionScreen
+var _weapon_selection_screen : WeaponSelectionScreen
 
 
 @onready var pause_screen : Control = $PauseScreen
@@ -33,8 +33,10 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	var is_game_starded := _weapon_selection_screen == null
 	var is_game_over := victory_screen.visible or game_over_screen.visible
-	if event.is_action_pressed("pause") and not is_game_over:
+	var use_pause := is_game_starded and not is_game_over
+	if event.is_action_pressed("pause") and use_pause:
 		pause_screen.show()
 		get_tree().paused = true
 
@@ -52,11 +54,11 @@ func start_game(game_data: GameData) -> void:
 
 
 func _show_weapon_selection_screen() -> void:
-	if weapon_selection_screen != null: weapon_selection_screen.queue_free()
-	weapon_selection_screen = WEAPON_SELECTION_SCREEN.instantiate()
-	add_child(weapon_selection_screen)
-	weapon_selection_screen.world_data = world_data
-	weapon_selection_screen.weapon_selected.connect(_on_weapon_selected)
+	if _weapon_selection_screen != null: _weapon_selection_screen.queue_free()
+	_weapon_selection_screen = WEAPON_SELECTION_SCREEN.instantiate()
+	add_child(_weapon_selection_screen)
+	_weapon_selection_screen.world_data = world_data
+	_weapon_selection_screen.weapon_selected.connect(_on_weapon_selected)
 
 
 func _fill_data(game_data: GameData) -> bool:
@@ -128,7 +130,7 @@ func _create_passage(passage_data: PassageData) -> void:
 
 
 func _on_weapon_selected(weapon_data: WeaponData) -> void:
-	if weapon_selection_screen != null: weapon_selection_screen.queue_free()
+	if _weapon_selection_screen != null: _weapon_selection_screen.queue_free()
 	
 	SaveManager.player_data.weapons.append(weapon_data)
 	SaveManager.player_data.is_new_game = false
