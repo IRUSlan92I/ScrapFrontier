@@ -103,7 +103,7 @@ animations = [{
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t57yr"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
-inherit_velocity_ratio = 1.0
+inherit_velocity_ratio = 0.5
 direction = Vector3(0, 1, 0)
 spread = 15.0
 initial_velocity_min = 15.0
@@ -131,19 +131,19 @@ position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_he4pe")
 animation = &"player_shot"
 
-[node name="CooldownTimer" type="Timer" parent="." index="2"]
-wait_time = 0.6
-one_shot = true
-
-[node name="ShellParticles" type="GPUParticles2D" parent="." index="3"]
+[node name="ShellParticles" type="GPUParticles2D" parent="." index="2"]
 z_index = 1
 position = Vector2(-1, 1)
 emitting = false
-amount = 1
+amount = 15
 texture = ExtResource("6_gdolk")
-lifetime = 2.0
+lifetime = 3.0
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_t57yr")
+
+[node name="CooldownTimer" type="Timer" parent="." index="3"]
+wait_time = 0.6
+one_shot = true
 
 [node name="Muzzle" parent="." index="4"]
 position = Vector2(14, 0)

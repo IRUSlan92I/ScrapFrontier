@@ -21,16 +21,12 @@ func shoot(ship_velocity: Vector2) -> bool:
 		sprite.play(PREFIXES[_belonging] + SHOT_POSTFIX)
 		_can_shoot = false
 		cooldown_timer.start()
-		_restart_particles()
+		front_particles.restart()
+		left_particles.restart()
+		right_particles.restart()
+		shell_particles.emit_particle(Transform2D(), Vector2(), Color(), Color(), 0)
 	
 	return is_shot
-
-
-func _restart_particles() -> void:
-	front_particles.restart()
-	left_particles.restart()
-	right_particles.restart()
-	shell_particles.restart()
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

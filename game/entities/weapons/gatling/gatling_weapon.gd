@@ -2,7 +2,8 @@ extends AbstractWeapon
 
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
-@onready var particles : GPUParticles2D = $GPUParticles2D
+@onready var shot_particles : GPUParticles2D = $ShotParticles
+@onready var shell_particles : GPUParticles2D = $ShellParticles
 
 
 func set_belonging(belonging: Belonging) -> void:
@@ -16,7 +17,8 @@ func shoot(ship_velocity: Vector2) -> bool:
 	if is_shot:
 		_can_shoot = false
 		sprite.play(PREFIXES[_belonging] + SHOT_POSTFIX)
-		particles.restart()
+		shot_particles.restart()
+		shell_particles.emit_particle(Transform2D(), Vector2(), Color(), Color(), 0)
 	
 	return is_shot
 
