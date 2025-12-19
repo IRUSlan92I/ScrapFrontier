@@ -3,7 +3,6 @@ extends Node
 
 
 signal accelerate(direction: Vector2, delta: float)
-signal shoot()
 
 
 const FREE_FLIGHT_DIST = 50
@@ -17,8 +16,6 @@ var direction : Vector2
 
 
 func _physics_process(delta: float) -> void:
-	if ship.is_on_screen:
-		shoot.emit()
 	accelerate.emit(direction, delta)
 
 

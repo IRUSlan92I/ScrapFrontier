@@ -103,7 +103,6 @@ position = Vector2(-11, 0)
 
 [connection signal="accelerate" from="PlayerController" to="." method="accelerate"]
 [connection signal="blink" from="PlayerController" to="." method="_blink"]
-[connection signal="shoot" from="PlayerController" to="." method="shoot"]
 [connection signal="armor_updated" from="Health" to="." method="_on_armor_updated"]
 [connection signal="hull_updated" from="Health" to="." method="_on_hull_updated"]
 [connection signal="shield_updated" from="Health" to="." method="_on_shield_updated"]

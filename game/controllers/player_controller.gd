@@ -4,15 +4,12 @@ extends Node
 
 signal accelerate(direction: Vector2, delta: float)
 
-signal shoot()
-
 signal blink(direction: Vector2)
 
 
 func _physics_process(delta: float) -> void:
 	var input_direction := _get_input_direction()
 	accelerate.emit(input_direction, delta)
-	shoot.emit()
 
 
 func _input(event: InputEvent) -> void:

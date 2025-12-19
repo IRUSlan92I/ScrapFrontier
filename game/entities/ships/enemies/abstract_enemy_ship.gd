@@ -11,6 +11,13 @@ var enemy_data : EnemyData:
 @onready var controller : EnemyController = $EnemyController
 
 
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
+	
+	if is_on_screen:
+		shoot()
+
+
 func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
 	super._add_weapon(weapon, weapon_position)
 	weapon.set_belonging(AbstractWeapon.Belonging.ENEMY)

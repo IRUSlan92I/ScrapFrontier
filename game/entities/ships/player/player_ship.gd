@@ -33,6 +33,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	
+	shoot()
+	
 	if blink_charge < BLINK_CHARGE_MAXIMUM:
 		blink_charge += delta
 		blink_charge_indicator.value = blink_charge
