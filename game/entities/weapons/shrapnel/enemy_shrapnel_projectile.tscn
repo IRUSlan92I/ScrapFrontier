@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmusx2hpk7m76"]
+
+[ext_resource type="PackedScene" uid="uid://bsx23u3a2obbj" path="res://game/entities/weapons/shrapnel/abstract_shrapnel_projectile.tscn" id="1_6xicu"]
+[ext_resource type="Script" uid="uid://c803i8oaj4dgp" path="res://game/entities/weapons/shrapnel/enemy_shrapnel_projectile.gd" id="2_ir0ih"]
+
+[node name="EnemyShrapnelProjectile" instance=ExtResource("1_6xicu")]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("2_ir0ih")
+direction = Vector2(-1, 0)

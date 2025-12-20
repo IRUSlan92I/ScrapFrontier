@@ -1,16 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3epy8w15qmjm"]
+[gd_scene load_steps=10 format=3 uid="uid://d3epy8w15qmjm"]
 
 [ext_resource type="PackedScene" uid="uid://dwsn0lf1e3578" path="res://game/entities/ships/enemies/abstract_enemy_ship.tscn" id="1_wvvpj"]
 [ext_resource type="Script" uid="uid://cxomr1oojcrcl" path="res://game/entities/ships/enemies/heavy/heavy_enemy_ship.gd" id="2_3umer"]
 [ext_resource type="Texture2D" uid="uid://5cgq8o5oqunq" path="res://images/ships/enemies/heavy.png" id="3_xqe8d"]
+[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/entities/ships/shield.gdshader" id="4_qawoi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xqe8d"]
 atlas = ExtResource("3_xqe8d")
 region = Rect2(0, 0, 64, 48)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4do6"]
+resource_local_to_scene = true
+shader = ExtResource("4_qawoi")
+shader_parameter/speed = 0.0
+shader_parameter/scale = 20.0
+shader_parameter/intensity = 1.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qawoi"]
 atlas = ExtResource("3_xqe8d")
 region = Rect2(0, 48, 64, 48)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6d574"]
+resource_local_to_scene = true
+shader = ExtResource("4_qawoi")
+shader_parameter/speed = 5.0
+shader_parameter/scale = 20.0
+shader_parameter/intensity = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4do6"]
 atlas = ExtResource("3_xqe8d")
@@ -27,9 +42,11 @@ mass = 600
 texture = SubResource("AtlasTexture_xqe8d")
 
 [node name="ArmorSprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_c4do6")
 texture = SubResource("AtlasTexture_qawoi")
 
 [node name="ShieldSprite" parent="." index="2"]
+material = SubResource("ShaderMaterial_6d574")
 texture = SubResource("AtlasTexture_c4do6")
 
 [node name="CollisionPolygon2D" parent="." index="3"]

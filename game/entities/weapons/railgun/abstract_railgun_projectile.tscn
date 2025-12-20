@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bab3bopsw74cb"]
+
+[ext_resource type="Script" uid="uid://n3h1e3pj02g0" path="res://game/entities/weapons/railgun/abstract_railgun_projectile.gd" id="1_hycpq"]
+[ext_resource type="PackedScene" uid="uid://cdv5n4t47hr8i" path="res://game/entities/weapons/abstract_direct_hit_projectile.tscn" id="1_rfd1j"]
+[ext_resource type="Script" uid="uid://bhqvk5cnjg5mv" path="res://game/data/damage/kinetic_damage.gd" id="3_wbdf3"]
+[ext_resource type="Texture2D" uid="uid://c6aixtu6lbfud" path="res://particle_textures/energy_small.tres" id="4_whmfh"]
+
+[sub_resource type="Resource" id="Resource_u82jm"]
+script = ExtResource("3_wbdf3")
+value = 50
+metadata/_custom_type_script = "uid://bhqvk5cnjg5mv"
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yedu2"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.2
+spread = 180.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+turbulence_enabled = true
+turbulence_noise_strength = 2.0
+turbulence_noise_speed_random = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u82jm"]
+radius = 1.0
+height = 8.0
+
+[node name="AbstractRailgunProjectile" instance=ExtResource("1_rfd1j")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_hycpq")
+piercing = 1
+damage = SubResource("Resource_u82jm")
+speed = 900
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="0"]
+amount = 32
+texture = ExtResource("4_whmfh")
+lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_yedu2")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_u82jm")

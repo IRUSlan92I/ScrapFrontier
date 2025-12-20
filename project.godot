@@ -19,8 +19,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SettingsManager="*res://managers/settings_manager.gd"
-SaveManager="*res://managers/save_manager.gd"
+SettingsManager="*res://game/managers/settings_manager.gd"
+SaveManager="*res://game/managers/save_manager.gd"
 
 [debug]
 
@@ -329,7 +329,6 @@ previous_reactor_scheme={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="PlayerProjectile"
 2d_physics/layer_5="EnemyProjectile"
-2d_physics/layer_6="ProjectileBorder"
 
 [rendering]
 

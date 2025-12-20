@@ -101,7 +101,6 @@ func _on_health_depleted() -> void:
 
 func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
 	weapon.position = weapon_position
-	weapon.rotation_degrees = weapon_rotation
 	add_child(weapon)
 	_weapons.append(weapon)
 

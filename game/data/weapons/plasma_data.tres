@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://dq0pjpg3slr8s"]
+
+[ext_resource type="Script" uid="uid://870r1efinhqd" path="res://game/data/weapons/weapon_data.gd" id="1_3fasx"]
+[ext_resource type="PackedScene" uid="uid://dtl3d7soletdn" path="res://game/entities/weapons/plasma/enemy_plasma_weapon.tscn" id="1_h185p"]
+[ext_resource type="PackedScene" uid="uid://dd8juohu1x2xo" path="res://game/entities/weapons/plasma/player_plasma_weapon.tscn" id="2_6cfmm"]
+
+[resource]
+script = ExtResource("1_3fasx")
+id = "plasma"
+name = "Plasma"
+group = "energy"
+description = "Moderate damage (energetic)
+Moderate firerate
+Moderate velocity"
+enemy_scene = ExtResource("1_h185p")
+player_scene = ExtResource("2_6cfmm")
+metadata/_custom_type_script = "uid://870r1efinhqd"

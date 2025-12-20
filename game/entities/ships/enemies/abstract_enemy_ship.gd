@@ -18,11 +18,6 @@ func _physics_process(delta: float) -> void:
 		shoot()
 
 
-func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
-	super._add_weapon(weapon, weapon_position)
-	weapon.set_belonging(AbstractWeapon.Belonging.ENEMY)
-
-
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	is_on_screen = true
 
@@ -42,12 +37,6 @@ func _set_enemy_data(data: EnemyData) -> void:
 		positions.remove_at(0)
 	
 	for i in range(min(enemy_data.weapon_count, positions.size())):
-		var weapon : AbstractWeapon = enemy_data.weapon.scene.instantiate()
-		_add_weapon(weapon, weapon_positions[i])
-
-
-func _create_weapon(weapon_id : String) -> AbstractWeapon:
-	var weapon_scene : PackedScene = load(WEAPON_SCENES[weapon_id])
-	var weapon : AbstractWeapon = weapon_scene.instantiate()
-	weapon_type = weapon.type
-	return weapon
+		var weapon_scene := enemy_data.weapon.enemy_scene
+		var weapon : AbstractWeapon = weapon_scene.instantiate()
+		_add_weapon(weapon, positions[i])

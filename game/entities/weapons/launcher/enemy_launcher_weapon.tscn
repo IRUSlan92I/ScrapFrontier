@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://b757rcwc231o2"]
+
+[ext_resource type="PackedScene" uid="uid://c3l866fdqt7pf" path="res://game/entities/weapons/launcher/abstract_launcher_weapon.tscn" id="1_co8ul"]
+[ext_resource type="Script" uid="uid://3b4ft0vrkvn1" path="res://game/entities/weapons/launcher/enemy_launcher_weapon.gd" id="2_qdxuw"]
+[ext_resource type="PackedScene" uid="uid://dpbighfm8o7ij" path="res://game/entities/weapons/launcher/enemy_launcher_projectile.tscn" id="3_qdxuw"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="4_xtc8h"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xtc8h"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.5
+spread = 15.0
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_avyie"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.5
+spread = 15.0
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylgjm"]
+atlas = ExtResource("4_xtc8h")
+region = Rect2(224, 144, 32, 16)
+
+[node name="EnemyLauncherWeapon" instance=ExtResource("1_co8ul")]
+script = ExtResource("2_qdxuw")
+projectile_scene = ExtResource("3_qdxuw")
+
+[node name="LeftParticles" parent="." index="0"]
+position = Vector2(4, 3)
+process_material = SubResource("ParticleProcessMaterial_xtc8h")
+
+[node name="RightParticles" parent="." index="1"]
+position = Vector2(4, -3)
+process_material = SubResource("ParticleProcessMaterial_avyie")
+
+[node name="Muzzle" parent="." index="3"]
+position = Vector2(-11, 3)
+
+[node name="SecondMuzzle" parent="." index="4"]
+position = Vector2(-11, -3)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+position = Vector2(-4, 0)
+texture = SubResource("AtlasTexture_ylgjm")

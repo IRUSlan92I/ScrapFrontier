@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://pfvs7wqrnn08"]
-
-[ext_resource type="Script" uid="uid://clt20ebs6shkm" path="res://game/entities/other/blast.gd" id="1_2fpxy"]
-
-[node name="Blast" type="Area2D"]
-script = ExtResource("1_2fpxy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

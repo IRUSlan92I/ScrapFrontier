@@ -1,0 +1,131 @@
+[gd_scene load_steps=15 format=3 uid="uid://d3co2xx0th1d0"]
+
+[ext_resource type="PackedScene" uid="uid://bccaoirwdkp7n" path="res://game/entities/weapons/cannon/abstract_cannon_weapon.tscn" id="1_pc5pg"]
+[ext_resource type="Script" uid="uid://ctyvmasefboee" path="res://game/entities/weapons/cannon/enemy_cannon_weapon.gd" id="2_1qc5g"]
+[ext_resource type="PackedScene" uid="uid://c78rvwvr3dg5l" path="res://game/entities/weapons/cannon/enemy_cannon_projectile.tscn" id="2_6eedr"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="3_tvj1r"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tvj1r"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.2
+direction = Vector3(-1, 0, 0)
+spread = 30.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1qc5g"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.2
+direction = Vector3(1, 1, 0)
+spread = 5.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2rup0"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.2
+direction = Vector3(1, -1, 0)
+spread = 5.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfd4t"]
+atlas = ExtResource("3_tvj1r")
+region = Rect2(0, 176, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0ica"]
+atlas = ExtResource("3_tvj1r")
+region = Rect2(32, 176, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_377p4"]
+atlas = ExtResource("3_tvj1r")
+region = Rect2(64, 176, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrbut"]
+atlas = ExtResource("3_tvj1r")
+region = Rect2(96, 176, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk6k8"]
+atlas = ExtResource("3_tvj1r")
+region = Rect2(128, 176, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1qc5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfd4t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0ica")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_377p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrbut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk6k8")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 10.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vumep"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.5
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+
+[node name="EnemyCannonWeapon" instance=ExtResource("1_pc5pg")]
+script = ExtResource("2_1qc5g")
+projectile_scene = ExtResource("2_6eedr")
+
+[node name="Front" parent="ShotParticles" index="0"]
+position = Vector2(-22, 0)
+process_material = SubResource("ParticleProcessMaterial_tvj1r")
+
+[node name="Left" parent="ShotParticles" index="1"]
+position = Vector2(-17, 4)
+process_material = SubResource("ParticleProcessMaterial_1qc5g")
+
+[node name="Right" parent="ShotParticles" index="2"]
+position = Vector2(-17, -4)
+process_material = SubResource("ParticleProcessMaterial_2rup0")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(-9, 0)
+sprite_frames = SubResource("SpriteFrames_1qc5g")
+animation = &"idle"
+
+[node name="ShellParticles" parent="." index="2"]
+position = Vector2(1, -1)
+process_material = SubResource("ParticleProcessMaterial_vumep")
+
+[node name="Muzzle" parent="." index="4"]
+position = Vector2(-20, 0)

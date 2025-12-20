@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://dxap3sahurth4"]
+
+[ext_resource type="PackedScene" uid="uid://d3co2xx0th1d0" path="res://game/entities/weapons/cannon/enemy_cannon_weapon.tscn" id="1_2gkq7"]
+[ext_resource type="Script" uid="uid://870r1efinhqd" path="res://game/data/weapons/weapon_data.gd" id="1_c34y3"]
+[ext_resource type="PackedScene" uid="uid://mpr5kl87nx3f" path="res://game/entities/weapons/cannon/player_cannon_weapon.tscn" id="2_qvf4o"]
+
+[resource]
+script = ExtResource("1_c34y3")
+id = "cannon"
+name = "Cannon"
+group = "explosion"
+description = "High damage (explosion)
+Low firerate
+Moderate velocity
+High explosion radius"
+enemy_scene = ExtResource("1_2gkq7")
+player_scene = ExtResource("2_qvf4o")
+metadata/_custom_type_script = "uid://870r1efinhqd"

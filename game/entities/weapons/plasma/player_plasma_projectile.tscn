@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnjka7edh3tlt"]
+
+[ext_resource type="PackedScene" uid="uid://cgvb0hjrl5h4s" path="res://game/entities/weapons/plasma/abstract_plasma_projectile.tscn" id="1_04w4k"]
+[ext_resource type="Script" uid="uid://c5fn0axm8b3hq" path="res://game/entities/weapons/plasma/player_plasma_projectile.gd" id="2_7eiay"]
+
+[node name="PlayerPlasmaProjectile" instance=ExtResource("1_04w4k")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_7eiay")
+direction = Vector2(1, 0)

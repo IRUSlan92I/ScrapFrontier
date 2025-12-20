@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpbighfm8o7ij"]
+
+[ext_resource type="PackedScene" uid="uid://dukgbg13ujkv2" path="res://game/entities/weapons/launcher/abstract_launcher_projectile.tscn" id="1_ek3l7"]
+[ext_resource type="Script" uid="uid://bgl2wo0bdgh5j" path="res://game/entities/weapons/launcher/enemy_launcher_projectile.gd" id="2_idk0a"]
+
+[node name="EnemyLauncherProjectile" instance=ExtResource("1_ek3l7")]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("2_idk0a")
+direction = Vector2(-1, 0)
+
+[node name="Blast" parent="." index="4"]
+collision_layer = 16
+collision_mask = 2

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://40sshnf6g80k"]
+
+[ext_resource type="Script" uid="uid://870r1efinhqd" path="res://game/data/weapons/weapon_data.gd" id="1_152qt"]
+[ext_resource type="PackedScene" uid="uid://bjbfi6vvikk15" path="res://game/entities/weapons/minelayer/enemy_minelayer_weapon.tscn" id="1_bpafq"]
+[ext_resource type="PackedScene" uid="uid://dxh4m1upio4fx" path="res://game/entities/weapons/minelayer/player_minelayer_weapon.tscn" id="2_77jvm"]
+
+[resource]
+script = ExtResource("1_152qt")
+id = "minelayer"
+name = "Minelayer"
+group = "explosion"
+description = "High damage (explosion)
+Low firerate
+Low velocity
+Medium explosion radius
+Short range"
+enemy_scene = ExtResource("1_bpafq")
+player_scene = ExtResource("2_77jvm")
+metadata/_custom_type_script = "uid://870r1efinhqd"

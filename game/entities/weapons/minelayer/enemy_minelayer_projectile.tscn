@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs3wo34es7q10"]
+
+[ext_resource type="PackedScene" uid="uid://4mkklqt1g14f" path="res://game/entities/weapons/minelayer/abstract_minelayer_projectile.tscn" id="1_uiwyj"]
+[ext_resource type="Script" uid="uid://fyoiuye4fvk3" path="res://game/entities/weapons/minelayer/enemy_minelayer_projectile.gd" id="2_2o7sx"]
+
+[node name="EnemyMinelayerProjectile" instance=ExtResource("1_uiwyj")]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("2_2o7sx")
+direction = Vector2(-1, 0)
+
+[node name="Blast" parent="." index="4"]
+collision_layer = 16
+collision_mask = 2

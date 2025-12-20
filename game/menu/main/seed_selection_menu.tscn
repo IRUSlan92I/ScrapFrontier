@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://c36n317rhv8k7"]
+
+[ext_resource type="Script" uid="uid://dyynshvsgnepp" path="res://game/menu/main/seed_selection_menu.gd" id="1_g2smo"]
+[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://images/menu_button.tres" id="2_s4s14"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_g2smo"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_s4s14"]
+events = [SubResource("InputEventAction_g2smo")]
+
+[node name="SeedSelectionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g2smo")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -33.0
+offset_right = 107.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="SeedLabel" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="UseRandomButton" type="Button" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("2_s4s14")
+text = "Use random seed"
+
+[node name="SeedEdit" type="LineEdit" parent="GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 2
+placeholder_text = "Enter seed"
+alignment = 1
+max_length = 16
+
+[node name="UseCustomButton" type="Button" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("2_s4s14")
+text = "Use custom seed"
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_s4s14")
+shortcut = SubResource("Shortcut_s4s14")
+text = "Main menu"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="GridContainer/UseRandomButton" to="." method="_on_use_random_button_pressed"]
+[connection signal="text_changed" from="GridContainer/SeedEdit" to="." method="_on_seed_edit_text_changed"]
+[connection signal="text_submitted" from="GridContainer/SeedEdit" to="." method="_on_seed_edit_text_submitted"]
+[connection signal="pressed" from="GridContainer/UseCustomButton" to="." method="_on_use_custom_button_pressed"]
+[connection signal="pressed" from="GridContainer/BackButton" to="." method="_on_back_button_pressed"]

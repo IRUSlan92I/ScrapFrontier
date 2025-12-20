@@ -1,0 +1,130 @@
+[gd_scene load_steps=15 format=3 uid="uid://mpr5kl87nx3f"]
+
+[ext_resource type="PackedScene" uid="uid://bccaoirwdkp7n" path="res://game/entities/weapons/cannon/abstract_cannon_weapon.tscn" id="1_5v7nv"]
+[ext_resource type="PackedScene" uid="uid://bswe1h1qw7e4x" path="res://game/entities/weapons/cannon/player_cannon_projectile.tscn" id="2_bgyjp"]
+[ext_resource type="Script" uid="uid://bvnecmmrk5e47" path="res://game/entities/weapons/cannon/player_cannon_weapon.gd" id="2_kkp2r"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="4_myt65"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bgyjp"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.2
+spread = 30.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kkp2r"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.2
+direction = Vector3(-1, -1, 0)
+spread = 5.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_myt65"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.2
+direction = Vector3(-1, 1, 0)
+spread = 5.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byluv"]
+atlas = ExtResource("4_myt65")
+region = Rect2(0, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myt65"]
+atlas = ExtResource("4_myt65")
+region = Rect2(32, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2qwc"]
+atlas = ExtResource("4_myt65")
+region = Rect2(64, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faaxs"]
+atlas = ExtResource("4_myt65")
+region = Rect2(96, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhw8s"]
+atlas = ExtResource("4_myt65")
+region = Rect2(128, 160, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_irdfq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byluv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myt65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2qwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faaxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhw8s")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 10.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5v7nv"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.5
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+
+[node name="PlayerCannonWeapon" instance=ExtResource("1_5v7nv")]
+script = ExtResource("2_kkp2r")
+projectile_scene = ExtResource("2_bgyjp")
+
+[node name="Front" parent="ShotParticles" index="0"]
+position = Vector2(20, 0)
+process_material = SubResource("ParticleProcessMaterial_bgyjp")
+
+[node name="Left" parent="ShotParticles" index="1"]
+position = Vector2(15, -4)
+process_material = SubResource("ParticleProcessMaterial_kkp2r")
+
+[node name="Right" parent="ShotParticles" index="2"]
+position = Vector2(15, 4)
+process_material = SubResource("ParticleProcessMaterial_myt65")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(9, 0)
+sprite_frames = SubResource("SpriteFrames_irdfq")
+animation = &"shot"
+
+[node name="ShellParticles" parent="." index="2"]
+position = Vector2(-1, 1)
+process_material = SubResource("ParticleProcessMaterial_5v7nv")
+
+[node name="Muzzle" parent="." index="4"]
+position = Vector2(18, 0)

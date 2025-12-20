@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://df816hasxkglk"]
+
+[ext_resource type="PackedScene" uid="uid://r7wnk762jbfy" path="res://game/entities/weapons/shrapnel/abstract_shrapnel_weapon.tscn" id="1_1p630"]
+[ext_resource type="Script" uid="uid://d30syotjwdwlu" path="res://game/entities/weapons/shrapnel/enemy_shrapnel_weapon.gd" id="2_ttncl"]
+[ext_resource type="PackedScene" uid="uid://bmusx2hpk7m76" path="res://game/entities/weapons/shrapnel/enemy_shrapnel_projectile.tscn" id="3_p5apf"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="4_ctn2a"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ctn2a"]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.5
+direction = Vector3(-1, 0, 0)
+spread = 60.0
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdolk"]
+atlas = ExtResource("4_ctn2a")
+region = Rect2(128, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a22j7"]
+atlas = ExtResource("4_ctn2a")
+region = Rect2(160, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t57yr"]
+atlas = ExtResource("4_ctn2a")
+region = Rect2(192, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cogj5"]
+atlas = ExtResource("4_ctn2a")
+region = Rect2(224, 48, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fcnom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdolk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a22j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t57yr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cogj5")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 10.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fcnom"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.5
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+
+[node name="EnemyShrapnelWeapon" instance=ExtResource("1_1p630")]
+script = ExtResource("2_ttncl")
+projectile_scene = ExtResource("3_p5apf")
+
+[node name="ShotParticles" parent="." index="0"]
+position = Vector2(-18, 0)
+process_material = SubResource("ParticleProcessMaterial_ctn2a")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(-7, 0)
+sprite_frames = SubResource("SpriteFrames_fcnom")
+animation = &"idle"
+
+[node name="ShellParticles" parent="." index="2"]
+position = Vector2(0, -3)
+process_material = SubResource("ParticleProcessMaterial_fcnom")
+
+[node name="Muzzle" parent="." index="4"]
+position = Vector2(-14, 0)

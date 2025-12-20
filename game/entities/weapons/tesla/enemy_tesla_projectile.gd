@@ -1,0 +1,2 @@
+class_name EnemyTeslaProjectile
+extends AbstractTeslaProjectile

@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhxib2ltpkcbf"]
+
+[ext_resource type="Texture2D" uid="uid://gh7mwehpqfco" path="res://particle_textures/flame_medium.tres" id="1_6awlt"]
+[ext_resource type="Script" uid="uid://dhnjdam04g4tb" path="res://game/entities/explosions/explosion_particles.gd" id="1_w1d42"]
+[ext_resource type="Texture2D" uid="uid://b13al44e8ofsx" path="res://particle_textures/flame_large.tres" id="2_w1d42"]
+[ext_resource type="Texture2D" uid="uid://blp4o1c7y66wv" path="res://particle_textures/flame_huge.tres" id="3_lplfr"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w1d42"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -179.99998
+angle_max = 180.00002
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(0.1, 0.1, 0.1)
+
+[node name="ExplosionParticles" type="Node2D"]
+script = ExtResource("1_w1d42")
+process_material = SubResource("ParticleProcessMaterial_w1d42")
+
+[node name="ParticlesMedium" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 512
+texture = ExtResource("1_6awlt")
+lifetime = 0.25
+one_shot = true
+
+[node name="ParticlesLarge" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 512
+texture = ExtResource("2_w1d42")
+lifetime = 0.25
+one_shot = true
+
+[node name="ParticlesHuge" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 512
+texture = ExtResource("3_lplfr")
+lifetime = 0.25
+one_shot = true
+
+[connection signal="finished" from="ParticlesMedium" to="." method="_on_particles_finished"]
+[connection signal="finished" from="ParticlesLarge" to="." method="_on_particles_finished"]
+[connection signal="finished" from="ParticlesHuge" to="." method="_on_particles_finished"]

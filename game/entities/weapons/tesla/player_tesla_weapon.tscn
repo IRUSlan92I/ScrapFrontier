@@ -1,0 +1,78 @@
+[gd_scene load_steps=14 format=3 uid="uid://u6hpohk5i3eu"]
+
+[ext_resource type="PackedScene" uid="uid://dyebeblayioji" path="res://game/entities/weapons/tesla/abstract_tesla_weapon.tscn" id="1_0i0tl"]
+[ext_resource type="Script" uid="uid://d2qtsjtu56c21" path="res://game/entities/weapons/tesla/player_tesla_weapon.gd" id="2_ve1yj"]
+[ext_resource type="PackedScene" uid="uid://bvrsk14t6m061" path="res://game/entities/weapons/tesla/player_tesla_projectile.tscn" id="3_io2od"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="4_mjxwr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ksu7"]
+atlas = ExtResource("4_mjxwr")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14sqy"]
+atlas = ExtResource("4_mjxwr")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57vww"]
+atlas = ExtResource("4_mjxwr")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ook02"]
+atlas = ExtResource("4_mjxwr")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4veo"]
+atlas = ExtResource("4_mjxwr")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa0we"]
+atlas = ExtResource("4_mjxwr")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50pvw"]
+atlas = ExtResource("4_mjxwr")
+region = Rect2(192, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vagjq"]
+atlas = ExtResource("4_mjxwr")
+region = Rect2(224, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjgub"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ksu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14sqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57vww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ook02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4veo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa0we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50pvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vagjq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="PlayerTeslaWeapon" instance=ExtResource("1_0i0tl")]
+script = ExtResource("2_ve1yj")
+projectile_scene = ExtResource("3_io2od")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_sjgub")
+animation = &"idle"

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://def1alrel4ioo"]
+
+[ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_pki4x"]
+[ext_resource type="Script" uid="uid://bxr150at8ul2a" path="res://game/entities/weapons/laser/abstract_laser_weapon.gd" id="2_lbdvb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_btyhf"]
+
+[node name="AbstractLaserWeapon" instance=ExtResource("1_pki4x")]
+script = ExtResource("2_lbdvb")
+bullet_per_shot = 2
+type = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_btyhf")
+
+[node name="CooldownTimer" type="Timer" parent="." index="1"]
+process_callback = 0
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

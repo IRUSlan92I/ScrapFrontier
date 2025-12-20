@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfcpr07j58cvx"]
+
+[ext_resource type="Script" uid="uid://bi5vt3ikxya8d" path="res://game/generators/passage_generator.gd" id="1_3arab"]
+[ext_resource type="PackedScene" uid="uid://bqtiiog23c2ta" path="res://game/generators/enemy_generator.tscn" id="2_u6kxl"]
+
+[node name="PassageGenerator" type="Node"]
+script = ExtResource("1_3arab")
+
+[node name="EnemyGenerator" parent="." instance=ExtResource("2_u6kxl")]

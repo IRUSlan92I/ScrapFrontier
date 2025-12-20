@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://chgf0tdlikwlb"]
+
+[ext_resource type="PackedScene" uid="uid://do6h77gmnreho" path="res://game/entities/weapons/railgun/abstract_railgun_weapon.tscn" id="1_rp2u5"]
+[ext_resource type="Script" uid="uid://b0eg0ye5mx8ao" path="res://game/entities/weapons/railgun/enemy_railgun_weapon.gd" id="2_0wswa"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="2_nfcq7"]
+[ext_resource type="PackedScene" uid="uid://cxcitgofg7nwm" path="res://game/entities/weapons/railgun/enemy_railgun_projectile.tscn" id="3_0wswa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxcog"]
+atlas = ExtResource("2_nfcq7")
+region = Rect2(0, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uyey"]
+atlas = ExtResource("2_nfcq7")
+region = Rect2(96, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knads"]
+atlas = ExtResource("2_nfcq7")
+region = Rect2(128, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxlhs"]
+atlas = ExtResource("2_nfcq7")
+region = Rect2(160, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0am2"]
+atlas = ExtResource("2_nfcq7")
+region = Rect2(192, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxvdx"]
+atlas = ExtResource("2_nfcq7")
+region = Rect2(224, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_caa1b"]
+atlas = ExtResource("2_nfcq7")
+region = Rect2(32, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dshqd"]
+atlas = ExtResource("2_nfcq7")
+region = Rect2(64, 112, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfcq7"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxcog")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_6uyey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knads")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxlhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0am2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxvdx")
+}],
+"loop": false,
+"name": &"reloading",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_caa1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dshqd")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 10.0
+}]
+
+[node name="EnemyRailgunWeapon" instance=ExtResource("1_rp2u5")]
+script = ExtResource("2_0wswa")
+projectile_scene = ExtResource("3_0wswa")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(-5, 0)
+sprite_frames = SubResource("SpriteFrames_nfcq7")
+animation = &"reloading"
+
+[node name="Muzzle" parent="." index="1"]
+position = Vector2(-11, 0)

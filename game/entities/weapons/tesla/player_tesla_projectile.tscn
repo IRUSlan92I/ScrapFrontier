@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvrsk14t6m061"]
+
+[ext_resource type="PackedScene" uid="uid://bi64687wtxi4d" path="res://game/entities/weapons/tesla/abstract_tesla_projectile.tscn" id="1_t7qf7"]
+[ext_resource type="Script" uid="uid://c27v705giygv4" path="res://game/data/damage/energy_damage.gd" id="2_mk8o6"]
+[ext_resource type="Script" uid="uid://d2afef30y5oa7" path="res://game/entities/weapons/tesla/player_tesla_projectile.gd" id="2_yocnc"]
+
+[sub_resource type="Resource" id="Resource_yocnc"]
+resource_local_to_scene = true
+script = ExtResource("2_mk8o6")
+value = 30
+metadata/_custom_type_script = "uid://c27v705giygv4"
+
+[node name="PlayerTeslaProjectile" instance=ExtResource("1_t7qf7")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_yocnc")
+damage = SubResource("Resource_yocnc")
+direction = Vector2(1, 0)

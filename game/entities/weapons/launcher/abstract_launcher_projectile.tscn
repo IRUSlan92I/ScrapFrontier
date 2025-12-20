@@ -1,0 +1,131 @@
+[gd_scene load_steps=20 format=3 uid="uid://dukgbg13ujkv2"]
+
+[ext_resource type="PackedScene" uid="uid://betr5ry5tc75e" path="res://game/entities/weapons/abstract_blast_projectile.tscn" id="1_0mcat"]
+[ext_resource type="Script" uid="uid://dkvur5bdwg3sr" path="res://game/entities/weapons/launcher/abstract_launcher_projectile.gd" id="2_6hdsf"]
+[ext_resource type="PackedScene" uid="uid://bhxib2ltpkcbf" path="res://game/entities/explosions/explosion_particles.tscn" id="3_iqm85"]
+[ext_resource type="Texture2D" uid="uid://gh7mwehpqfco" path="res://particle_textures/flame_medium.tres" id="3_kos01"]
+[ext_resource type="Script" uid="uid://dftb7hg5f06b5" path="res://game/data/damage/explosion_damage.gd" id="3_ycnsk"]
+[ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="4_kxgpk"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kxgpk"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -179.99998
+angle_max = 180.00002
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxgpk"]
+atlas = ExtResource("4_kxgpk")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kos01"]
+atlas = ExtResource("4_kxgpk")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqm85"]
+atlas = ExtResource("4_kxgpk")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rno65"]
+atlas = ExtResource("4_kxgpk")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f648y"]
+atlas = ExtResource("4_kxgpk")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_she3g"]
+atlas = ExtResource("4_kxgpk")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wwm4"]
+atlas = ExtResource("4_kxgpk")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl8vu"]
+atlas = ExtResource("4_kxgpk")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6hdsf"]
+radius = 1.0
+height = 6.0
+
+[sub_resource type="Resource" id="Resource_kos01"]
+script = ExtResource("3_ycnsk")
+value = 24
+metadata/_custom_type_script = "uid://dftb7hg5f06b5"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kxgpk"]
+radius = 16.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iqm85"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 16.0
+angle_min = -179.99998
+angle_max = 180.00002
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(0.1, 0.1, 0.1)
+
+[node name="AbstractLauncherProjectile" instance=ExtResource("1_0mcat")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_6hdsf")
+rotation_speed = 5
+speed = 300
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="0"]
+amount = 16
+texture = ExtResource("3_kos01")
+lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_kxgpk")
+
+[node name="Sprites" type="Node2D" parent="." index="1"]
+
+[node name="E" type="Sprite2D" parent="Sprites" index="0"]
+texture = SubResource("AtlasTexture_kxgpk")
+
+[node name="SE" type="Sprite2D" parent="Sprites" index="1"]
+texture = SubResource("AtlasTexture_kos01")
+
+[node name="S" type="Sprite2D" parent="Sprites" index="2"]
+texture = SubResource("AtlasTexture_iqm85")
+
+[node name="SW" type="Sprite2D" parent="Sprites" index="3"]
+texture = SubResource("AtlasTexture_rno65")
+
+[node name="W" type="Sprite2D" parent="Sprites" index="4"]
+texture = SubResource("AtlasTexture_f648y")
+
+[node name="NW" type="Sprite2D" parent="Sprites" index="5"]
+texture = SubResource("AtlasTexture_she3g")
+
+[node name="N" type="Sprite2D" parent="Sprites" index="6"]
+texture = SubResource("AtlasTexture_4wwm4")
+
+[node name="NE" type="Sprite2D" parent="Sprites" index="7"]
+texture = SubResource("AtlasTexture_dl8vu")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CapsuleShape2D_6hdsf")
+
+[node name="Blast" parent="." index="4"]
+collision_layer = 0
+collision_mask = 0
+damage = SubResource("Resource_kos01")
+shape = SubResource("CircleShape2D_kxgpk")
+
+[node name="ExplosionParticles" parent="." index="5" instance=ExtResource("3_iqm85")]
+process_material = SubResource("ParticleProcessMaterial_iqm85")
+amount_ratio = 0.05
+
+[node name="OutOfScreenTimer" parent="." index="6"]
+wait_time = 3.0
+
+[connection signal="finished" from="ExplosionParticles" to="." method="_on_explosion_particles_finished"]

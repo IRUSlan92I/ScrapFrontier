@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://ca2cjffcrfxkq"]
+
+[ext_resource type="PackedScene" uid="uid://c4mlppn5i55bp" path="res://game/entities/weapons/gatling/abstract_gatling_weapon.tscn" id="1_y0rod"]
+[ext_resource type="Script" uid="uid://622qtvleceha" path="res://game/entities/weapons/gatling/player_gatling_weapon.gd" id="2_5q7qs"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="3_5q7qs"]
+[ext_resource type="PackedScene" uid="uid://c0dh3x5olsjtd" path="res://game/entities/weapons/gatling/player_gatling_projectile.tscn" id="3_gqtte"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gqtte"]
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.5
+initial_velocity_min = 5.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v064d"]
+atlas = ExtResource("3_5q7qs")
+region = Rect2(160, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm1cd"]
+atlas = ExtResource("3_5q7qs")
+region = Rect2(192, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1uk2"]
+atlas = ExtResource("3_5q7qs")
+region = Rect2(224, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_colwf"]
+atlas = ExtResource("3_5q7qs")
+region = Rect2(160, 160, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_34dp1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v064d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm1cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1uk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_colwf")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 30.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5smu4"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.5
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+
+[node name="PlayerGatlingWeapon" instance=ExtResource("1_y0rod")]
+script = ExtResource("2_5q7qs")
+projectile_scene = ExtResource("3_gqtte")
+
+[node name="ShotParticles" parent="." index="0"]
+position = Vector2(17, 0)
+process_material = SubResource("ParticleProcessMaterial_gqtte")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(6, 0)
+sprite_frames = SubResource("SpriteFrames_34dp1")
+animation = &"shot"
+
+[node name="ShellParticles" parent="." index="2"]
+position = Vector2(0, -1)
+process_material = SubResource("ParticleProcessMaterial_5smu4")
+
+[node name="Muzzle" parent="." index="3"]
+position = Vector2(15, 0)

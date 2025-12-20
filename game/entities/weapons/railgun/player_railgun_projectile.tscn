@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgq4yobd2bq5l"]
+
+[ext_resource type="PackedScene" uid="uid://bab3bopsw74cb" path="res://game/entities/weapons/railgun/abstract_railgun_projectile.tscn" id="1_xytr4"]
+[ext_resource type="Script" uid="uid://51vaxrloo65r" path="res://game/entities/weapons/railgun/player_railgun_projectile.gd" id="2_sy2xa"]
+[ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="3_xm7by"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whmfh"]
+atlas = ExtResource("3_xm7by")
+region = Rect2(16, 0, 16, 16)
+
+[node name="PlayerRailgunProjectile" instance=ExtResource("1_xytr4")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_sy2xa")
+direction = Vector2(1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+texture = SubResource("AtlasTexture_whmfh")

@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtl3d7soletdn"]
+
+[ext_resource type="PackedScene" uid="uid://cj1jclfterepm" path="res://game/entities/weapons/plasma/abstract_plasma_weapon.tscn" id="1_cuvu2"]
+[ext_resource type="Script" uid="uid://dliivclhsvxq8" path="res://game/entities/weapons/plasma/enemy_plasma_weapon.gd" id="2_82g15"]
+[ext_resource type="PackedScene" uid="uid://yr3sadet3ds1" path="res://game/entities/weapons/plasma/enemy_plasma_projectile.tscn" id="3_82g15"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="3_437d6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj3ee"]
+atlas = ExtResource("3_437d6")
+region = Rect2(0, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6d2q"]
+atlas = ExtResource("3_437d6")
+region = Rect2(96, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ity8s"]
+atlas = ExtResource("3_437d6")
+region = Rect2(32, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm1ox"]
+atlas = ExtResource("3_437d6")
+region = Rect2(64, 48, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_82g15"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj3ee")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6d2q")
+}],
+"loop": true,
+"name": &"reloading",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ity8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm1ox")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 10.0
+}]
+
+[node name="EnemyPlasmaWeapon" instance=ExtResource("1_cuvu2")]
+script = ExtResource("2_82g15")
+sector_angle = 0
+projectile_scene = ExtResource("3_82g15")
+type = 0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(-8, 0)
+sprite_frames = SubResource("SpriteFrames_82g15")
+animation = &"shot"
+
+[node name="Muzzle" parent="." index="2"]
+position = Vector2(-9, -2)

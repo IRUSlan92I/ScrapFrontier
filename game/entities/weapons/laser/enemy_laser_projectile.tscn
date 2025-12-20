@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq8vnjrk70iby"]
+
+[ext_resource type="PackedScene" uid="uid://cmni0xrbbfcy5" path="res://game/entities/weapons/laser/abstract_laser_projectile.tscn" id="1_6hudn"]
+[ext_resource type="Script" uid="uid://1tw0n0y7c3n4" path="res://game/entities/weapons/laser/enemy_laser_projectile.gd" id="2_2l4gg"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2l4gg"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(16, 0, 1)
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 1.0
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+
+[node name="EnemyLaserProjectile" instance=ExtResource("1_6hudn")]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("2_2l4gg")
+direction = Vector2(-1, 0)
+
+[node name="GPUParticles2D" parent="." index="2"]
+process_material = SubResource("ParticleProcessMaterial_2l4gg")

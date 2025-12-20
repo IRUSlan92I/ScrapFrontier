@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://bccaoirwdkp7n"]
+
+[ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_xnbws"]
+[ext_resource type="Script" uid="uid://db24dm76b1am7" path="res://game/entities/weapons/cannon/abstract_cannon_weapon.gd" id="2_ew5um"]
+[ext_resource type="Texture2D" uid="uid://b13al44e8ofsx" path="res://particle_textures/flame_large.tres" id="4_i0ica"]
+[ext_resource type="Texture2D" uid="uid://b2tpy3y2bpuat" path="res://particle_textures/flame_small.tres" id="5_377p4"]
+[ext_resource type="Texture2D" uid="uid://bi1s5xrnunw3c" path="res://particle_textures/shell_large.tres" id="6_i0ica"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_377p4"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.2
+spread = 30.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i0ica"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.2
+direction = Vector3(-1, -1, 0)
+spread = 5.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jfd4t"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.2
+direction = Vector3(-1, 1, 0)
+spread = 5.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_veer3"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nrbut"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.5
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+
+[node name="AbstractCannonWeapon" instance=ExtResource("1_xnbws")]
+script = ExtResource("2_ew5um")
+sector_angle = 1
+type = 3
+
+[node name="ShotParticles" type="Node2D" parent="." index="0"]
+
+[node name="Front" type="GPUParticles2D" parent="ShotParticles" index="0"]
+emitting = false
+amount = 32
+texture = ExtResource("4_i0ica")
+lifetime = 0.5
+one_shot = true
+preprocess = 0.1
+fixed_fps = 10
+process_material = SubResource("ParticleProcessMaterial_377p4")
+
+[node name="Left" type="GPUParticles2D" parent="ShotParticles" index="1"]
+emitting = false
+texture = ExtResource("5_377p4")
+lifetime = 0.4
+one_shot = true
+fixed_fps = 10
+process_material = SubResource("ParticleProcessMaterial_i0ica")
+
+[node name="Right" type="GPUParticles2D" parent="ShotParticles" index="2"]
+emitting = false
+texture = ExtResource("5_377p4")
+lifetime = 0.4
+one_shot = true
+fixed_fps = 10
+process_material = SubResource("ParticleProcessMaterial_jfd4t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_veer3")
+
+[node name="ShellParticles" type="GPUParticles2D" parent="." index="2"]
+z_index = 1
+emitting = false
+amount = 5
+texture = ExtResource("6_i0ica")
+lifetime = 3.0
+fixed_fps = 10
+process_material = SubResource("ParticleProcessMaterial_nrbut")
+
+[node name="CooldownTimer" type="Timer" parent="." index="3"]
+wait_time = 1.2
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

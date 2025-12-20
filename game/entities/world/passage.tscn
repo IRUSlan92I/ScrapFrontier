@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgc0087kvarx6"]
+
+[ext_resource type="Script" uid="uid://c6gpm3edyr4nu" path="res://game/entities/world/passage.gd" id="1_ltkyg"]
+[ext_resource type="PackedScene" uid="uid://cpn5x0ijgl7ei" path="res://game/controllers/enemy_swamp_controller.tscn" id="2_72vqi"]
+[ext_resource type="PackedScene" uid="uid://br074cqcnul3d" path="res://game/entities/ships/player/player_ship.tscn" id="3_r3x05"]
+[ext_resource type="PackedScene" uid="uid://chdrjc7c6bdpb" path="res://game/entities/world/background.tscn" id="4_cuj01"]
+[ext_resource type="Texture2D" uid="uid://d1n7qejdcrpkf" path="res://images/passage_process.png" id="5_yetnv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ltkyg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0ams"]
+atlas = ExtResource("5_yetnv")
+region = Rect2(0, 0, 640, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heelu"]
+atlas = ExtResource("5_yetnv")
+region = Rect2(0, 8, 640, 8)
+
+[node name="Passage" type="Node2D"]
+script = ExtResource("1_ltkyg")
+
+[node name="World" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionTop" type="CollisionShape2D" parent="World"]
+position = Vector2(320, 0)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_ltkyg")
+one_way_collision = true
+
+[node name="CollisionBottom" type="CollisionShape2D" parent="World"]
+position = Vector2(320, 352)
+shape = SubResource("WorldBoundaryShape2D_ltkyg")
+one_way_collision = true
+
+[node name="CollisionLeft" type="CollisionShape2D" parent="World"]
+position = Vector2(0, 180)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_ltkyg")
+one_way_collision = true
+
+[node name="CollisionRight" type="CollisionShape2D" parent="World"]
+position = Vector2(640, 180)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_ltkyg")
+one_way_collision = true
+
+[node name="PlayerShip" parent="." instance=ExtResource("3_r3x05")]
+position = Vector2(100, 100)
+
+[node name="EnemySwampController" parent="." node_paths=PackedStringArray("passage") instance=ExtResource("2_72vqi")]
+passage = NodePath("..")
+
+[node name="EnemyTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Background" parent="." instance=ExtResource("4_cuj01")]
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+z_index = 50
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 352.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_vertical = 0
+step = 0.5
+texture_under = SubResource("AtlasTexture_u0ams")
+texture_progress = SubResource("AtlasTexture_heelu")
+
+[connection signal="destroyed" from="PlayerShip" to="." method="_on_player_ship_destroyed"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn4r4f3str55v"]
-
-[ext_resource type="Script" uid="uid://jn0w7kgstq1j" path="res://game/world/generators/stage_generator.gd" id="1_7pxno"]
-[ext_resource type="PackedScene" uid="uid://bh1v37wol5ktj" path="res://game/world/generators/sector_generator.tscn" id="2_etmdi"]
-
-[node name="StageGenerator" type="Node"]
-script = ExtResource("1_7pxno")
-
-[node name="SectorGenerator" parent="." instance=ExtResource("2_etmdi")]

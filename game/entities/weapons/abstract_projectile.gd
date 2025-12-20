@@ -9,21 +9,10 @@ const ENEMY_PROJECTILE_LAYER = 16
 
 
 @export_range(0, 1000) var speed : int = 0
+@export var direction : Vector2
 
 
-var direction : Vector2
 var ship_velocity: Vector2
-
-var collide_players: bool:
-	set(value):
-		collide_players = value
-		_apply_collision_mask()
-
-var collide_enemies: bool:
-	set(value):
-		collide_enemies = value
-		_apply_collision_mask()
-
 
 var _velocity: Vector2
 
@@ -35,32 +24,10 @@ var _velocity: Vector2
 func _ready() -> void:
 	_velocity = direction.normalized() * speed + ship_velocity
 	_update_collision_rotation(_velocity)
-	
-	_apply_collision_mask()
 
 
 func _physics_process(delta: float) -> void:
 	position += _velocity * delta
-
-
-func _apply_collision_mask() -> void:
-	_apply_collision_mask_to_area(self)
-
-
-func _apply_collision_mask_to_area(area: Area2D) -> void:
-	if collide_players:
-		area.collision_layer |= ENEMY_PROJECTILE_LAYER
-		area.collision_mask |= PLAYER_LAYER
-	else:
-		area.collision_layer &= ~ENEMY_PROJECTILE_LAYER
-		area.collision_mask &= ~PLAYER_LAYER
-	
-	if collide_enemies:
-		area.collision_layer |= PLAYER_PROJECTILE_LAYER
-		area.collision_mask |= ENEMY_LAYER
-	else:
-		area.collision_layer &= ~PLAYER_PROJECTILE_LAYER
-		area.collision_mask &= ~ENEMY_LAYER
 
 
 func _update_collision_rotation(velocity: Vector2) -> void:
@@ -107,16 +74,14 @@ func _get_nearest_foe(filter: Array[AbstractShip] = []) -> AbstractShip:
 func _get_foes(filter: Array[AbstractShip] = []) -> Array[AbstractShip]:
 	var foes : Array[AbstractShip] = []
 	
-	var flags_by_group : Dictionary[String, bool] = {
-		"enemies": collide_enemies,
-		"players": collide_players,
-	}
+	var groups : Array[String] = [ "enemies", "players" ]
 	
-	for group in flags_by_group:
-		if not flags_by_group[group]: continue
+	for group in groups:
 		var nodes := get_tree().get_nodes_in_group(group)
 		for node in nodes:
-			if not node in filter:
+			if not node is AbstractShip: continue
+			var ship := node as AbstractShip
+			if collision_mask & ship.collision_layer and not node in filter:
 				foes.append(node)
 	
 	return foes

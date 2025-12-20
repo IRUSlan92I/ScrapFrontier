@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cesibaqtrgotl" path="res://game/entities/ships/abstract_ship.gd" id="1_6isjb"]
 [ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/entities/ships/shield.gdshader" id="2_dokxo"]
-[ext_resource type="PackedScene" uid="uid://clkymhkv3cevm" path="res://game/health_system/health.tscn" id="2_xxtvk"]
-[ext_resource type="PackedScene" uid="uid://d2snum2pxc2ui" path="res://game/health_system/health_bar/heath_bar.tscn" id="3_l62e5"]
+[ext_resource type="PackedScene" uid="uid://clkymhkv3cevm" path="res://game/entities/health_system/health.tscn" id="2_xxtvk"]
+[ext_resource type="PackedScene" uid="uid://d2snum2pxc2ui" path="res://game/entities/health_system/heath_bar.tscn" id="3_l62e5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dokxo"]
 resource_local_to_scene = true

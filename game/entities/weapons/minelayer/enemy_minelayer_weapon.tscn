@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjbfi6vvikk15"]
+
+[ext_resource type="PackedScene" uid="uid://j3yht6q4ru4e" path="res://game/entities/weapons/minelayer/abstract_minelayer_weapon.tscn" id="1_8qj2c"]
+[ext_resource type="Script" uid="uid://dmnqjbog6df2x" path="res://game/entities/weapons/minelayer/enemy_minelayer_weapon.gd" id="2_n3m0w"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="3_jx7o2"]
+[ext_resource type="PackedScene" uid="uid://bs3wo34es7q10" path="res://game/entities/weapons/minelayer/enemy_minelayer_projectile.tscn" id="3_nkog1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ais8e"]
+atlas = ExtResource("3_jx7o2")
+region = Rect2(0, 144, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7h2a"]
+atlas = ExtResource("3_jx7o2")
+region = Rect2(32, 144, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u2pu"]
+atlas = ExtResource("3_jx7o2")
+region = Rect2(64, 144, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwxdg"]
+atlas = ExtResource("3_jx7o2")
+region = Rect2(96, 144, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyt37"]
+atlas = ExtResource("3_jx7o2")
+region = Rect2(128, 144, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvahc"]
+atlas = ExtResource("3_jx7o2")
+region = Rect2(160, 144, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2np6"]
+atlas = ExtResource("3_jx7o2")
+region = Rect2(192, 144, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nkog1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ais8e")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7h2a")
+}, {
+"duration": 9.0,
+"texture": SubResource("AtlasTexture_5u2pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwxdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyt37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvahc")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_c2np6")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 10.0
+}]
+
+[node name="EnemyMinelayerWeapon" instance=ExtResource("1_8qj2c")]
+script = ExtResource("2_n3m0w")
+projectile_scene = ExtResource("3_nkog1")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_nkog1")
+animation = &"shot"

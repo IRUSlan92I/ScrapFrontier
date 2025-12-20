@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c78rvwvr3dg5l"]
+
+[ext_resource type="PackedScene" uid="uid://cgi7wd84kjnyw" path="res://game/entities/weapons/cannon/abstract_cannon_projectile.tscn" id="1_ksga8"]
+[ext_resource type="Script" uid="uid://crm02yyh6rcu6" path="res://game/entities/weapons/cannon/enemy_cannon_projectile.gd" id="2_3s0hn"]
+
+[node name="EnemyCannonProjectile" instance=ExtResource("1_ksga8")]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("2_3s0hn")
+direction = Vector2(-1, 0)
+
+[node name="Blast" parent="." index="3"]
+collision_layer = 16
+collision_mask = 2

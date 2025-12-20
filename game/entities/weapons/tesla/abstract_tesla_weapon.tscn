@@ -1,0 +1,164 @@
+[gd_scene load_steps=23 format=3 uid="uid://dyebeblayioji"]
+
+[ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_rpud7"]
+[ext_resource type="Script" uid="uid://ctv408wdwvttc" path="res://game/entities/weapons/tesla/abstract_tesla_weapon.gd" id="2_08si3"]
+[ext_resource type="Texture2D" uid="uid://c6aixtu6lbfud" path="res://particle_textures/energy_small.tres" id="5_dhfvk"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="7_ub67s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucdpq"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifsj2"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(32, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1fov"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(64, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u727i"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(96, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8rch"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(128, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3n8b"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(160, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xemq"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(192, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekb5u"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(224, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ksu7"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14sqy"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57vww"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ook02"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4veo"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa0we"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50pvw"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(192, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vagjq"]
+atlas = ExtResource("7_ub67s")
+region = Rect2(224, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckvhw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucdpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifsj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1fov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u727i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8rch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3n8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xemq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekb5u")
+}],
+"loop": true,
+"name": &"enemy_idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ksu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14sqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57vww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ook02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4veo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa0we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50pvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vagjq")
+}],
+"loop": true,
+"name": &"player_idle",
+"speed": 10.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ifsj2"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.5
+spread = 180.0
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+
+[node name="AbstractTeslaWeapon" instance=ExtResource("1_rpud7")]
+script = ExtResource("2_08si3")
+sector_angle = 10
+type = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_ckvhw")
+animation = &"player_idle"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="1"]
+amount = 16
+texture = ExtResource("5_dhfvk")
+lifetime = 0.1
+fixed_fps = 10
+process_material = SubResource("ParticleProcessMaterial_ifsj2")
+
+[node name="CooldownTimer" type="Timer" parent="." index="2"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

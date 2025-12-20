@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://ddgggndifycge"]
+
+[ext_resource type="Script" uid="uid://870r1efinhqd" path="res://game/data/weapons/weapon_data.gd" id="1_tcis2"]
+[ext_resource type="PackedScene" uid="uid://b757rcwc231o2" path="res://game/entities/weapons/launcher/enemy_launcher_weapon.tscn" id="1_vypk3"]
+[ext_resource type="PackedScene" uid="uid://bmn3cxk1ajydl" path="res://game/entities/weapons/launcher/player_launcher_weapon.tscn" id="2_sdkfu"]
+
+[resource]
+script = ExtResource("1_tcis2")
+id = "launcher"
+name = "Launcher"
+group = "explosion"
+description = "Moderate damage (explosion)
+Moderate firerate
+Low velocity
+Small explosion radius
+Homing"
+enemy_scene = ExtResource("1_vypk3")
+player_scene = ExtResource("2_sdkfu")
+metadata/_custom_type_script = "uid://870r1efinhqd"

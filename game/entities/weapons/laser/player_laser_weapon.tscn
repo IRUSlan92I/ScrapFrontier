@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://cargptjtnale2"]
+
+[ext_resource type="PackedScene" uid="uid://def1alrel4ioo" path="res://game/entities/weapons/laser/abstract_laser_weapon.tscn" id="1_nky8c"]
+[ext_resource type="Script" uid="uid://824ta0lbinkb" path="res://game/entities/weapons/laser/player_laser_weapon.gd" id="2_oqbns"]
+[ext_resource type="PackedScene" uid="uid://cyskk1kc88lgf" path="res://game/entities/weapons/laser/player_laser_projectile.tscn" id="3_62i0g"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="4_oaprh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c4fv"]
+atlas = ExtResource("4_oaprh")
+region = Rect2(128, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jgsd"]
+atlas = ExtResource("4_oaprh")
+region = Rect2(160, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n6qh"]
+atlas = ExtResource("4_oaprh")
+region = Rect2(192, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amoq0"]
+atlas = ExtResource("4_oaprh")
+region = Rect2(224, 64, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_geipx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c4fv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jgsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n6qh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amoq0")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 10.0
+}]
+
+[node name="PlayerLaserWeapon" instance=ExtResource("1_nky8c")]
+script = ExtResource("2_oqbns")
+projectile_scene = ExtResource("3_62i0g")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(3, 0)
+sprite_frames = SubResource("SpriteFrames_geipx")
+animation = &"shot"
+
+[node name="Muzzle" parent="." index="2"]
+position = Vector2(5, 0)

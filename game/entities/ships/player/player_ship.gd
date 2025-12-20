@@ -40,11 +40,6 @@ func _physics_process(delta: float) -> void:
 		blink_charge_indicator.value = blink_charge
 
 
-func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
-	super._add_weapon(weapon, weapon_position)
-	weapon.set_belonging(AbstractWeapon.Belonging.PLAYER)
-
-
 func _blink(direction: Vector2) -> void:
 	if blink_charge < BLINK_CHARGE_MAXIMUM: return
 	
@@ -70,7 +65,7 @@ func _set_player_data(new_data: PlayerData) -> void:
 	player_data = new_data
 	_weapons.clear()
 	for i in range(min(player_data.weapons.size(), weapon_positions.size())):
-		var weapon_scene := player_data.weapons[i].scene
+		var weapon_scene := player_data.weapons[i].player_scene
 		var weapon : AbstractWeapon = weapon_scene.instantiate()
 		_add_weapon(weapon, weapon_positions[i])
 	

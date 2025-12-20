@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4mlppn5i55bp"]
+
+[ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_5wvix"]
+[ext_resource type="Script" uid="uid://c1bsvmj7xhnxe" path="res://game/entities/weapons/gatling/abstract_gatling_weapon.gd" id="2_no4ra"]
+[ext_resource type="Texture2D" uid="uid://b2tpy3y2bpuat" path="res://particle_textures/flame_small.tres" id="3_pm5f5"]
+[ext_resource type="Texture2D" uid="uid://bib4q76bmnajw" path="res://particle_textures/shell_small.tres" id="5_17k52"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v064d"]
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
+inherit_velocity_ratio = 0.5
+initial_velocity_min = 5.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qqle0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pjn33"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.5
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+
+[node name="AbstractGatlingWeapon" instance=ExtResource("1_5wvix")]
+script = ExtResource("2_no4ra")
+sector_angle = 5
+type = 1
+
+[node name="ShotParticles" type="GPUParticles2D" parent="." index="0"]
+emitting = false
+texture = ExtResource("3_pm5f5")
+lifetime = 0.1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_v064d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_qqle0")
+
+[node name="ShellParticles" type="GPUParticles2D" parent="." index="2"]
+z_index = 1
+emitting = false
+amount = 20
+texture = ExtResource("5_17k52")
+lifetime = 3.0
+one_shot = true
+fixed_fps = 10
+process_material = SubResource("ParticleProcessMaterial_pjn33")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

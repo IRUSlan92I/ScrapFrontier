@@ -1,0 +1,2 @@
+class_name PlayerTeslaProjectile
+extends AbstractTeslaProjectile

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://dtpk5apjti4vh"]
+
+[ext_resource type="Script" uid="uid://870r1efinhqd" path="res://game/data/weapons/weapon_data.gd" id="1_6lcn5"]
+[ext_resource type="PackedScene" uid="uid://chgf0tdlikwlb" path="res://game/entities/weapons/railgun/enemy_railgun_weapon.tscn" id="1_srmn2"]
+[ext_resource type="PackedScene" uid="uid://b745401et1bom" path="res://game/entities/weapons/railgun/player_railgun_weapon.tscn" id="2_hqpda"]
+
+[resource]
+script = ExtResource("1_6lcn5")
+id = "railgun"
+name = "Railgun"
+group = "kinetic"
+description = "High damage (kinetic)
+Low firerate
+High velocity
+Can pierce enemies"
+enemy_scene = ExtResource("1_srmn2")
+player_scene = ExtResource("2_hqpda")
+metadata/_custom_type_script = "uid://870r1efinhqd"

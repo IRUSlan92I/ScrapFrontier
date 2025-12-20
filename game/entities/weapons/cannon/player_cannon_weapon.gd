@@ -1,0 +1,2 @@
+class_name PlayerCannonWeapon
+extends AbstractCannonWeapon

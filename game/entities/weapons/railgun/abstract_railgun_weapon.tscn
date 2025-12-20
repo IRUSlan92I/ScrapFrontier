@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://do6h77gmnreho"]
+
+[ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_0nxvu"]
+[ext_resource type="Script" uid="uid://drnofu4ium56e" path="res://game/entities/weapons/railgun/abstract_railgun_weapon.gd" id="1_5nhwg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26k3l"]
+
+[node name="AbstractRailgunWeapon" instance=ExtResource("1_0nxvu")]
+script = ExtResource("1_5nhwg")
+type = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_26k3l")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

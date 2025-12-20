@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://c7tim0uie3m35"]
+
+[ext_resource type="Script" uid="uid://870r1efinhqd" path="res://game/data/weapons/weapon_data.gd" id="1_a16gw"]
+[ext_resource type="PackedScene" uid="uid://dqgybquvuw0v6" path="res://game/entities/weapons/tesla/enemy_tesla_weapon.tscn" id="1_iwabo"]
+[ext_resource type="PackedScene" uid="uid://u6hpohk5i3eu" path="res://game/entities/weapons/tesla/player_tesla_weapon.tscn" id="2_kqe35"]
+
+[resource]
+script = ExtResource("1_a16gw")
+id = "tesla"
+name = "Tesla"
+group = "energy"
+description = "Moderate damage (energetic)
+Low firerate
+High velocity
+Hits nearest target
+Can pierce enemies"
+enemy_scene = ExtResource("1_iwabo")
+player_scene = ExtResource("2_kqe35")
+metadata/_custom_type_script = "uid://870r1efinhqd"

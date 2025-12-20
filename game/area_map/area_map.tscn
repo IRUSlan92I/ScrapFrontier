@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bk8qn34w5cqmj" path="res://game/area_map/area_map.gd" id="1_hkcry"]
 [ext_resource type="PackedScene" uid="uid://b8qwok6v44la" path="res://game/area_map/indicators/current_sector_indicator.tscn" id="2_fx4fd"]
 [ext_resource type="PackedScene" uid="uid://bwru7i7xetjth" path="res://game/area_map/indicators/selected_sector_indicator.tscn" id="3_oxnrh"]
-[ext_resource type="PackedScene" uid="uid://chdrjc7c6bdpb" path="res://game/background.tscn" id="4_fx4fd"]
+[ext_resource type="PackedScene" uid="uid://chdrjc7c6bdpb" path="res://game/entities/world/background.tscn" id="4_fx4fd"]
 
 [node name="AreaMap" type="Node2D"]
 script = ExtResource("1_hkcry")

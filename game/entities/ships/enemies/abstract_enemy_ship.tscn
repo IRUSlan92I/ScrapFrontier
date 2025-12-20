@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwsn0lf1e3578"]
+[gd_scene load_steps=7 format=3 uid="uid://dwsn0lf1e3578"]
 
 [ext_resource type="PackedScene" uid="uid://jvyagshykmgb" path="res://game/entities/ships/abstract_ship.tscn" id="1_28j6l"]
 [ext_resource type="Script" uid="uid://byicf1t0807pq" path="res://game/entities/ships/enemies/abstract_enemy_ship.gd" id="2_fwvrd"]
@@ -12,14 +12,23 @@ shader_parameter/speed = 0.0
 shader_parameter/scale = 20.0
 shader_parameter/intensity = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l8c0n"]
+resource_local_to_scene = true
+shader = ExtResource("3_6nnf4")
+shader_parameter/speed = 5.0
+shader_parameter/scale = 20.0
+shader_parameter/intensity = 1.0
+
 [node name="AbstractEnemyShip" groups=["enemies"] instance=ExtResource("1_28j6l")]
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("2_fwvrd")
-weapon_rotation = 180
 
 [node name="ArmorSprite" parent="." index="1"]
 material = SubResource("ShaderMaterial_dlmr1")
+
+[node name="ShieldSprite" parent="." index="2"]
+material = SubResource("ShaderMaterial_l8c0n")
 
 [node name="EnemyController" parent="." index="4" node_paths=PackedStringArray("ship") instance=ExtResource("3_l8c0n")]
 ship = NodePath("..")
