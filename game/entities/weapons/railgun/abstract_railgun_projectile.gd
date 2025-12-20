@@ -7,6 +7,6 @@ extends AbstractDirectHitProjectile
 
 func _process_hit_for_projectile(_collided_body: Node2D) -> void:
 	if piercing == 0:
-		queue_free()
+		delete()
 	else:
 		piercing -= 1

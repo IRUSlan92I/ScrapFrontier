@@ -43,7 +43,7 @@ func _on_screen_exited() -> void:
 
 
 func _on_out_of_screen_timer_timeout() -> void:
-	queue_free()
+	delete()
 
 
 func _try_to_damage(body: Node2D, damage: AbstractDamage) -> bool:
@@ -55,6 +55,10 @@ func _try_to_damage(body: Node2D, damage: AbstractDamage) -> bool:
 
 
 func _process_hit_for_projectile(_collided_body: Node2D) -> void:
+	delete()
+
+
+func delete() -> void:
 	queue_free()
 
 

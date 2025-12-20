@@ -71,4 +71,4 @@ func _process_hit_for_projectile(_collided_body: Node2D) -> void:
 
 
 func _on_explosion_particles_finished() -> void:
-	queue_free()
+	delete()
