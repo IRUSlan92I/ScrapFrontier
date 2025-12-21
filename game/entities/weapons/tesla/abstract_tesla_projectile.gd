@@ -9,6 +9,7 @@ extends AbstractDirectHitProjectile
 
 
 var _collided_foes : Array[AbstractShip] = []
+var _current_line: Line2D
 
 
 @onready var jink_timer : Timer = $JinkTimer
@@ -22,21 +23,21 @@ func _ready() -> void:
 	super._ready()
 	_start_jink_timer()
 	
+	line_thin.hide()
+	_current_line = line_thick
+	_current_line.add_point(position)
+	
 	_prepare_line(line_thin)
 	_prepare_line(line_thick)
-	line_thin.hide()
 
 
 func _prepare_line(line: Line2D) -> void:
 	line.reparent(get_tree().current_scene)
 	line.global_position = Vector2.ZERO
-	line.add_point(position)
 
 
-func _physics_process(delta: float) -> void:
-	super._physics_process(delta)
-	line_thin.add_point(position)
-	line_thick.add_point(position)
+func _process(_delta: float) -> void:
+	_update_line_points()
 
 
 func _process_hit_for_projectile(collided_body: Node2D) -> void:
@@ -55,6 +56,41 @@ func delete() -> void:
 	line_thin.queue_free()
 	line_thick.queue_free()
 	super.delete()
+
+
+func _on_out_of_screen_timer_timeout() -> void:
+	_start_fading()
+
+
+func _update_line_points() -> void:
+	var points : Array[Vector2] = []
+	points.assign(_current_line.points)
+	
+	points.append(position)
+	
+	if weapon != null:
+		points = _move_points_follow_weapon(points)
+	
+	_current_line.clear_points()
+	for point : Vector2 in points:
+		_current_line.add_point(point)
+
+
+func _move_points_follow_weapon(points: Array[Vector2]) -> Array[Vector2]:
+	var new_points : Array[Vector2] = []
+	
+	var new_point := weapon.global_position
+	for i in range(points.size() - 1):
+		new_points.append(new_point)
+		
+		var distance_old := points[i].distance_to(points[i+1])
+		var distance_new := new_points[i].distance_to(points[i+1])
+		var distance := distance_old - (distance_old - distance_new)/2
+		
+		new_point = new_points[i] + points[i].direction_to(points[i+1]) * distance
+	new_points.append(points[points.size()-1])
+	
+	return new_points
 
 
 func _start_jink_timer() -> void:
@@ -89,12 +125,14 @@ func _apply_random_deviation(vector: Vector2) -> Vector2:
 func _start_fading() -> void:
 	line_thick.hide()
 	line_thin.show()
+	
+	for point in line_thick.points:
+		line_thin.add_point(point)
+	
+	_current_line = line_thin
+	
 	life_timer.start()
 
 
 func _on_life_timer_timeout() -> void:
 	delete()
-
-
-func _on_out_of_screen_timer_timeout() -> void:
-	_start_fading()

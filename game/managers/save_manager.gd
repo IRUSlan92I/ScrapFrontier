@@ -2,14 +2,14 @@ extends Node
 
 
 const WEAPONS : Array[WeaponData] = [
-	preload("res://game/data/weapons/cannon_data.tres"),
-	preload("res://game/data/weapons/gatling_data.tres"),
-	preload("res://game/data/weapons/laser_data.tres"),
-	preload("res://game/data/weapons/launcher_data.tres"),
-	preload("res://game/data/weapons/minelayer_data.tres"),
-	preload("res://game/data/weapons/plasma_data.tres"),
-	preload("res://game/data/weapons/railgun_data.tres"),
-	preload("res://game/data/weapons/shrapnel_data.tres"),
+	#preload("res://game/data/weapons/cannon_data.tres"),
+	#preload("res://game/data/weapons/gatling_data.tres"),
+	#preload("res://game/data/weapons/laser_data.tres"),
+	#preload("res://game/data/weapons/launcher_data.tres"),
+	#preload("res://game/data/weapons/minelayer_data.tres"),
+	#preload("res://game/data/weapons/plasma_data.tres"),
+	#preload("res://game/data/weapons/railgun_data.tres"),
+	#preload("res://game/data/weapons/shrapnel_data.tres"),
 	preload("res://game/data/weapons/tesla_data.tres"),
 ]
 
