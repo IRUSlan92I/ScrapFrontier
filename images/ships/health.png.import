@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3w0itm7k5fxq"
-path="res://.godot/imported/particles.png-86cd4f67c316e2e36289f2646d498449.ctex"
+uid="uid://do586oblhwuc5"
+path="res://.godot/imported/health.png-86131f65b49d1d4ec62f30e1712fa07e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/particles.png"
-dest_files=["res://.godot/imported/particles.png-86cd4f67c316e2e36289f2646d498449.ctex"]
+source_file="res://images/ships/health.png"
+dest_files=["res://.godot/imported/health.png-86131f65b49d1d4ec62f30e1712fa07e.ctex"]
 
 [params]
 

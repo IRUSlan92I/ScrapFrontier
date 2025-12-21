@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cj1jclfterepm" path="res://game/entities/weapons/plasma/abstract_plasma_weapon.tscn" id="1_ee068"]
 [ext_resource type="Script" uid="uid://btp6bb7dvtxl6" path="res://game/entities/weapons/plasma/player_plasma_weapon.gd" id="2_hxkfe"]
 [ext_resource type="PackedScene" uid="uid://cnjka7edh3tlt" path="res://game/entities/weapons/plasma/player_plasma_projectile.tscn" id="3_hxkfe"]
-[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="3_l4q6k"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/ships/weapons.png" id="3_l4q6k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x71d5"]
 atlas = ExtResource("3_l4q6k")

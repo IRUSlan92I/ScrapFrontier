@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://1o3idp54lil2"]
 
 [ext_resource type="Script" uid="uid://beiydi6w6gqqc" path="res://game/menu/ingame/weapon_selector.gd" id="1_4acia"]
-[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://images/menu_button.tres" id="2_g83h6"]
+[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://images/menu/menu_button.tres" id="2_g83h6"]
 
 [node name="WeaponSelector" type="MarginContainer"]
 anchors_preset = 15

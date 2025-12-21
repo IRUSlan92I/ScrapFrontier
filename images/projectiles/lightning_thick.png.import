@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do586oblhwuc5"
-path="res://.godot/imported/health.png-825db86ed00488748bab7a5690a96891.ctex"
+uid="uid://ym37tueldx8w"
+path="res://.godot/imported/lightning_thick.png-50daf8cbe37c26ad666ef7a0f5a0cbd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/health.png"
-dest_files=["res://.godot/imported/health.png-825db86ed00488748bab7a5690a96891.ctex"]
+source_file="res://images/projectiles/lightning_thick.png"
+dest_files=["res://.godot/imported/lightning_thick.png-50daf8cbe37c26ad666ef7a0f5a0cbd8.ctex"]
 
 [params]
 

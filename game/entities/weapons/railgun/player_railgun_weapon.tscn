@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://do6h77gmnreho" path="res://game/entities/weapons/railgun/abstract_railgun_weapon.tscn" id="1_1bsls"]
 [ext_resource type="Script" uid="uid://dixftp6f0w8ss" path="res://game/entities/weapons/railgun/player_railgun_weapon.gd" id="2_cw8e6"]
-[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="2_yykqk"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/ships/weapons.png" id="2_yykqk"]
 [ext_resource type="PackedScene" uid="uid://cgq4yobd2bq5l" path="res://game/entities/weapons/railgun/player_railgun_projectile.tscn" id="3_cw8e6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12cl3"]

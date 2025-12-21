@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c3l866fdqt7pf" path="res://game/entities/weapons/launcher/abstract_launcher_weapon.tscn" id="1_d6r67"]
 [ext_resource type="Script" uid="uid://c3asrkguw01q2" path="res://game/entities/weapons/launcher/player_launcher_weapon.gd" id="2_10o3e"]
 [ext_resource type="PackedScene" uid="uid://ds0xsi84rp1kb" path="res://game/entities/weapons/launcher/player_launcher_projectile.tscn" id="3_10o3e"]
-[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="4_v6ybh"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/ships/weapons.png" id="4_v6ybh"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v6ybh"]
 lifetime_randomness = 0.5

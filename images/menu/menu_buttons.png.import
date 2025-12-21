@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1n7qejdcrpkf"
-path="res://.godot/imported/passage_process.png-bff772a67d53dffb8cf9f2e6d1d84977.ctex"
+uid="uid://dhmquapac0fco"
+path="res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/passage_process.png"
-dest_files=["res://.godot/imported/passage_process.png-bff772a67d53dffb8cf9f2e6d1d84977.ctex"]
+source_file="res://images/menu/menu_buttons.png"
+dest_files=["res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"]
 
 [params]
 

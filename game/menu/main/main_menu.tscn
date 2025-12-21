@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxlccevt52y70"]
 
 [ext_resource type="Script" uid="uid://dixdfabe2vfsj" path="res://game/menu/main/main_menu.gd" id="1_chmv6"]
-[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://images/menu_button.tres" id="2_f5okj"]
+[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://images/menu/menu_button.tres" id="2_f5okj"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

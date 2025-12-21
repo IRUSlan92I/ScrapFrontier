@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi64687wtxi4d"]
+[gd_scene load_steps=8 format=3 uid="uid://bi64687wtxi4d"]
 
 [ext_resource type="PackedScene" uid="uid://cdv5n4t47hr8i" path="res://game/entities/weapons/abstract_direct_hit_projectile.tscn" id="1_1oexk"]
 [ext_resource type="Script" uid="uid://bxcoa2eps0tt1" path="res://game/entities/weapons/tesla/abstract_tesla_projectile.gd" id="2_q73is"]
 [ext_resource type="Script" uid="uid://c27v705giygv4" path="res://game/data/damage/energy_damage.gd" id="3_l65ib"]
+[ext_resource type="Texture2D" uid="uid://ym37tueldx8w" path="res://images/projectiles/lightning_thick.png" id="4_63xdp"]
+[ext_resource type="Texture2D" uid="uid://bw2k655gwkbec" path="res://images/projectiles/lightning_thin.png" id="5_5s0k0"]
 
 [sub_resource type="Resource" id="Resource_1121u"]
 resource_local_to_scene = true
@@ -13,20 +15,16 @@ metadata/_custom_type_script = "uid://c27v705giygv4"
 [sub_resource type="CircleShape2D" id="CircleShape2D_l65ib"]
 radius = 5.0
 
-[sub_resource type="Curve" id="Curve_ptgbh"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.10909091, 0.31467384), 0.0, 0.0, 0, 0, Vector2(0.2090909, 0.88342386), 0.0, 0.0, 0, 0, Vector2(0.3181818, 0.29701078), 0.0, 0.0, 0, 0, Vector2(0.4113636, 0.92934775), 0.0, 0.0, 0, 0, Vector2(0.53636366, 0.28943247), 0.0, 0.0, 0, 0, Vector2(0.7113636, 0.9399456), 0.0, 0.0, 0, 0, Vector2(0.8090909, 0.2792815), 0.0, 0.0, 0, 0, Vector2(0.9090909, 0.9399456), 0.0, 0.0, 0, 0, Vector2(1, 0.21837574), 0.0, 0.0, 0, 0]
-point_count = 10
-
 [node name="AbstractTeslaProjectile" instance=ExtResource("1_1oexk")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_q73is")
 jink_min_delay = 0.02
 jink_max_delay = 0.05
-deviation_angle = 90
+deviation_angle = 30
 no_deviation_distance = 50
 damage = SubResource("Resource_1121u")
-speed = 900
+speed = 1800
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_l65ib")
@@ -34,16 +32,20 @@ shape = SubResource("CircleShape2D_l65ib")
 [node name="JinkTimer" type="Timer" parent="." index="2"]
 one_shot = true
 
-[node name="Line2D" type="Line2D" parent="." index="4"]
-z_index = 10
-width = 3.0
-width_curve = SubResource("Curve_ptgbh")
-default_color = Color(0.25490198, 0.6509804, 0.9647059, 1)
-joint_mode = 1
+[node name="LifeTimer" type="Timer" parent="." index="3"]
+wait_time = 0.1
 
-[node name="LifeTimer" type="Timer" parent="." index="5"]
-wait_time = 0.5
-autostart = true
+[node name="LineThick" type="Line2D" parent="." index="5"]
+z_index = 10
+width = 32.0
+texture = ExtResource("4_63xdp")
+texture_mode = 1
+
+[node name="LineThin" type="Line2D" parent="." index="6"]
+z_index = 10
+width = 32.0
+texture = ExtResource("5_5s0k0")
+texture_mode = 1
 
 [connection signal="timeout" from="JinkTimer" to="." method="_on_jink_timer_timeout"]
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

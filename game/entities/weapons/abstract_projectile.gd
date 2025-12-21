@@ -8,11 +8,12 @@ const PLAYER_PROJECTILE_LAYER = 8
 const ENEMY_PROJECTILE_LAYER = 16
 
 
-@export_range(0, 1000) var speed : int = 0
+@export_range(0, 2000) var speed : int = 0
 @export var direction : Vector2
 
 
 var ship_velocity: Vector2
+var weapon : AbstractWeapon
 
 var _velocity: Vector2
 

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dyebeblayioji" path="res://game/entities/weapons/tesla/abstract_tesla_weapon.tscn" id="1_k6lmk"]
 [ext_resource type="Script" uid="uid://ermhuy56qrok" path="res://game/entities/weapons/tesla/enemy_tesla_weapon.gd" id="2_cxr41"]
 [ext_resource type="PackedScene" uid="uid://cpqpc1h3egvid" path="res://game/entities/weapons/tesla/enemy_tesla_projectile.tscn" id="3_i0gkc"]
-[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="4_b2pb7"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/ships/weapons.png" id="4_b2pb7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ucdpq"]
 atlas = ExtResource("4_b2pb7")

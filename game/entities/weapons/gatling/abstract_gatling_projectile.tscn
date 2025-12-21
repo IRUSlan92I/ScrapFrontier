@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cdv5n4t47hr8i" path="res://game/entities/weapons/abstract_direct_hit_projectile.tscn" id="1_3tgt7"]
 [ext_resource type="Script" uid="uid://rtsf1n0djorp" path="res://game/entities/weapons/gatling/abstract_gatling_projectile.gd" id="2_hbgoq"]
 [ext_resource type="Script" uid="uid://bhqvk5cnjg5mv" path="res://game/data/damage/kinetic_damage.gd" id="3_2tbeq"]
-[ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="4_ndegg"]
+[ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles/projectiles.png" id="4_ndegg"]
 
 [sub_resource type="Resource" id="Resource_ndegg"]
 script = ExtResource("3_2tbeq")

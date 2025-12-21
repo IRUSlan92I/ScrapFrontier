@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://dtnd3tqllufey"]
 
-[ext_resource type="Texture2D" uid="uid://dhmquapac0fco" path="res://images/menu_buttons.png" id="1_6mwof"]
-[ext_resource type="FontFile" uid="uid://bw1vqxkgbaekh" path="res://images/menu_font.png" id="1_hwy2u"]
+[ext_resource type="Texture2D" uid="uid://dhmquapac0fco" path="res://images/menu/menu_buttons.png" id="1_6mwof"]
+[ext_resource type="FontFile" uid="uid://bw1vqxkgbaekh" path="res://images/menu/menu_font.png" id="1_hwy2u"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6mwof"]
 content_margin_left = 10.0

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bab3bopsw74cb" path="res://game/entities/weapons/railgun/abstract_railgun_projectile.tscn" id="1_xytr4"]
 [ext_resource type="Script" uid="uid://51vaxrloo65r" path="res://game/entities/weapons/railgun/player_railgun_projectile.gd" id="2_sy2xa"]
-[ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles.png" id="3_xm7by"]
+[ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles/projectiles.png" id="3_xm7by"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_whmfh"]
 atlas = ExtResource("3_xm7by")

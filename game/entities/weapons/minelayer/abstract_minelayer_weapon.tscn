@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://1o2ta17yc5bp" path="res://game/entities/weapons/abstract_weapon.tscn" id="1_12l3k"]
 [ext_resource type="Script" uid="uid://c3ckkpjaef5jn" path="res://game/entities/weapons/minelayer/abstract_minelayer_weapon.gd" id="2_mmhtn"]
-[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="6_ais8e"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/ships/weapons.png" id="6_ais8e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ais8e"]
 atlas = ExtResource("6_ais8e")

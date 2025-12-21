@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://r7wnk762jbfy" path="res://game/entities/weapons/shrapnel/abstract_shrapnel_weapon.tscn" id="1_1p630"]
 [ext_resource type="Script" uid="uid://d30syotjwdwlu" path="res://game/entities/weapons/shrapnel/enemy_shrapnel_weapon.gd" id="2_ttncl"]
 [ext_resource type="PackedScene" uid="uid://bmusx2hpk7m76" path="res://game/entities/weapons/shrapnel/enemy_shrapnel_projectile.tscn" id="3_p5apf"]
-[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="4_ctn2a"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/ships/weapons.png" id="4_ctn2a"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ctn2a"]
 resource_local_to_scene = true

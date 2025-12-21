@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bccaoirwdkp7n" path="res://game/entities/weapons/cannon/abstract_cannon_weapon.tscn" id="1_5v7nv"]
 [ext_resource type="PackedScene" uid="uid://bswe1h1qw7e4x" path="res://game/entities/weapons/cannon/player_cannon_projectile.tscn" id="2_bgyjp"]
 [ext_resource type="Script" uid="uid://bvnecmmrk5e47" path="res://game/entities/weapons/cannon/player_cannon_weapon.gd" id="2_kkp2r"]
-[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="4_myt65"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/ships/weapons.png" id="4_myt65"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bgyjp"]
 lifetime_randomness = 0.4

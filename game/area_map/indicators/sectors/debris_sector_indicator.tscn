@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dysw7f3fxxdgg"]
 
 [ext_resource type="PackedScene" uid="uid://bofxdki5oelxe" path="res://game/area_map/indicators/abstract_sector_indicator.tscn" id="1_1il3o"]
-[ext_resource type="Texture2D" uid="uid://orutjsnhhruf" path="res://images/map.png" id="2_yiddm"]
+[ext_resource type="Texture2D" uid="uid://orutjsnhhruf" path="res://images/menu/map.png" id="2_yiddm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1il3o"]
 atlas = ExtResource("2_yiddm")

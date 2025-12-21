@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c4mlppn5i55bp" path="res://game/entities/weapons/gatling/abstract_gatling_weapon.tscn" id="1_y0rod"]
 [ext_resource type="Script" uid="uid://622qtvleceha" path="res://game/entities/weapons/gatling/player_gatling_weapon.gd" id="2_5q7qs"]
-[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/weapons.png" id="3_5q7qs"]
+[ext_resource type="Texture2D" uid="uid://6hh66k8s4a1e" path="res://images/ships/weapons.png" id="3_5q7qs"]
 [ext_resource type="PackedScene" uid="uid://c0dh3x5olsjtd" path="res://game/entities/weapons/gatling/player_gatling_projectile.tscn" id="3_gqtte"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gqtte"]

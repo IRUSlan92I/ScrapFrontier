@@ -44,6 +44,7 @@ func _create_projectile(ship_velocity: Vector2) -> AbstractProjectile:
 	var projectile : AbstractProjectile = projectile_scene.instantiate()
 	projectile.global_position = global_position
 	projectile.ship_velocity = ship_velocity
+	projectile.weapon = self
 	
 	if sector_angle > 0:
 		var sector_rad := deg_to_rad(sector_angle)
