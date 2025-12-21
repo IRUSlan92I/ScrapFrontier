@@ -1,16 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://cye5ndbh0ht7w"]
+[gd_scene load_steps=10 format=3 uid="uid://cye5ndbh0ht7w"]
 
 [ext_resource type="PackedScene" uid="uid://dwsn0lf1e3578" path="res://game/entities/ships/enemies/abstract_enemy_ship.tscn" id="1_16owb"]
 [ext_resource type="Script" uid="uid://dcpqrdvp4nk82" path="res://game/entities/ships/enemies/medium/medium_enemy_ship.gd" id="2_dgwiy"]
 [ext_resource type="Texture2D" uid="uid://dkwvm246s0wnd" path="res://images/ships/enemies/medium.png" id="3_d2xji"]
+[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/shaders/shield.gdshader" id="4_om3xa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2xji"]
 atlas = ExtResource("3_d2xji")
 region = Rect2(0, 0, 48, 32)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jorhn"]
+resource_local_to_scene = true
+shader = ExtResource("4_om3xa")
+shader_parameter/speed = 0.0
+shader_parameter/scale = 20.0
+shader_parameter/intensity = 1.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_om3xa"]
 atlas = ExtResource("3_d2xji")
 region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ren2c"]
+resource_local_to_scene = true
+shader = ExtResource("4_om3xa")
+shader_parameter/speed = 5.0
+shader_parameter/scale = 20.0
+shader_parameter/intensity = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jorhn"]
 atlas = ExtResource("3_d2xji")
@@ -27,9 +42,11 @@ mass = 250
 texture = SubResource("AtlasTexture_d2xji")
 
 [node name="ArmorSprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_jorhn")
 texture = SubResource("AtlasTexture_om3xa")
 
 [node name="ShieldSprite" parent="." index="2"]
+material = SubResource("ShaderMaterial_ren2c")
 texture = SubResource("AtlasTexture_jorhn")
 
 [node name="CollisionPolygon2D" parent="." index="3"]
@@ -41,7 +58,7 @@ rect = Rect2(-13, -21, 26, 42)
 [node name="Health" parent="." index="6"]
 max_hull = 100
 
-[node name="HeathBar" parent="." index="7"]
+[node name="HealthBar" parent="." index="7"]
 offset_top = 19.0
 offset_bottom = 19.0
 
@@ -50,3 +67,6 @@ position = Vector2(4, -8)
 
 [node name="Second" type="Node2D" parent="WeaponSlots" index="1"]
 position = Vector2(4, 8)
+
+[node name="DebrisParticles" parent="." index="9"]
+amount = 16

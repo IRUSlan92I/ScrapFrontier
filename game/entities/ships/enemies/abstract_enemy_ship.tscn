@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwsn0lf1e3578"]
+[gd_scene load_steps=8 format=3 uid="uid://dwsn0lf1e3578"]
 
 [ext_resource type="PackedScene" uid="uid://jvyagshykmgb" path="res://game/entities/ships/abstract_ship.tscn" id="1_28j6l"]
 [ext_resource type="Script" uid="uid://byicf1t0807pq" path="res://game/entities/ships/enemies/abstract_enemy_ship.gd" id="2_fwvrd"]
-[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/entities/ships/shield.gdshader" id="3_6nnf4"]
+[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/shaders/shield.gdshader" id="3_6nnf4"]
 [ext_resource type="PackedScene" uid="uid://bsqehbymixust" path="res://game/controllers/enemy_controller.tscn" id="3_l8c0n"]
+[ext_resource type="Texture2D" uid="uid://nx7sl808ghaj" path="res://images/projectiles/debris_enemy.png" id="5_6nnf4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dlmr1"]
 resource_local_to_scene = true
@@ -34,6 +35,9 @@ material = SubResource("ShaderMaterial_l8c0n")
 ship = NodePath("..")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="5"]
+
+[node name="DebrisParticles" parent="." index="9"]
+texture = ExtResource("5_6nnf4")
 
 [connection signal="accelerate" from="EnemyController" to="." method="accelerate"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

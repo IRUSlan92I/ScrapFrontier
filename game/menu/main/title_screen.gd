@@ -29,10 +29,6 @@ func _on_main_menu_new_game() -> void:
 	_show_menu(seed_selection)
 
 
-func _get_random_weapon_id() -> String:
-	return AbstractShip.WEAPON_SCENES.keys().pick_random()
-
-
 func _on_main_menu_quit_game() -> void:
 	get_tree().quit()
 

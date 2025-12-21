@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d2snum2pxc2ui"]
 
-[ext_resource type="Script" uid="uid://be7k64p2kel8b" path="res://game/entities/health_system/heath_bar.gd" id="1_bx561"]
+[ext_resource type="Script" uid="uid://be7k64p2kel8b" path="res://game/entities/health_system/health_bar.gd" id="1_bx561"]
 [ext_resource type="PackedScene" uid="uid://xbfxsiumbgkp" path="res://game/entities/health_system/health_bar_part.tscn" id="2_wb6me"]
 [ext_resource type="Texture2D" uid="uid://do586oblhwuc5" path="res://images/ships/health.png" id="3_fogsl"]
 
@@ -16,7 +16,7 @@ region = Rect2(0, 0, 32, 3)
 atlas = ExtResource("3_fogsl")
 region = Rect2(0, 3, 32, 3)
 
-[node name="HeathBar" type="Control"]
+[node name="HealthBar" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_bx561")

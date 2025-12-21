@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dwsn0lf1e3578" path="res://game/entities/ships/enemies/abstract_enemy_ship.tscn" id="1_wvvpj"]
 [ext_resource type="Script" uid="uid://cxomr1oojcrcl" path="res://game/entities/ships/enemies/heavy/heavy_enemy_ship.gd" id="2_3umer"]
 [ext_resource type="Texture2D" uid="uid://5cgq8o5oqunq" path="res://images/ships/enemies/heavy.png" id="3_xqe8d"]
-[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/entities/ships/shield.gdshader" id="4_qawoi"]
+[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/shaders/shield.gdshader" id="4_qawoi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xqe8d"]
 atlas = ExtResource("3_xqe8d")
@@ -58,7 +58,7 @@ rect = Rect2(-29, -21, 58, 42)
 [node name="Health" parent="." index="6"]
 max_hull = 200
 
-[node name="HeathBar" parent="." index="7"]
+[node name="HealthBar" parent="." index="7"]
 offset_top = 27.0
 offset_bottom = 27.0
 
@@ -70,3 +70,6 @@ position = Vector2(8, -16)
 
 [node name="Third" type="Node2D" parent="WeaponSlots" index="2"]
 position = Vector2(8, 16)
+
+[node name="DebrisParticles" parent="." index="9"]
+amount = 32

@@ -5,18 +5,6 @@ extends CharacterBody2D
 signal destroyed
 
 
-const WEAPON_SCENES : Dictionary[String, String] = {
-	"cannon": "res://game/entities/weapons/cannon/cannon_weapon.tscn",
-	"gatling": "res://game/entities/weapons/gatling/gatling_weapon.tscn",
-	"laser": "res://game/entities/weapons/laser/laser_weapon.tscn",
-	"launcher": "res://game/entities/weapons/launcher/launcher_weapon.tscn",
-	"minelayer": "res://game/entities/weapons/minelayer/minelayer_weapon.tscn",
-	"plasma": "res://game/entities/weapons/plasma/plasma_weapon.tscn",
-	"railgun": "res://game/entities/weapons/railgun/railgun_weapon.tscn",
-	"shrapnel": "res://game/entities/weapons/shrapnel/shrapnel_weapon.tscn",
-	"tesla": "res://game/entities/weapons/tesla/tesla_weapon.tscn",
-}
-
 const SHADER_INTENSITY = "shader_parameter/intensity"
 
 
@@ -33,9 +21,14 @@ var weapon_positions: Array[Vector2]
 var _weapons : Array[AbstractWeapon]
 
 
+@onready var ship : Node2D = $Ship
 @onready var ship_sprite : Sprite2D = $ShipSprite
 @onready var armor_sprite : Sprite2D = $ArmorSprite
 @onready var shield_sprite : Sprite2D = $ShieldSprite
+
+@onready var health_bar : HealthBar = $HealthBar
+
+@onready var debris_particles : GPUParticles2D = $DebrisParticles
 
 @onready var health : Health = $Health
 
@@ -95,8 +88,14 @@ func _get_new_speed(accel: float, decel: float, current_speed: float) -> float:
 
 
 func _on_health_depleted() -> void:
-	queue_free()
-	destroyed.emit()
+	for weapon in _weapons:
+		weapon.queue_free()
+	_weapons.clear()
+	ship_sprite.hide()
+	armor_sprite.hide()
+	shield_sprite.hide()
+	health_bar.hide()
+	debris_particles.emitting = true
 
 
 func _add_weapon(weapon: AbstractWeapon, weapon_position: Vector2) -> void:
@@ -123,3 +122,8 @@ func _on_armor_updated(value: int, max_value: int) -> void:
 
 func _on_hull_updated(_value: int, _max_value: int) -> void:
 	pass
+
+
+func _on_debris_particles_finished() -> void:
+	queue_free()
+	destroyed.emit()

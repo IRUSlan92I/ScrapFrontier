@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jnynidhnycpq"
-path="res://.godot/imported/debris.png-3a1a309855c3eb32eec521c5f7cd39d1.ctex"
+uid="uid://d1n7qejdcrpkf"
+path="res://.godot/imported/passage_process.png-10657c4b8caf920616101c18a45c9ca2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/ships/debris.png"
-dest_files=["res://.godot/imported/debris.png-3a1a309855c3eb32eec521c5f7cd39d1.ctex"]
+source_file="res://images/passage/passage_process.png"
+dest_files=["res://.godot/imported/passage_process.png-10657c4b8caf920616101c18a45c9ca2.ctex"]
 
 [params]
 

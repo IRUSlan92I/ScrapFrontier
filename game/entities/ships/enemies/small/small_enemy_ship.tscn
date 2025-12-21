@@ -41,7 +41,7 @@ rect = Rect2(-13, -5, 26, 10)
 [node name="Health" parent="." index="6"]
 max_hull = 50
 
-[node name="HeathBar" parent="." index="7"]
+[node name="HealthBar" parent="." index="7"]
 offset_top = 11.0
 offset_bottom = 11.0
 

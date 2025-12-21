@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cpn5x0ijgl7ei" path="res://game/controllers/enemy_swamp_controller.tscn" id="2_72vqi"]
 [ext_resource type="PackedScene" uid="uid://br074cqcnul3d" path="res://game/entities/ships/player/player_ship.tscn" id="3_r3x05"]
 [ext_resource type="PackedScene" uid="uid://chdrjc7c6bdpb" path="res://game/entities/world/background.tscn" id="4_cuj01"]
-[ext_resource type="Texture2D" uid="uid://d1n7qejdcrpkf" path="res://images/projectiles/passage_process.png" id="5_yetnv"]
+[ext_resource type="Texture2D" uid="uid://d1n7qejdcrpkf" path="res://images/passage/passage_process.png" id="5_yetnv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ltkyg"]
 

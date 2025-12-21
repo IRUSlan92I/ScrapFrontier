@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://jvyagshykmgb"]
+[gd_scene load_steps=9 format=3 uid="uid://jvyagshykmgb"]
 
 [ext_resource type="Script" uid="uid://cesibaqtrgotl" path="res://game/entities/ships/abstract_ship.gd" id="1_6isjb"]
-[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/entities/ships/shield.gdshader" id="2_dokxo"]
+[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/shaders/shield.gdshader" id="2_dokxo"]
 [ext_resource type="PackedScene" uid="uid://clkymhkv3cevm" path="res://game/entities/health_system/health.tscn" id="2_xxtvk"]
-[ext_resource type="PackedScene" uid="uid://d2snum2pxc2ui" path="res://game/entities/health_system/heath_bar.tscn" id="3_l62e5"]
+[ext_resource type="PackedScene" uid="uid://d2snum2pxc2ui" path="res://game/entities/health_system/health_bar.tscn" id="3_l62e5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dokxo"]
 resource_local_to_scene = true
@@ -19,11 +19,31 @@ shader_parameter/speed = 5.0
 shader_parameter/scale = 20.0
 shader_parameter/intensity = 1.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bkxo4"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dokxo"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 16.0
+inherit_velocity_ratio = 0.3
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+anim_offset_max = 1.0
+
 [node name="AbstractShip" type="CharacterBody2D"]
 disable_mode = 1
 motion_mode = 1
 wall_min_slide_angle = 3.1415927
 script = ExtResource("1_6isjb")
+
+[node name="Ship" type="Node2D" parent="."]
 
 [node name="ShipSprite" type="Sprite2D" parent="."]
 
@@ -37,10 +57,19 @@ material = SubResource("ShaderMaterial_bkxo4")
 
 [node name="Health" parent="." instance=ExtResource("2_xxtvk")]
 
-[node name="HeathBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_l62e5")]
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_l62e5")]
 z_index = 51
 health = NodePath("../Health")
 
 [node name="WeaponSlots" type="Node2D" parent="."]
 
+[node name="DebrisParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_bkxo4")
+emitting = false
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_dokxo")
+
 [connection signal="depleted" from="Health" to="." method="_on_health_depleted"]
+[connection signal="finished" from="DebrisParticles" to="." method="_on_debris_particles_finished"]

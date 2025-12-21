@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://br074cqcnul3d"]
+[gd_scene load_steps=15 format=3 uid="uid://br074cqcnul3d"]
 
 [ext_resource type="PackedScene" uid="uid://jvyagshykmgb" path="res://game/entities/ships/abstract_ship.tscn" id="1_6otxb"]
 [ext_resource type="Script" uid="uid://ruxw1n03iq4i" path="res://game/entities/ships/player/player_ship.gd" id="2_625ti"]
 [ext_resource type="PackedScene" uid="uid://dh1oj1w5wx4je" path="res://game/controllers/player_controller.tscn" id="3_4mjo1"]
 [ext_resource type="Texture2D" uid="uid://y2yfli24n51v" path="res://images/ships/player.png" id="3_uf2n1"]
-[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/entities/ships/shield.gdshader" id="4_ui1ht"]
+[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/shaders/shield.gdshader" id="4_ui1ht"]
 [ext_resource type="PackedScene" uid="uid://d20nvskf38vpo" path="res://game/entities/ships/player/blink_charge_indicator.tscn" id="5_uf2n1"]
+[ext_resource type="Texture2D" uid="uid://bq7eqj7n3dplh" path="res://images/projectiles/debris_player.png" id="7_waejo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4mjo1"]
 atlas = ExtResource("3_uf2n1")
@@ -55,25 +56,21 @@ deceleration = 46
 max_speed = 92
 mass = 250
 
-[node name="ShipSprite" parent="." index="0"]
+[node name="ShipSprite" parent="." index="1"]
 texture = SubResource("AtlasTexture_4mjo1")
 
-[node name="ArmorSprite" parent="." index="1"]
+[node name="ArmorSprite" parent="." index="2"]
 material = SubResource("ShaderMaterial_waejo")
 texture = SubResource("AtlasTexture_uf2n1")
 
-[node name="ShieldSprite" parent="." index="2"]
+[node name="ShieldSprite" parent="." index="3"]
 material = SubResource("ShaderMaterial_5xifi")
 texture = SubResource("AtlasTexture_ui1ht")
 
-[node name="CollisionPolygon2D" parent="." index="3"]
-polygon = PackedVector2Array(-23, -10, -17, -14, -3, -15, 21, -13, 22, -12, 22, 12, 21, 13, -3, 15, -17, 14, -23, 10)
-
 [node name="PlayerController" parent="." index="4" instance=ExtResource("3_4mjo1")]
 
-[node name="Health" parent="." index="5"]
-max_shield = 250
-max_hull = 1000
+[node name="CollisionPolygon2D" parent="." index="5"]
+polygon = PackedVector2Array(-23, -10, -17, -14, -3, -15, 21, -13, 22, -12, 22, 12, 21, 13, -3, 15, -17, 14, -23, 10)
 
 [node name="BlinkTimer" type="Timer" parent="." index="6"]
 process_callback = 0
@@ -88,9 +85,16 @@ lifetime = 0.1
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_pjmi2")
 
-[node name="HeathBar" parent="." index="8"]
+[node name="Health" parent="." index="8"]
+max_shield = 250
+max_hull = 1000
+
+[node name="HealthBar" parent="." index="9"]
 offset_top = 19.0
 offset_bottom = 19.0
+
+[node name="BlinkChargeIndicator" parent="." index="10" instance=ExtResource("5_uf2n1")]
+position = Vector2(-11, 0)
 
 [node name="First" type="Node2D" parent="WeaponSlots" index="0"]
 position = Vector2(-2, -8)
@@ -98,8 +102,9 @@ position = Vector2(-2, -8)
 [node name="Second" type="Node2D" parent="WeaponSlots" index="1"]
 position = Vector2(-2, 8)
 
-[node name="BlinkChargeIndicator" parent="." index="10" instance=ExtResource("5_uf2n1")]
-position = Vector2(-11, 0)
+[node name="DebrisParticles" parent="." index="12"]
+amount = 16
+texture = ExtResource("7_waejo")
 
 [connection signal="accelerate" from="PlayerController" to="." method="accelerate"]
 [connection signal="blink" from="PlayerController" to="." method="_blink"]
