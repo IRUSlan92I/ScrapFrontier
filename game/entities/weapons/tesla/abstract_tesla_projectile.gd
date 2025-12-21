@@ -63,20 +63,16 @@ func _on_out_of_screen_timer_timeout() -> void:
 
 
 func _update_line_points() -> void:
-	var points : Array[Vector2] = []
-	points.assign(_current_line.points)
-	
-	points.append(position)
+	_current_line.add_point(position)
 	
 	if weapon != null:
-		points = _move_points_follow_weapon(points)
-	
-	_current_line.clear_points()
-	for point : Vector2 in points:
-		_current_line.add_point(point)
+		var points := _move_points_follow_weapon(_current_line.points)
+		_current_line.clear_points()
+		for point : Vector2 in points:
+			_current_line.add_point(point)
 
 
-func _move_points_follow_weapon(points: Array[Vector2]) -> Array[Vector2]:
+func _move_points_follow_weapon(points: PackedVector2Array) -> Array[Vector2]:
 	var new_points : Array[Vector2] = []
 	
 	var new_point := weapon.global_position
