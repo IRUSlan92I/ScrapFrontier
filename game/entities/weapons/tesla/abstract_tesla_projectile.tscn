@@ -13,7 +13,7 @@ value = 30
 metadata/_custom_type_script = "uid://c27v705giygv4"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l65ib"]
-radius = 5.0
+radius = 8.0
 
 [node name="AbstractTeslaProjectile" instance=ExtResource("1_1oexk")]
 collision_layer = 0
