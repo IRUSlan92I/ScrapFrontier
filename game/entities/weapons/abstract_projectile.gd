@@ -47,7 +47,7 @@ func _on_out_of_screen_timer_timeout() -> void:
 	delete()
 
 
-func _try_to_damage(body: Node2D, damage: AbstractDamage) -> bool:
+static func _try_to_damage(body: Node2D, damage: AbstractDamage) -> bool:
 	var health_component : Health = body.find_child("Health")
 	if health_component and health_component.has_method("apply_damage"):
 		health_component.apply_damage(damage)

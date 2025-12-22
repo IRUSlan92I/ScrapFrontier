@@ -1,16 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbf3kumeoqpba"]
+[gd_scene load_steps=10 format=3 uid="uid://cbf3kumeoqpba"]
 
 [ext_resource type="PackedScene" uid="uid://dwsn0lf1e3578" path="res://game/entities/ships/enemies/abstract_enemy_ship.tscn" id="1_lt1av"]
 [ext_resource type="Script" uid="uid://btcce3nflycrs" path="res://game/entities/ships/enemies/small/small_enemy_ship.gd" id="2_bw04d"]
 [ext_resource type="Texture2D" uid="uid://5xn5jkmtbn6v" path="res://images/ships/enemies/small.png" id="3_tb2nn"]
+[ext_resource type="Shader" uid="uid://dwh22f35u5qqi" path="res://game/shaders/shield.gdshader" id="4_3asrx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tb2nn"]
 atlas = ExtResource("3_tb2nn")
 region = Rect2(0, 0, 32, 16)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20te2"]
+resource_local_to_scene = true
+shader = ExtResource("4_3asrx")
+shader_parameter/speed = 0.0
+shader_parameter/scale = 20.0
+shader_parameter/intensity = 1.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3asrx"]
 atlas = ExtResource("3_tb2nn")
 region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fhe4"]
+resource_local_to_scene = true
+shader = ExtResource("4_3asrx")
+shader_parameter/speed = 5.0
+shader_parameter/scale = 20.0
+shader_parameter/intensity = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20te2"]
 atlas = ExtResource("3_tb2nn")
@@ -27,23 +42,25 @@ mass = 100
 texture = SubResource("AtlasTexture_tb2nn")
 
 [node name="ArmorSprite" parent="Ship" index="1"]
+material = SubResource("ShaderMaterial_20te2")
 texture = SubResource("AtlasTexture_3asrx")
 
 [node name="ShieldSprite" parent="Ship" index="2"]
+material = SubResource("ShaderMaterial_8fhe4")
 texture = SubResource("AtlasTexture_20te2")
 
-[node name="CollisionPolygon2D" parent="." index="3"]
-polygon = PackedVector2Array(-3, -7, 12, -7, 15, -4, 15, 4, 12, 7, -3, 7, -15, 1, -15, -1)
+[node name="HealthBar" parent="Ship" index="3"]
+offset_top = 11.0
+offset_bottom = 11.0
+
+[node name="Health" parent="." index="1"]
+max_hull = 50
+
+[node name="First" type="Node2D" parent="WeaponSlots" index="0"]
+position = Vector2(5, 0)
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="5"]
 rect = Rect2(-13, -5, 26, 10)
 
-[node name="Health" parent="." index="6"]
-max_hull = 50
-
-[node name="HealthBar" parent="Ship" index="7"]
-offset_top = 11.0
-offset_bottom = 11.0
-
-[node name="First" type="Node2D" parent="WeaponSlots" index="0"]
-position = Vector2(5, 0)
+[node name="CollisionPolygon2D" parent="." index="6"]
+polygon = PackedVector2Array(-3, -7, 12, -7, 15, -4, 15, 4, 12, 7, -3, 7, -15, 1, -15, -1)

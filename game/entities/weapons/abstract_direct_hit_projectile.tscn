@@ -5,3 +5,4 @@
 
 [node name="DirectHitProjectile" instance=ExtResource("1_klynw")]
 script = ExtResource("2_0vgnq")
+damage = null

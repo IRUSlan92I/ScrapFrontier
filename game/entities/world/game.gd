@@ -146,8 +146,6 @@ func _show_main_menu() -> void:
 	if _current_passage_scene: _current_passage_scene.queue_free()
 	if _current_area_map_scene: _current_area_map_scene.queue_free()
 	
-	SaveManager.save()
-	
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://game/menu/main/title_screen.tscn")
 

@@ -49,18 +49,12 @@ texture = SubResource("AtlasTexture_qawoi")
 material = SubResource("ShaderMaterial_6d574")
 texture = SubResource("AtlasTexture_c4do6")
 
-[node name="CollisionPolygon2D" parent="." index="3"]
-polygon = PackedVector2Array(-31, 2, -31, -2, -17, -19, -11, -22, 8, -23, 30, -23, 30, 23, 8, 23, -11, 22, -17, 19)
-
-[node name="VisibleOnScreenNotifier2D" parent="." index="5"]
-rect = Rect2(-29, -21, 58, 42)
-
-[node name="Health" parent="." index="6"]
-max_hull = 200
-
-[node name="HealthBar" parent="Ship" index="7"]
+[node name="HealthBar" parent="Ship" index="3"]
 offset_top = 27.0
 offset_bottom = 27.0
+
+[node name="Health" parent="." index="1"]
+max_hull = 200
 
 [node name="First" type="Node2D" parent="WeaponSlots" index="0"]
 position = Vector2(-8, 0)
@@ -71,5 +65,11 @@ position = Vector2(8, -16)
 [node name="Third" type="Node2D" parent="WeaponSlots" index="2"]
 position = Vector2(8, 16)
 
-[node name="DebrisParticles" parent="." index="9"]
+[node name="DebrisParticles" parent="." index="3"]
 amount = 32
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="5"]
+rect = Rect2(-30, -22, 59, 44)
+
+[node name="CollisionPolygon2D" parent="." index="6"]
+polygon = PackedVector2Array(-31, 2, -31, -2, -17, -19, -11, -22, 8, -23, 30, -23, 30, 23, 8, 23, -11, 22, -17, 19)
