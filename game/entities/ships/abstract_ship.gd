@@ -22,11 +22,12 @@ var _weapons : Array[AbstractWeapon]
 
 
 @onready var ship : Node2D = $Ship
-@onready var ship_sprite : Sprite2D = $ShipSprite
-@onready var armor_sprite : Sprite2D = $ArmorSprite
-@onready var shield_sprite : Sprite2D = $ShieldSprite
 
-@onready var health_bar : HealthBar = $HealthBar
+@onready var ship_sprite : Sprite2D = $Ship/ShipSprite
+@onready var armor_sprite : Sprite2D = $Ship/ArmorSprite
+@onready var shield_sprite : Sprite2D = $Ship/ShieldSprite
+
+@onready var health_bar : HealthBar = $Ship/HealthBar
 
 @onready var debris_particles : GPUParticles2D = $DebrisParticles
 
@@ -91,10 +92,9 @@ func _on_health_depleted() -> void:
 	for weapon in _weapons:
 		weapon.queue_free()
 	_weapons.clear()
-	ship_sprite.hide()
-	armor_sprite.hide()
-	shield_sprite.hide()
-	health_bar.hide()
+	ship.hide()
+	collision_layer = 0
+	collision_mask = 0
 	debris_particles.emitting = true
 
 

@@ -20,7 +20,7 @@ var blink_charge: float:
 
 
 @onready var blink_shadow : GPUParticles2D = $BlinkShadow
-@onready var blink_charge_indicator : BlinkChargeIndicator = $BlinkChargeIndicator
+@onready var blink_charge_indicator : BlinkChargeIndicator = $Ship/BlinkChargeIndicator
 
 
 func _ready() -> void:

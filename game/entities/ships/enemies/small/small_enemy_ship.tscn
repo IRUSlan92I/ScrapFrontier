@@ -23,13 +23,13 @@ deceleration = 80
 max_speed = 120
 mass = 100
 
-[node name="ShipSprite" parent="." index="0"]
+[node name="ShipSprite" parent="Ship" index="0"]
 texture = SubResource("AtlasTexture_tb2nn")
 
-[node name="ArmorSprite" parent="." index="1"]
+[node name="ArmorSprite" parent="Ship" index="1"]
 texture = SubResource("AtlasTexture_3asrx")
 
-[node name="ShieldSprite" parent="." index="2"]
+[node name="ShieldSprite" parent="Ship" index="2"]
 texture = SubResource("AtlasTexture_20te2")
 
 [node name="CollisionPolygon2D" parent="." index="3"]
@@ -41,7 +41,7 @@ rect = Rect2(-13, -5, 26, 10)
 [node name="Health" parent="." index="6"]
 max_hull = 50
 
-[node name="HealthBar" parent="." index="7"]
+[node name="HealthBar" parent="Ship" index="7"]
 offset_top = 11.0
 offset_bottom = 11.0
 

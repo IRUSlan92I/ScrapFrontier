@@ -56,16 +56,37 @@ deceleration = 46
 max_speed = 92
 mass = 250
 
-[node name="ShipSprite" parent="." index="1"]
+[node name="ShipSprite" parent="Ship" index="0"]
 texture = SubResource("AtlasTexture_4mjo1")
 
-[node name="ArmorSprite" parent="." index="2"]
+[node name="ArmorSprite" parent="Ship" index="1"]
 material = SubResource("ShaderMaterial_waejo")
 texture = SubResource("AtlasTexture_uf2n1")
 
-[node name="ShieldSprite" parent="." index="3"]
+[node name="ShieldSprite" parent="Ship" index="2"]
 material = SubResource("ShaderMaterial_5xifi")
 texture = SubResource("AtlasTexture_ui1ht")
+
+[node name="HealthBar" parent="Ship" index="3"]
+offset_top = 19.0
+offset_bottom = 19.0
+
+[node name="BlinkChargeIndicator" parent="Ship" index="4" instance=ExtResource("5_uf2n1")]
+position = Vector2(-11, 0)
+
+[node name="Health" parent="." index="1"]
+max_shield = 250
+max_hull = 1000
+
+[node name="First" type="Node2D" parent="WeaponSlots" index="0"]
+position = Vector2(-2, -8)
+
+[node name="Second" type="Node2D" parent="WeaponSlots" index="1"]
+position = Vector2(-2, 8)
+
+[node name="DebrisParticles" parent="." index="3"]
+amount = 16
+texture = ExtResource("7_waejo")
 
 [node name="PlayerController" parent="." index="4" instance=ExtResource("3_4mjo1")]
 
@@ -85,29 +106,8 @@ lifetime = 0.1
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_pjmi2")
 
-[node name="Health" parent="." index="8"]
-max_shield = 250
-max_hull = 1000
-
-[node name="HealthBar" parent="." index="9"]
-offset_top = 19.0
-offset_bottom = 19.0
-
-[node name="BlinkChargeIndicator" parent="." index="10" instance=ExtResource("5_uf2n1")]
-position = Vector2(-11, 0)
-
-[node name="First" type="Node2D" parent="WeaponSlots" index="0"]
-position = Vector2(-2, -8)
-
-[node name="Second" type="Node2D" parent="WeaponSlots" index="1"]
-position = Vector2(-2, 8)
-
-[node name="DebrisParticles" parent="." index="12"]
-amount = 16
-texture = ExtResource("7_waejo")
-
-[connection signal="accelerate" from="PlayerController" to="." method="accelerate"]
-[connection signal="blink" from="PlayerController" to="." method="_blink"]
 [connection signal="armor_updated" from="Health" to="." method="_on_armor_updated"]
 [connection signal="hull_updated" from="Health" to="." method="_on_hull_updated"]
 [connection signal="shield_updated" from="Health" to="." method="_on_shield_updated"]
+[connection signal="accelerate" from="PlayerController" to="." method="accelerate"]
+[connection signal="blink" from="PlayerController" to="." method="_blink"]

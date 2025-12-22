@@ -45,21 +45,19 @@ script = ExtResource("1_6isjb")
 
 [node name="Ship" type="Node2D" parent="."]
 
-[node name="ShipSprite" type="Sprite2D" parent="."]
+[node name="ShipSprite" type="Sprite2D" parent="Ship"]
 
-[node name="ArmorSprite" type="Sprite2D" parent="."]
+[node name="ArmorSprite" type="Sprite2D" parent="Ship"]
 material = SubResource("ShaderMaterial_dokxo")
 
-[node name="ShieldSprite" type="Sprite2D" parent="."]
+[node name="ShieldSprite" type="Sprite2D" parent="Ship"]
 material = SubResource("ShaderMaterial_bkxo4")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="HealthBar" parent="Ship" node_paths=PackedStringArray("health") instance=ExtResource("3_l62e5")]
+z_index = 51
+health = NodePath("../../Health")
 
 [node name="Health" parent="." instance=ExtResource("2_xxtvk")]
-
-[node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_l62e5")]
-z_index = 51
-health = NodePath("../Health")
 
 [node name="WeaponSlots" type="Node2D" parent="."]
 
@@ -70,6 +68,8 @@ lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_dokxo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 [connection signal="depleted" from="Health" to="." method="_on_health_depleted"]
 [connection signal="finished" from="DebrisParticles" to="." method="_on_debris_particles_finished"]

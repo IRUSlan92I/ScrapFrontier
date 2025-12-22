@@ -25,10 +25,10 @@ collision_layer = 4
 collision_mask = 6
 script = ExtResource("2_fwvrd")
 
-[node name="ArmorSprite" parent="." index="1"]
+[node name="ArmorSprite" parent="Ship" index="1"]
 material = SubResource("ShaderMaterial_dlmr1")
 
-[node name="ShieldSprite" parent="." index="2"]
+[node name="ShieldSprite" parent="Ship" index="2"]
 material = SubResource("ShaderMaterial_l8c0n")
 
 [node name="EnemyController" parent="." index="4" node_paths=PackedStringArray("ship") instance=ExtResource("3_l8c0n")]

@@ -38,14 +38,14 @@ deceleration = 46
 max_speed = 92
 mass = 250
 
-[node name="ShipSprite" parent="." index="0"]
+[node name="ShipSprite" parent="Ship" index="0"]
 texture = SubResource("AtlasTexture_d2xji")
 
-[node name="ArmorSprite" parent="." index="1"]
+[node name="ArmorSprite" parent="Ship" index="1"]
 material = SubResource("ShaderMaterial_jorhn")
 texture = SubResource("AtlasTexture_om3xa")
 
-[node name="ShieldSprite" parent="." index="2"]
+[node name="ShieldSprite" parent="Ship" index="2"]
 material = SubResource("ShaderMaterial_ren2c")
 texture = SubResource("AtlasTexture_jorhn")
 
@@ -58,7 +58,7 @@ rect = Rect2(-13, -21, 26, 42)
 [node name="Health" parent="." index="6"]
 max_hull = 100
 
-[node name="HealthBar" parent="." index="7"]
+[node name="HealthBar" parent="Ship" index="7"]
 offset_top = 19.0
 offset_bottom = 19.0
 
