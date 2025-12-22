@@ -47,6 +47,8 @@ func _process_hit_for_projectile(collided_body: Node2D) -> void:
 	damage.value = floor(damage.value/2.0)
 	if damage.value == 0:
 		_start_fading()
+		collision_layer = 0
+		collision_mask = 0
 	
 	_velocity = _apply_random_deviation(_velocity)
 	_start_jink_timer()
@@ -122,6 +124,7 @@ func _start_fading() -> void:
 	line_thick.hide()
 	line_thin.show()
 	
+	line_thin.clear_points()
 	for point in line_thick.points:
 		line_thin.add_point(point)
 	
