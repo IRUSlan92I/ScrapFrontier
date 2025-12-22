@@ -1,28 +1,53 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgvb0hjrl5h4s"]
+[gd_scene load_steps=12 format=3 uid="uid://cgvb0hjrl5h4s"]
 
 [ext_resource type="PackedScene" uid="uid://cdv5n4t47hr8i" path="res://game/entities/weapons/abstract_direct_hit_projectile.tscn" id="1_x58hw"]
 [ext_resource type="Script" uid="uid://bu5sjoh4hwkhn" path="res://game/entities/weapons/plasma/abstract_plasma_projectile.gd" id="2_0deih"]
 [ext_resource type="Script" uid="uid://c27v705giygv4" path="res://game/data/damage/energy_damage.gd" id="3_dlvdm"]
-[ext_resource type="Texture2D" uid="uid://dk3t14mrgjmma" path="res://particle_textures/energy_medium.tres" id="4_5enq5"]
+[ext_resource type="Texture2D" uid="uid://oj86smpsipw4" path="res://images/projectiles/projectiles.png" id="5_0w207"]
 
 [sub_resource type="Resource" id="Resource_5enq5"]
 script = ExtResource("3_dlvdm")
 value = 20
 metadata/_custom_type_script = "uid://c27v705giygv4"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5enq5"]
-radius = 1.0
-height = 4.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu8ba"]
+atlas = ExtResource("5_0w207")
+region = Rect2(0, 64, 16, 16)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_etxcw"]
-lifetime_randomness = 0.5
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 2.0
-angle_min = -179.99998
-angle_max = 180.00002
-inherit_velocity_ratio = 0.5
-gravity = Vector3(0, 0, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky786"]
+atlas = ExtResource("5_0w207")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1ncp"]
+atlas = ExtResource("5_0w207")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7goe"]
+atlas = ExtResource("5_0w207")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ng8f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu8ba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky786")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1ncp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7goe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0w207"]
+radius = 2.0
 
 [node name="AbstractPlasmaProjectile" instance=ExtResource("1_x58hw")]
 collision_layer = 0
@@ -31,13 +56,8 @@ script = ExtResource("2_0deih")
 damage = SubResource("Resource_5enq5")
 speed = 450
 
-[node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CapsuleShape2D_5enq5")
-debug_color = Color(0.98039216, 0, 0.39215687, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_6ng8f")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
-amount = 32
-texture = ExtResource("4_5enq5")
-lifetime = 0.2
-preprocess = 0.1
-process_material = SubResource("ParticleProcessMaterial_etxcw")
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_0w207")
