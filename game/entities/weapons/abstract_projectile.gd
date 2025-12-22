@@ -18,21 +18,15 @@ var weapon : AbstractWeapon
 var _velocity: Vector2
 
 
-@onready var collision : CollisionShape2D = $CollisionShape2D
 @onready var out_of_screen_timer : Timer = $OutOfScreenTimer
 
 
 func _ready() -> void:
 	_velocity = direction.normalized() * speed + ship_velocity
-	_update_collision_rotation(_velocity)
 
 
 func _physics_process(delta: float) -> void:
 	position += _velocity * delta
-
-
-func _update_collision_rotation(velocity: Vector2) -> void:
-	collision.rotation = velocity.angle() - 0.5 * PI
 
 
 func _on_screen_entered() -> void:

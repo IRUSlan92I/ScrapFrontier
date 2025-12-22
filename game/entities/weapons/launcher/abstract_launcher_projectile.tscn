@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dukgbg13ujkv2"]
+[gd_scene load_steps=19 format=3 uid="uid://dukgbg13ujkv2"]
 
 [ext_resource type="PackedScene" uid="uid://betr5ry5tc75e" path="res://game/entities/weapons/abstract_blast_projectile.tscn" id="1_0mcat"]
 [ext_resource type="Script" uid="uid://dkvur5bdwg3sr" path="res://game/entities/weapons/launcher/abstract_launcher_projectile.gd" id="2_6hdsf"]
@@ -48,10 +48,6 @@ region = Rect2(32, 48, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dl8vu"]
 atlas = ExtResource("4_kxgpk")
 region = Rect2(48, 48, 16, 16)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6hdsf"]
-radius = 1.0
-height = 6.0
 
 [sub_resource type="Resource" id="Resource_kos01"]
 script = ExtResource("3_ycnsk")
@@ -111,9 +107,6 @@ texture = SubResource("AtlasTexture_4wwm4")
 
 [node name="NE" type="Sprite2D" parent="Sprites" index="7"]
 texture = SubResource("AtlasTexture_dl8vu")
-
-[node name="CollisionShape2D" parent="." index="2"]
-shape = SubResource("CapsuleShape2D_6hdsf")
 
 [node name="Blast" parent="." index="4"]
 collision_layer = 0

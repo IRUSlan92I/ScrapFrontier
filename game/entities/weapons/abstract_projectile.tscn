@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ctmjb3nkxrepu" path="res://game/entities/weapons/abstract_projectile.gd" id="1_4b2nh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4b2nh"]
+radius = 1.0
 
 [node name="AbstrastProjectile" type="Area2D" groups=["projectiles"]]
 z_index = 1

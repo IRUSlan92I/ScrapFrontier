@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://yfvluap3uy1r"]
+[gd_scene load_steps=7 format=3 uid="uid://yfvluap3uy1r"]
 
 [ext_resource type="PackedScene" uid="uid://cdv5n4t47hr8i" path="res://game/entities/weapons/abstract_direct_hit_projectile.tscn" id="1_3tgt7"]
 [ext_resource type="Script" uid="uid://rtsf1n0djorp" path="res://game/entities/weapons/gatling/abstract_gatling_projectile.gd" id="2_hbgoq"]
@@ -14,9 +14,6 @@ metadata/_custom_type_script = "uid://bhqvk5cnjg5mv"
 atlas = ExtResource("4_ndegg")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2tbeq"]
-radius = 1.0
-
 [node name="AbstractGatlingProjectile" instance=ExtResource("1_3tgt7")]
 collision_layer = 0
 collision_mask = 0
@@ -26,6 +23,3 @@ speed = 600
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = SubResource("AtlasTexture_11x32")
-
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_2tbeq")

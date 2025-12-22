@@ -44,4 +44,5 @@ lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_yedu2")
 
 [node name="CollisionShape2D" parent="." index="1"]
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_u82jm")
