@@ -11,7 +11,7 @@ name = "Laser"
 group = "energy"
 description = "Low damage (energetic)
 High firerate
-Low velocity"
+Infinite velocity"
 enemy_scene = ExtResource("1_mdqmb")
 player_scene = ExtResource("2_bmgx0")
 metadata/_custom_type_script = "uid://870r1efinhqd"
