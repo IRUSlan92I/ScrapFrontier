@@ -14,7 +14,13 @@ script = ExtResource("1_fe1q8")
 layout_mode = 0
 
 [node name="Options" parent="." instance=ExtResource("3_3gwb3")]
+custom_minimum_size = Vector2(640, 360)
 layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Credits" parent="." instance=ExtResource("4_jph5s")]
 layout_mode = 0

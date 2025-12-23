@@ -20,7 +20,7 @@ var fullscreen : bool:
 		_apply_video_settings()
 		_save_settings()
 
-var _window_factor := 0
+var _window_factor := 1
 var window_factor : int:
 	get:
 		return _window_factor
@@ -70,14 +70,7 @@ func _apply_video_settings() -> void:
 func _apply_window_scale() -> void:
 	if _fullscreen: return
 	
-	var factors := [1, 2, 3, 4, 5, 6]
-	
-	var factor_index := _window_factor
-	if factor_index >= factors.size():
-		factor_index = 0
-	
-	var scale : int = factors[factor_index] 
-	var new_size := BASE_SIZE * scale
+	var new_size := BASE_SIZE * _window_factor
 		
 	var current_position := DisplayServer.window_get_position()
 	var current_size := DisplayServer.window_get_size()

@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://btr60idiit4y7"]
+[gd_scene load_steps=6 format=3 uid="uid://btr60idiit4y7"]
 
 [ext_resource type="Script" uid="uid://ceng1u112aqg0" path="res://game/menu/common/options.gd" id="1_61pji"]
 [ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://images/menu/menu_button.tres" id="2_1tdpy"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_6ueaa"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_61pji"]
 action = &"ui_cancel"
@@ -11,65 +13,161 @@ events = [SubResource("InputEventAction_61pji")]
 
 [node name="Options" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_61pji")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-top_level = true
-layout_mode = 0
-offset_left = 100.0
-offset_top = 100.0
-offset_right = 271.0
-offset_bottom = 194.0
-alignment = 1
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 10
 
-[node name="OptionsGridContainer" type="GridContainer" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
+follow_focus = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 10
+
+[node name="OptionsGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
 columns = 2
 
-[node name="FullscreenLabel" type="Label" parent="VBoxContainer/OptionsGridContainer"]
+[node name="FullscreenLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 unique_name_in_owner = true
 z_index = 100
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="FullscreenCheckButton" type="CheckButton" parent="VBoxContainer/OptionsGridContainer"]
+[node name="FullscreenCheckButton" type="CheckButton" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 unique_name_in_owner = true
 z_index = 100
 layout_mode = 2
 mouse_filter = 2
 
-[node name="WindowFactorLabel" type="Label" parent="VBoxContainer/OptionsGridContainer"]
+[node name="WindowFactorLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 unique_name_in_owner = true
 z_index = 100
 layout_mode = 2
 text = "Window Factor"
 
-[node name="WindowFactorOptionButton" type="OptionButton" parent="VBoxContainer/OptionsGridContainer"]
+[node name="WindowFactorContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 unique_name_in_owner = true
-z_index = 100
+layout_mode = 2
+
+[node name="ButtonX1" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/WindowFactorContainer"]
 layout_mode = 2
 mouse_filter = 2
-selected = 0
-item_count = 6
-popup/item_0/text = "×1"
-popup/item_0/id = 0
-popup/item_1/text = "×2"
-popup/item_1/id = 1
-popup/item_2/text = "×3"
-popup/item_2/id = 2
-popup/item_3/text = "×4"
-popup/item_3/id = 3
-popup/item_4/text = "×5"
-popup/item_4/id = 4
-popup/item_5/text = "×6"
-popup/item_5/id = 5
+toggle_mode = true
+button_group = SubResource("ButtonGroup_6ueaa")
+text = "×1"
+metadata/window_factor = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="ButtonX2" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/WindowFactorContainer"]
 layout_mode = 2
+mouse_filter = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_6ueaa")
+text = "×2"
+metadata/window_factor = 2
+
+[node name="ButtonX3" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/WindowFactorContainer"]
+layout_mode = 2
+mouse_filter = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_6ueaa")
+text = "×3"
+metadata/window_factor = 3
+
+[node name="ButtonX4" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/WindowFactorContainer"]
+layout_mode = 2
+mouse_filter = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_6ueaa")
+text = "×4"
+metadata/window_factor = 4
+
+[node name="ButtonX5" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/WindowFactorContainer"]
+layout_mode = 2
+mouse_filter = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_6ueaa")
+text = "×5"
+metadata/window_factor = 5
+
+[node name="MasterLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
+layout_mode = 2
+text = "Menu Volume"
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 2
+step = 10.0
+value = 100.0
+rounded = true
+scrollable = false
+
+[node name="MenuLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
+layout_mode = 2
+text = "Menu Volume"
+
+[node name="MenuSlider" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 2
+step = 10.0
+value = 100.0
+rounded = true
+scrollable = false
+
+[node name="SFXLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 2
+step = 10.0
+value = 100.0
+rounded = true
+scrollable = false
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 2
+step = 10.0
+value = 100.0
+rounded = true
+scrollable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 alignment = 2
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="CreditsButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 z_index = 100
 layout_mode = 2
@@ -77,7 +175,7 @@ mouse_filter = 2
 theme = ExtResource("2_1tdpy")
 text = "Credits"
 
-[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="BackButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 z_index = 100
 layout_mode = 2
@@ -86,8 +184,11 @@ theme = ExtResource("2_1tdpy")
 shortcut = SubResource("Shortcut_1tdpy")
 text = "Back"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="toggled" from="VBoxContainer/OptionsGridContainer/FullscreenCheckButton" to="." method="_on_fullscreen_check_button_toggled"]
-[connection signal="item_selected" from="VBoxContainer/OptionsGridContainer/WindowFactorOptionButton" to="." method="_on_window_factor_option_button_item_selected"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/FullscreenCheckButton" to="." method="_on_fullscreen_check_button_toggled"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
