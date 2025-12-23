@@ -13,7 +13,7 @@ signal back
 @onready var credits_button : Button = $%CreditsButton
 @onready var back_button : Button = $%BackButton
 @onready var master_slider : Slider = $%MasterSlider
-@onready var menu_slider : Slider = $%MenuSlider
+@onready var ui_slider : Slider = $%UISlider
 @onready var sfx_slider : Slider = $%SFXSlider
 @onready var music_slider : Slider = $%MusicSlider
 
@@ -52,17 +52,19 @@ func _setup_neighbors() -> void:
 
 
 func _load_current_settings() -> void:
-	print(SettingsManager.window_factor)
 	fullscreen_button.button_pressed = SettingsManager.fullscreen
 	for child in window_factor_buttons.get_children():
 		if child is Button:
 			var button : Button = child
 			var window_factor : int = button.get_meta(WINDOW_FACTOR, 0)
-			print(window_factor)
 			if window_factor == SettingsManager.window_factor:
 				button.button_pressed = true
-				print(button)
 	_update_window_factor_disabled()
+	
+	master_slider.value = SettingsManager.master_volume
+	ui_slider.value = SettingsManager.ui_volume
+	sfx_slider.value = SettingsManager.sfx_volume
+	music_slider.value = SettingsManager.music_volume
 
 
 func _update_window_factor_disabled() -> void:
@@ -88,3 +90,19 @@ func _on_window_factor_button_pressed(button: Button) -> void:
 	var window_factor : int = button.get_meta(WINDOW_FACTOR, 0)
 	if window_factor > 0:
 		SettingsManager.window_factor = window_factor
+
+
+func _on_master_volume_changed(value: float) -> void:
+	SettingsManager.master_volume = floor(value)
+
+
+func _on_ui_volume_changed(value: float) -> void:
+	SettingsManager.ui_volume = floor(value)
+
+
+func _on_sfx_volume_changed(value: float) -> void:
+	SettingsManager.sfx_volume = floor(value)
+
+
+func _on_music_volume_changed(value: float) -> void:
+	SettingsManager.music_volume = floor(value)

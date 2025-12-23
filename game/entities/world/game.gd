@@ -85,8 +85,6 @@ func _process_to_next_area() -> void:
 	SaveManager.game_data.current_stage_index = 0
 	SaveManager.game_data.current_sector_index = 0
 	
-	print(SaveManager.game_data.current_area_index)
-	
 	if SaveManager.game_data.current_area_index >= world_data.areas.size():
 		SaveManager.delete_game_data()
 		victory_screen.show()

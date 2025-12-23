@@ -119,11 +119,11 @@ value = 100.0
 rounded = true
 scrollable = false
 
-[node name="MenuLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
+[node name="UILabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 layout_mode = 2
-text = "Menu Volume"
+text = "UI Volume"
 
-[node name="MenuSlider" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
+[node name="UISlider" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -190,5 +190,9 @@ alignment = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="toggled" from="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/FullscreenCheckButton" to="." method="_on_fullscreen_check_button_toggled"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/MasterSlider" to="." method="_on_master_volume_changed"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/UISlider" to="." method="_on_ui_volume_changed"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/SFXSlider" to="." method="_on_sfx_volume_changed"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/MusicSlider" to="." method="_on_music_volume_changed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

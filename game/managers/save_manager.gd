@@ -90,7 +90,6 @@ func _set_player_values() -> void:
 	var weapon_ids : Array[String] = []
 	for weapon in player_data.weapons:
 		weapon_ids.append(weapon.id)
-		
 	
 	_save_file.set_value(CATEGORY_PLAYER, PLAYER_WEAPONS, weapon_ids)
 	_save_file.set_value(CATEGORY_PLAYER, PLAYER_HULL, player_data.hull)

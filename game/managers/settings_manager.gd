@@ -7,13 +7,18 @@ const BASE_SIZE = Vector2i(640, 360)
 const CATEGORY_VIDEO = "video"
 const SETTING_FULLSCREEN = "fullscreen"
 const SETTING_WINDOW_FACTOR = "window_factor"
+const CATEGORY_AUDIO = "audio"
+const SETTING_MASTER_VOLUME = "master_volume"
+const SETTING_UI_VOLUME = "ui_volume"
+const SETTING_SFX_VOLUME = "sfx_volume"
+const SETTING_MUSIC_VOLUME = "music_volume"
 
 
 var _config: ConfigFile
 
 var _fullscreen := false
 var fullscreen : bool:
-	get:
+	get():
 		return _fullscreen
 	set(value):
 		_fullscreen = value
@@ -22,11 +27,47 @@ var fullscreen : bool:
 
 var _window_factor := 1
 var window_factor : int:
-	get:
+	get():
 		return _window_factor
 	set(value):
-		_window_factor = value
+		_window_factor = clampi(value, 1, 5)
 		_apply_video_settings()
+		_save_settings()
+
+var _master_volume := 100
+var master_volume : int:
+	get():
+		return _master_volume
+	set(value):
+		_master_volume = clampi(value, 0, 100)
+		_apply_audio_settings()
+		_save_settings()
+
+var _ui_volume := 100
+var ui_volume : int:
+	get():
+		return _ui_volume
+	set(value):
+		_ui_volume = clampi(value, 0, 100)
+		_apply_audio_settings()
+		_save_settings()
+
+var _sfx_volume := 100
+var sfx_volume : int:
+	get():
+		return _sfx_volume
+	set(value):
+		_sfx_volume = clampi(value, 0, 100)
+		_apply_audio_settings()
+		_save_settings()
+
+var _music_volume := 100
+var music_volume : int:
+	get():
+		return _music_volume
+	set(value):
+		_music_volume = clampi(value, 0, 100)
+		_apply_audio_settings()
 		_save_settings()
 
 
@@ -39,9 +80,14 @@ func _ready() -> void:
 
 func _load_settings() -> void:
 	if _config.load(CONFIG_FILE) == OK:
-		_fullscreen = _config.get_value(CATEGORY_VIDEO, SETTING_FULLSCREEN, false)
-		_window_factor = _config.get_value(CATEGORY_VIDEO, SETTING_WINDOW_FACTOR, 0)
-
+		_fullscreen = _config.get_value(CATEGORY_VIDEO, SETTING_FULLSCREEN, _fullscreen)
+		_window_factor = _config.get_value(CATEGORY_VIDEO, SETTING_WINDOW_FACTOR, _window_factor)
+		
+		_master_volume = _config.get_value(CATEGORY_AUDIO, SETTING_MASTER_VOLUME, _master_volume)
+		_ui_volume = _config.get_value(CATEGORY_AUDIO, SETTING_UI_VOLUME, _ui_volume)
+		_sfx_volume = _config.get_value(CATEGORY_AUDIO, SETTING_SFX_VOLUME, _sfx_volume)
+		_music_volume = _config.get_value(CATEGORY_AUDIO, SETTING_MUSIC_VOLUME, _music_volume)
+	
 	_save_settings()
 
 
@@ -52,11 +98,17 @@ func _save_settings() -> void:
 	_config.set_value(CATEGORY_VIDEO, SETTING_FULLSCREEN, _fullscreen)
 	_config.set_value(CATEGORY_VIDEO, SETTING_WINDOW_FACTOR, _window_factor)
 	
+	_config.set_value(CATEGORY_AUDIO, SETTING_MASTER_VOLUME, _master_volume)
+	_config.set_value(CATEGORY_AUDIO, SETTING_UI_VOLUME, _ui_volume)
+	_config.set_value(CATEGORY_AUDIO, SETTING_SFX_VOLUME, _sfx_volume)
+	_config.set_value(CATEGORY_AUDIO, SETTING_MUSIC_VOLUME, _music_volume)
+	
 	_config.save(CONFIG_FILE)
 
 
 func _apply_all_settings() -> void:
 	_apply_video_settings()
+	_apply_audio_settings()
 
 
 func _apply_video_settings() -> void:
@@ -65,6 +117,13 @@ func _apply_video_settings() -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		_apply_window_scale()
+
+
+func _apply_audio_settings() -> void:
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Master"), _master_volume/100.0)
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("UI"), _ui_volume/100.0)
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("SFX"), _sfx_volume/100.0)
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Music"), _music_volume/100.0)
 
 
 func _apply_window_scale() -> void:
