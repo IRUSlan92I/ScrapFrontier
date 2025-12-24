@@ -1,14 +1,14 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://dtnd3tqllufey"]
 
-[ext_resource type="Texture2D" uid="uid://dhmquapac0fco" path="res://images/menu/menu_buttons.png" id="1_6mwof"]
-[ext_resource type="FontFile" uid="uid://bw1vqxkgbaekh" path="res://images/fonts/font16.png" id="1_hwy2u"]
+[ext_resource type="FontFile" uid="uid://bw1vqxkgbaekh" path="res://images/fonts/font16.png" id="1_5mv23"]
+[ext_resource type="Texture2D" uid="uid://dhmquapac0fco" path="res://images/menu/menu_buttons.png" id="2_qxsgh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6mwof"]
 content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-texture = ExtResource("1_6mwof")
+texture = ExtResource("2_qxsgh")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
@@ -20,7 +20,7 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-texture = ExtResource("1_6mwof")
+texture = ExtResource("2_qxsgh")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
@@ -32,7 +32,7 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-texture = ExtResource("1_6mwof")
+texture = ExtResource("2_qxsgh")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
@@ -44,7 +44,7 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-texture = ExtResource("1_6mwof")
+texture = ExtResource("2_qxsgh")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
@@ -56,7 +56,7 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-texture = ExtResource("1_6mwof")
+texture = ExtResource("2_qxsgh")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
@@ -64,7 +64,7 @@ texture_margin_bottom = 8.0
 region_rect = Rect2(0, 32, 48, 32)
 
 [resource]
-default_font = ExtResource("1_hwy2u")
+default_font = ExtResource("1_5mv23")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(1, 1, 1, 1)
 Button/colors/font_focus_color = Color(1, 1, 1, 1)
@@ -83,7 +83,7 @@ Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
-Button/fonts/font = ExtResource("1_hwy2u")
+Button/fonts/font = ExtResource("1_5mv23")
 Button/styles/disabled = SubResource("StyleBoxTexture_6mwof")
 Button/styles/focus = SubResource("StyleBoxTexture_hwy2u")
 Button/styles/hover = SubResource("StyleBoxTexture_uvn35")
