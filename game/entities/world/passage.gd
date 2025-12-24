@@ -16,6 +16,7 @@ signal completed
 var _current_progress := 0.0
 var _timer_time_elapsed := 0.0
 var _current_enemy_index := 0
+var _player_is_alive = true
 
 
 @onready var player : PlayerShip = $PlayerShip
@@ -25,10 +26,11 @@ var _current_enemy_index := 0
 
 
 func _physics_process(delta: float) -> void:
-	_current_progress += delta
-	_update_progress_indicator()
-	if _current_progress >= passage_data.length:
-		completed.emit()
+	if _player_is_alive:
+		_current_progress += delta
+		_update_progress_indicator()
+		if _current_progress >= passage_data.length:
+			completed.emit()
 
 
 func _set_passage_data(new_data: PassageData) -> void:
@@ -63,6 +65,7 @@ func _start_timer_for_current_enemy() -> void:
 
 
 func _on_enemy_timer_timeout() -> void:
+	if not _player_is_alive: return
 	var enemy := passage_data.enemies[_current_enemy_index]
 	enemy_swamp_controller.create_enemy(enemy)
 	_current_enemy_index += 1
@@ -70,4 +73,5 @@ func _on_enemy_timer_timeout() -> void:
 
 
 func _on_player_ship_destroyed() -> void:
+	_player_is_alive = false
 	player_died.emit()

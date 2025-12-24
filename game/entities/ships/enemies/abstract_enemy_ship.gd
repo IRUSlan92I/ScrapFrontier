@@ -3,7 +3,13 @@ extends AbstractShip
 
 
 var is_on_screen : bool = false
-var weapon_type : AbstractWeapon.Type = AbstractWeapon.Type.NONE
+var weapon_type : AbstractWeapon.Type:
+	set(value):
+		pass
+	get():
+		var type := AbstractWeapon.Type.NONE
+		for weapon in _weapons: type = weapon.type
+		return type
 var enemy_data : EnemyData:
 	set = _set_enemy_data
 
