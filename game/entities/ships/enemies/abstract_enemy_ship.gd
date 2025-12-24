@@ -3,13 +3,7 @@ extends AbstractShip
 
 
 var is_on_screen : bool = false
-var weapon_type : AbstractWeapon.Type:
-	set(value):
-		pass
-	get():
-		var type := AbstractWeapon.Type.NONE
-		for weapon in _weapons: type = weapon.type
-		return type
+
 var enemy_data : EnemyData:
 	set = _set_enemy_data
 
@@ -22,6 +16,10 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_screen:
 		shoot()
+
+
+func weapon_type() -> AbstractWeapon.Type:
+	return AbstractWeapon.Type.NONE if _weapons.is_empty() else _weapons[0].type
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3q3g2647qc27"]
+[gd_scene load_steps=5 format=3 uid="uid://c3q3g2647qc27"]
 
 [ext_resource type="Script" uid="uid://dclkpithyykju" path="res://game/menu/common/credits.gd" id="1_wp78b"]
 [ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://styles/menu_button.tres" id="2_nidem"]
-[ext_resource type="Theme" uid="uid://cigren10ijb75" path="res://styles/label.tres" id="3_x2hwc"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_wp78b"]
 action = &"ui_cancel"
@@ -36,7 +35,7 @@ offset_top = 360.0
 offset_right = 640.0
 offset_bottom = 760.0
 grow_horizontal = 2
-theme = ExtResource("3_x2hwc")
+theme = ExtResource("2_nidem")
 text = "PROGRAMMING
 
 

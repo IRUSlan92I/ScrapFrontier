@@ -26,6 +26,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 z_index = 100
 layout_mode = 2
+theme = ExtResource("2_uh3ar")
 text = "Game Over"
 horizontal_alignment = 1
 
