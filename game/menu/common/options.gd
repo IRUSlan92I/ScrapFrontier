@@ -69,8 +69,9 @@ func _load_current_settings() -> void:
 
 func _update_window_factor_disabled() -> void:
 	for child in window_factor_buttons.get_children():
-		if child is Button:
-			child.disabled = SettingsManager.fullscreen
+		if not child is Button: continue
+		child.disabled = SettingsManager.fullscreen
+		child.focus_mode = Control.FOCUS_NONE if SettingsManager.fullscreen else Control.FOCUS_ALL
 
 
 func _on_fullscreen_check_button_toggled(toggled: bool) -> void:

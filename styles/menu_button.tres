@@ -1,77 +1,95 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dtnd3tqllufey"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dtnd3tqllufey"]
 
 [ext_resource type="FontFile" uid="uid://bw1vqxkgbaekh" path="res://images/fonts/font16.png" id="1_5mv23"]
 [ext_resource type="Texture2D" uid="uid://dhmquapac0fco" path="res://images/menu/menu_buttons.png" id="2_qxsgh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6mwof"]
 content_margin_left = 10.0
-content_margin_top = 10.0
+content_margin_top = 16.0
 content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_bottom = 12.0
 texture = ExtResource("2_qxsgh")
 texture_margin_left = 8.0
-texture_margin_top = 8.0
+texture_margin_top = 12.0
 texture_margin_right = 8.0
-texture_margin_bottom = 8.0
-region_rect = Rect2(96, 0, 48, 32)
+texture_margin_bottom = 12.0
+region_rect = Rect2(0, 64, 32, 32)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hwy2u"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qxsgh"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdls2"]
 content_margin_left = 10.0
-content_margin_top = 10.0
+content_margin_top = 14.0
 content_margin_right = 10.0
-content_margin_bottom = 10.0
-texture = ExtResource("2_qxsgh")
+content_margin_bottom = 14.0
+texture = SubResource("CompressedTexture2D_qxsgh")
 texture_margin_left = 8.0
-texture_margin_top = 8.0
+texture_margin_top = 12.0
 texture_margin_right = 8.0
-texture_margin_bottom = 8.0
-region_rect = Rect2(48, 0, 48, 32)
+texture_margin_bottom = 12.0
+region_rect = Rect2(32, 64, 32, 32)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uvn35"]
 content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_bottom = 18.0
 texture = ExtResource("2_qxsgh")
 texture_margin_left = 8.0
-texture_margin_top = 8.0
+texture_margin_top = 12.0
 texture_margin_right = 8.0
-texture_margin_bottom = 8.0
-region_rect = Rect2(0, 0, 48, 32)
+texture_margin_bottom = 12.0
+region_rect = Rect2(32, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5mv23"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxsgh"]
+content_margin_left = 10.0
+content_margin_top = 15.0
+content_margin_right = 10.0
+content_margin_bottom = 13.0
+texture = SubResource("CompressedTexture2D_5mv23")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 8.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(32, 32, 32, 32)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tkt1b"]
 content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_bottom = 18.0
 texture = ExtResource("2_qxsgh")
 texture_margin_left = 8.0
-texture_margin_top = 8.0
+texture_margin_top = 12.0
 texture_margin_right = 8.0
-texture_margin_bottom = 8.0
-region_rect = Rect2(0, 0, 48, 32)
+texture_margin_bottom = 12.0
+region_rect = Rect2(0, 0, 32, 32)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6cpu6"]
 content_margin_left = 10.0
-content_margin_top = 10.0
+content_margin_top = 15.0
 content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_bottom = 13.0
 texture = ExtResource("2_qxsgh")
 texture_margin_left = 8.0
-texture_margin_top = 8.0
+texture_margin_top = 12.0
 texture_margin_right = 8.0
-texture_margin_bottom = 8.0
-region_rect = Rect2(0, 32, 48, 32)
+texture_margin_bottom = 12.0
+region_rect = Rect2(0, 32, 32, 32)
 
 [resource]
 default_font = ExtResource("1_5mv23")
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_disabled_color = Color(1, 1, 1, 1)
-Button/colors/font_focus_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_color = Color(0.14509805, 0.44313726, 0.4745098, 1)
+Button/colors/font_disabled_color = Color(0.16078432, 0.21176471, 0.43529412, 1)
+Button/colors/font_focus_color = Color(0.95686275, 0.95686275, 0.95686275, 1)
+Button/colors/font_hover_color = Color(0.21960784, 0.7176471, 0.39215687, 1)
+Button/colors/font_hover_pressed_color = Color(0.21960784, 0.7176471, 0.39215687, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0.14509805, 0.44313726, 0.4745098, 1)
 Button/colors/icon_disabled_color = Color(1, 1, 1, 1)
 Button/colors/icon_focus_color = Color(1, 1, 1, 1)
 Button/colors/icon_hover_color = Color(1, 1, 1, 1)
@@ -85,7 +103,9 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("1_5mv23")
 Button/styles/disabled = SubResource("StyleBoxTexture_6mwof")
-Button/styles/focus = SubResource("StyleBoxTexture_hwy2u")
+Button/styles/focus = SubResource("StyleBoxTexture_wdls2")
 Button/styles/hover = SubResource("StyleBoxTexture_uvn35")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_qxsgh")
 Button/styles/normal = SubResource("StyleBoxTexture_tkt1b")
 Button/styles/pressed = SubResource("StyleBoxTexture_6cpu6")
+Label/colors/font_color = Color(0.95686275, 0.95686275, 0.95686275, 1)

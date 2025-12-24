@@ -47,18 +47,21 @@ columns = 2
 unique_name_in_owner = true
 z_index = 100
 layout_mode = 2
-text = "Fullscreen"
+theme = ExtResource("2_1tdpy")
 
 [node name="FullscreenCheckButton" type="CheckButton" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 unique_name_in_owner = true
 z_index = 100
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_1tdpy")
+text = "Fullscreen"
 
 [node name="WindowFactorLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 unique_name_in_owner = true
 z_index = 100
 layout_mode = 2
+theme = ExtResource("2_1tdpy")
 text = "Window Factor"
 
 [node name="WindowFactorContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
@@ -68,45 +71,51 @@ layout_mode = 2
 [node name="ButtonX1" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/WindowFactorContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_1tdpy")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_6ueaa")
-text = "×1"
+text = "*1"
 metadata/window_factor = 1
 
 [node name="ButtonX2" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/WindowFactorContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_1tdpy")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_6ueaa")
-text = "×2"
+text = "*2"
 metadata/window_factor = 2
 
 [node name="ButtonX3" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/WindowFactorContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_1tdpy")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_6ueaa")
-text = "×3"
+text = "*3"
 metadata/window_factor = 3
 
 [node name="ButtonX4" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/WindowFactorContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_1tdpy")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_6ueaa")
-text = "×4"
+text = "*4"
 metadata/window_factor = 4
 
 [node name="ButtonX5" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer/WindowFactorContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_1tdpy")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_6ueaa")
-text = "×5"
+text = "*5"
 metadata/window_factor = 5
 
 [node name="MasterLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 layout_mode = 2
+theme = ExtResource("2_1tdpy")
 text = "Menu Volume"
 
 [node name="MasterSlider" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
@@ -114,6 +123,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_1tdpy")
 step = 10.0
 value = 100.0
 rounded = true
@@ -121,6 +131,7 @@ scrollable = false
 
 [node name="UILabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 layout_mode = 2
+theme = ExtResource("2_1tdpy")
 text = "UI Volume"
 
 [node name="UISlider" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
@@ -128,6 +139,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_1tdpy")
 step = 10.0
 value = 100.0
 rounded = true
@@ -135,6 +147,7 @@ scrollable = false
 
 [node name="SFXLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 layout_mode = 2
+theme = ExtResource("2_1tdpy")
 text = "SFX Volume"
 
 [node name="SFXSlider" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
@@ -142,6 +155,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_1tdpy")
 step = 10.0
 value = 100.0
 rounded = true
@@ -149,6 +163,7 @@ scrollable = false
 
 [node name="MusicLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
 layout_mode = 2
+theme = ExtResource("2_1tdpy")
 text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/OptionsGridContainer"]
@@ -156,6 +171,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_1tdpy")
 step = 10.0
 value = 100.0
 rounded = true
