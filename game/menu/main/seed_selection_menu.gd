@@ -10,11 +10,10 @@ const DEFAULT_SEED_LENGTH := 16
 
 
 var _seed_regex := RegEx.new()
-var _random_seed := ""
 
 
-@onready var seed_label : Label = $%SeedLabel
-@onready var seed_edit : LineEdit = $%SeedEdit
+@onready var random_edit : LineEdit = $%RandomEdit
+@onready var custom_edit : LineEdit = $%CustomEdit
 
 @onready var use_random_button : Button = $%UseRandomButton
 @onready var use_custom_button : Button = $%UseCustomButton
@@ -26,7 +25,7 @@ func _init() -> void:
 
 
 func _update_use_custom_button() -> void:
-	var disabled := seed_edit.text.is_empty()
+	var disabled := custom_edit.text.is_empty()
 	use_custom_button.disabled = disabled
 	use_custom_button.focus_mode = FOCUS_NONE if disabled else FOCUS_ALL
 
@@ -59,10 +58,10 @@ func _on_seed_edit_text_changed(new_text: String) -> void:
 	for text in result:
 		filtered_text += text.get_string()
 	
-	if seed_edit.text != filtered_text:
-		var caret_position := seed_edit.caret_column
-		seed_edit.text = filtered_text
-		seed_edit.caret_column = min(caret_position, filtered_text.length())
+	if custom_edit.text != filtered_text:
+		var caret_position := custom_edit.caret_column
+		custom_edit.text = filtered_text
+		custom_edit.caret_column = min(caret_position, filtered_text.length())
 		
 	_update_use_custom_button()
 
@@ -80,17 +79,15 @@ func _on_visibility_changed() -> void:
 	if not is_node_ready(): return
 	if not visible: return
 	
-	_random_seed = _get_random_seed()
-	
-	seed_edit.text = ""
-	seed_label.text = _random_seed
+	custom_edit.text = ""
+	random_edit.text = _get_random_seed()
 	
 	_init_focus()
 
 
 func _on_use_random_button_pressed() -> void:
-	_start_game(_random_seed)
+	_start_game(random_edit.text)
 
 
 func _on_use_custom_button_pressed() -> void:
-	_start_game(seed_edit.text)
+	_start_game(custom_edit.text)

@@ -1,0 +1,296 @@
+[gd_resource type="Theme" load_steps=33 format=3 uid="uid://dtnd3tqllufey"]
+
+[ext_resource type="FontFile" uid="uid://bw1vqxkgbaekh" path="res://images/fonts/font16.png" id="1_2vd5j"]
+[ext_resource type="Texture2D" uid="uid://dhmquapac0fco" path="res://images/menu/menu_buttons.png" id="2_6ro36"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6mwof"]
+content_margin_left = 10.0
+content_margin_top = 16.0
+content_margin_right = 10.0
+content_margin_bottom = 12.0
+texture = ExtResource("2_6ro36")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 8.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(0, 64, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qxsgh"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdls2"]
+content_margin_left = 10.0
+content_margin_top = 14.0
+content_margin_right = 10.0
+content_margin_bottom = 14.0
+texture = SubResource("CompressedTexture2D_qxsgh")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 8.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(32, 64, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uvn35"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 18.0
+texture = ExtResource("2_6ro36")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 8.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(32, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5mv23"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxsgh"]
+content_margin_left = 10.0
+content_margin_top = 15.0
+content_margin_right = 10.0
+content_margin_bottom = 13.0
+texture = SubResource("CompressedTexture2D_5mv23")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 8.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(32, 32, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tkt1b"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 18.0
+texture = ExtResource("2_6ro36")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 8.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6cpu6"]
+content_margin_left = 10.0
+content_margin_top = 15.0
+content_margin_right = 10.0
+content_margin_bottom = 13.0
+texture = ExtResource("2_6ro36")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 8.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muh7f"]
+atlas = ExtResource("2_6ro36")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ph311"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqpqp"]
+atlas = SubResource("CompressedTexture2D_ph311")
+region = Rect2(224, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l00f8"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afs5s"]
+atlas = SubResource("CompressedTexture2D_l00f8")
+region = Rect2(224, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t36c3"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvlke"]
+atlas = SubResource("CompressedTexture2D_t36c3")
+region = Rect2(224, 48, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6ro36"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ph311"]
+content_margin_left = 10.0
+content_margin_top = 16.0
+content_margin_right = 10.0
+content_margin_bottom = 12.0
+texture = SubResource("CompressedTexture2D_6ro36")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 40.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(96, 64, 64, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_whlbl"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l00f8"]
+content_margin_left = 10.0
+content_margin_top = 14.0
+content_margin_right = 10.0
+content_margin_bottom = 14.0
+texture = SubResource("CompressedTexture2D_whlbl")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 40.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(160, 64, 64, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_afs5s"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t36c3"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 18.0
+texture = SubResource("CompressedTexture2D_afs5s")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 40.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(160, 0, 64, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_abqku"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_idplf"]
+content_margin_left = 10.0
+content_margin_top = 15.0
+content_margin_right = 10.0
+content_margin_bottom = 13.0
+texture = SubResource("CompressedTexture2D_abqku")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 40.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(160, 32, 64, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2vd5j"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l7q8y"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 18.0
+texture = SubResource("CompressedTexture2D_2vd5j")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 40.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(96, 0, 64, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0svg6"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bullh"]
+content_margin_left = 10.0
+content_margin_top = 15.0
+content_margin_right = 10.0
+content_margin_bottom = 13.0
+texture = SubResource("CompressedTexture2D_0svg6")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 40.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(96, 32, 64, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ro36"]
+content_margin_left = 10.0
+content_margin_top = 16.0
+content_margin_right = 10.0
+content_margin_bottom = 12.0
+texture = ExtResource("2_6ro36")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 8.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(64, 32, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_muh7f"]
+content_margin_left = 10.0
+content_margin_top = 16.0
+content_margin_right = 10.0
+content_margin_bottom = 12.0
+texture = ExtResource("2_6ro36")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 8.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(64, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rqpqp"]
+content_margin_left = 10.0
+content_margin_top = 16.0
+content_margin_right = 10.0
+content_margin_bottom = 12.0
+texture = ExtResource("2_6ro36")
+texture_margin_left = 8.0
+texture_margin_top = 12.0
+texture_margin_right = 8.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(64, 64, 32, 32)
+
+[resource]
+default_font = ExtResource("1_2vd5j")
+Button/colors/font_color = Color(0.14509805, 0.44313726, 0.4745098, 1)
+Button/colors/font_disabled_color = Color(0.16078432, 0.21176471, 0.43529412, 1)
+Button/colors/font_focus_color = Color(0.95686275, 0.95686275, 0.95686275, 1)
+Button/colors/font_hover_color = Color(0.21960784, 0.7176471, 0.39215687, 1)
+Button/colors/font_hover_pressed_color = Color(0.21960784, 0.7176471, 0.39215687, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.14509805, 0.44313726, 0.4745098, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 1)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_2vd5j")
+Button/styles/disabled = SubResource("StyleBoxTexture_6mwof")
+Button/styles/disabled_mirrored = SubResource("StyleBoxTexture_6mwof")
+Button/styles/focus = SubResource("StyleBoxTexture_wdls2")
+Button/styles/hover = SubResource("StyleBoxTexture_uvn35")
+Button/styles/hover_mirrored = SubResource("StyleBoxTexture_uvn35")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_qxsgh")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_qxsgh")
+Button/styles/normal = SubResource("StyleBoxTexture_tkt1b")
+Button/styles/normal_mirrored = SubResource("StyleBoxTexture_tkt1b")
+Button/styles/pressed = SubResource("StyleBoxTexture_6cpu6")
+Button/styles/pressed_mirrored = SubResource("StyleBoxTexture_6cpu6")
+CheckButton/icons/checked = SubResource("AtlasTexture_muh7f")
+CheckButton/icons/checked_disabled = SubResource("AtlasTexture_rqpqp")
+CheckButton/icons/checked_disabled_mirrored = SubResource("AtlasTexture_rqpqp")
+CheckButton/icons/checked_mirrored = SubResource("AtlasTexture_muh7f")
+CheckButton/icons/unchecked = SubResource("AtlasTexture_afs5s")
+CheckButton/icons/unchecked_disabled = SubResource("AtlasTexture_hvlke")
+CheckButton/icons/unchecked_disabled_mirrored = SubResource("AtlasTexture_hvlke")
+CheckButton/icons/unchecked_mirrored = SubResource("AtlasTexture_afs5s")
+CheckButton/styles/disabled = SubResource("StyleBoxTexture_ph311")
+CheckButton/styles/disabled_mirrored = SubResource("StyleBoxTexture_ph311")
+CheckButton/styles/focus = SubResource("StyleBoxTexture_l00f8")
+CheckButton/styles/hover = SubResource("StyleBoxTexture_t36c3")
+CheckButton/styles/hover_mirrored = SubResource("StyleBoxTexture_t36c3")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxTexture_idplf")
+CheckButton/styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_idplf")
+CheckButton/styles/normal = SubResource("StyleBoxTexture_l7q8y")
+CheckButton/styles/normal_mirrored = SubResource("StyleBoxTexture_l7q8y")
+CheckButton/styles/pressed = SubResource("StyleBoxTexture_bullh")
+CheckButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_bullh")
+Label/colors/font_color = Color(0.95686275, 0.95686275, 0.95686275, 1)
+LineEdit/colors/caret_color = Color(0.2, 0.23529412, 0.34117648, 1)
+LineEdit/colors/font_color = Color(0.14509805, 0.44313726, 0.4745098, 1)
+LineEdit/colors/font_placeholder_color = Color(0.2, 0.23529412, 0.34117648, 1)
+LineEdit/styles/focus = SubResource("StyleBoxTexture_6ro36")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_muh7f")
+LineEdit/styles/read_only = SubResource("StyleBoxTexture_rqpqp")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10

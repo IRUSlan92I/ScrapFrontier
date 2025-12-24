@@ -1,10 +1,10 @@
 extends Control
 
 
-@onready var main_menu : Control = $MainMenu
-@onready var options : Control = $Options
-@onready var credits : Control = $Credits
-@onready var seed_selection : Control = $SeedSelection
+@onready var main_menu : Control = $%MainMenu
+@onready var options : Control = $%Options
+@onready var credits : Control = $%Credits
+@onready var seed_selection : Control = $%SeedSelection
 
 
 func _ready() -> void:
@@ -37,12 +37,12 @@ func _on_main_menu_show_options() -> void:
 	_show_menu(options)
 
 
-func _on_options_show_credits() -> void:
+func _on_main_menu_show_credits() -> void:
 	_show_menu(credits)
 
 
 func _on_credits_back() -> void:
-	_show_menu(options)
+	_show_menu(main_menu)
 
 
 func _show_main_menu() -> void:

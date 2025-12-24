@@ -3,8 +3,9 @@ extends Control
 
 signal continue_game
 signal new_game
-signal quit_game
 signal show_options
+signal show_credits
+signal quit_game
 
 
 @onready var continue_button := $%ContinueButton
@@ -59,6 +60,10 @@ func _on_start_button_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	show_options.emit()
+
+
+func _on_credits_button_pressed() -> void:
+	show_credits.emit()
 
 
 func _on_quit_button_pressed() -> void:

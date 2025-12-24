@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdcs2ff85qjs4"]
 
 [ext_resource type="Script" uid="uid://b0p1ewlw18ijg" path="res://game/menu/ingame/victory_screen.gd" id="1_asigk"]
-[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://styles/menu_button.tres" id="2_wb4d8"]
+[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://styles/menu_theme.tres" id="2_wb4d8"]
 
 [node name="VictoryScreen" type="Control"]
 layout_mode = 3

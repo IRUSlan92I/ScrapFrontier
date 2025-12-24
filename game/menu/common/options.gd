@@ -4,13 +4,11 @@ extends Control
 const WINDOW_FACTOR = "window_factor"
 
 
-signal show_credits
 signal back
 
 
 @onready var fullscreen_button : CheckButton = $%FullscreenCheckButton
 @onready var window_factor_buttons : HBoxContainer = $%WindowFactorContainer
-@onready var credits_button : Button = $%CreditsButton
 @onready var back_button : Button = $%BackButton
 @onready var master_slider : Slider = $%MasterSlider
 @onready var ui_slider : Slider = $%UISlider
@@ -47,8 +45,6 @@ func _init_focus() -> void:
 
 func _setup_neighbors() -> void:
 	music_slider.focus_neighbor_bottom = back_button.get_path()
-	back_button.focus_neighbor_right = credits_button.get_path()
-	credits_button.focus_neighbor_left = back_button.get_path()
 
 
 func _load_current_settings() -> void:
@@ -77,10 +73,6 @@ func _update_window_factor_disabled() -> void:
 func _on_fullscreen_check_button_toggled(toggled: bool) -> void:
 	SettingsManager.fullscreen = toggled
 	_update_window_factor_disabled()
-
-
-func _on_credits_button_pressed() -> void:
-	show_credits.emit()
 
 
 func _on_back_button_pressed() -> void:

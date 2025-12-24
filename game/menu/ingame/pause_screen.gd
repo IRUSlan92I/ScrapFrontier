@@ -7,7 +7,6 @@ signal show_main_menu
 
 @onready var pause_menu : Control = $PauseMenu
 @onready var options : Control = $Options
-@onready var credits : Control = $Credits
 
 
 func _ready() -> void:
@@ -20,7 +19,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _show_menu(menu: Control) -> void:
-	var menus : Array[Control] = [ pause_menu, options, credits ]
+	var menus : Array[Control] = [ pause_menu, options ]
 	
 	for m in menus:
 		m.hide()
@@ -42,14 +41,6 @@ func _on_pause_menu_show_options() -> void:
 
 func _on_options_back() -> void:
 	_show_menu(pause_menu)
-
-
-func _on_options_show_credits() -> void:
-	_show_menu(credits)
-
-
-func _on_credits_back() -> void:
-	_show_menu(options)
 
 
 func _on_visibility_changed() -> void:

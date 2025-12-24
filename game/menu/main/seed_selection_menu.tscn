@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c36n317rhv8k7"]
 
 [ext_resource type="Script" uid="uid://dyynshvsgnepp" path="res://game/menu/main/seed_selection_menu.gd" id="1_g2smo"]
-[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://styles/menu_button.tres" id="2_s4s14"]
+[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://styles/menu_theme.tres" id="2_s4s14"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_g2smo"]
 action = &"ui_cancel"
@@ -33,12 +33,17 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="SeedLabel" type="Label" parent="GridContainer"]
+[node name="RandomEdit" type="LineEdit" parent="GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
 theme = ExtResource("2_s4s14")
-horizontal_alignment = 1
+placeholder_text = "Enter seed"
+alignment = 1
+max_length = 16
+editable = false
 
 [node name="UseRandomButton" type="Button" parent="GridContainer"]
 unique_name_in_owner = true
@@ -47,7 +52,7 @@ mouse_filter = 2
 theme = ExtResource("2_s4s14")
 text = "Use random seed"
 
-[node name="SeedEdit" type="LineEdit" parent="GridContainer"]
+[node name="CustomEdit" type="LineEdit" parent="GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
@@ -76,7 +81,7 @@ text = "Main menu"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="GridContainer/UseRandomButton" to="." method="_on_use_random_button_pressed"]
-[connection signal="text_changed" from="GridContainer/SeedEdit" to="." method="_on_seed_edit_text_changed"]
-[connection signal="text_submitted" from="GridContainer/SeedEdit" to="." method="_on_seed_edit_text_submitted"]
+[connection signal="text_changed" from="GridContainer/CustomEdit" to="." method="_on_seed_edit_text_changed"]
+[connection signal="text_submitted" from="GridContainer/CustomEdit" to="." method="_on_seed_edit_text_submitted"]
 [connection signal="pressed" from="GridContainer/UseCustomButton" to="." method="_on_use_custom_button_pressed"]
 [connection signal="pressed" from="GridContainer/BackButton" to="." method="_on_back_button_pressed"]

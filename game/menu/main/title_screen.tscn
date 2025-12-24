@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://2oavbr7oaihg"]
+[gd_scene load_steps=8 format=3 uid="uid://2oavbr7oaihg"]
 
 [ext_resource type="Script" uid="uid://bqnepsuk13qo8" path="res://game/menu/main/title_screen.gd" id="1_lxdol"]
+[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://styles/menu_theme.tres" id="2_4xt7k"]
 [ext_resource type="PackedScene" uid="uid://bxlccevt52y70" path="res://game/menu/main/main_menu.tscn" id="2_o0rbc"]
 [ext_resource type="PackedScene" uid="uid://btr60idiit4y7" path="res://game/menu/common/options.tscn" id="3_88gnj"]
 [ext_resource type="PackedScene" uid="uid://c3q3g2647qc27" path="res://game/menu/common/credits.tscn" id="4_w1y3c"]
@@ -9,45 +10,47 @@
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_lxdol")
 
-[node name="MainMenu" parent="." instance=ExtResource("2_o0rbc")]
-layout_mode = 0
-
-[node name="Options" parent="." instance=ExtResource("3_88gnj")]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 640.0
-offset_bottom = 360.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_4xt7k")
 
-[node name="Credits" parent="." instance=ExtResource("4_w1y3c")]
-layout_mode = 0
+[node name="MainMenu" parent="MarginContainer" instance=ExtResource("2_o0rbc")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="SeedSelection" parent="." instance=ExtResource("5_w1y3c")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 320.0
-offset_top = 190.0
-offset_right = 320.0
-offset_bottom = 190.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="Options" parent="MarginContainer" instance=ExtResource("3_88gnj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Credits" parent="MarginContainer" instance=ExtResource("4_w1y3c")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SeedSelection" parent="MarginContainer" instance=ExtResource("5_w1y3c")]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Background" parent="." instance=ExtResource("5_88gnj")]
 
-[connection signal="continue_game" from="MainMenu" to="." method="_on_main_menu_continue_game"]
-[connection signal="new_game" from="MainMenu" to="." method="_on_main_menu_new_game"]
-[connection signal="quit_game" from="MainMenu" to="." method="_on_main_menu_quit_game"]
-[connection signal="show_options" from="MainMenu" to="." method="_on_main_menu_show_options"]
-[connection signal="back" from="Options" to="." method="_show_main_menu"]
-[connection signal="show_credits" from="Options" to="." method="_on_options_show_credits"]
-[connection signal="back" from="Credits" to="." method="_on_credits_back"]
-[connection signal="back" from="SeedSelection" to="." method="_show_main_menu"]
+[connection signal="continue_game" from="MarginContainer/MainMenu" to="." method="_on_main_menu_continue_game"]
+[connection signal="new_game" from="MarginContainer/MainMenu" to="." method="_on_main_menu_new_game"]
+[connection signal="quit_game" from="MarginContainer/MainMenu" to="." method="_on_main_menu_quit_game"]
+[connection signal="show_credits" from="MarginContainer/MainMenu" to="." method="_on_main_menu_show_credits"]
+[connection signal="show_options" from="MarginContainer/MainMenu" to="." method="_on_main_menu_show_options"]
+[connection signal="back" from="MarginContainer/Options" to="." method="_show_main_menu"]
+[connection signal="back" from="MarginContainer/Credits" to="." method="_on_credits_back"]
+[connection signal="back" from="MarginContainer/SeedSelection" to="." method="_show_main_menu"]

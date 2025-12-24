@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cv122gw47cnun"]
 
 [ext_resource type="Script" uid="uid://6isk1tmc2ik1" path="res://game/menu/ingame/weapon_selection_screen.gd" id="1_hl2ql"]
-[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://styles/menu_button.tres" id="2_mi7cn"]
+[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://styles/menu_theme.tres" id="2_mi7cn"]
 
 [node name="WeaponSelectionScreen" type="Control"]
 layout_mode = 3
