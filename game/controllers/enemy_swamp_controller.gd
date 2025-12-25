@@ -52,7 +52,7 @@ func _update_enemy(enemy: AbstractEnemyShip) -> void:
 
 
 func _target_enemy_to_player(enemy: AbstractEnemyShip, player: PlayerShip) -> void:
-	match enemy.weapon_type:
+	match enemy.weapon_type():
 		AbstractWeapon.Type.NONE:
 			_random_move_enemy(enemy)
 		AbstractWeapon.Type.SHORT_RANGE:
