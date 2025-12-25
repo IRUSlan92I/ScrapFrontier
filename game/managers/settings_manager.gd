@@ -1,8 +1,10 @@
+class_name CSettingsManager
 extends Node
 
 
-const CONFIG_FILE = "user://settings.cfg"
-const BASE_SIZE = Vector2i(640, 360)
+@export var config_file_path := "user://settings.cfg"
+@export var window_base_size := Vector2i(640, 360)
+
 
 const CATEGORY_VIDEO = "video"
 const SETTING_FULLSCREEN = "fullscreen"
@@ -79,7 +81,7 @@ func _ready() -> void:
 
 
 func _load_settings() -> void:
-	if _config.load(CONFIG_FILE) == OK:
+	if _config.load(config_file_path) == OK:
 		_fullscreen = _config.get_value(CATEGORY_VIDEO, SETTING_FULLSCREEN, _fullscreen)
 		_window_factor = _config.get_value(CATEGORY_VIDEO, SETTING_WINDOW_FACTOR, _window_factor)
 		
@@ -103,7 +105,7 @@ func _save_settings() -> void:
 	_config.set_value(CATEGORY_AUDIO, SETTING_SFX_VOLUME, _sfx_volume)
 	_config.set_value(CATEGORY_AUDIO, SETTING_MUSIC_VOLUME, _music_volume)
 	
-	_config.save(CONFIG_FILE)
+	_config.save(config_file_path)
 
 
 func _apply_all_settings() -> void:
@@ -120,16 +122,21 @@ func _apply_video_settings() -> void:
 
 
 func _apply_audio_settings() -> void:
-	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Master"), _master_volume/100.0)
-	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("UI"), _ui_volume/100.0)
-	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("SFX"), _sfx_volume/100.0)
-	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Music"), _music_volume/100.0)
+	var master_bus := AudioServer.get_bus_index(CSoundManager.MASTER_BUS)
+	var ui_bus := AudioServer.get_bus_index(CSoundManager.UI_BUS)
+	var sfx_bus := AudioServer.get_bus_index(CSoundManager.SFX_BUS)
+	var music_bus := AudioServer.get_bus_index(CSoundManager.MUSIC_BUS)
+	
+	AudioServer.set_bus_volume_linear(master_bus, _master_volume/100.0)
+	AudioServer.set_bus_volume_linear(ui_bus, _ui_volume/100.0)
+	AudioServer.set_bus_volume_linear(sfx_bus, _sfx_volume/100.0)
+	AudioServer.set_bus_volume_linear(music_bus, _music_volume/100.0)
 
 
 func _apply_window_scale() -> void:
 	if _fullscreen: return
 	
-	var new_size := BASE_SIZE * _window_factor
+	var new_size := window_base_size * _window_factor
 		
 	var current_position := DisplayServer.window_get_position()
 	var current_size := DisplayServer.window_get_size()

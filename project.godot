@@ -19,8 +19,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SettingsManager="*res://game/managers/settings_manager.gd"
-SaveManager="*res://game/managers/save_manager.gd"
+SaveManager="*res://game/managers/save_manager.tscn"
+SettingsManager="*res://game/managers/settings_manager.tscn"
+SoundManager="*res://game/managers/sound_manager.tscn"
 
 [debug]
 

@@ -1,4 +1,9 @@
+class_name CSaveManager
 extends Node
+
+
+@export var save_file_path := "user://save.bin"
+@export var save_file_pass := "save_file_data"
 
 
 const WEAPONS : Array[WeaponData] = [
@@ -12,9 +17,6 @@ const WEAPONS : Array[WeaponData] = [
 	preload("res://game/data/weapons/shrapnel_data.tres"),
 	preload("res://game/data/weapons/tesla_data.tres"),
 ]
-
-const SAVE_FILE = "user://save.bin"
-const SAVE_FILE_PASS = "save_file_data"
 
 const CATEGORY_GAME = "game"
 const GAME_SEED = "seed"
@@ -53,7 +55,7 @@ func save() -> void:
 	_set_game_values()
 	_set_player_values()
 	
-	_save_file.save_encrypted_pass(SAVE_FILE, SAVE_FILE_PASS)
+	_save_file.save_encrypted_pass(save_file_path, save_file_pass)
 
 
 func new_game(game_seed: String) -> void:
@@ -68,7 +70,7 @@ func delete_game_data() -> void:
 
 
 func _load() -> void:
-	if _save_file.load_encrypted_pass(SAVE_FILE, SAVE_FILE_PASS) == OK:
+	if _save_file.load_encrypted_pass(save_file_path, save_file_pass) == OK:
 		_process_save_file()
 	
 	save()
