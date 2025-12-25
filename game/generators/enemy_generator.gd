@@ -63,7 +63,7 @@ func _get_enemy_type() -> EnemyType:
 
 
 func _full_spawn(data: EnemyData) -> void:
-	data.spawn_point.x = 750
+	data.spawn_point.x = 710
 	data.spawn_point.y = spawn_rng.randf_range(0.0, 360.0)
 
 

@@ -19,11 +19,15 @@ const MAX_POSITION = Vector2(600, 330)
 
 
 func create_enemy(enemy_data: EnemyData) -> void:
+	var player := _get_random_player()
+	if player == null: return
+	
 	var enemy_scene : PackedScene = load(enemy_data.enemy_scene)
 	var enemy : AbstractEnemyShip = enemy_scene.instantiate()
 	passage.add_child(enemy)
 	enemy.position = enemy_data.spawn_point
 	enemy.enemy_data = enemy_data
+	enemy.velocity = enemy.position.direction_to(player.position) * enemy.max_speed
 	_update_enemy.call_deferred(enemy)
 
 
@@ -38,17 +42,11 @@ func _on_enemy_update_timer_timeout() -> void:
 
 
 func _update_enemy(enemy: AbstractEnemyShip) -> void:
-	var players := get_tree().get_nodes_in_group("players")
-	if players.is_empty():
+	var player := _get_random_player()
+	if player:
+		_target_enemy_to_player(enemy, player)
+	else:
 		_random_move_enemy(enemy)
-		return
-	
-	var player : Node = players.pick_random()
-	if not player is PlayerShip:
-		_random_move_enemy(enemy)
-		return
-	
-	_target_enemy_to_player(enemy, player)
 
 
 func _target_enemy_to_player(enemy: AbstractEnemyShip, player: PlayerShip) -> void:
@@ -90,3 +88,12 @@ func _random_move_enemy(enemy: AbstractEnemyShip) -> void:
 		randf_range(MIN_POSITION.x, MAX_POSITION.x),
 		randf_range(MIN_POSITION.y, MAX_POSITION.y)
 	)
+
+
+func _get_random_player() -> PlayerShip:
+	var players := get_tree().get_nodes_in_group("players")
+	if players.is_empty():
+		return null
+	
+	var player : PlayerShip = players.pick_random()
+	return player
