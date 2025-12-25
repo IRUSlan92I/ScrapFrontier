@@ -9,10 +9,11 @@ script = ExtResource("1_tcis2")
 id = "launcher"
 name = "Launcher"
 group = "explosion"
-description = "Moderate damage (explosion)
+description = "Moderate damage
+(explosion)
 Moderate firerate
 Low velocity
-Small explosion radius
+Small radius
 Homing"
 enemy_scene = ExtResource("1_vypk3")
 player_scene = ExtResource("2_sdkfu")

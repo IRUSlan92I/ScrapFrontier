@@ -9,7 +9,8 @@ script = ExtResource("1_ipxhy")
 id = "laser"
 name = "Laser"
 group = "energy"
-description = "Low damage (energetic)
+description = "Low damage
+(energetic)
 High firerate
 Infinite velocity"
 enemy_scene = ExtResource("1_mdqmb")

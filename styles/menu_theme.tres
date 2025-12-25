@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=33 format=3 uid="uid://dtnd3tqllufey"]
+[gd_resource type="Theme" load_steps=46 format=3 uid="uid://dtnd3tqllufey"]
 
 [ext_resource type="FontFile" uid="uid://bw1vqxkgbaekh" path="res://images/fonts/font16.png" id="1_2vd5j"]
 [ext_resource type="Texture2D" uid="uid://dhmquapac0fco" path="res://images/menu/menu_buttons.png" id="2_6ro36"]
@@ -196,6 +196,64 @@ texture_margin_right = 40.0
 texture_margin_bottom = 12.0
 region_rect = Rect2(96, 32, 64, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vd5j"]
+atlas = ExtResource("2_6ro36")
+region = Rect2(256, 48, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l7q8y"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph311"]
+atlas = SubResource("CompressedTexture2D_l7q8y")
+region = Rect2(240, 64, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rqpqp"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1n7q"]
+atlas = SubResource("CompressedTexture2D_rqpqp")
+region = Rect2(240, 48, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hvlke"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abqku"]
+atlas = SubResource("CompressedTexture2D_hvlke")
+region = Rect2(256, 64, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r1n7q"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_whlbl"]
+texture = SubResource("CompressedTexture2D_r1n7q")
+texture_margin_left = 3.0
+texture_margin_top = 7.0
+texture_margin_right = 3.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(240, 0, 32, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_idplf"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lkot7"]
+texture = SubResource("CompressedTexture2D_idplf")
+texture_margin_left = 3.0
+texture_margin_top = 7.0
+texture_margin_right = 3.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(240, 16, 32, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_muh7f"]
+load_path = "res://.godot/imported/menu_buttons.png-57be3916c3bbcc2912e1eb0a800254c2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r1n7q"]
+texture = SubResource("CompressedTexture2D_muh7f")
+texture_margin_left = 3.0
+texture_margin_top = 7.0
+texture_margin_right = 3.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(240, 32, 32, 16)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ro36"]
 content_margin_left = 10.0
 content_margin_top = 16.0
@@ -283,6 +341,13 @@ CheckButton/styles/normal = SubResource("StyleBoxTexture_l7q8y")
 CheckButton/styles/normal_mirrored = SubResource("StyleBoxTexture_l7q8y")
 CheckButton/styles/pressed = SubResource("StyleBoxTexture_bullh")
 CheckButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_bullh")
+HSlider/icons/grabber = SubResource("AtlasTexture_2vd5j")
+HSlider/icons/grabber_disabled = SubResource("AtlasTexture_ph311")
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_r1n7q")
+HSlider/icons/tick = SubResource("AtlasTexture_abqku")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_whlbl")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_lkot7")
+HSlider/styles/slider = SubResource("StyleBoxTexture_r1n7q")
 Label/colors/font_color = Color(0.95686275, 0.95686275, 0.95686275, 1)
 LineEdit/colors/caret_color = Color(0.2, 0.23529412, 0.34117648, 1)
 LineEdit/colors/font_color = Color(0.14509805, 0.44313726, 0.4745098, 1)

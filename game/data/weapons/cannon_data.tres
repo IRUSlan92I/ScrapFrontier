@@ -9,10 +9,11 @@ script = ExtResource("1_c34y3")
 id = "cannon"
 name = "Cannon"
 group = "explosion"
-description = "High damage (explosion)
+description = "High damage
+(explosion)
 Low firerate
 Moderate velocity
-High explosion radius"
+High radiuss"
 enemy_scene = ExtResource("1_2gkq7")
 player_scene = ExtResource("2_qvf4o")
 metadata/_custom_type_script = "uid://870r1efinhqd"

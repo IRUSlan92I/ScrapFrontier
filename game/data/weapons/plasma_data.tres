@@ -9,7 +9,8 @@ script = ExtResource("1_3fasx")
 id = "plasma"
 name = "Plasma"
 group = "energy"
-description = "Moderate damage (energetic)
+description = "Moderate damage
+(energetic)
 Moderate firerate
 Moderate velocity"
 enemy_scene = ExtResource("1_h185p")

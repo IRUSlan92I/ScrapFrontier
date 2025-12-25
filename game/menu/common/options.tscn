@@ -111,7 +111,6 @@ text = "Menu Volume"
 
 [node name="MasterSlider" type="HSlider" parent="ScrollContainer/OptionsGridContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_1tdpy")
@@ -119,6 +118,9 @@ step = 10.0
 value = 100.0
 rounded = true
 scrollable = false
+tick_count = 11
+ticks_on_borders = true
+ticks_position = 3
 
 [node name="UILabel" type="Label" parent="ScrollContainer/OptionsGridContainer"]
 layout_mode = 2
@@ -127,7 +129,6 @@ text = "UI Volume"
 
 [node name="UISlider" type="HSlider" parent="ScrollContainer/OptionsGridContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_1tdpy")
@@ -135,6 +136,9 @@ step = 10.0
 value = 100.0
 rounded = true
 scrollable = false
+tick_count = 11
+ticks_on_borders = true
+ticks_position = 3
 
 [node name="SFXLabel" type="Label" parent="ScrollContainer/OptionsGridContainer"]
 layout_mode = 2
@@ -143,7 +147,6 @@ text = "SFX Volume"
 
 [node name="SFXSlider" type="HSlider" parent="ScrollContainer/OptionsGridContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_1tdpy")
@@ -151,6 +154,9 @@ step = 10.0
 value = 100.0
 rounded = true
 scrollable = false
+tick_count = 11
+ticks_on_borders = true
+ticks_position = 3
 
 [node name="MusicLabel" type="Label" parent="ScrollContainer/OptionsGridContainer"]
 layout_mode = 2
@@ -159,7 +165,6 @@ text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="ScrollContainer/OptionsGridContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_1tdpy")
@@ -167,6 +172,9 @@ step = 10.0
 value = 100.0
 rounded = true
 scrollable = false
+tick_count = 11
+ticks_on_borders = true
+ticks_position = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

@@ -9,7 +9,8 @@ script = ExtResource("1_bt4k8")
 id = "gatling"
 name = "Gatling"
 group = "kinetic"
-description = "Low damage (kinetic)
+description = "Low damage
+(kinetic)
 High firerate
 Moderate velocity"
 enemy_scene = ExtResource("1_punrp")

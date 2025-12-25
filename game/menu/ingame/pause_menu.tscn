@@ -26,14 +26,14 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_vy7sn")
 shortcut = SubResource("Shortcut_lgp46")
-text = "CONTINUE"
+text = "Continue"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 z_index = 100
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_vy7sn")
-text = "OPTIONS"
+text = "Options"
 
 [node name="MainMenuButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -41,7 +41,7 @@ z_index = 100
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_vy7sn")
-text = "MAIN MENU"
+text = "Main Menu"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

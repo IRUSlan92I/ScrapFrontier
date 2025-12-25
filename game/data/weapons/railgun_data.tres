@@ -9,7 +9,8 @@ script = ExtResource("1_6lcn5")
 id = "railgun"
 name = "Railgun"
 group = "kinetic"
-description = "High damage (kinetic)
+description = "High damage
+(kinetic)
 Low firerate
 High velocity
 Can pierce enemies"

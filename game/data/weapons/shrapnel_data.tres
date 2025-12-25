@@ -9,7 +9,8 @@ script = ExtResource("1_xds2o")
 id = "shrapnel"
 name = "Shrapnel"
 group = "kinetic"
-description = "High damage (kinetic)
+description = "High damage
+(kinetic)
 Moderate firerate
 Moderate velocity
 Short range

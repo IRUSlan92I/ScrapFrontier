@@ -9,10 +9,11 @@ script = ExtResource("1_152qt")
 id = "minelayer"
 name = "Minelayer"
 group = "explosion"
-description = "High damage (explosion)
+description = "High damage
+(explosion)
 Low firerate
 Low velocity
-Medium explosion radius
+Medium radius
 Short range"
 enemy_scene = ExtResource("1_bpafq")
 player_scene = ExtResource("2_77jvm")

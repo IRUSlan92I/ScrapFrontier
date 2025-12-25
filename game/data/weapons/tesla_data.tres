@@ -9,7 +9,8 @@ script = ExtResource("1_a16gw")
 id = "tesla"
 name = "Tesla"
 group = "energy"
-description = "Moderate damage (energetic)
+description = "Moderate damage
+(energetic)
 Low firerate
 High velocity
 Hits nearest target
