@@ -16,7 +16,7 @@ signal completed
 var _current_progress := 0.0
 var _timer_time_elapsed := 0.0
 var _current_enemy_index := 0
-var _player_is_alive = true
+var _player_is_alive := true
 
 
 @onready var player : PlayerShip = $PlayerShip

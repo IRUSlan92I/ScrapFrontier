@@ -37,6 +37,7 @@ func _input(event: InputEvent) -> void:
 	var is_game_over := victory_screen.visible or game_over_screen.visible
 	var use_pause := is_game_starded and not is_game_over
 	if event.is_action_pressed("pause") and use_pause:
+		SoundManager.play_ui_stream.call_deferred(SoundManager.ui_stream_decline)
 		pause_screen.show()
 		get_tree().paused = true
 

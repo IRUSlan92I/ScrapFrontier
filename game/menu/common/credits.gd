@@ -41,6 +41,7 @@ func _on_back_button_pressed() -> void:
 	if tween:
 		tween.kill()
 	
+	SoundManager.play_ui_stream(SoundManager.ui_stream_decline)
 	back.emit()
 
 

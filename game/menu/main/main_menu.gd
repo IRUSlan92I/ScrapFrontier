@@ -71,5 +71,6 @@ func _on_credits_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
-	SoundManager.play_ui_stream(SoundManager.ui_stream_decline)
+	var player := SoundManager.play_ui_stream(SoundManager.ui_stream_decline)
+	await player.finished
 	quit_game.emit()

@@ -9,10 +9,10 @@ const MUSIC_BUS = "Music"
 
 
 @export_group("Pitch settings", "pitch")
-@export_range(0.5, 1.5, 0.05) var putch_ui_min := 1.0
-@export_range(0.5, 1.5, 0.05) var putch_ui_max := 1.0
-@export_range(0.5, 1.5, 0.05) var putch_sfx_min := 1.0
-@export_range(0.5, 1.5, 0.05) var putch_sfx_max := 1.0
+@export_range(0.9, 1.1, 0.01) var putch_ui_min := 1.0
+@export_range(0.9, 1.1, 0.01) var putch_ui_max := 1.0
+@export_range(0.9, 1.1, 0.01) var putch_sfx_min := 1.0
+@export_range(0.9, 1.1, 0.01) var putch_sfx_max := 1.0
 
 @export_group("Number of players", "player_count")
 @export_range(1, 10) var player_count_ui := 1
@@ -36,23 +36,27 @@ func _ready() -> void:
 	_create_music_player()
 
 
-func play_ui_stream(stream: AudioStream) -> void:
+func play_ui_stream(stream: AudioStream) -> AudioStreamPlayer:
 	var player := _get_free_player(_ui_players)
 	player.stream = stream
 	player.pitch_scale = randf_range(putch_ui_min, putch_ui_max)
 	player.play()
+	return player
 
 
-func play_sfx_stream(stream: AudioStream) -> void:
+func play_sfx_stream(stream: AudioStream, position: Vector2) -> AudioStreamPlayer2D:
 	var player := _get_free_2d_player(_sfx_players)
 	player.stream = stream
 	player.pitch_scale = randf_range(putch_ui_min, putch_ui_max)
+	player.position = position
 	player.play()
+	return player
 
 
-func play_music_stream(stream: AudioStream) -> void:
+func play_music_stream(stream: AudioStream) -> AudioStreamPlayer:
 	_music_player.stream = stream
 	_music_player.play()
+	return _music_player
 
 
 func _create_ui_players() -> void:

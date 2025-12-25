@@ -72,6 +72,7 @@ func _on_seed_edit_text_submitted(new_text: String) -> void:
 
 
 func _on_back_button_pressed() -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_decline)
 	back.emit()
 
 
@@ -86,8 +87,10 @@ func _on_visibility_changed() -> void:
 
 
 func _on_use_random_button_pressed() -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 	_start_game(random_edit.text)
 
 
 func _on_use_custom_button_pressed() -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 	_start_game(custom_edit.text)

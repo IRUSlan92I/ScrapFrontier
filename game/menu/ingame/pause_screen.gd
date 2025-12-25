@@ -15,6 +15,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
+		SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 		_on_pause_menu_continue_game.call_deferred()
 
 

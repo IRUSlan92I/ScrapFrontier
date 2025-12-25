@@ -24,4 +24,5 @@ func _set_weapon_data(data: WeaponData) -> void:
 
 
 func _on_button_pressed() -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 	weapon_selected.emit(weapon_data)

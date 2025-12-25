@@ -101,6 +101,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		var selected_passage := _get_passage_to_sector(selected_sector)
 		if selected_passage != null:
+			SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 			passage_selected.emit(selected_passage)
 
 

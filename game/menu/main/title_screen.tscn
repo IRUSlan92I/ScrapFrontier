@@ -33,6 +33,7 @@ size_flags_horizontal = 4
 
 [node name="Options" parent="MarginContainer" instance=ExtResource("3_88gnj")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="Credits" parent="MarginContainer" instance=ExtResource("4_w1y3c")]

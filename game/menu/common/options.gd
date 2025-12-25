@@ -71,31 +71,49 @@ func _update_window_factor_disabled() -> void:
 
 
 func _on_fullscreen_check_button_toggled(toggled: bool) -> void:
+	if visible: SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 	SettingsManager.fullscreen = toggled
 	_update_window_factor_disabled()
 
 
 func _on_back_button_pressed() -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_decline)
 	back.emit()
 
 
 func _on_window_factor_button_pressed(button: Button) -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 	var window_factor : int = button.get_meta(WINDOW_FACTOR, 0)
 	if window_factor > 0:
 		SettingsManager.window_factor = window_factor
 
 
 func _on_master_volume_changed(value: float) -> void:
+	var stream := _get_slider_sound(SettingsManager.master_volume, value)
+	SoundManager.play_ui_stream(stream)
 	SettingsManager.master_volume = floor(value)
 
 
 func _on_ui_volume_changed(value: float) -> void:
+	var stream := _get_slider_sound(SettingsManager.master_volume, value)
+	SoundManager.play_ui_stream(stream)
 	SettingsManager.ui_volume = floor(value)
 
 
 func _on_sfx_volume_changed(value: float) -> void:
+	var stream := _get_slider_sound(SettingsManager.master_volume, value)
+	SoundManager.play_sfx_stream(stream, SettingsManager.window_base_size/2)
 	SettingsManager.sfx_volume = floor(value)
 
 
 func _on_music_volume_changed(value: float) -> void:
+	var stream := _get_slider_sound(SettingsManager.master_volume, value)
+	SoundManager.play_music_stream(stream)
 	SettingsManager.music_volume = floor(value)
+
+
+func _get_slider_sound(old_value: float, new_value: float) -> AudioStream:
+	if old_value < new_value:
+		return SoundManager.ui_stream_next
+	else:
+		return SoundManager.ui_stream_previous

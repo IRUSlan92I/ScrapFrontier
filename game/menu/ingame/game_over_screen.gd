@@ -13,6 +13,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_main_menu_button_pressed() -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 	show_main_menu.emit()
 
 

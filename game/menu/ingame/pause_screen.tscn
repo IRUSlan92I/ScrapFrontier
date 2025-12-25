@@ -1,27 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://d34nh3lc1gpb"]
+[gd_scene load_steps=5 format=3 uid="uid://d34nh3lc1gpb"]
 
+[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://styles/menu_theme.tres" id="1_cked2"]
 [ext_resource type="Script" uid="uid://c5d2t2o53wkmt" path="res://game/menu/ingame/pause_screen.gd" id="1_fe1q8"]
 [ext_resource type="PackedScene" uid="uid://bclo2wl8ibrcg" path="res://game/menu/ingame/pause_menu.tscn" id="2_4r6ly"]
 [ext_resource type="PackedScene" uid="uid://btr60idiit4y7" path="res://game/menu/common/options.tscn" id="3_3gwb3"]
 
-[node name="PauseScreen" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="PauseScreen" type="MarginContainer"]
+offset_right = 640.0
+offset_bottom = 360.0
+theme = ExtResource("1_cked2")
 script = ExtResource("1_fe1q8")
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_4r6ly")]
-layout_mode = 0
+layout_mode = 2
 
 [node name="Options" parent="." instance=ExtResource("3_3gwb3")]
-custom_minimum_size = Vector2(640, 360)
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 2
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="continue_game" from="PauseMenu" to="." method="_on_pause_menu_continue_game"]
