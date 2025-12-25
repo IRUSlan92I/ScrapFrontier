@@ -51,20 +51,25 @@ func _setup_neighbors() -> void:
 
 
 func _on_continue_button_pressed() -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 	continue_game.emit()
 
 
 func _on_start_button_pressed() -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 	new_game.emit()
 
 
 func _on_options_button_pressed() -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 	show_options.emit()
 
 
 func _on_credits_button_pressed() -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 	show_credits.emit()
 
 
 func _on_quit_button_pressed() -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_decline)
 	quit_game.emit()

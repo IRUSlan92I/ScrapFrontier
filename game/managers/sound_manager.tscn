@@ -8,9 +8,13 @@
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_cg0sy")
+putch_ui_min = 0.95
+putch_ui_max = 1.05
+putch_sfx_min = 0.95
+putch_sfx_max = 1.05
 player_count_ui = 4
 player_count_sfx = 50
-ui_accept = ExtResource("2_agyxs")
-ui_decline = ExtResource("3_0i6kl")
-ui_next = ExtResource("4_fpnh3")
-ui_previous = ExtResource("5_22ptj")
+ui_stream_accept = ExtResource("2_agyxs")
+ui_stream_decline = ExtResource("3_0i6kl")
+ui_stream_next = ExtResource("4_fpnh3")
+ui_stream_previous = ExtResource("5_22ptj")
