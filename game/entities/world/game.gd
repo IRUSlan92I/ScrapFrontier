@@ -3,8 +3,9 @@ extends Node
 
 
 const PASSAGE = preload("res://game/entities/world/passage.tscn")
-const AREA_MAP = preload("res://game/area_map/area_map.tscn")
-const WEAPON_SELECTION_SCREEN = preload("res://game/menu/ingame/weapon_selection_screen.tscn")
+const AREA_MAP = preload("res://game/menu/map/area_map.tscn")
+const WEAPON_SELECTION_SCREEN = \
+		preload("res://game/menu/weapon_selection/weapon_selection_screen.tscn")
 
 
 var world_data : WorldData

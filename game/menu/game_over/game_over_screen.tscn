@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://duxm8n62j2qt6"]
+
+[ext_resource type="Script" uid="uid://bkj8s7588e1ho" path="res://game/menu/game_over/game_over_screen.gd" id="1_rkkr6"]
+[ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://styles/menu_theme.tres" id="2_uh3ar"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rkkr6")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+z_index = 100
+layout_mode = 2
+theme = ExtResource("2_uh3ar")
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+z_index = 100
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("2_uh3ar")
+text = "Main Menu"
+
+[node name="ButtonFocusTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="timeout" from="ButtonFocusTimer" to="." method="_on_timer_timeout"]

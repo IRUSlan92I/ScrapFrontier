@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bqnepsuk13qo8" path="res://game/menu/main/title_screen.gd" id="1_lxdol"]
 [ext_resource type="Theme" uid="uid://dtnd3tqllufey" path="res://styles/menu_theme.tres" id="2_4xt7k"]
 [ext_resource type="PackedScene" uid="uid://bxlccevt52y70" path="res://game/menu/main/main_menu.tscn" id="2_o0rbc"]
-[ext_resource type="PackedScene" uid="uid://btr60idiit4y7" path="res://game/menu/common/options.tscn" id="3_88gnj"]
-[ext_resource type="PackedScene" uid="uid://c3q3g2647qc27" path="res://game/menu/common/credits.tscn" id="4_w1y3c"]
+[ext_resource type="PackedScene" uid="uid://btr60idiit4y7" path="res://game/menu/options/options.tscn" id="3_88gnj"]
+[ext_resource type="PackedScene" uid="uid://c3q3g2647qc27" path="res://game/menu/main/credits.tscn" id="4_w1y3c"]
 [ext_resource type="PackedScene" uid="uid://chdrjc7c6bdpb" path="res://game/entities/world/background.tscn" id="5_88gnj"]
 [ext_resource type="PackedScene" uid="uid://c36n317rhv8k7" path="res://game/menu/main/seed_selection_menu.tscn" id="5_w1y3c"]
 

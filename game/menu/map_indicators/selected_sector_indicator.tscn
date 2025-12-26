@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://bwru7i7xetjth"]
+
+[ext_resource type="Script" uid="uid://d3eqb5341h7y0" path="res://game/menu/map_indicators/selected_sector_indicator.gd" id="1_06a3o"]
+[ext_resource type="Texture2D" uid="uid://orutjsnhhruf" path="res://images/menu/map.png" id="2_485wc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eud2k"]
+atlas = ExtResource("2_485wc")
+region = Rect2(0, 16, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1mdo"]
+atlas = ExtResource("2_485wc")
+region = Rect2(32, 16, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84eqk"]
+atlas = ExtResource("2_485wc")
+region = Rect2(64, 16, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5un7b"]
+atlas = ExtResource("2_485wc")
+region = Rect2(96, 16, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5e44l"]
+animations = [{
+"frames": [{
+"duration": 25.0,
+"texture": SubResource("AtlasTexture_eud2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1mdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84eqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5un7b")
+}],
+"loop": true,
+"name": &"animation",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4cjf"]
+atlas = ExtResource("2_485wc")
+region = Rect2(160, 16, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sd5s"]
+atlas = ExtResource("2_485wc")
+region = Rect2(192, 16, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knx1i"]
+atlas = ExtResource("2_485wc")
+region = Rect2(224, 16, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii6pb"]
+atlas = ExtResource("2_485wc")
+region = Rect2(256, 16, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ulua7"]
+animations = [{
+"frames": [{
+"duration": 25.0,
+"texture": SubResource("AtlasTexture_k4cjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sd5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knx1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii6pb")
+}],
+"loop": true,
+"name": &"animation",
+"speed": 10.0
+}]
+
+[node name="SelectedSectorIndicator" type="Node2D"]
+script = ExtResource("1_06a3o")
+
+[node name="ActiveSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5e44l")
+animation = &"animation"
+
+[node name="InactiveSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ulua7")
+animation = &"animation"

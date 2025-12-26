@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dl7m4rqyj8mck"]
 
 [ext_resource type="Script" uid="uid://1wfu4iuddo25" path="res://game/entities/world/game.gd" id="1_l1rk1"]
-[ext_resource type="PackedScene" uid="uid://d34nh3lc1gpb" path="res://game/menu/ingame/pause_screen.tscn" id="2_h7iqs"]
-[ext_resource type="PackedScene" uid="uid://duxm8n62j2qt6" path="res://game/menu/ingame/game_over_screen.tscn" id="4_4fuuu"]
-[ext_resource type="PackedScene" uid="uid://bdcs2ff85qjs4" path="res://game/menu/ingame/victory_screen.tscn" id="4_dxrkv"]
+[ext_resource type="PackedScene" uid="uid://d34nh3lc1gpb" path="res://game/menu/pause/pause_screen.tscn" id="2_h7iqs"]
+[ext_resource type="PackedScene" uid="uid://duxm8n62j2qt6" path="res://game/menu/game_over/game_over_screen.tscn" id="4_4fuuu"]
+[ext_resource type="PackedScene" uid="uid://bdcs2ff85qjs4" path="res://game/menu/game_over/victory_screen.tscn" id="4_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://ggf76ayl53bb" path="res://game/generators/world_generator.tscn" id="5_dxrkv"]
 
 [node name="Game" type="Node2D"]

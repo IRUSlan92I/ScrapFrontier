@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://befadmr5b8mij"]
+
+[ext_resource type="PackedScene" uid="uid://b03vje74ld8ms" path="res://game/menu/map_indicators/absctact_passage_indicator.tscn" id="1_6yx0l"]
+[ext_resource type="Texture2D" uid="uid://orutjsnhhruf" path="res://images/menu/map.png" id="2_ihw22"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dencp"]
+atlas = ExtResource("2_ihw22")
+region = Rect2(80, 64, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eblp"]
+atlas = ExtResource("2_ihw22")
+region = Rect2(240, 64, 80, 48)
+
+[node name="PassageIndicatorMinus26Grad" instance=ExtResource("1_6yx0l")]
+
+[node name="ActiveSprite" parent="." index="0"]
+position = Vector2(32, -16)
+texture = SubResource("AtlasTexture_dencp")
+
+[node name="InactiveSprite" parent="." index="1"]
+position = Vector2(32, -16)
+texture = SubResource("AtlasTexture_3eblp")
