@@ -23,6 +23,33 @@ func _ready() -> void:
 	_setup_neighbors()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_up") and not fullscreen_button.has_focus():
+		SoundManager.play_ui_stream(SoundManager.ui_stream_previous)
+	if event.is_action_pressed("ui_down") and not back_button.has_focus():
+		SoundManager.play_ui_stream(SoundManager.ui_stream_next)
+	if event.is_action_pressed("ui_left") and _play_left_sound():
+		SoundManager.play_ui_stream(SoundManager.ui_stream_previous)
+	if event.is_action_pressed("ui_right") and _play_right_sound():
+		SoundManager.play_ui_stream(SoundManager.ui_stream_next)
+
+
+func _play_left_sound() -> bool:
+	return _play_side_sound(1, 0)
+
+
+func _play_right_sound() -> bool:
+	return _play_side_sound(0, 1)
+
+
+func _play_side_sound(offset_begin: int, offset_end: int) -> bool:
+	for i in range(offset_begin, window_factor_buttons.get_child_count() - offset_end):
+		var child := window_factor_buttons.get_child(i)
+		if child is Button and child.has_focus():
+			return true
+	return false
+
+
 func _connect_window_factor_buttons() -> void:
 	for child in window_factor_buttons.get_children():
 		if child is Button:

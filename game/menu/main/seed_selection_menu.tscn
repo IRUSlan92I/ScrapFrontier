@@ -82,6 +82,7 @@ text = "Main menu"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="GridContainer/UseRandomButton" to="." method="_on_use_random_button_pressed"]
+[connection signal="editing_toggled" from="GridContainer/CustomEdit" to="." method="_on_custom_edit_editing_toggled"]
 [connection signal="text_changed" from="GridContainer/CustomEdit" to="." method="_on_seed_edit_text_changed"]
 [connection signal="text_submitted" from="GridContainer/CustomEdit" to="." method="_on_seed_edit_text_submitted"]
 [connection signal="pressed" from="GridContainer/UseCustomButton" to="." method="_on_use_custom_button_pressed"]

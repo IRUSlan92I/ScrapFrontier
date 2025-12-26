@@ -19,6 +19,13 @@ func _ready() -> void:
 	_update_continue_button()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_up"):
+		SoundManager.play_ui_stream(SoundManager.ui_stream_previous)
+	if event.is_action_pressed("ui_down"):
+		SoundManager.play_ui_stream(SoundManager.ui_stream_next)
+
+
 func _on_visibility_changed() -> void:
 	if not is_node_ready(): return
 	if not visible: return

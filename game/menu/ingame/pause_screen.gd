@@ -24,8 +24,10 @@ func _show_menu(menu: Control) -> void:
 	
 	for m in menus:
 		m.hide()
+		m.set_process_input(false)
 	
 	menu.show()
+	menu.set_process_input(true)
 
 
 func _on_pause_menu_continue_game() -> void:

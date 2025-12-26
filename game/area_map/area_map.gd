@@ -87,15 +87,19 @@ func _input(event: InputEvent) -> void:
 	if not visible: return
 	
 	if event.is_action_pressed("ui_left") and selected_sector.sector_to_left:
+		SoundManager.play_ui_stream(SoundManager.ui_stream_previous)
 		_set_selected_sector(selected_sector.sector_to_left)
 	
 	if event.is_action_pressed("ui_right") and selected_sector.sector_to_right:
+		SoundManager.play_ui_stream(SoundManager.ui_stream_next)
 		_set_selected_sector(selected_sector.sector_to_right)
 	
 	if event.is_action_pressed("ui_up") and selected_sector.sector_above:
+		SoundManager.play_ui_stream(SoundManager.ui_stream_previous)
 		_set_selected_sector(selected_sector.sector_above)
 	
 	if event.is_action_pressed("ui_down") and selected_sector.sector_below:
+		SoundManager.play_ui_stream(SoundManager.ui_stream_next)
 		_set_selected_sector(selected_sector.sector_below)
 	
 	if event.is_action_pressed("ui_accept"):

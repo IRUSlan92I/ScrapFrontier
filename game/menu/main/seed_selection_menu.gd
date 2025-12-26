@@ -11,6 +11,8 @@ const DEFAULT_SEED_LENGTH := 16
 
 var _seed_regex := RegEx.new()
 
+var _old_custom_seed_length := -1
+
 
 @onready var random_edit : LineEdit = $%RandomEdit
 @onready var custom_edit : LineEdit = $%CustomEdit
@@ -18,10 +20,47 @@ var _seed_regex := RegEx.new()
 @onready var use_random_button : Button = $%UseRandomButton
 @onready var use_custom_button : Button = $%UseCustomButton
 
+@onready var back_button : Button = $%BackButton
+
 
 func _init() -> void:
 	var regex_pattern := "[%s]+" % SEED_CHARS
 	_seed_regex.compile(regex_pattern)
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_up") and _play_up_sound():
+		SoundManager.play_ui_stream(SoundManager.ui_stream_previous)
+	if event.is_action_pressed("ui_down") and _play_down_sound():
+		SoundManager.play_ui_stream(SoundManager.ui_stream_next)
+	if event.is_action_pressed("ui_left") and _play_left_sound():
+		SoundManager.play_ui_stream(SoundManager.ui_stream_previous)
+	if event.is_action_pressed("ui_right") and _play_right_sound():
+		SoundManager.play_ui_stream(SoundManager.ui_stream_next)
+
+
+func _play_up_sound() -> bool:
+	match get_viewport().gui_get_focus_owner():
+		use_custom_button, custom_edit, back_button: return true
+	return false
+
+
+func _play_down_sound() -> bool:
+	match get_viewport().gui_get_focus_owner():
+		use_random_button, use_custom_button, custom_edit: return true
+	return false
+
+
+func _play_left_sound() -> bool:
+	match get_viewport().gui_get_focus_owner():
+		use_random_button, use_custom_button, back_button: return true
+	return false
+
+
+func _play_right_sound() -> bool:
+	match get_viewport().gui_get_focus_owner():
+		custom_edit: return true
+	return false
 
 
 func _update_use_custom_button() -> void:
@@ -62,6 +101,13 @@ func _on_seed_edit_text_changed(new_text: String) -> void:
 		var caret_position := custom_edit.caret_column
 		custom_edit.text = filtered_text
 		custom_edit.caret_column = min(caret_position, filtered_text.length())
+	
+	if _old_custom_seed_length < custom_edit.text.length():
+		SoundManager.play_ui_stream(SoundManager.ui_stream_next)
+	elif _old_custom_seed_length > custom_edit.text.length():
+		SoundManager.play_ui_stream(SoundManager.ui_stream_previous)
+	
+	_old_custom_seed_length = custom_edit.text.length()
 		
 	_update_use_custom_button()
 
@@ -94,3 +140,7 @@ func _on_use_random_button_pressed() -> void:
 func _on_use_custom_button_pressed() -> void:
 	SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
 	_start_game(custom_edit.text)
+
+
+func _on_custom_edit_editing_toggled(_toggled_on: bool) -> void:
+	SoundManager.play_ui_stream(SoundManager.ui_stream_accept)
