@@ -104,6 +104,7 @@ func _create_game_map() -> void:
 	_current_area_map_scene.area_data = current_area
 	_current_area_map_scene.current_sector = current_sector
 	_current_area_map_scene.selected_sector = current_sector
+	_current_area_map_scene.game_seed = SaveManager.game_data.game_seed
 	_current_area_map_scene.passage_selected.connect(_create_passage)
 
 

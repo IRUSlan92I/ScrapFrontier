@@ -67,6 +67,9 @@ var current_sector: SectorData = null:
 var selected_sector: SectorData = null:
 	set = _set_selected_sector
 
+var game_seed := "":
+	set = _set_game_seed
+
 var sector_positions : Dictionary[SectorData, Vector2] = {}
 
 
@@ -75,6 +78,7 @@ var sector_positions : Dictionary[SectorData, Vector2] = {}
 
 @onready var current_sector_indicator : CurrentSectorIndicator = $CurrentSectorIndicator
 @onready var selected_sector_indicator : SelectedSectorIndicator = $SelectedSectorIndicator
+@onready var seed_label : Label = $SeedLabel
 
 
 func _ready() -> void:
@@ -225,6 +229,11 @@ func _set_selected_sector(sector: SectorData) -> void:
 	selected_sector_indicator.position = sector_position
 	
 	selected_sector_indicator.show()
+
+
+func _set_game_seed(value: String) -> void:
+	game_seed = value
+	seed_label.text = game_seed
 
 
 func _update_selected_sector_indicator() -> void:
