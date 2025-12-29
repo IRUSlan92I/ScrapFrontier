@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bc0np3ldfspq4"]
+[gd_scene load_steps=7 format=3 uid="uid://bc0np3ldfspq4"]
 
 [ext_resource type="Script" uid="uid://cx5qcukr66whc" path="res://game/managers/sound_manager.gd" id="1_cg0sy"]
 [ext_resource type="AudioStream" uid="uid://bqcqigmj23ub5" path="res://sound/ui/ui_accept.wav" id="2_agyxs"]
 [ext_resource type="AudioStream" uid="uid://buo5vn18yd5w0" path="res://sound/ui/ui_decline.wav" id="3_0i6kl"]
 [ext_resource type="AudioStream" uid="uid://bmlticluh8uqd" path="res://sound/ui/ui_next.wav" id="4_fpnh3"]
 [ext_resource type="AudioStream" uid="uid://bm1qd04yh32i8" path="res://sound/ui/ui_previous.wav" id="5_22ptj"]
+[ext_resource type="AudioStream" uid="uid://vbk40x6ifoyv" path="res://sound/sfx/weapon/gatling_shot.wav" id="6_0i6kl"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_cg0sy")
@@ -18,3 +19,4 @@ ui_stream_accept = ExtResource("2_agyxs")
 ui_stream_decline = ExtResource("3_0i6kl")
 ui_stream_next = ExtResource("4_fpnh3")
 ui_stream_previous = ExtResource("5_22ptj")
+sfx_weapon_gatling_shot = ExtResource("6_0i6kl")
