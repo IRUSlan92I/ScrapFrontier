@@ -54,7 +54,7 @@ offset_top = 11.0
 offset_bottom = 11.0
 
 [node name="Health" parent="." index="1"]
-max_hull = 50
+max_hull = 25
 
 [node name="First" type="Node2D" parent="WeaponSlots" index="0"]
 position = Vector2(5, 0)

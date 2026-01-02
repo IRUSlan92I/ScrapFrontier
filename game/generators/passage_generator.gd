@@ -2,8 +2,8 @@ class_name PassageGenerator
 extends Node
 
 
-const ENEMY_DELAY_MEAN = 3.0
-const ENEMY_DELAY_DEVIATION = 2.0
+const ENEMY_DELAY_MEAN = 5.0
+const ENEMY_DELAY_DEVIATION = 3.0
 
 const LENGTH_MEAN = 300.0
 const LENGTH_DEVIATION = 50.0

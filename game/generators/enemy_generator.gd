@@ -72,4 +72,4 @@ func _full_scene(data: EnemyData, type: EnemyType) -> void:
 
 
 func _full_weapon(data: EnemyData, type: EnemyType) -> void:
-	data.weapon_count = randi_range(1, ENEMY_MAX_WEAPON_COUNT[type])
+	data.weapon_count = weapon_rng.randi_range(1, ENEMY_MAX_WEAPON_COUNT[type])
