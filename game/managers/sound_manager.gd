@@ -27,6 +27,10 @@ const MUSIC_BUS = "Music"
 @export_group("SFX Sounds", "sfx")
 @export_subgroup("Weapon", "sfx_weapon")
 @export var sfx_weapon_gatling_shot : AudioStream
+@export var sfx_weapon_cannon_shot : AudioStream
+@export var sfx_weapon_plasma_shot : AudioStream
+@export var sfx_weapon_railgun_shot : AudioStream
+@export var sfx_weapon_sharapnel_shot : AudioStream
 
 
 var _ui_players : Array[AudioStreamPlayer] = []

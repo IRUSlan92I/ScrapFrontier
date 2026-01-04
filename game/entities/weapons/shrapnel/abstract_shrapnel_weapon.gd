@@ -15,8 +15,9 @@ func _ready() -> void:
 func shoot(ship_velocity: Vector2) -> bool:
 	var is_shot := super.shoot(ship_velocity)
 	if is_shot:
-		sprite.play(SHOT_ANIMATION)
 		_can_shoot = false
+		SoundManager.play_sfx_stream(SoundManager.sfx_weapon_sharapnel_shot, global_position)
+		sprite.play(SHOT_ANIMATION)
 		cooldown_timer.start()
 		shot_particles.restart()
 		shell_particles.emit_particle(Transform2D(), Vector2(), Color(), Color(), 0)

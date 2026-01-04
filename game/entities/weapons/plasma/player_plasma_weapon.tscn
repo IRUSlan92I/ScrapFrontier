@@ -57,8 +57,9 @@ script = ExtResource("2_hxkfe")
 projectile_scene = ExtResource("3_hxkfe")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_hxkfe")
-animation = &"shot"
+animation = &"reloading"
 
 [node name="Muzzle" parent="." index="2"]
-position = Vector2(1, 2)
+position = Vector2(8, 2)

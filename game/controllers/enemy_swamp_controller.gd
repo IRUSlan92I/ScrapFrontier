@@ -15,6 +15,9 @@ const MAX_POSITION = Vector2(600, 330)
 @export var passage : Passage
 
 
+var _enemy_count := 0
+
+
 @onready var enemy_update_timer : Timer = $EnemyUpdateTimer
 
 
@@ -28,17 +31,13 @@ func create_enemy(enemy_data: EnemyData) -> void:
 	enemy.position = enemy_data.spawn_point
 	enemy.enemy_data = enemy_data
 	enemy.velocity = enemy.position.direction_to(player.position) * enemy.max_speed
+	enemy.destroyed.connect(_on_enemy_destroyed, CONNECT_ONE_SHOT)
 	_update_enemy.call_deferred(enemy)
+	_enemy_count += 1
 
 
-func _on_enemy_update_timer_timeout() -> void:
-	var enemies := get_tree().get_nodes_in_group("enemies")
-	if enemies.is_empty(): return
-	
-	var enemy : Node = enemies.pick_random()
-	if not enemy is AbstractEnemyShip: return
-		
-	_update_enemy(enemy)
+func get_enemy_count() -> int:
+	return _enemy_count
 
 
 func _update_enemy(enemy: AbstractEnemyShip) -> void:
@@ -97,3 +96,17 @@ func _get_random_player() -> PlayerShip:
 	
 	var player : PlayerShip = players.pick_random()
 	return player
+
+
+func _on_enemy_destroyed() -> void:
+	_enemy_count -= 1
+
+
+func _on_enemy_update_timer_timeout() -> void:
+	var enemies := get_tree().get_nodes_in_group("enemies")
+	if enemies.is_empty(): return
+	
+	var enemy : Node = enemies.pick_random()
+	if not enemy is AbstractEnemyShip: return
+		
+	_update_enemy(enemy)

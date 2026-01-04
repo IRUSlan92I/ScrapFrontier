@@ -30,7 +30,8 @@ func _physics_process(delta: float) -> void:
 		_current_progress += delta
 		_update_progress_indicator()
 		if _current_progress >= passage_data.length:
-			completed.emit()
+			if enemy_swamp_controller.get_enemy_count() == 0:
+				completed.emit()
 
 
 func _set_passage_data(new_data: PassageData) -> void:
