@@ -74,3 +74,6 @@ projectile_scene = ExtResource("3_nkog1")
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_nkog1")
 animation = &"shot"
+
+[node name="Muzzle" parent="." index="1"]
+position = Vector2(-9, 0)

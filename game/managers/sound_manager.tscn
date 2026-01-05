@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bc0np3ldfspq4"]
+[gd_scene load_steps=14 format=3 uid="uid://bc0np3ldfspq4"]
 
 [ext_resource type="Script" uid="uid://cx5qcukr66whc" path="res://game/managers/sound_manager.gd" id="1_cg0sy"]
 [ext_resource type="AudioStream" uid="uid://bqcqigmj23ub5" path="res://sound/ui/ui_accept.wav" id="2_agyxs"]
@@ -10,6 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://b4l3ksw7gh8u0" path="res://sound/sfx/weapon/plasma_shot.wav" id="8_6ll5c"]
 [ext_resource type="AudioStream" uid="uid://bqo2n7jytda3r" path="res://sound/sfx/weapon/shrapnel_shot.wav" id="8_22ptj"]
 [ext_resource type="AudioStream" uid="uid://cflrm2y3yp371" path="res://sound/sfx/weapon/railgun_shot.wav" id="8_ab171"]
+[ext_resource type="AudioStream" uid="uid://dmp6cimf8uy0x" path="res://sound/sfx/weapon/minelayer_shot.wav" id="8_q7cyi"]
+[ext_resource type="AudioStream" uid="uid://hv28c6ivh4fx" path="res://sound/sfx/weapon/minelayer_tick_high.wav" id="9_wyfta"]
+[ext_resource type="AudioStream" uid="uid://dew2108vd3e1d" path="res://sound/sfx/weapon/minelayer_tick_low.wav" id="10_814q3"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_cg0sy")
@@ -25,6 +28,9 @@ ui_stream_next = ExtResource("4_fpnh3")
 ui_stream_previous = ExtResource("5_22ptj")
 sfx_weapon_gatling_shot = ExtResource("6_0i6kl")
 sfx_weapon_cannon_shot = ExtResource("7_fpnh3")
+sfx_weapon_minelayer_shot = ExtResource("8_q7cyi")
+sfx_weapon_minelayer_tick_high = ExtResource("9_wyfta")
+sfx_weapon_minelayer_tick_low = ExtResource("10_814q3")
 sfx_weapon_plasma_shot = ExtResource("8_6ll5c")
 sfx_weapon_railgun_shot = ExtResource("8_ab171")
 sfx_weapon_sharapnel_shot = ExtResource("8_22ptj")

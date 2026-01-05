@@ -12,6 +12,7 @@ func shoot(ship_velocity: Vector2) -> bool:
 	var is_shot := super.shoot(ship_velocity)
 	if is_shot:
 		_can_shoot = false
+		SoundManager.play_sfx_stream(SoundManager.sfx_weapon_minelayer_shot, global_position)
 		sprite.play(SHOT_ANIMATION)
 	
 	return is_shot

@@ -9,7 +9,7 @@ enum SpriteState {
 }
 
 
-const OFF_TIMES = [
+const OFF_TIMES : Array[float] = [
 	1.0, 1.0, 0.5, 0.25, 0.05, 0.05, 0.05, 0.05, 0.05,
 ]
 const ON_TIME = 0.05
@@ -74,8 +74,13 @@ func _on_sprite_on_timer_timeout() -> void:
 		_try_to_damage_by_blast()
 		_process_hit_for_projectile(null)
 	else:
+		var delay_time := OFF_TIMES[_current_off_time_index]
+		var stream : AudioStream = SoundManager.sfx_weapon_minelayer_tick_low if delay_time > 0.1 \
+						else SoundManager.sfx_weapon_minelayer_tick_high
+		SoundManager.play_sfx_stream(stream, global_position)
+		
 		_current_sprite_state = SpriteState.OFF
-		sprite_off_timer.start(OFF_TIMES[_current_off_time_index])
+		sprite_off_timer.start(delay_time)
 
 
 func _on_sprite_off_timer_timeout() -> void:

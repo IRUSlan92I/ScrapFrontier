@@ -28,6 +28,9 @@ const MUSIC_BUS = "Music"
 @export_subgroup("Weapon", "sfx_weapon")
 @export var sfx_weapon_gatling_shot : AudioStream
 @export var sfx_weapon_cannon_shot : AudioStream
+@export var sfx_weapon_minelayer_shot : AudioStream
+@export var sfx_weapon_minelayer_tick_high : AudioStream
+@export var sfx_weapon_minelayer_tick_low : AudioStream
 @export var sfx_weapon_plasma_shot : AudioStream
 @export var sfx_weapon_railgun_shot : AudioStream
 @export var sfx_weapon_sharapnel_shot : AudioStream
