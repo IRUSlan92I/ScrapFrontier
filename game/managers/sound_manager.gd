@@ -34,6 +34,7 @@ const MUSIC_BUS = "Music"
 @export var sfx_weapon_plasma_shot : AudioStream
 @export var sfx_weapon_railgun_shot : AudioStream
 @export var sfx_weapon_sharapnel_shot : AudioStream
+@export var sfx_weapon_tesla_shot : AudioStream
 
 
 var _ui_players : Array[AudioStreamPlayer] = []

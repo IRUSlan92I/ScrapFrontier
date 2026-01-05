@@ -160,7 +160,10 @@ func _on_passage_completion() -> void:
 	_current_passage_scene.queue_free()
 	var projectiles := get_tree().get_nodes_in_group("projectiles")
 	for projectile in projectiles:
-		projectile.queue_free()
+		if projectile is AbstractProjectile:
+			projectile.delete()
+		else:
+			projectile.queue_free()
 	
 	current_sector = current_passage.next_sector
 	if current_sector.next_passages.size() == 0:

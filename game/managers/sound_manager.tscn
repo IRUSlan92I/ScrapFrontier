@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc0np3ldfspq4"]
+[gd_scene load_steps=15 format=3 uid="uid://bc0np3ldfspq4"]
 
 [ext_resource type="Script" uid="uid://cx5qcukr66whc" path="res://game/managers/sound_manager.gd" id="1_cg0sy"]
 [ext_resource type="AudioStream" uid="uid://bqcqigmj23ub5" path="res://sound/ui/ui_accept.wav" id="2_agyxs"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dmp6cimf8uy0x" path="res://sound/sfx/weapon/minelayer_shot.wav" id="8_q7cyi"]
 [ext_resource type="AudioStream" uid="uid://hv28c6ivh4fx" path="res://sound/sfx/weapon/minelayer_tick_high.wav" id="9_wyfta"]
 [ext_resource type="AudioStream" uid="uid://dew2108vd3e1d" path="res://sound/sfx/weapon/minelayer_tick_low.wav" id="10_814q3"]
+[ext_resource type="AudioStream" uid="uid://cwl47v6j32ho2" path="res://sound/sfx/weapon/tesla_shot.wav" id="14_814q3"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_cg0sy")
@@ -34,3 +35,4 @@ sfx_weapon_minelayer_tick_low = ExtResource("10_814q3")
 sfx_weapon_plasma_shot = ExtResource("8_6ll5c")
 sfx_weapon_railgun_shot = ExtResource("8_ab171")
 sfx_weapon_sharapnel_shot = ExtResource("8_22ptj")
+sfx_weapon_tesla_shot = ExtResource("14_814q3")

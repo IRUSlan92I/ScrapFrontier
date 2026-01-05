@@ -10,6 +10,7 @@ extends AbstractDirectHitProjectile
 
 var _collided_foes : Array[AbstractShip] = []
 var _current_line: Line2D
+var _audio_player: AudioStreamPlayer2D
 
 
 @onready var jink_timer : Timer = $JinkTimer
@@ -29,6 +30,9 @@ func _ready() -> void:
 	
 	_prepare_line(line_thin)
 	_prepare_line(line_thick)
+	
+	var stream : AudioStream = SoundManager.sfx_weapon_tesla_shot
+	_audio_player = SoundManager.play_sfx_stream(stream, global_position)
 
 
 func _prepare_line(line: Line2D) -> void:
@@ -131,6 +135,15 @@ func _start_fading() -> void:
 	_current_line = line_thin
 	
 	life_timer.start()
+	
+	if _audio_player.playing:
+		var old_volume := _audio_player.volume_linear
+		var tween := create_tween()
+		tween.tween_property(_audio_player, "volume_linear", 0, life_timer.wait_time)
+		tween.finished.connect(func() -> void:
+			_audio_player.stop();
+			_audio_player.volume_linear = old_volume
+		)
 
 
 func _on_life_timer_timeout() -> void:
